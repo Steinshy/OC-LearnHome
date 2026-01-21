@@ -73,3 +73,52 @@
 
 **En résumé :**  
 Ces cas d'usage couvrent l'accès, le suivi des tâches, la gestion du temps et la communication, répondant ainsi de manière concise aux besoins essentiels des élèves et des tuteurs sur l'application.
+
+
+## Diagramme de Flux Utilisateur
+
+```
+                          ┌─────────────────┐
+                          │   Non Connecté  │
+                          └────────┬────────┘
+                                   │
+                    ┌──────────────┴──────────────┐
+                    ▼                             ▼
+              ┌──────────┐                ┌──────────────┐
+              │ Connexion│                │ Inscription  │
+              └────┬─────┘                └──────┬───────┘
+                   │                             │
+                   │                    Valider les infos
+                   │                             │
+                   │ Identifiants valides        │
+                   └──────────────┬──────────────┘
+                                  ▼
+                          ┌────────────────────────┐
+                          │     Choix du Rôle      │
+                          │ (Élève / Tuteur)       │
+                          └───────────┬────────────┘
+                                      │
+              ┌───────────────────────┼──────────────────────────┐
+              ▼                       ▼                          ▼
+      ┌────────────┐        ┌────────────────┐         ┌────────────────┐
+      │ Tableau de │        │     Chat       │         │   Calendrier   │
+      │   Bord     │        └────────────────┘         └────────────────┘
+      └──────┬─────┘                │                          │
+             │                       ▼                          ▼
+             │              ┌──────────────────┐      ┌────────────────────┐
+             │              │ Messages / Fils  │      │ Voir Événements    │
+             │              │ Envoyer Msg      │      │ Ajouter / Modifier │
+             │              │ Contacts         │      │ Supprimer Evt      │
+             │              └──────────────────┘      └────────────────────┘
+             ▼
+      ┌────────────────┐
+      │     Tâches     │
+      └──────┬─────────┘
+             │
+      ┌──────┴────────┐
+      ▼               ▼
+ ┌──────────┐    ┌──────────┐
+ │ Voir     │    │ Créer     │
+ │ Tâches   │    │ Tâche     │
+ └──────────┘    └──────────┘
+```

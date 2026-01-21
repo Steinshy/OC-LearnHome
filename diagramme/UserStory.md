@@ -155,3 +155,53 @@
 ## Conclusion
 **En résumé :**
 Ces user stories sont la documentation fonctionnelle de Learn@Home, couvrant l'ensemble des besoins essentiels pour l’élève et le tuteur bénévole. Elles structurent le développement de la plateforme.
+
+---
+
+## Diagramme de Flux Utilisateur
+
+```
+                          ┌─────────────────┐
+                          │ Non Connecté    │
+                          └────────┬────────┘
+                                   │
+                    ┌──────────────┴──────────────┐
+                    ▼                             ▼
+              ┌──────────┐                ┌──────────────┐
+              │ Connexion│                │ Inscription  │
+              └────┬─────┘                └──────┬───────┘
+                   │                             │
+                   │                    Valider les infos
+                   │                             │
+                   │ Identifiants valides        │
+                   └──────────────┬──────────────┘
+                                  ▼
+                          ┌─────────────────┐
+                          │ Utilisateur     │
+                          │ Connecté        │
+                          └────────┬────────┘
+                                   │
+                ┌──────────────────┼──────────────────┐
+                ▼                  ▼                  ▼
+         ┌────────────┐      ┌──────────┐      ┌──────────────┐
+         │ Tableau de │      │   Chat   │      │  Calendrier  │
+         │   Bord     │      └──────────┘      └──────────────┘
+         └──────┬─────┘            │                   │
+                │                  ▼                   ▼
+                │           ┌──────────────┐   ┌──────────────┐
+                │           │ Voir Messages│   │ Voir Événements│
+                │           │ Envoyer Msg  │   │ Créer Événement│
+                │           │ Ajouter Contact  │ Modifier Evt │
+                │           └──────────────┘   └──────────────┘
+                ▼
+         ┌──────────────┐
+         │   Tâches     │
+         └──────┬───────┘
+                │
+         ┌──────┴──────┐
+         ▼             ▼
+    ┌────────┐    ┌─────────┐
+    │ Voir   │    │ Créer   │
+    │ Tâches │    │ Tâche   │
+    └────────┘    └─────────┘
+```
