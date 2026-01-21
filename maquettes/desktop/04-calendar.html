@@ -1,1093 +1,543 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn@Home - Calendrier | Maquette Desktop</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #F3F4F6;
-            padding: 32px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 32px;
-        }
-
-        h1 {
-            font-size: 32px;
-            font-weight: 700;
-            color: #111827;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 12px;
-        }
-
-        .button {
-            padding: 10px 16px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-
-        .button-primary {
-            background: #3B82F6;
-            color: white;
-        }
-
-        .button-primary:hover {
-            background: #1E40AF;
-        }
-
-        .button-secondary {
-            background: white;
-            color: #3B82F6;
-            border: 1px solid #3B82F6;
-        }
-
-        .button-secondary:hover {
-            background: #E0F2FE;
-        }
-
-        .layout {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 24px;
-        }
-
-        /* Calendar */
-        .calendar-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            padding: 24px;
-        }
-
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-        }
-
-        .calendar-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #111827;
-        }
-
-        .calendar-nav {
-            display: flex;
-            gap: 12px;
-        }
-
-        .nav-btn {
-            width: 32px;
-            height: 32px;
-            border: 1px solid #D1D5DB;
-            background: white;
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .nav-btn:hover {
-            background: #F3F4F6;
-        }
-
-        .month-year {
-            min-width: 120px;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        /* Days of week */
-        .dow {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .dow-item {
-            text-align: center;
-            font-weight: 600;
-            color: #6B7280;
-            font-size: 12px;
-            padding: 8px 0;
-            text-transform: uppercase;
-        }
-
-        /* Calendar days */
-        .calendar-days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 8px;
-        }
-
-        .calendar-day {
-            aspect-ratio: 1;
-            border: 1px solid #E5E7EB;
-            border-radius: 6px;
-            padding: 8px;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: white;
-            font-size: 14px;
-        }
-
-        .calendar-day:hover {
-            border-color: #3B82F6;
-            background: #E0F2FE;
-        }
-
-        .calendar-day.other-month {
-            opacity: 0.3;
-        }
-
-        .calendar-day.today {
-            border: 2px solid #3B82F6;
-            font-weight: 700;
-        }
-
-        .calendar-day-num {
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .calendar-day-events {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            font-size: 10px;
-        }
-
-        .event-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 2px;
-        }
-
-        .event-dot-blue {
-            background: #3B82F6;
-        }
-
-        .event-dot-green {
-            background: #10B981;
-        }
-
-        .event-dot-orange {
-            background: #F59E0B;
-        }
-
-        /* Sidebar - Events */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            padding: 16px;
-        }
-
-        .card-title {
-            font-weight: 700;
-            color: #111827;
-            margin-bottom: 16px;
-            font-size: 16px;
-        }
-
-        .event-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .event-item {
-            padding: 12px;
-            background: #F9FAFB;
-            border-radius: 6px;
-            border-left: 4px solid #3B82F6;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .event-item:hover {
-            background: #F3F4F6;
-            border-left-color: #1E40AF;
-        }
-
-        .event-item.green {
-            border-left-color: #10B981;
-        }
-
-        .event-item.orange {
-            border-left-color: #F59E0B;
-        }
-
-        .event-time {
-            font-size: 12px;
-            color: #9CA3AF;
-            margin-bottom: 4px;
-        }
-
-        .event-name {
-            font-weight: 600;
-            color: #111827;
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-
-        .event-location {
-            font-size: 12px;
-            color: #6B7280;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 24px;
-            color: #9CA3AF;
-        }
-
-        .empty-icon {
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
-
-        /* Legend */
-        .legend {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: #6B7280;
-        }
-
-        .legend-color {
-            width: 12px;
-            height: 12px;
-            border-radius: 2px;
-        }
-
-        .color-lesson {
-            background: #3B82F6;
-        }
-
-        .color-deadline {
-            background: #10B981;
-        }
-
-        .color-appointment {
-            background: #F59E0B;
-        }
-
-        /* ============ MODALS STYLING ============ */
-
-        /* Modal overlay */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Modal container */
-        .modal {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            animation: modal-fade-in 0.3s ease;
-            position: relative;
-        }
-
-        @keyframes modal-fade-in {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .modal-header {
-            padding: 24px 24px 16px 24px;
-            border-bottom: 1px solid #E5E7EB;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #111827;
-        }
-
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: #6B7280;
-            cursor: pointer;
-            transition: color 0.2s;
-            padding: 0;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-close:hover {
-            color: #111827;
-        }
-
-        .modal-body {
-            padding: 24px;
-        }
-
-        .modal-footer {
-            padding: 16px 24px;
-            border-top: 1px solid #E5E7EB;
-            display: flex;
-            gap: 12px;
-            justify-content: flex-end;
-        }
-
-        .modal-footer .button {
-            flex: 1;
-        }
-
-        /* Form styling */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group:last-child {
-            margin-bottom: 0;
-        }
-
-        .form-label {
-            display: block;
-            font-weight: 600;
-            color: #111827;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .form-label .required {
-            color: #EF4444;
-        }
-
-        .form-input,
-        .form-textarea,
-        .form-select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #D1D5DB;
-            border-radius: 6px;
-            font-family: inherit;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-
-        .form-input:focus,
-        .form-textarea:focus,
-        .form-select:focus {
-            outline: none;
-            border-color: #3B82F6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .form-group.full {
-            grid-column: 1 / -1;
-        }
-
-        /* Checkbox styling */
-        .form-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-        }
-
-        .form-checkbox input {
-            cursor: pointer;
-            width: 18px;
-            height: 18px;
-            accent-color: #3B82F6;
-        }
-
-        .form-checkbox label {
-            cursor: pointer;
-            font-size: 14px;
-            color: #374151;
-            margin: 0;
-        }
-
-        /* Category badge */
-        .category-badge {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .category-badge.lesson {
-            background: #DBEAFE;
-            color: #1E40AF;
-        }
-
-        .category-badge.deadline {
-            background: #DCFCE7;
-            color: #166534;
-        }
-
-        .category-badge.appointment {
-            background: #FEF3C7;
-            color: #92400E;
-        }
-
-        /* Button danger style */
-        .button-danger {
-            background: #EF4444;
-            color: white;
-        }
-
-        .button-danger:hover {
-            background: #DC2626;
-        }
-
-        /* Modal states */
-        .modal-with-error .form-input,
-        .modal-with-error .form-textarea,
-        .modal-with-error .form-select {
-            border-color: #EF4444;
-        }
-
-        .error-message {
-            color: #EF4444;
-            font-size: 12px;
-            margin-top: 4px;
-        }
-
-        /* Event details modal specific */
-        .event-details-content {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .event-detail-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .event-detail-icon {
-            font-size: 20px;
-            color: #3B82F6;
-            margin-top: 2px;
-            min-width: 20px;
-        }
-
-        .event-detail-info {
-            flex: 1;
-        }
-
-        .event-detail-label {
-            font-size: 12px;
-            color: #9CA3AF;
-            margin-bottom: 2px;
-        }
-
-        .event-detail-value {
-            font-size: 14px;
-            color: #111827;
-            font-weight: 500;
-        }
-
-        .event-details-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #111827;
-            margin-bottom: 12px;
-        }
-
-        /* Confirmation modal */
-        .confirmation-content {
-            text-align: center;
-        }
-
-        .confirmation-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #111827;
-            margin-bottom: 12px;
-        }
-
-        .confirmation-message {
-            color: #6B7280;
-            font-size: 14px;
-            margin-bottom: 24px;
-            line-height: 1.5;
-        }
-
-        .confirmation-buttons {
-            display: flex;
-            gap: 12px;
-            flex-direction: column;
-        }
-
-        .confirmation-buttons .button {
-            width: 100%;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #F3F4F6;
+        padding: 32px;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 32px;
+      }
+
+      h1 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 12px;
+      }
+
+      .button {
+        padding: 10px 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s;
+      }
+
+      .button-primary {
+        background: #3B82F6;
+        color: white;
+      }
+
+      .button-primary:hover {
+        background: #1E40AF;
+      }
+
+      .button-secondary {
+        background: white;
+        color: #3B82F6;
+        border: 1px solid #3B82F6;
+      }
+
+      .button-secondary:hover {
+        background: #E0F2FE;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 24px;
+      }
+
+      .calendar-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 24px;
+      }
+
+      .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+
+      .calendar-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      .calendar-nav {
+        display: flex;
+        gap: 12px;
+      }
+
+      .nav-btn {
+        width: 32px;
+        height: 32px;
+        border: 1px solid #D1D5DB;
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+      }
+
+      .nav-btn:hover {
+        background: #F3F4F6;
+      }
+
+      .month-year {
+        min-width: 120px;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .dow {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .dow-item {
+        text-align: center;
+        font-weight: 600;
+        color: #6B7280;
+        font-size: 12px;
+        padding: 8px 0;
+        text-transform: uppercase;
+      }
+
+      .calendar-days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 8px;
+      }
+
+      .calendar-day {
+        aspect-ratio: 1;
+        border: 1px solid #E5E7EB;
+        border-radius: 6px;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        transition: all 0.3s;
+        background: white;
+        font-size: 14px;
+      }
+
+      .calendar-day:hover {
+        border-color: #3B82F6;
+        background: #E0F2FE;
+      }
+
+      .calendar-day.other-month {
+        opacity: 0.3;
+      }
+
+      .calendar-day.today {
+        border: 2px solid #3B82F6;
+        font-weight: 700;
+      }
+
+      .calendar-day-num {
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .calendar-day-events {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        font-size: 10px;
+      }
+
+      .event-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 2px;
+      }
+
+      .event-dot-blue {
+        background: #3B82F6;
+      }
+
+      .event-dot-green {
+        background: #10B981;
+      }
+
+      .event-dot-orange {
+        background: #F59E0B;
+      }
+
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+      }
+
+      .card-title {
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 16px;
+        font-size: 16px;
+      }
+
+      .event-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .event-item {
+        padding: 12px;
+        background: #F9FAFB;
+        border-radius: 6px;
+        border-left: 4px solid #3B82F6;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .event-item:hover {
+        background: #F3F4F6;
+        border-left-color: #1E40AF;
+      }
+
+      .event-item.green {
+        border-left-color: #10B981;
+      }
+
+      .event-item.orange {
+        border-left-color: #F59E0B;
+      }
+
+      .event-time {
+        font-size: 12px;
+        color: #9CA3AF;
+        margin-bottom: 4px;
+      }
+
+      .event-name {
+        font-weight: 600;
+        color: #111827;
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+
+      .event-location {
+        font-size: 12px;
+        color: #6B7280;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 24px;
+        color: #9CA3AF;
+      }
+
+      .empty-icon {
+        font-size: 32px;
+        margin-bottom: 8px;
+      }
+
+      .legend {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: #6B7280;
+      }
+
+      .legend-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+      }
+
+      .color-lesson {
+        background: #3B82F6;
+      }
+
+      .color-deadline {
+        background: #10B981;
+      }
+
+      .color-appointment {
+        background: #F59E0B;
+      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
     <div class="container">
-        <div class="header">
-            <h1>Calendrier</h1>
-            <div class="header-actions">
-                <button class="button button-secondary">Aujourd'hui</button>
-                <button class="button button-primary">Créer un événement</button>
+      <div class="header">
+        <h1>Calendrier</h1>
+        <div class="header-actions">
+          <button class="button button-secondary">Aujourd'hui</button>
+          <a href="calendar-modal.html" class="button button-primary">Créer un événement</a>
+        </div>
+      </div>
+
+      <div class="layout">
+        <div class="calendar-card">
+          <div class="calendar-header">
+            <div class="calendar-nav">
+              <button class="nav-btn">◀</button>
+              <div class="month-year">Janvier 2026</div>
+              <button class="nav-btn">▶</button>
             </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="button button-secondary" style="padding: 6px 12px; font-size: 13px;">Mois</button>
+              <button class="button button-secondary" style="padding: 6px 12px; font-size: 13px;">Semaine</button>
+              <button class="button button-secondary" style="padding: 6px 12px; font-size: 13px;">Jour</button>
+            </div>
+          </div>
+
+          <div class="dow">
+            <div class="dow-item">Lun</div>
+            <div class="dow-item">Mar</div>
+            <div class="dow-item">Mer</div>
+            <div class="dow-item">Jeu</div>
+            <div class="dow-item">Ven</div>
+            <div class="dow-item">Sam</div>
+            <div class="dow-item">Dim</div>
+          </div>
+
+          <div class="calendar-days">
+            <div class="calendar-day other-month">30</div>
+            <div class="calendar-day other-month">31</div>
+
+            <div class="calendar-day">
+              <div class="calendar-day-num">1</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">2</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">3</div>
+              <div class="calendar-day-events">
+                <span><span class="event-dot event-dot-blue">●</span>Cours Français</span>
+              </div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">4</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">5</div>
+              <div class="calendar-day-events">
+                <span><span class="event-dot event-dot-green">●</span>Tâche échéance</span>
+              </div>
+            </div>
+
+            <div class="calendar-day">
+              <div class="calendar-day-num">6</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">7</div>
+              <div class="calendar-day-events">
+                <span><span class="event-dot event-dot-blue">●</span>Session Tutor</span>
+              </div>
+            </div>
+            <div class="calendar-day today">
+              <div class="calendar-day-num">8</div>
+              <div class="calendar-day-events">
+                <span><span class="event-dot event-dot-orange">●</span>Réunion</span>
+              </div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">9</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">10</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">11</div>
+              <div class="calendar-day-events">
+                <span><span class="event-dot event-dot-blue">●</span>Cours Math</span>
+              </div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">12</div>
+            </div>
+
+            <div class="calendar-day">
+              <div class="calendar-day-num">13</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">14</div>
+              <div class="calendar-day-events">
+                <span><span class="event-dot event-dot-blue">●</span>Session Tutor</span>
+                <span><span class="event-dot event-dot-green">●</span>Tâche</span>
+              </div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">15</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">16</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">17</div>
+              <div class="calendar-day-events">
+                <span><span class="event-dot event-dot-orange">●</span>Exam</span>
+              </div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">18</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">19</div>
+            </div>
+
+            <div class="calendar-day">
+              <div class="calendar-day-num">20</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">21</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">22</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">23</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">24</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">25</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">26</div>
+            </div>
+
+            <div class="calendar-day">
+              <div class="calendar-day-num">27</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">28</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">29</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">30</div>
+            </div>
+            <div class="calendar-day">
+              <div class="calendar-day-num">31</div>
+            </div>
+
+            <div class="calendar-day other-month">1</div>
+            <div class="calendar-day other-month">2</div>
+          </div>
         </div>
 
-        <div class="layout">
-            <!-- Main Calendar -->
-            <div class="calendar-card">
-                <div class="calendar-header">
-                    <div class="calendar-nav">
-                        <button class="nav-btn">◀</button>
-                        <div class="month-year">Janvier 2026</div>
-                        <button class="nav-btn">▶</button>
-                    </div>
-                    <div style="display: flex; gap: 8px;">
-                        <button class="button button-secondary" style="padding: 6px 12px; font-size: 13px;">Mois</button>
-                        <button class="button button-secondary" style="padding: 6px 12px; font-size: 13px;">Semaine</button>
-                        <button class="button button-secondary" style="padding: 6px 12px; font-size: 13px;">Jour</button>
-                    </div>
-                </div>
-
-                <!-- Days of Week -->
-                <div class="dow">
-                    <div class="dow-item">Lun</div>
-                    <div class="dow-item">Mar</div>
-                    <div class="dow-item">Mer</div>
-                    <div class="dow-item">Jeu</div>
-                    <div class="dow-item">Ven</div>
-                    <div class="dow-item">Sam</div>
-                    <div class="dow-item">Dim</div>
-                </div>
-
-                <!-- Calendar Days -->
-                <div class="calendar-days">
-                    <!-- Previous month days -->
-                    <div class="calendar-day other-month">30</div>
-                    <div class="calendar-day other-month">31</div>
-
-                    <!-- Current month -->
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">1</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">2</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">3</div>
-                        <div class="calendar-day-events">
-                            <span><span class="event-dot event-dot-blue">●</span>Cours Français</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">4</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">5</div>
-                        <div class="calendar-day-events">
-                            <span><span class="event-dot event-dot-green">●</span>Tâche échéance</span>
-                        </div>
-                    </div>
-
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">6</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">7</div>
-                        <div class="calendar-day-events">
-                            <span><span class="event-dot event-dot-blue">●</span>Session Tutor</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day today">
-                        <div class="calendar-day-num">8</div>
-                        <div class="calendar-day-events">
-                            <span><span class="event-dot event-dot-orange">●</span>Réunion</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">9</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">10</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">11</div>
-                        <div class="calendar-day-events">
-                            <span><span class="event-dot event-dot-blue">●</span>Cours Math</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">12</div>
-                    </div>
-
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">13</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">14</div>
-                        <div class="calendar-day-events">
-                            <span><span class="event-dot event-dot-blue">●</span>Session Tutor</span>
-                            <span><span class="event-dot event-dot-green">●</span>Tâche</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">15</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">16</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">17</div>
-                        <div class="calendar-day-events">
-                            <span><span class="event-dot event-dot-orange">●</span>Exam</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">18</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">19</div>
-                    </div>
-
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">20</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">21</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">22</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">23</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">24</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">25</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">26</div>
-                    </div>
-
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">27</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">28</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">29</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">30</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="calendar-day-num">31</div>
-                    </div>
-
-                    <!-- Next month days -->
-                    <div class="calendar-day other-month">1</div>
-                    <div class="calendar-day other-month">2</div>
-                </div>
+        <div class="sidebar">
+          <div class="card">
+            <div class="card-title">Aujourd'hui (8 jan)</div>
+            <div class="event-list">
+              <div class="event-item orange">
+                <div class="event-time">15:00 - 16:00</div>
+                <div class="event-name">Réunion Tuteur</div>
+                <div class="event-location">En ligne (Zoom)</div>
+              </div>
+              <div class="event-item">
+                <div class="event-time">18:00 - 19:00</div>
+                <div class="event-name">Session Tutorat</div>
+                <div class="event-location">En ligne</div>
+              </div>
             </div>
+          </div>
 
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Today's Events -->
-                <div class="card">
-                    <div class="card-title">Aujourd'hui (8 jan)</div>
-                    <div class="event-list">
-                        <div class="event-item orange">
-                            <div class="event-time">15:00 - 16:00</div>
-                            <div class="event-name">Réunion Tuteur</div>
-                            <div class="event-location">En ligne (Zoom)</div>
-                        </div>
-                        <div class="event-item">
-                            <div class="event-time">18:00 - 19:00</div>
-                            <div class="event-name">Session Tutorat</div>
-                            <div class="event-location">En ligne</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Upcoming Events -->
-                <div class="card">
-                    <div class="card-title">À Venir</div>
-                    <div class="event-list">
-                        <div class="event-item green">
-                            <div class="event-time">Demain 14:00</div>
-                            <div class="event-name">Cours Français</div>
-                        </div>
-                        <div class="event-item">
-                            <div class="event-time">11 Jan 10:00</div>
-                            <div class="event-name">Cours Mathématiques</div>
-                            <div class="event-location">Centre d'apprentissage</div>
-                        </div>
-                        <div class="event-item orange">
-                            <div class="event-time">17 Jan 13:00</div>
-                            <div class="event-name">Examen Blanc</div>
-                            <div class="event-location">En ligne</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Legend -->
-                <div class="card">
-                    <div class="card-title">Catégories</div>
-                    <div class="legend">
-                        <div class="legend-item">
-                            <div class="legend-color color-lesson"></div>
-                            <span>Cours/Tutorat</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color color-deadline"></div>
-                            <span>Tâche/Échéance</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color color-appointment"></div>
-                            <span>Réunion/Examen</span>
-                        </div>
-                    </div>
-                </div>
+          <div class="card">
+            <div class="card-title">À Venir</div>
+            <div class="event-list">
+              <div class="event-item green">
+                <div class="event-time">Demain 14:00</div>
+                <div class="event-name">Cours Français</div>
+              </div>
+              <div class="event-item">
+                <div class="event-time">11 Jan 10:00</div>
+                <div class="event-name">Cours Mathématiques</div>
+                <div class="event-location">Centre d'apprentissage</div>
+              </div>
+              <div class="event-item orange">
+                <div class="event-time">17 Jan 13:00</div>
+                <div class="event-name">Examen Blanc</div>
+                <div class="event-location">En ligne</div>
+              </div>
             </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Catégories</div>
+            <div class="legend">
+              <div class="legend-item">
+                <div class="legend-color color-lesson"></div>
+                <span>Cours/Tutorat</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color color-deadline"></div>
+                <span>Tâche/Échéance</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color color-appointment"></div>
+                <span>Réunion/Examen</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
-    <!-- ===== MODALS ===== -->
+  </body>
 
-    <!-- Modal: Ajouter Événement (État VIDE) -->
-    <div class="modal-overlay active" id="addEventModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h2 class="modal-title">Créer un événement</h2>
-                <button class="modal-close">✕</button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label class="form-label">Titre <span class="required">*</span></label>
-                        <input type="text" class="form-input" placeholder="Ex: Cours de Français" value="">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Description</label>
-                        <textarea class="form-textarea" placeholder="Ajouter une description (optionnel)"></textarea>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Date <span class="required">*</span></label>
-                            <input type="date" class="form-input" value="">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Catégorie <span class="required">*</span></label>
-                            <select class="form-select">
-                                <option value="">-- Sélectionner --</option>
-                                <option value="lesson">Cours/Tutorat</option>
-                                <option value="deadline">Tâche/Échéance</option>
-                                <option value="appointment">Réunion/Examen</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Heure début <span class="required">*</span></label>
-                            <input type="time" class="form-input" value="">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Heure fin <span class="required">*</span></label>
-                            <input type="time" class="form-input" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Lieu</label>
-                        <input type="text" class="form-input" placeholder="Ex: Salle 205, En ligne (Zoom)">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Récurrence</label>
-                        <select class="form-select">
-                            <option value="none">Aucune</option>
-                            <option value="daily">Quotidien</option>
-                            <option value="weekly">Hebdomadaire</option>
-                            <option value="monthly">Mensuel</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="form-checkbox">
-                            <input type="checkbox" id="notification" name="notification">
-                            <label for="notification">Notifier 15 minutes avant l'événement</label>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="button button-secondary">Annuler</button>
-                <button class="button button-primary">Créer l'événement</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: Ajouter Événement (État REMPLI - Exemple) -->
-    <div class="modal-overlay" id="addEventModalFilled" style="display: none;">
-        <div class="modal">
-            <div class="modal-header">
-                <h2 class="modal-title">Créer un événement</h2>
-                <button class="modal-close">✕</button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label class="form-label">Titre <span class="required">*</span></label>
-                        <input type="text" class="form-input" placeholder="Ex: Cours de Français" value="Cours de Français">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Description</label>
-                        <textarea class="form-textarea" placeholder="Ajouter une description (optionnel)">Chapitre sur les verbes irréguliers et la grammaire avancée.</textarea>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Date <span class="required">*</span></label>
-                            <input type="date" class="form-input" value="2026-01-15">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Catégorie <span class="required">*</span></label>
-                            <select class="form-select">
-                                <option value="">-- Sélectionner --</option>
-                                <option value="lesson" selected>Cours/Tutorat</option>
-                                <option value="deadline">Tâche/Échéance</option>
-                                <option value="appointment">Réunion/Examen</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Heure début <span class="required">*</span></label>
-                            <input type="time" class="form-input" value="14:00">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Heure fin <span class="required">*</span></label>
-                            <input type="time" class="form-input" value="15:30">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Lieu</label>
-                        <input type="text" class="form-input" placeholder="Ex: Salle 205, En ligne (Zoom)" value="Salle 205 - Centre d'apprentissage">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Récurrence</label>
-                        <select class="form-select">
-                            <option value="none" selected>Aucune</option>
-                            <option value="daily">Quotidien</option>
-                            <option value="weekly">Hebdomadaire</option>
-                            <option value="monthly">Mensuel</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="form-checkbox">
-                            <input type="checkbox" id="notification2" name="notification" checked>
-                            <label for="notification2">Notifier 15 minutes avant l'événement</label>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="button button-secondary">Annuler</button>
-                <button class="button button-primary">Créer l'événement</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: Détails Événement -->
-    <div class="modal-overlay" id="eventDetailsModal" style="display: none;">
-        <div class="modal">
-            <div class="modal-header">
-                <div>
-                    <h2 class="modal-title">Détails de l'événement</h2>
-                </div>
-                <button class="modal-close">✕</button>
-            </div>
-            <div class="modal-body">
-                <div class="event-details-content">
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                        <h3 class="event-details-title" style="margin: 0;">Réunion avec Tuteur</h3>
-                        <span class="category-badge appointment">Réunion/Examen</span>
-                    </div>
-
-                    <div class="event-detail-row">
-                        <div class="event-detail-icon">📅</div>
-                        <div class="event-detail-info">
-                            <div class="event-detail-label">Date</div>
-                            <div class="event-detail-value">Jeudi 8 janvier 2026</div>
-                        </div>
-                    </div>
-
-                    <div class="event-detail-row">
-                        <div class="event-detail-icon">🕐</div>
-                        <div class="event-detail-info">
-                            <div class="event-detail-label">Horaires</div>
-                            <div class="event-detail-value">15:00 - 16:00</div>
-                        </div>
-                    </div>
-
-                    <div class="event-detail-row">
-                        <div class="event-detail-icon">📍</div>
-                        <div class="event-detail-info">
-                            <div class="event-detail-label">Lieu</div>
-                            <div class="event-detail-value">En ligne (Zoom)</div>
-                        </div>
-                    </div>
-
-                    <div class="event-detail-row">
-                        <div class="event-detail-icon">📝</div>
-                        <div class="event-detail-info">
-                            <div class="event-detail-label">Description</div>
-                            <div class="event-detail-value">Suivi des progrès en mathématiques et revue des devoirs précédents.</div>
-                        </div>
-                    </div>
-
-                    <div class="event-detail-row">
-                        <div class="event-detail-icon">🔄</div>
-                        <div class="event-detail-info">
-                            <div class="event-detail-label">Récurrence</div>
-                            <div class="event-detail-value">Hebdomadaire (chaque jeudi)</div>
-                        </div>
-                    </div>
-
-                    <div class="event-detail-row">
-                        <div class="event-detail-icon">🔔</div>
-                        <div class="event-detail-info">
-                            <div class="event-detail-label">Notification</div>
-                            <div class="event-detail-value">15 minutes avant l'événement</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="button button-secondary">Modifier</button>
-                <button class="button button-danger">Supprimer</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: Confirmation Suppression -->
-    <div class="modal-overlay" id="confirmDeleteModal" style="display: none;">
-        <div class="modal" style="max-width: 400px;">
-            <div class="modal-body" style="padding: 40px 24px 24px;">
-                <div class="confirmation-content">
-                    <h2 class="confirmation-title">Supprimer cet événement ?</h2>
-                    <p class="confirmation-message">
-                        Cette action est <strong>irréversible</strong>. L'événement <strong>"Réunion avec Tuteur"</strong> sera définitivement supprimé de votre calendrier.
-                    </p>
-                    <div class="confirmation-buttons">
-                        <button class="button button-secondary">Annuler</button>
-                        <button class="button button-danger">Supprimer définitivement</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</body>
 </html>

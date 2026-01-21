@@ -1,219 +1,260 @@
-
-
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn@Home - Tâches | Mobile</title>
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body {
-            font-family:'Inter', sans-serif;
-            background:#F3F4F6;
-            padding:16px;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        h1 {
-            font-size:24px;
-            font-weight:700;
-            margin-bottom:16px;
-            color:#111827;
-        }
+      body {
+        font-family: 'Inter', sans-serif;
+        background: #F3F4F6;
+        padding: 16px;
+      }
 
-        .button-primary {
-            width:100%;
-            padding:12px;
-            background:#3B82F6;
-            color:white;
-            font-weight:600;
-            border:none;
-            border-radius:6px;
-            font-size:16px;
-            margin-bottom:20px;
-        }
+      h1 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: #111827;
+      }
 
-        .filters {
-            display:flex;
-            gap:8px;
-            overflow-x:auto;
-            padding-bottom:8px;
-        }
+      .button-primary {
+        width: 100%;
+        padding: 12px;
+        background: #3B82F6;
+        color: white;
+        font-weight: 600;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
 
-        .filter-btn {
-            flex:0 0 auto;
-            padding:8px 12px;
-            border:1px solid #D1D5DB;
-            background:white;
-            border-radius:6px;
-            font-size:14px;
-            color:#6B7280;
-            white-space:nowrap;
-        }
-        .filter-btn.active {
-            background:#3B82F6;
-            color:white;
-            border-color:#3B82F6;
-        }
+      .filters {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+      }
 
-        .search-box {
-            width:100%;
-            padding:10px;
-            border:1px solid #D1D5DB;
-            border-radius:6px;
-            font-size:14px;
-            margin:16px 0;
-        }
+      .filter-btn {
+        flex: 0 0 auto;
+        padding: 8px 12px;
+        border: 1px solid #D1D5DB;
+        background: white;
+        border-radius: 6px;
+        font-size: 14px;
+        color: #6B7280;
+        white-space: nowrap;
+      }
 
-        .sort-select {
-            width:100%;
-            padding:10px;
-            border:1px solid #D1D5DB;
-            border-radius:6px;
-            font-size:14px;
-        }
+      .filter-btn.active {
+        background: #3B82F6;
+        color: white;
+        border-color: #3B82F6;
+      }
 
-        .tasks-container {
-            display:flex;
-            flex-direction:column;
-            gap:12px;
-        }
+      .search-box {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        font-size: 14px;
+        margin: 16px 0;
+      }
 
-        .task-card {
-            background:white;
-            border-radius:8px;
-            box-shadow:0 1px 3px rgba(0,0,0,0.1);
-            padding:16px;
-            display:flex;
-            gap:12px;
-            border-left:4px solid #E5E7EB;
-        }
+      .sort-select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        font-size: 14px;
+      }
 
-        .task-card.priority-high { border-left-color:#EF4444; }
-        .task-card.priority-medium { border-left-color:#F59E0B; }
-        .task-card.priority-low { border-left-color:#10B981; }
+      .tasks-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
 
-        .checkbox {
-            width:22px;
-            height:22px;
-            border:2px solid #D1D5DB;
-            border-radius:4px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:14px;
-        }
-        .checkbox.checked {
-            background:#3B82F6; color:white; border-color:#3B82F6;
-        }
+      .task-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        display: flex;
+        gap: 12px;
+        border-left: 4px solid #E5E7EB;
+      }
 
-        .task-title {
-            font-size:16px;
-            font-weight:600;
-            margin-bottom:6px;
-            color:#111827;
-        }
-        .task-description {
-            font-size:14px;
-            color:#6B7280;
-            margin-bottom:10px;
-        }
+      .task-card.priority-high {
+        border-left-color: #EF4444;
+      }
 
-        .task-meta {
-            font-size:12px;
-            color:#6B7280;
-            display:flex;
-            flex-direction:column;
-            gap:4px;
-        }
+      .task-card.priority-medium {
+        border-left-color: #F59E0B;
+      }
 
-        .badge {
-            display:inline-block;
-            padding:4px 8px;
-            border-radius:20px;
-            font-size:12px;
-            font-weight:600;
-            margin-top:10px;
-            width:max-content;
-        }
+      .task-card.priority-low {
+        border-left-color: #10B981;
+      }
 
-        .priority-high-badge { background:#FEE2E2; color:#991B1B; }
-        .priority-medium-badge { background:#FEF3C7; color:#92400E; }
-        .priority-low-badge { background:#DCFCE7; color:#166534; }
+      .checkbox {
+        width: 22px;
+        height: 22px;
+        border: 2px solid #D1D5DB;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+      }
 
-        .status-pending { background:#F3F4F6; color:#374151; }
-        .status-inprogress { background:#DBEAFE; color:#1E40AF; }
-        .status-done { background:#DCFCE7; color:#166534; }
+      .checkbox.checked {
+        background: #3B82F6;
+        color: white;
+        border-color: #3B82F6;
+      }
+
+      .task-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #111827;
+      }
+
+      .task-description {
+        font-size: 14px;
+        color: #6B7280;
+        margin-bottom: 10px;
+      }
+
+      .task-meta {
+        font-size: 12px;
+        color: #6B7280;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-top: 10px;
+        width: max-content;
+      }
+
+      .priority-high-badge {
+        background: #FEE2E2;
+        color: #991B1B;
+      }
+
+      .priority-medium-badge {
+        background: #FEF3C7;
+        color: #92400E;
+      }
+
+      .priority-low-badge {
+        background: #DCFCE7;
+        color: #166534;
+      }
+
+      .status-pending {
+        background: #F3F4F6;
+        color: #374151;
+      }
+
+      .status-inprogress {
+        background: #DBEAFE;
+        color: #1E40AF;
+      }
+
+      .status-done {
+        background: #DCFCE7;
+        color: #166534;
+      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
 
     <h1>Mes Tâches</h1>
 
     <button class="button-primary">+ Nouvelle tâche</button>
 
     <div class="filters">
-        <button class="filter-btn active">Toutes</button>
-        <button class="filter-btn">À faire</button>
-        <button class="filter-btn">En cours</button>
-        <button class="filter-btn">Complétées</button>
+      <button class="filter-btn active">Toutes</button>
+      <button class="filter-btn">À faire</button>
+      <button class="filter-btn">En cours</button>
+      <button class="filter-btn">Complétées</button>
     </div>
 
     <input class="search-box" placeholder="Rechercher..." />
 
     <select class="sort-select">
-        <option>Trier par: Date</option>
-        <option>Trier par: Priorité</option>
-        <option>Trier par: Titre</option>
+      <option>Trier par: Date</option>
+      <option>Trier par: Priorité</option>
+      <option>Trier par: Titre</option>
     </select>
 
     <div class="tasks-container">
 
-        <div class="task-card priority-high">
-            <div class="checkbox"></div>
-            <div style="flex:1;">
-                <div class="task-title">Équations du second degré - Exercices</div>
-                <div class="task-description">Compléter les 10 exercices.</div>
-                <div class="task-meta">
-                    <div>📅 10 janv 2026</div>
-                    <div>👤 Yann</div>
-                </div>
-                <span class="badge priority-high-badge">Haute</span>
-                <span class="badge status-pending">À faire</span>
-            </div>
+      <div class="task-card priority-high">
+        <div class="checkbox"></div>
+        <div style="flex:1;">
+          <div class="task-title">Équations du second degré - Exercices</div>
+          <div class="task-description">Compléter les 10 exercices.</div>
+          <div class="task-meta">
+            <div>📅 10 janv 2026</div>
+            <div>👤 Yann</div>
+          </div>
+          <span class="badge priority-high-badge">Haute</span>
+          <span class="badge status-pending">À faire</span>
         </div>
+      </div>
 
-        <div class="task-card priority-medium">
-            <div class="checkbox"></div>
-            <div style="flex:1;">
-                <div class="task-title">Lecture chapitre 5</div>
-                <div class="task-description">Lire et résumer 2 pages.</div>
-                <div class="task-meta">
-                    <div>📅 12 janv 2026</div>
-                    <div>👤 Auto</div>
-                </div>
-                <span class="badge priority-medium-badge">Normal</span>
-                <span class="badge status-inprogress">En cours</span>
-            </div>
+      <div class="task-card priority-medium">
+        <div class="checkbox"></div>
+        <div style="flex:1;">
+          <div class="task-title">Lecture chapitre 5</div>
+          <div class="task-description">Lire et résumer 2 pages.</div>
+          <div class="task-meta">
+            <div>📅 12 janv 2026</div>
+            <div>👤 Auto</div>
+          </div>
+          <span class="badge priority-medium-badge">Normal</span>
+          <span class="badge status-inprogress">En cours</span>
         </div>
+      </div>
 
-        <div class="task-card priority-low">
-            <div class="checkbox checked">✓</div>
-            <div style="flex:1;">
-                <div class="task-title" style="text-decoration:line-through; color:#9CA3AF;">
-                    Révision vocabulaire anglais
-                </div>
-                <div class="task-description">Apprendre 50 mots.</div>
-                <div class="task-meta">
-                    <div>📅 5 janv 2026</div>
-                    <div>👤 Auto</div>
-                </div>
-                <span class="badge priority-low-badge">Basse</span>
-                <span class="badge status-done">Complétée</span>
-            </div>
+      <div class="task-card priority-low">
+        <div class="checkbox checked">✓</div>
+        <div style="flex:1;">
+          <div class="task-title" style="text-decoration:line-through; color:#9CA3AF;">
+            Révision vocabulaire anglais
+          </div>
+          <div class="task-description">Apprendre 50 mots.</div>
+          <div class="task-meta">
+            <div>📅 5 janv 2026</div>
+            <div>👤 Auto</div>
+          </div>
+          <span class="badge priority-low-badge">Basse</span>
+          <span class="badge status-done">Complétée</span>
         </div>
+      </div>
 
     </div>
 
-</body>
+  </body>
+
 </html>

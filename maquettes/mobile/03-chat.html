@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn@Home - Chat | Mobile</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background: #F3F4F6;
+        padding: 16px;
+      }
+
+      h1 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: #111827;
+      }
+
+      /* Contacts: stacked list */
+      .contacts {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        margin-bottom: 16px;
+        padding: 8px 0;
+        overflow: hidden;
+      }
+
+      .contact-item {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 12px 16px;
+        border-bottom: 1px solid #F3F4F6;
+      }
+
+      .contact-item:last-child {
+        border-bottom: none;
+      }
+
+      .contact-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #3B82F6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+      }
+
+      .contact-name {
+        font-weight: 600;
+        color: #111827;
+      }
+
+      .contact-status {
+        font-size: 12px;
+        color: #6B7280;
+      }
+
+      /* Chat section */
+      .chat-box {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .chat-header {
+        padding: 14px 16px;
+        border-bottom: 1px solid #E5E7EB;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .chat-header-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #111827;
+      }
+
+      .chat-header-status {
+        font-size: 12px;
+        color: #10B981;
+      }
+
+      .messages {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px;
+        background: #FAFAFA;
+      }
+
+      .msg {
+        display: flex;
+        gap: 10px;
+      }
+
+      .msg.me {
+        flex-direction: row-reverse;
+      }
+
+      .msg-bubble {
+        background: white;
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #111827;
+        max-width: 75%;
+        line-height: 1.4;
+      }
+
+      .msg.me .msg-bubble {
+        background: #3B82F6;
+        color: white;
+      }
+
+      .msg-time {
+        font-size: 11px;
+        color: #9CA3AF;
+        margin-top: 4px;
+      }
+
+      .chat-input {
+        padding: 12px;
+        border-top: 1px solid #E5E7EB;
+        background: white;
+        display: flex;
+        gap: 8px;
+        align-items: flex-end;
+      }
+
+      .chat-text {
+        flex: 1;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        padding: 10px;
+        font-size: 14px;
+        resize: none;
+      }
+
+      .chat-send {
+        width: 40px;
+        height: 40px;
+        background: #3B82F6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <h1>Messages</h1>
+
+    <div class="contacts">
+      <div class="contact-item">
+        <div class="contact-avatar">YU</div>
+        <div class="contact-info">
+          <div class="contact-name">Yann Uliong</div>
+          <div class="contact-status">En ligne</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-avatar" style="background:#10B981;">MD</div>
+        <div class="contact-info">
+          <div class="contact-name">Marie Dupont</div>
+          <div class="contact-status">Hors ligne (23h)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-box">
+      <div class="chat-header">
+        <div class="contact-avatar">YU</div>
+        <div>
+          <div class="chat-header-title">Yann Uliong</div>
+          <div class="chat-header-status">En ligne</div>
+        </div>
+      </div>
+
+      <div class="messages">
+        <div class="msg">
+          <div class="contact-avatar" style="width:28px; height:28px;">YU</div>
+          <div>
+            <div class="msg-bubble">Bonjour ! Tu avances bien ?</div>
+            <div class="msg-time">14:32</div>
+          </div>
+        </div>
+
+        <div class="msg">
+          <div class="contact-avatar" style="width:28px; height:28px;">YU</div>
+          <div>
+            <div class="msg-bubble">Je t’envoie un PDF 👇</div>
+            <div class="msg-time">14:33</div>
+          </div>
+        </div>
+
+        <div class="msg me">
+          <div>
+            <div class="msg-bubble">Merci beaucoup !</div>
+            <div class="msg-time">14:48</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-input">
+        <textarea class="chat-text" placeholder="Écrire un message..." rows="1"></textarea>
+        <button class="chat-send">➤</button>
+      </div>
+    </div>
+
+  </body>
+
+</html>
