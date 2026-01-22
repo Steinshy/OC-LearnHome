@@ -117,6 +117,14 @@
         font-weight: 700;
         margin-bottom: 8px;
         position: relative;
+        cursor: pointer;
+      }
+
+      .user-avatar.student-picture {
+        background-image: url('../assets/pictures/antoine.jpeg');
+        background-size: cover;
+        background-position: center;
+        font-size: 0;
       }
 
       .user-avatar-badge {
@@ -370,6 +378,17 @@
         color: white;
         font-weight: 700;
         font-size: 24px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .student-picture {
+        background-image: url('../assets/pictures/antoine.jpeg');
+        font-size: 0;
+      }
+
+      .student-picture a {
+        text-decoration: none;
       }
 
       .avatar-controls {
@@ -404,6 +423,12 @@
         color: #6B7280;
       }
     </style>
+    <script>
+      function toggleAvatar() {
+        document.getElementById('avatarPreview').classList.toggle('student-picture');
+        document.getElementById('userAvatar').classList.toggle('student-picture');
+      }
+    </script>
   </head>
 
   <body>
@@ -416,23 +441,23 @@
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="02-dashboard.html" class="nav-item">
+            <a onclick="window.location.href='02-dashboard.html'" class="nav-item">
               <span class="nav-item-icon">📊</span>
               Tableau de bord
             </a>
-            <a href="03-chat.html" class="nav-item">
+            <a onclick="window.location.href='03-chat.html'" class="nav-item">
               <span class="nav-item-icon">💬</span>
-              Chat
+              Messages
             </a>
           </div>
 
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="04-calendar.html" class="nav-item">
+            <a onclick="window.location.href='04-calendar.html'" class="nav-item">
               <span class="nav-item-icon">📅</span>
               Calendrier
             </a>
-            <a href="05-tasks.html" class="nav-item">
+            <a onclick="window.location.href='05-tasks.html'" class="nav-item">
               <span class="nav-item-icon">✅</span>
               Tâches
             </a>
@@ -440,11 +465,11 @@
 
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="06-settings.html" class="nav-item active">
+            <a onclick="window.location.href='06-settings.html'" class="nav-item active">
               <span class="nav-item-icon">⚙️</span>
               Paramètres
             </a>
-            <a href="01-login.html" class="nav-item">
+            <a onclick="window.location.href='01-login.html'" class="nav-item">
               <span class="nav-item-icon">🚪</span>
               Déconnexion
             </a>
@@ -452,7 +477,7 @@
         </nav>
 
         <div class="user-profile">
-          <div class="user-avatar">
+          <div class="user-avatar" id="userAvatar">
             AK
             <span class="user-avatar-badge">3</span>
           </div>
@@ -471,12 +496,9 @@
           <div class="card-title">👤 Informations personnelles</div>
 
           <div class="avatar-upload">
-            <div class="avatar-preview">AK</div>
+            <div class="avatar-preview" id="avatarPreview">AK</div>
             <div class="avatar-controls">
-              <label class="file-input-label">
-                Changer la photo
-                <input type="file" class="file-input" accept="image/*">
-              </label>
+              <label class="file-input-label" onclick="toggleAvatar('avatarPreview')">Changer la photo</label>
               <p class="file-input-hint">JPG, PNG ou GIF (Max 2MB)</p>
             </div>
           </div>
@@ -670,6 +692,7 @@
         </div>
       </main>
     </div>
+  </body>
   </body>
 
 </html>

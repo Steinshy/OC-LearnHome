@@ -204,15 +204,17 @@
         <p class="subtitle">Accédez à votre compte pour continuer</p>
       </div>
 
-      <form>
+      <form onsubmit="return validateDemoLogin()">
         <div class="form-group">
           <label for="email">Adresse email</label>
-          <input type="email" id="email" placeholder="vous@exemple.com" required>
+          <input type="email" id="email" value="demo@learn.com" placeholder="demo@learn.com" required
+            pattern="demo@learn.com" title="L’email de démonstration est demo@learn.com">
         </div>
 
         <div class="form-group">
           <label for="password">Mot de passe</label>
-          <input type="password" id="password" placeholder="••••••••" required>
+          <input type="password" id="password" value="Demo1234" placeholder="Demo1234" required pattern="Demo1234"
+            title="Le mot de passe de démonstration est Demo1234">
         </div>
 
         <div class="remember-forgot">
@@ -239,6 +241,20 @@
         Email: demo@learn.com | Mot de passe: Demo1234
       </div>
     </div>
+    <script>
+      function validateDemoLogin() {
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        if (email === 'demo@learn.com' && password === 'Demo1234') {
+          window.location.href = '02-dashboard.html';
+          return false;
+        }
+
+        alert('Identifiants incorrects.');
+        return false;
+      }
+    </script>
   </body>
 
 </html>

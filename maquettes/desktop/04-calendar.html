@@ -150,13 +150,14 @@
         aspect-ratio: 1;
         border: 1px solid #E5E7EB;
         border-radius: 6px;
-        padding: 8px;
+        padding: 4px;
         display: flex;
         flex-direction: column;
+        justify-content: flex-start;
         cursor: pointer;
         transition: all 0.3s;
         background: white;
-        font-size: 14px;
+        position: relative;
       }
 
       .calendar-day:hover {
@@ -174,23 +175,23 @@
       }
 
       .calendar-day-num {
-        font-weight: 600;
-        margin-bottom: 4px;
+        position: absolute;
+        top: 4px;
+        right: 6px;
+        font-weight: 700;
+        font-size: 12px;
+        color: #374151;
       }
 
       .calendar-day-events {
+        margin-top: 22px;
         display: flex;
         flex-direction: column;
-        gap: 2px;
-        font-size: 10px;
+        gap: 6px;
       }
 
       .event-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        display: inline-block;
-        margin-right: 2px;
+        display: none;
       }
 
       .event-dot-blue {
@@ -202,6 +203,28 @@
       }
 
       .event-dot-orange {
+        background: #F59E0B;
+      }
+
+      .event-pill {
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        color: white;
+        display: inline-block;
+        width: fit-content;
+      }
+
+      .event-blue {
+        background: #3B82F6;
+      }
+
+      .event-green {
+        background: #10B981;
+      }
+
+      .event-orange {
         background: #F59E0B;
       }
 
@@ -364,7 +387,7 @@
             <div class="calendar-day">
               <div class="calendar-day-num">3</div>
               <div class="calendar-day-events">
-                <span><span class="event-dot event-dot-blue">●</span>Cours Français</span>
+                <span class="event-pill event-blue">Cours Français</span>
               </div>
             </div>
             <div class="calendar-day">
@@ -373,7 +396,7 @@
             <div class="calendar-day">
               <div class="calendar-day-num">5</div>
               <div class="calendar-day-events">
-                <span><span class="event-dot event-dot-green">●</span>Tâche échéance</span>
+                <span class="event-pill event-green">Tâche échéance</span>
               </div>
             </div>
 
@@ -383,13 +406,13 @@
             <div class="calendar-day">
               <div class="calendar-day-num">7</div>
               <div class="calendar-day-events">
-                <span><span class="event-dot event-dot-blue">●</span>Session Tutor</span>
+                <span class="event-pill event-blue">Session Tutor</span>
               </div>
             </div>
             <div class="calendar-day today">
               <div class="calendar-day-num">8</div>
               <div class="calendar-day-events">
-                <span><span class="event-dot event-dot-orange">●</span>Réunion</span>
+                <span class="event-pill event-orange">Réunion</span>
               </div>
             </div>
             <div class="calendar-day">
@@ -401,7 +424,7 @@
             <div class="calendar-day">
               <div class="calendar-day-num">11</div>
               <div class="calendar-day-events">
-                <span><span class="event-dot event-dot-blue">●</span>Cours Math</span>
+                <span class="event-pill event-blue">Cours Math</span>
               </div>
             </div>
             <div class="calendar-day">
@@ -414,8 +437,8 @@
             <div class="calendar-day">
               <div class="calendar-day-num">14</div>
               <div class="calendar-day-events">
-                <span><span class="event-dot event-dot-blue">●</span>Session Tutor</span>
-                <span><span class="event-dot event-dot-green">●</span>Tâche</span>
+                <span class="event-pill event-blue">Session Tutor</span>
+                <span class="event-pill event-green">Tâche</span>
               </div>
             </div>
             <div class="calendar-day">
@@ -427,7 +450,7 @@
             <div class="calendar-day">
               <div class="calendar-day-num">17</div>
               <div class="calendar-day-events">
-                <span><span class="event-dot event-dot-orange">●</span>Exam</span>
+                <span class="event-pill event-orange">Exam</span>
               </div>
             </div>
             <div class="calendar-day">
