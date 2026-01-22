@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn@Home - Récupération du mot de passe | Maquette Desktop</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        background: #ffffff;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 420px;
+        padding: 48px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: 700;
+        color: #3B82F6;
+        margin-bottom: 8px;
+      }
+
+      .logo-subtitle {
+        font-size: 14px;
+        color: #6B7280;
+        margin-bottom: 24px;
+      }
+
+      h1 {
+        font-size: 24px;
+        color: #111827;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        color: #6B7280;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: #374151;
+      }
+
+      input[type="email"] {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      input[type="email"]:focus {
+        outline: none;
+        border-color: #3B82F6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .button-primary {
+        width: 100%;
+        padding: 12px;
+        background: #3B82F6;
+        color: white;
+        font-weight: 600;
+        border: none;
+        border-radius: 6px;
+        margin-top: 24px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .button-primary:hover {
+        background: #1E40AF;
+      }
+
+      .button-primary:active {
+        transform: scale(0.98);
+      }
+
+      .back-link {
+        text-align: center;
+        margin-top: 24px;
+        font-size: 14px;
+        color: #6B7280;
+      }
+
+      .back-link a {
+        color: #3B82F6;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .back-link a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div class="header">
+        <div class="logo">📚 Learn@Home</div>
+        <div class="logo-subtitle">Plateforme de tutorat en ligne</div>
+        <h1>Mot de passe oublié</h1>
+        <p class="subtitle">Entrez votre email pour recevoir un lien de réinitialisation.</p>
+      </div>
+
+      <form onsubmit="alert('Email de récupération envoyé ! (démo)'); return false;">
+
+        <label for="email">Adresse email</label>
+        <input type="email" id="email" placeholder="vous@example.com" value="demo@learn.com" required />
+
+        <button class="button-primary" type="submit">Envoyer le lien</button>
+      </form>
+
+      <p class="back-link">
+        Retour à la <a onclick="window.location.href='01-login.html'" href="#login">connexion</a>
+      </p>
+
+    </div>
+  </body>
+
+</html>

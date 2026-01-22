@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn@Home - Connexion | Maquette Desktop</title>
+    <title>Learn@Home - Inscription | Maquette Desktop</title>
     <style>
       * {
         margin: 0;
@@ -73,6 +73,7 @@
         margin-bottom: 8px;
       }
 
+      input[type="text"],
       input[type="email"],
       input[type="password"] {
         width: 100%;
@@ -83,40 +84,10 @@
         transition: all 0.3s ease;
       }
 
-      input[type="email"]:focus,
-      input[type="password"]:focus {
+      input:focus {
         outline: none;
         border-color: #3B82F6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-      }
-
-      .remember-forgot {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 14px;
-        margin-bottom: 24px;
-      }
-
-      .remember-forgot a {
-        color: #3B82F6;
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      .remember-forgot a:hover {
-        color: #1E40AF;
-      }
-
-      .checkbox {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-      }
-
-      .checkbox input {
-        margin-right: 6px;
-        cursor: pointer;
       }
 
       .button-primary {
@@ -130,6 +101,7 @@
         font-weight: 600;
         cursor: pointer;
         transition: background 0.3s;
+        margin-top: 8px;
         margin-bottom: 16px;
       }
 
@@ -200,62 +172,47 @@
       <div class="header">
         <div class="logo">📚 Learn@Home</div>
         <div class="logo-subtitle">Plateforme de tutorat en ligne</div>
-        <h1>Connexion</h1>
-        <p class="subtitle">Accédez à votre compte pour continuer</p>
+        <h1>Inscription</h1>
+        <p class="subtitle">Créez un compte pour commencer</p>
       </div>
 
-      <form onsubmit="return validateDemoLogin()">
+      <form onsubmit="window.location.href='02-dashboard.html'; return false;">
+        <div class="form-group">
+          <label for="fullname">Nom complet</label>
+          <input type="text" id="fullname" placeholder="Votre nom" required value="Demo User">
+        </div>
+
         <div class="form-group">
           <label for="email">Adresse email</label>
-          <input type="email" id="email" value="demo@learn.com" placeholder="demo@learn.com" required
-            pattern="demo@learn.com" title="L’email de démonstration est demo@learn.com">
+          <input type="email" id="email" placeholder="vous@example.com" required value="demo@learn.com">
         </div>
 
         <div class="form-group">
           <label for="password">Mot de passe</label>
-          <input type="password" id="password" value="Demo1234" placeholder="Demo1234" required pattern="Demo1234"
-            title="Le mot de passe de démonstration est Demo1234">
+          <input type="password" id="password" placeholder="••••••••" required value="Demo1234">
         </div>
 
-        <div class="remember-forgot">
-          <label class="checkbox">
-            <input type="checkbox" id="remember">
-            <span>Rester connecté</span>
-          </label>
-          <a onclick="window.location.href='01-recovery.html'" href="#forgot">Mot de passe oublié ?</a>
+        <div class="form-group">
+          <label for="password2">Confirmer le mot de passe</label>
+          <input type="password" id="password2" placeholder="••••••••" required value="Demo1234">
         </div>
 
-        <button onclick="window.location.href='02-dashboard.html'" type="submit" class="button-primary">Se
-          connecter</button>
+        <button type="submit" class="button-primary">Créer le compte</button>
       </form>
 
       <div class="divider">
-        <span>Nouveau ?</span>
+        <span>Déjà inscrit ?</span>
       </div>
 
       <p class="signup-link">
-        Créer un compte <a onclick="window.location.href='01-signup.html'" href="#signup">S'inscrire</a>
+        Retour à la page de <a onclick="window.location.href='01-login.html'" href="#login">Connexion</a>
       </p>
 
       <div class="info-box">
-        <strong>Démonstration :</strong>
-        Email: demo@learn.com | Mot de passe: Demo1234
+        <strong>Note :</strong>
+        Cette page est en cours de développement.
       </div>
     </div>
-    <script>
-      function validateDemoLogin() {
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value.trim();
-
-        if (email === 'demo@learn.com' && password === 'Demo1234') {
-          window.location.href = '02-dashboard.html';
-          return false;
-        }
-
-        alert('Identifiants incorrects.');
-        return false;
-      }
-    </script>
   </body>
 
 </html>
