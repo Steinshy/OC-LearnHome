@@ -214,6 +214,8 @@
         color: white;
         display: inline-block;
         width: fit-content;
+        text-decoration: none;
+        cursor: pointer;
       }
 
       .event-blue {
@@ -255,12 +257,15 @@
       }
 
       .event-item {
+        display: block;
         padding: 12px;
         background: #F9FAFB;
         border-radius: 6px;
         border-left: 4px solid #3B82F6;
         cursor: pointer;
         transition: all 0.3s;
+        text-decoration: none;
+        color: inherit;
       }
 
       .event-item:hover {
@@ -336,6 +341,300 @@
       .color-appointment {
         background: #F59E0B;
       }
+
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-overlay:target {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        max-width: 500px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        animation: modal-fade-in 0.3s ease;
+        position: relative;
+      }
+
+      @keyframes modal-fade-in {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .modal-header {
+        padding: 24px 24px 16px 24px;
+        border-bottom: 1px solid #E5E7EB;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .modal-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #6B7280;
+        cursor: pointer;
+        transition: color 0.2s;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-close:hover {
+        color: #111827;
+      }
+
+      .modal-close[href] {
+        text-decoration: none;
+      }
+
+      .modal-body {
+        padding: 24px;
+      }
+
+      .modal-footer {
+        padding: 16px 24px;
+        border-top: 1px solid #E5E7EB;
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+      }
+
+      .modal-footer .button {
+        flex: 1;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group:last-child {
+        margin-bottom: 0;
+      }
+
+      .form-label {
+        display: block;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+
+      .form-label .required {
+        color: #EF4444;
+      }
+
+      .form-input,
+      .form-textarea,
+      .form-select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 14px;
+        transition: all 0.2s;
+        background: white;
+      }
+
+      .form-input:focus,
+      .form-textarea:focus,
+      .form-select:focus {
+        outline: none;
+        border-color: #3B82F6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .form-textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .form-group.full {
+        grid-column: 1 / -1;
+      }
+
+      .form-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+
+      .form-checkbox input {
+        cursor: pointer;
+        width: 18px;
+        height: 18px;
+        accent-color: #3B82F6;
+      }
+
+      .form-checkbox label {
+        cursor: pointer;
+        font-size: 14px;
+        color: #374151;
+        margin: 0;
+      }
+
+      .category-badge {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .category-badge.lesson {
+        background: #DBEAFE;
+        color: #1E40AF;
+      }
+
+      .category-badge.deadline {
+        background: #DCFCE7;
+        color: #166534;
+      }
+
+      .category-badge.appointment {
+        background: #FEF3C7;
+        color: #92400E;
+      }
+
+      .button-danger {
+        background: #EF4444;
+        color: white;
+      }
+
+      .button-danger:hover {
+        background: #DC2626;
+      }
+
+      .modal-with-error .form-input,
+      .modal-with-error .form-textarea,
+      .modal-with-error .form-select {
+        border-color: #EF4444;
+      }
+
+      .error-message {
+        color: #EF4444;
+        font-size: 12px;
+        margin-top: 4px;
+      }
+
+      .event-details-content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .event-detail-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .event-detail-icon {
+        font-size: 20px;
+        color: #3B82F6;
+        margin-top: 2px;
+        min-width: 20px;
+      }
+
+      .event-detail-info {
+        flex: 1;
+      }
+
+      .event-detail-label {
+        font-size: 12px;
+        color: #9CA3AF;
+        margin-bottom: 2px;
+      }
+
+      .event-detail-value {
+        font-size: 14px;
+        color: #111827;
+        font-weight: 500;
+      }
+
+      .event-details-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 12px;
+      }
+
+      .confirmation-content {
+        text-align: center;
+      }
+
+      .confirmation-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 12px;
+      }
+
+      .confirmation-message {
+        color: #6B7280;
+        font-size: 14px;
+        margin-bottom: 24px;
+        line-height: 1.5;
+      }
+
+      .confirmation-buttons {
+        display: flex;
+        gap: 12px;
+        flex-direction: column;
+      }
+
+      .confirmation-buttons .button {
+        width: 100%;
+      }
     </style>
   </head>
 
@@ -345,7 +644,7 @@
         <h1>Calendrier</h1>
         <div class="header-actions">
           <button class="button button-secondary">Aujourd'hui</button>
-          <a href="calendar-modal.html" class="button button-primary">Créer un événement</a>
+          <a href="#addEventModalFilled" class="button button-primary">Créer un événement</a>
         </div>
       </div>
 
@@ -387,7 +686,7 @@
             <div class="calendar-day">
               <div class="calendar-day-num">3</div>
               <div class="calendar-day-events">
-                <span class="event-pill event-blue">Cours Français</span>
+                <a href="#eventDetailsModal" class="event-pill event-blue">Cours Français</a>
               </div>
             </div>
             <div class="calendar-day">
@@ -396,7 +695,7 @@
             <div class="calendar-day">
               <div class="calendar-day-num">5</div>
               <div class="calendar-day-events">
-                <span class="event-pill event-green">Tâche échéance</span>
+                <a href="#eventDetailsModal" class="event-pill event-green">Tâche échéance</a>
               </div>
             </div>
 
@@ -406,13 +705,13 @@
             <div class="calendar-day">
               <div class="calendar-day-num">7</div>
               <div class="calendar-day-events">
-                <span class="event-pill event-blue">Session Tutor</span>
+                <a href="#eventDetailsModal" class="event-pill event-blue">Session Tutor</a>
               </div>
             </div>
             <div class="calendar-day today">
               <div class="calendar-day-num">8</div>
               <div class="calendar-day-events">
-                <span class="event-pill event-orange">Réunion</span>
+                <a href="#eventDetailsModal" class="event-pill event-orange">Réunion</a>
               </div>
             </div>
             <div class="calendar-day">
@@ -424,7 +723,7 @@
             <div class="calendar-day">
               <div class="calendar-day-num">11</div>
               <div class="calendar-day-events">
-                <span class="event-pill event-blue">Cours Math</span>
+                <a href="#eventDetailsModal" class="event-pill event-blue">Cours Math</a>
               </div>
             </div>
             <div class="calendar-day">
@@ -437,8 +736,8 @@
             <div class="calendar-day">
               <div class="calendar-day-num">14</div>
               <div class="calendar-day-events">
-                <span class="event-pill event-blue">Session Tutor</span>
-                <span class="event-pill event-green">Tâche</span>
+                <a href="#eventDetailsModal" class="event-pill event-blue">Session Tutor</a>
+                <span onclick="showEventDetailsModal()" class="event-pill event-green">Tâche</span>
               </div>
             </div>
             <div class="calendar-day">
@@ -450,7 +749,7 @@
             <div class="calendar-day">
               <div class="calendar-day-num">17</div>
               <div class="calendar-day-events">
-                <span class="event-pill event-orange">Exam</span>
+                <a href="#eventDetailsModal" class="event-pill event-orange">Exam</a>
               </div>
             </div>
             <div class="calendar-day">
@@ -507,36 +806,36 @@
           <div class="card">
             <div class="card-title">Aujourd'hui (8 jan)</div>
             <div class="event-list">
-              <div class="event-item orange">
+              <a href="#eventDetailsModal" class="event-item orange">
                 <div class="event-time">15:00 - 16:00</div>
                 <div class="event-name">Réunion Tuteur</div>
                 <div class="event-location">En ligne (Zoom)</div>
-              </div>
-              <div class="event-item">
+              </a>
+              <a href="#eventDetailsModal" class="event-item">
                 <div class="event-time">18:00 - 19:00</div>
                 <div class="event-name">Session Tutorat</div>
                 <div class="event-location">En ligne</div>
-              </div>
+              </a>
             </div>
           </div>
 
           <div class="card">
             <div class="card-title">À Venir</div>
             <div class="event-list">
-              <div class="event-item green">
+              <a href="#eventDetailsModal" class="event-item green">
                 <div class="event-time">Demain 14:00</div>
                 <div class="event-name">Cours Français</div>
-              </div>
-              <div class="event-item">
+              </a>
+              <a href="#eventDetailsModal" class="event-item">
                 <div class="event-time">11 Jan 10:00</div>
                 <div class="event-name">Cours Mathématiques</div>
                 <div class="event-location">Centre d'apprentissage</div>
-              </div>
-              <div class="event-item orange">
+              </a>
+              <a href="#eventDetailsModal" class="event-item orange">
                 <div class="event-time">17 Jan 13:00</div>
                 <div class="event-name">Examen Blanc</div>
                 <div class="event-location">En ligne</div>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -560,6 +859,195 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal: Create Event -->
+    <div class="modal-overlay" id="addEventModalFilled">
+      <div class="modal">
+        <div class="modal-header">
+          <h2 class="modal-title">Créer un événement</h2>
+          <a href="#" class="modal-close">✕</a>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label class="form-label">Titre <span class="required">*</span></label>
+              <input type="text" class="form-input" placeholder="Ex: Cours de Français" value="Cours de Français">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Description</label>
+              <textarea class="form-textarea"
+                placeholder="Ajouter une description (optionnel)">Chapitre sur les verbes irréguliers et la grammaire avancée.</textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Date <span class="required">*</span></label>
+                <input type="date" class="form-input" value="2026-01-15">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Catégorie <span class="required">*</span></label>
+                <select class="form-select">
+                  <option value="">-- Sélectionner --</option>
+                  <option value="lesson" selected>Cours/Tutorat</option>
+                  <option value="deadline">Tâche/Échéance</option>
+                  <option value="appointment">Réunion/Examen</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Heure début <span class="required">*</span></label>
+                <input type="time" class="form-input" value="14:00">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Heure fin <span class="required">*</span></label>
+                <input type="time" class="form-input" value="15:30">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Lieu</label>
+              <input type="text" class="form-input" placeholder="Ex: Salle 205, En ligne (Zoom)"
+                value="Salle 205 - Centre d'apprentissage">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Récurrence</label>
+              <select class="form-select">
+                <option value="none" selected>Aucune</option>
+                <option value="daily">Quotidien</option>
+                <option value="weekly">Hebdomadaire</option>
+                <option value="monthly">Mensuel</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <div class="form-checkbox">
+                <input type="checkbox" id="notification2" name="notification" checked>
+                <label for="notification2">Notifier 15 minutes avant l'événement</label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="button button-secondary">Annuler</a>
+          <button onclick="handleCreateEvent()" class="button button-primary">Créer l'événement</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Event Details -->
+    <div class="modal-overlay" id="eventDetailsModal">
+      <div class="modal">
+        <div class="modal-header">
+          <div>
+            <h2 class="modal-title">Détails de l'événement</h2>
+          </div>
+          <a href="#" class="modal-close">✕</a>
+        </div>
+        <div class="modal-body">
+          <div class="event-details-content">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+              <h3 class="event-details-title" style="margin: 0;">Réunion avec Tuteur</h3>
+              <span class="category-badge appointment">Réunion/Examen</span>
+            </div>
+
+            <div class="event-detail-row">
+              <div class="event-detail-icon">📅</div>
+              <div class="event-detail-info">
+                <div class="event-detail-label">Date</div>
+                <div class="event-detail-value">Jeudi 8 janvier 2026</div>
+              </div>
+            </div>
+
+            <div class="event-detail-row">
+              <div class="event-detail-icon">🕐</div>
+              <div class="event-detail-info">
+                <div class="event-detail-label">Horaires</div>
+                <div class="event-detail-value">15:00 - 16:00</div>
+              </div>
+            </div>
+
+            <div class="event-detail-row">
+              <div class="event-detail-icon">📍</div>
+              <div class="event-detail-info">
+                <div class="event-detail-label">Lieu</div>
+                <div class="event-detail-value">En ligne (Zoom)</div>
+              </div>
+            </div>
+
+            <div class="event-detail-row">
+              <div class="event-detail-icon">📝</div>
+              <div class="event-detail-info">
+                <div class="event-detail-label">Description</div>
+                <div class="event-detail-value">Suivi des progrès en mathématiques et revue des devoirs précédents.
+                </div>
+              </div>
+            </div>
+
+            <div class="event-detail-row">
+              <div class="event-detail-icon">🔄</div>
+              <div class="event-detail-info">
+                <div class="event-detail-label">Récurrence</div>
+                <div class="event-detail-value">Hebdomadaire (chaque jeudi)</div>
+              </div>
+            </div>
+
+            <div class="event-detail-row">
+              <div class="event-detail-icon">🔔</div>
+              <div class="event-detail-info">
+                <div class="event-detail-label">Notification</div>
+                <div class="event-detail-value">15 minutes avant l'événement</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#addEventModalFilled" class="button button-secondary">Modifier</a>
+          <a href="#confirmDeleteModal" class="button button-danger">Supprimer</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Delete Confirmation -->
+    <div class="modal-overlay" id="confirmDeleteModal">
+      <div class="modal" style="max-width: 400px;">
+        <div class="modal-body" style="padding: 40px 24px 24px;">
+          <div class="confirmation-content">
+            <h2 class="confirmation-title">Supprimer cet événement ?</h2>
+            <p class="confirmation-message">
+              Cette action est <strong>irréversible</strong>. L'événement <strong>"Réunion avec Tuteur"</strong> sera
+              définitivement supprimé de votre calendrier.
+            </p>
+            <div class="confirmation-buttons">
+              <a href="#" class="button button-secondary">Annuler</a>
+              <button onclick="handleDeleteEvent()" class="button button-danger">Supprimer définitivement</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const handleCreateEvent = () => {
+        alert('Évement créé avec succès!');
+        location.hash = '';
+      }
+
+      const handleDeleteEvent = () => {
+        alert('Évènement supprimé avec succès!');
+        location.hash = '';
+      }
+
+      document.addEventListener('click', e => {
+        if (e.target.classList.contains('modal-overlay')) location.hash = '';
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') location.hash = '';
+      });
+    </script>
 
   </body>
 
