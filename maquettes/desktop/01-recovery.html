@@ -127,7 +127,6 @@
 
   <body>
     <div class="container">
-
       <div class="header">
         <div class="logo">📚 Learn@Home</div>
         <div class="logo-subtitle">Plateforme de tutorat en ligne</div>
@@ -135,11 +134,9 @@
         <p class="subtitle">Entrez votre email pour recevoir un lien de réinitialisation.</p>
       </div>
 
-      <form onsubmit="alert('Email de récupération envoyé ! (démo)'); return false;">
-
+      <form id="recovery-form" onsubmit="validateDemoRecovery(event)">
         <label for="email">Adresse email</label>
         <input type="email" id="email" placeholder="vous@example.com" value="demo@learn.com" required />
-
         <button class="button-primary" type="submit">Envoyer le lien</button>
       </form>
 
@@ -149,5 +146,12 @@
 
     </div>
   </body>
+  <script>
+    const validateDemoRecovery = (event) => {
+      event.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      alert('Email de récupération envoyé ! (démo)');
+    }
+  </script>
 
 </html>

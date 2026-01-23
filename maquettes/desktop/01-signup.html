@@ -164,11 +164,71 @@
         display: block;
         margin-bottom: 4px;
       }
+
+      .hidden-confirm-block {
+        display: none;
+        margin-top: 16px;
+        padding: 12px 16px;
+        background: #E0F2FE;
+        border-left: 4px solid #3B82F6;
+        border-radius: 6px;
+        font-size: 14px;
+        color: #1E40AF;
+      }
+
+      .hidden-confirm-block.visible {
+        display: block;
+      }
+
+      .alert {
+        position: fixed;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #3B82F6;
+        color: #e0f2fe;
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: top 0.4s ease;
+      }
+
+      .alert.show {
+        top: 20px;
+      }
+
+      /* Tooltip direction helpers */
+      .hover-up::after {
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .hover-up:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-4px);
+      }
+
+      .hover-down::after {
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .hover-down:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(4px);
+      }
     </style>
   </head>
 
   <body>
     <div class="container">
+      <div class="alert" id="alert-box">
+        Création de votre compte en cours…
+      </div>
       <div class="header">
         <div class="logo">📚 Learn@Home</div>
         <div class="logo-subtitle">Plateforme de tutorat en ligne</div>
@@ -176,7 +236,7 @@
         <p class="subtitle">Créez un compte pour commencer</p>
       </div>
 
-      <form onsubmit="window.location.href='02-dashboard.html'; return false;">
+      <form onsubmit="validateDemoSignup(event)">
         <div class="form-group">
           <label for="fullname">Nom complet</label>
           <input type="text" id="fullname" placeholder="Votre nom" required value="Demo User">
@@ -197,7 +257,7 @@
           <input type="password" id="password2" placeholder="••••••••" required value="Demo1234">
         </div>
 
-        <button type="submit" class="button-primary">Créer le compte</button>
+        <button type="submit" class="button-primary hover-up" data-hover="Créer le compte">Créer le compte</button>
       </form>
 
       <div class="divider">
@@ -214,5 +274,15 @@
       </div>
     </div>
   </body>
+  <script>
+    const validateDemoSignup = (event) => {
+      event.preventDefault();
+      const alertBox = document.getElementById('alert-box');
+      alertBox.classList.add('show');
+      setTimeout(() => {
+        document.location.href = '02-dashboard.html';
+      }, 1500);
+    }
+  </script>
 
 </html>

@@ -239,20 +239,15 @@
 
       <div class="info-box">
         <strong>Démonstration :</strong>
-        Email: demo@learn.com | Mot de passe: Demo1234
+        Email: demo@learn.com <br>Mot de passe: Demo1234
       </div>
     </div>
     <script>
       function validateDemoLogin() {
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value.trim();
-
-        if (email === 'demo@learn.com' && password === 'Demo1234') {
-          window.location.href = '02-dashboard.html';
-          return false;
-        }
-
-        alert('Identifiants incorrects.');
+        const e = document.getElementById('email').value.trim();
+        const p = document.getElementById('password').value.trim();
+        console.log(e, p);
+        window.location.href = '02-dashboard.html';
         return false;
       }
     </script>

@@ -20,7 +20,7 @@
       .layout {
         display: grid;
         grid-template-columns: 300px 1fr;
-        height: 100vh;
+        min-height: 100vh;
       }
 
       .sidebar {
@@ -143,7 +143,7 @@
       }
 
       .chat-header {
-        padding: 16px;
+        padding: 24px 16px 16px 16px;
         border-bottom: 1px solid #E5E7EB;
         display: flex;
         justify-content: space-between;
@@ -172,7 +172,7 @@
         gap: 8px;
       }
 
-      .icon-btn {
+      .btn-icon {
         width: 36px;
         height: 36px;
         border: 1px solid #E5E7EB;
@@ -184,12 +184,15 @@
         justify-content: center;
         font-size: 18px;
         transition: all 0.3s;
+        position: relative;
       }
 
-      .icon-btn:hover {
+      .btn-icon:hover {
         background: #F3F4F6;
         border-color: #D1D5DB;
+        transform: scale(1.08);
       }
+
 
       .messages {
         flex: 1;
@@ -205,6 +208,17 @@
         display: flex;
         gap: 12px;
         margin-bottom: 8px;
+      }
+
+      .hidden-auto-message {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .hidden-auto-message.visible {
+        display: flex;
+        opacity: 1;
       }
 
       .message-avatar {
@@ -299,7 +313,7 @@
       }
 
       .chat-input-area {
-        padding: 16px;
+        padding: 20px 16px 16px 16px;
         border-top: 1px solid #E5E7EB;
         background: white;
       }
@@ -310,23 +324,47 @@
         align-items: flex-end;
       }
 
-      .attachment-btn {
-        width: 36px;
-        height: 36px;
-        border: 1px solid #D1D5DB;
-        background: white;
-        border-radius: 6px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        transition: all 0.3s;
-        flex-shrink: 0;
+
+      /* === Tooltip reusable classes === */
+      [data-hover] {
+        position: relative;
       }
 
-      .attachment-btn:hover {
-        background: #F3F4F6;
+      [data-hover]::after {
+        content: attr(data-hover);
+        position: absolute;
+        background: #111827;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s, transform 0.2s;
+        z-index: 9999;
+      }
+
+      [data-hover].hover-up::after {
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      [data-hover].hover-up:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-4px);
+      }
+
+      [data-hover].hover-down::after {
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      [data-hover].hover-down:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(4px);
       }
 
       .message-input {
@@ -392,7 +430,7 @@
       <aside class="sidebar">
         <div class="sidebar-header">
           <input type="text" class="search-box" placeholder="Rechercher un contact...">
-          <button class="add-contact-btn">+ Ajouter contact</button>
+          <button class="add-contact-btn hover-up" data-hover="Ajouter un contact">+ Ajouter un contact</button>
         </div>
 
         <div class="contacts-list">
@@ -441,9 +479,9 @@
             </div>
           </div>
           <div class="chat-actions">
-            <button class="icon-btn">📞</button>
-            <button class="icon-btn">📹</button>
-            <button class="icon-btn">ℹ️</button>
+            <button class="btn-icon hover-down" data-hover="Appel audio">📞</button>
+            <button class="btn-icon hover-down" data-hover="Appel vidéo">📹</button>
+            <button class="btn-icon hover-down" data-hover="Informations">ℹ️</button>
           </div>
         </div>
 
@@ -503,17 +541,33 @@
               <div class="message-status status-read">Vu à l'instant</div>
             </div>
           </div>
+
+          <div class="message-group hidden-auto-message">
+            <div class="contact-avatar">YU</div>
+            <div class="message-content">
+              <div class="message-text">Oui vas‑y je t’écoute !</div>
+              <div class="message-status status-read">Vu à l'instant</div>
+            </div>
+          </div>
         </div>
 
         <div class="chat-input-area">
           <div class="input-wrapper">
-            <button class="attachment-btn">📎</button>
-            <textarea class="message-input" placeholder="Tapez votre message..." rows="1"></textarea>
-            <button class="send-btn">➤</button>
+            <button class="btn-icon hover-up" id="attachment-btn" data-hover="Joindre un fichier"
+              onclick="handleAttachmentClick();">📎</button>
+            <input type="file" id="file-input" style="display: none;" onchange="handleFileUpload(event)">
+            <textarea class="message-input" id="message-input" placeholder="Tapez votre message..." rows="1"></textarea>
+            <button class="send-btn hover-up" id="send-btn" data-hover="Envoyer"
+              onclick="handleMessageSend();">➤</button>
           </div>
         </div>
       </main>
     </div>
+    <script>
+      const handleFileUpload = (event) => console.log(event.target.files[0]);
+      const handleAttachmentClick = () => document.getElementById('file-input').click();
+      const handleMessageSend = () => document.querySelector('.hidden-auto-message')?.classList.add('visible');
+    </script>
   </body>
 
 </html>
