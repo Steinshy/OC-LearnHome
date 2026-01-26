@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn@Home - Maquettes</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+    }
+
+    h1 {
+      color: #1E40AF;
+      margin-bottom: 10px;
+      font-size: 32px;
+    }
+
+    .subtitle {
+      color: #64748B;
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      color: #1E40AF;
+      font-size: 24px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #E2E8F0;
+    }
+
+    .links {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .link {
+      display: block;
+      padding: 15px 20px;
+      background: #F8FAFC;
+      border: 2px solid #E2E8F0;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #1E293B;
+      transition: all 0.2s;
+    }
+
+    .link:hover {
+      background: #3B82F6;
+      color: white;
+      border-color: #3B82F6;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .link-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .link-path {
+      font-size: 12px;
+      color: #64748B;
+    }
+
+    .link:hover .link-path {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #E2E8F0;
+      color: #94A3B8;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Learn@Home</h1>
+    <p class="subtitle">Maquettes Desktop & Mobile</p>
+
+    <div class="section">
+      <h2 class="section-title">Desktop</h2>
+      <div class="links">
+        <a href="desktop/01-login.html" class="link">
+          <div class="link-name">Login</div>
+          <div class="link-path">desktop/01-login.html</div>
+        </a>
+        <a href="desktop/01-recovery.html" class="link">
+          <div class="link-name">Recovery</div>
+          <div class="link-path">desktop/01-recovery.html</div>
+        </a>
+        <a href="desktop/01-signup.html" class="link">
+          <div class="link-name">Signup</div>
+          <div class="link-path">desktop/01-signup.html</div>
+        </a>
+        <a href="desktop/02-dashboard.html" class="link">
+          <div class="link-name">Dashboard</div>
+          <div class="link-path">desktop/02-dashboard.html</div>
+        </a>
+        <a href="desktop/03-chat.html" class="link">
+          <div class="link-name">Chat</div>
+          <div class="link-path">desktop/03-chat.html</div>
+        </a>
+        <a href="desktop/04-calendar.html" class="link">
+          <div class="link-name">Calendar</div>
+          <div class="link-path">desktop/04-calendar.html</div>
+        </a>
+        <a href="desktop/05-tasks.html" class="link">
+          <div class="link-name">Tasks</div>
+          <div class="link-path">desktop/05-tasks.html</div>
+        </a>
+        <a href="desktop/06-settings.html" class="link">
+          <div class="link-name">Settings</div>
+          <div class="link-path">desktop/06-settings.html</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Mobile</h2>
+      <div class="links">
+        <a href="mobile/01-login.html" class="link">
+          <div class="link-name">Login</div>
+          <div class="link-path">mobile/01-login.html</div>
+        </a>
+        <a href="mobile/02-dashboard.html" class="link">
+          <div class="link-name">Dashboard</div>
+          <div class="link-path">mobile/02-dashboard.html</div>
+        </a>
+        <a href="mobile/03-chat.html" class="link">
+          <div class="link-name">Chat</div>
+          <div class="link-path">mobile/03-chat.html</div>
+        </a>
+        <a href="mobile/04-calendar.html" class="link">
+          <div class="link-name">Calendar</div>
+          <div class="link-path">mobile/04-calendar.html</div>
+        </a>
+        <a href="mobile/05-tasks.html" class="link">
+          <div class="link-name">Tasks</div>
+          <div class="link-path">mobile/05-tasks.html</div>
+        </a>
+        <a href="mobile/06-settings.html" class="link">
+          <div class="link-name">Settings</div>
+          <div class="link-path">mobile/06-settings.html</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      © 2026 Learn@Home. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>

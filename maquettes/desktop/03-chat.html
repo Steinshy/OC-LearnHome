@@ -47,6 +47,14 @@
         color: #9CA3AF;
       }
 
+      .search-box::placeholder {
+        transition: opacity 0.2s ease;
+      }
+
+      .search-box:focus::placeholder {
+        opacity: 0;
+      }
+
       .add-contact-btn {
         width: 100%;
         margin-top: 12px;
@@ -58,10 +66,16 @@
         cursor: pointer;
         font-weight: 600;
         font-size: 14px;
+        display: block;
+        text-align: center;
       }
 
       .add-contact-btn:hover {
         background: #1E40AF;
+      }
+
+      label.add-contact-btn {
+        display: block;
       }
 
       .contacts-list {
@@ -193,6 +207,12 @@
         transform: scale(1.08);
       }
 
+      label.btn-icon {
+        display: flex;
+        padding: 0;
+        border: 1px solid #E5E7EB;
+      }
+
 
       .messages {
         flex: 1;
@@ -283,6 +303,18 @@
         font-size: 20px;
       }
 
+      .new-file-message {
+        /* same layout as message-own */
+        justify-content: flex-end;
+        margin-left: auto;
+      }
+
+      .new-file-message .file-name {
+        font-size: 14px;
+        color: #111827;
+        word-break: break-word;
+      }
+
       .message-own {
         justify-content: flex-end;
         margin-left: auto;
@@ -302,6 +334,17 @@
         font-size: 12px;
         color: #9CA3AF;
         margin-top: 4px;
+      }
+
+      .hidden-file-message {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .hidden-file-message.visible {
+        display: flex;
+        opacity: 1;
       }
 
       .status-sent::after {
@@ -384,6 +427,14 @@
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
+      .message-input::placeholder {
+        transition: opacity 0.2s ease;
+      }
+
+      .message-input:focus::placeholder {
+        opacity: 0;
+      }
+
       .send-btn {
         width: 36px;
         height: 36px;
@@ -422,15 +473,187 @@
         margin-bottom: 16px;
         opacity: 0.5;
       }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+      }
+
+      #contacts-modal-toggle:checked~#contacts-modal,
+      #info-modal-toggle:checked~#info-modal {
+        display: flex;
+      }
+
+      .modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal-content {
+        position: relative;
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        width: 320px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+      }
+
+      .modal-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .modal-section {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .contacts-list-modal {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 16px;
+        max-height: 240px;
+        overflow-y: auto;
+      }
+
+      .contact-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: space-between;
+      }
+
+      .template-contact.hidden {
+        display: none;
+      }
+
+      .modal-action-btn {
+        padding: 8px 12px;
+        background: #3B82F6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .modal-action-btn:hover {
+        background: #1E40AF;
+      }
+
+      .modal-action-btn.remove-contact {
+        background: #EF4444;
+      }
+
+      .modal-action-btn.remove-contact:hover {
+        background: #B91C1C;
+      }
+
+      .modal-action-btn.add-contact {
+        width: 100%;
+        margin-top: 8px;
+        background: #3B82F6;
+      }
+
+      .modal-action-btn.add-contact:disabled {
+        background: #9CA3AF;
+        cursor: not-allowed;
+        opacity: 0.8;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .modal-avatar {
+        width: 48px;
+        height: 48px;
+        background: #3B82F6;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      .modal-name {
+        font-weight: 600;
+        font-size: 16px;
+        color: #111827;
+      }
+
+      .modal-status {
+        font-size: 14px;
+        color: #10B981;
+      }
+
+      .modal-close {
+        margin-top: 8px;
+        width: 100%;
+        padding: 10px 0;
+        background: #3B82F6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .modal-close:hover {
+        background: #1E40AF;
+      }
+
+      label.modal-close {
+        display: block;
+        margin-top: 8px;
+        width: 100%;
+        padding: 10px 0;
+        background: #3B82F6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      label.modal-close:hover {
+        background: #1E40AF;
+      }
+
+      .copyright {
+        text-align: center;
+        margin-top: 32px;
+        padding-top: 20px;
+        border-top: 1px solid #E5E7EB;
+        color: #94A3B8;
+        font-size: 12px;
+      }
     </style>
   </head>
 
   <body>
+    <input type="checkbox" id="contacts-modal-toggle" style="display: none;">
+    <input type="checkbox" id="info-modal-toggle" style="display: none;">
     <div class="layout">
       <aside class="sidebar">
         <div class="sidebar-header">
           <input type="text" class="search-box" placeholder="Rechercher un contact...">
-          <button class="add-contact-btn hover-up" data-hover="Ajouter un contact">+ Ajouter un contact</button>
+          <label for="contacts-modal-toggle" class="add-contact-btn hover-up" data-hover="Ajouter un contact">+ Ajouter
+            un contact</label>
         </div>
 
         <div class="contacts-list">
@@ -481,7 +704,7 @@
           <div class="chat-actions">
             <button class="btn-icon hover-down" data-hover="Appel audio">📞</button>
             <button class="btn-icon hover-down" data-hover="Appel vidéo">📹</button>
-            <button class="btn-icon hover-down" data-hover="Informations">ℹ️</button>
+            <label for="info-modal-toggle" class="btn-icon hover-down" data-hover="Informations">ℹ️</label>
           </div>
         </div>
 
@@ -542,11 +765,19 @@
             </div>
           </div>
 
-          <div class="message-group hidden-auto-message">
-            <div class="contact-avatar">YU</div>
+          <div class="message-group message-own hidden-auto-message">
             <div class="message-content">
               <div class="message-text">Oui vas‑y je t’écoute !</div>
               <div class="message-status status-read">Vu à l'instant</div>
+            </div>
+          </div>
+          <div class="message-group message-own new-file-message hidden-file-message">
+            <div class="message-content">
+              <div class="message-file">
+                <span class="message-file-icon">📄</span>
+                <span class="file-name"></span>
+              </div>
+              <div class="message-status status-read">Envoyé</div>
             </div>
           </div>
         </div>
@@ -563,11 +794,79 @@
         </div>
       </main>
     </div>
+    <div id="contacts-modal" class="modal">
+      <label for="contacts-modal-toggle" class="modal-backdrop"></label>
+      <div class="modal-content">
+        <h2 class="modal-title">Gérer les contacts</h2>
+
+        <div class="modal-section contacts-list-modal">
+          <div class="contact-row">
+            <div class="modal-avatar" style="background:#10B981;">MD</div>
+            <div class="modal-name">Marie Dupont</div>
+            <button class="modal-action-btn remove-contact"
+              onclick="contactManager.removeContact(this)">Supprimer</button>
+          </div>
+          <div class="contact-row">
+            <div class="modal-avatar" style="background:#F59E0B;">JL</div>
+            <div class="modal-name">Jean Leclerc</div>
+            <button class="modal-action-btn remove-contact"
+              onclick="contactManager.removeContact(this)">Supprimer</button>
+          </div>
+          <div class="contact-row hidden">
+            <div class="modal-avatar" style="background:#EC4899;">AM</div>
+            <div class="modal-name">Alice Moreau</div>
+            <button class="modal-action-btn remove-contact"
+              onclick="contactManager.removeContact(this)">Supprimer</button>
+          </div>
+          <div class="contact-row hidden">
+            <div class="modal-avatar" style="background:#06B6D4;">BL</div>
+            <div class="modal-name">Bruno Lefevre</div>
+            <button class="modal-action-btn remove-contact"
+              onclick="contactManager.removeContact(this)">Supprimer</button>
+          </div>
+        </div>
+
+        <button id="add-contact-confirm" class="modal-action-btn add-contact" onclick="contactManager.addContact()">+
+          Ajouter un contact</button>
+        <label for="contacts-modal-toggle" class="modal-close">Fermer</label>
+      </div>
+    </div>
+    <div id="info-modal" class="modal">
+      <label for="info-modal-toggle" class="modal-backdrop"></label>
+      <div class="modal-content">
+        <h2 class="modal-title">Informations du contact</h2>
+        <div class="modal-section">
+          <div class="modal-avatar">YU</div>
+          <div>
+            <div class="modal-name">Yann Uliong</div>
+            <div class="modal-status">● En ligne</div>
+          </div>
+        </div>
+        <label for="info-modal-toggle" class="modal-close">Fermer</label>
+      </div>
+    </div>
     <script>
-      const handleFileUpload = (event) => console.log(event.target.files[0]);
+      const fileMessage = document.querySelector('.new-file-message');
+      const messages = document.querySelector('.messages');
       const handleAttachmentClick = () => document.getElementById('file-input').click();
-      const handleMessageSend = () => document.querySelector('.hidden-auto-message')?.classList.add('visible');
+      const handleMessageSend = () => document.querySelector('.hidden-auto-message').classList.add('visible');
+      const handleFileUpload = e => (fileMessage.querySelector('.file-name').textContent = e.target.files[0].name, fileMessage.classList.add('visible'), messages.scrollTop = messages.scrollHeight);
+      const contactManager = (() => {
+        const addBtn = document.getElementById('add-contact-confirm');
+        const contactsModal = document.getElementById('contacts-modal');
+        const rows = () => contactsModal.querySelectorAll('.contacts-list-modal .contact-row');
+        const refresh = () => addBtn.disabled = ![...rows()].some(r => r.classList.contains('hidden'));
+        refresh(); Ò
+        return {
+          addContact: () => ([...rows()].find(r => r.classList.contains('hidden'))?.classList.remove('hidden'), refresh()),
+          removeContact: button => (button.closest('.contact-row')?.classList.add('hidden'), refresh())
+        };
+      })();
     </script>
+
+    <div class="copyright">
+      © 2026 Learn@Home. All rights reserved.
+    </div>
   </body>
 
 </html>
