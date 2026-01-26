@@ -162,6 +162,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        overflow: hidden;
+        min-width: 0;
       }
 
       .chat-header-info {
@@ -499,20 +501,46 @@
         border-radius: 12px;
         width: 320px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        align-items: center;
         z-index: 2;
       }
 
       .modal-title {
         font-size: 18px;
         font-weight: 700;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
+        color: #111827;
+        padding-right: 32px;
       }
 
       .modal-section {
         display: flex;
-        gap: 12px;
-        align-items: center;
+        gap: 16px;
         margin-bottom: 20px;
+      }
+
+      #info-modal .modal-section {
+        flex-direction: column;
+        gap: 0;
+        align-items: center;
+      }
+
+      #info-modal .modal-avatar {
+        width: 64px;
+        height: 64px;
+        font-size: 20px;
+        margin-bottom: 12px;
+      }
+
+      #info-modal .modal-name {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      #info-modal .modal-status {
+        font-size: 13px;
+        color: #10B981;
       }
 
       .contacts-list-modal {
@@ -529,6 +557,18 @@
         align-items: center;
         gap: 12px;
         justify-content: space-between;
+      }
+
+      .contact-row.no-contact-found {
+        justify-content: center;
+        padding: 24px 12px;
+        text-align: center;
+      }
+
+      .contact-row.no-contact-found p {
+        margin: 0;
+        color: #9CA3AF;
+        font-size: 14px;
       }
 
       .template-contact.hidden {
@@ -639,6 +679,33 @@
         border-top: 1px solid #E5E7EB;
         color: #94A3B8;
         font-size: 12px;
+      }
+
+      .modal-close-icon {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 28px;
+        height: 28px;
+        background: transparent;
+        border: none;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.2s;
+        padding: 0;
+        color: #9CA3AF;
+        z-index: 10;
+        font-weight: 300;
+        line-height: 1;
+      }
+
+      .modal-close-icon:hover {
+        background: #F3F4F6;
+        color: #111827;
       }
     </style>
   </head>
@@ -794,6 +861,7 @@
     <div id="contacts-modal" class="modal">
       <label for="contacts-modal-toggle" class="modal-backdrop"></label>
       <div class="modal-content">
+        <label for="contacts-modal-toggle" class="modal-close-icon">✕</label>
         <h2 class="modal-title">Gérer les contacts</h2>
 
         <div class="modal-section contacts-list-modal">
@@ -821,25 +889,25 @@
             <button class="modal-action-btn remove-contact"
               onclick="contactManager.removeContact(this)">Supprimer</button>
           </div>
+          <div class="contact-row hidden no-contact-found">
+            <p>Aucun contact trouvé</p>
+          </div>
         </div>
 
         <button id="add-contact-confirm" class="modal-action-btn add-contact" onclick="contactManager.addContact()">+
           Ajouter un contact</button>
-        <label for="contacts-modal-toggle" class="modal-close">Fermer</label>
       </div>
     </div>
     <div id="info-modal" class="modal">
       <label for="info-modal-toggle" class="modal-backdrop"></label>
       <div class="modal-content">
+        <label for="info-modal-toggle" class="modal-close-icon">✕</label>
         <h2 class="modal-title">Informations du contact</h2>
         <div class="modal-section">
           <div class="modal-avatar">YU</div>
-          <div>
-            <div class="modal-name">Yann Uliong</div>
-            <div class="modal-status">● En ligne</div>
-          </div>
+          <div class="modal-name">Yann Uliong</div>
+          <div class="modal-status">● En ligne</div>
         </div>
-        <label for="info-modal-toggle" class="modal-close">Fermer</label>
       </div>
     </div>
     <script>
@@ -855,15 +923,12 @@
         const refresh = () => addBtn.disabled = ![...rows()].some(r => r.classList.contains('hidden'));
         refresh();
         return {
-          addContact: () => ([...rows()].find(r => r.classList.contains('hidden'))?.classList.remove('hidden'), refresh()),
-          removeContact: button => (button.closest('.contact-row')?.classList.add('hidden'), refresh())
+          addContact: () => ([...rows()].find(r => r.classList.contains('hidden'))?.classList.remove('hidden'), refresh(), contactManager.hasContact()),
+          removeContact: button => (button.closest('.contact-row')?.classList.add('hidden'), refresh(), contactManager.hasContact()),
+          hasContact: () => [...rows()].some(r => !r.classList.contains('hidden')) ? contactsModal.querySelector('.no-contact-found').classList.add('hidden') : contactsModal.querySelector('.no-contact-found').classList.remove('hidden')
         };
       })();
     </script>
-
-    <div class="copyright">
-      © 2026 Learn@Home. All rights reserved.
-    </div>
   </body>
 
 </html>
