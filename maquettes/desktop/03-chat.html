@@ -304,7 +304,6 @@
       }
 
       .new-file-message {
-        /* same layout as message-own */
         justify-content: flex-end;
         margin-left: auto;
       }
@@ -368,7 +367,6 @@
       }
 
 
-      /* === Tooltip reusable classes === */
       [data-hover] {
         position: relative;
       }
@@ -652,8 +650,7 @@
       <aside class="sidebar">
         <div class="sidebar-header">
           <input type="text" class="search-box" placeholder="Rechercher un contact...">
-          <label for="contacts-modal-toggle" class="add-contact-btn hover-up" data-hover="Ajouter un contact">+ Ajouter
-            un contact</label>
+          <label for="contacts-modal-toggle" class="add-contact-btn hover-up" data-hover="Ajouter un contact">+ Ajouter un contact</label>
         </div>
 
         <div class="contacts-list">
@@ -856,7 +853,7 @@
         const contactsModal = document.getElementById('contacts-modal');
         const rows = () => contactsModal.querySelectorAll('.contacts-list-modal .contact-row');
         const refresh = () => addBtn.disabled = ![...rows()].some(r => r.classList.contains('hidden'));
-        refresh(); Ò
+        refresh();
         return {
           addContact: () => ([...rows()].find(r => r.classList.contains('hidden'))?.classList.remove('hidden'), refresh()),
           removeContact: button => (button.closest('.contact-row')?.classList.add('hidden'), refresh())
