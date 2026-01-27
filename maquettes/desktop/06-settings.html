@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn@Home - Paramètres | Maquette Desktop</title>
     <style>
+      :root {
+        --primary: #3B82F6;
+        --primary-dark: #1E40AF;
+        --danger: #EF4444;
+        --danger-dark: #DC2626;
+        --bg: #F3F4F6;
+        --text: #111827;
+        --text-muted: #6B7280;
+        --border: #E5E7EB;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -14,7 +25,11 @@
 
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: #F3F4F6;
+        background: var(--bg);
+      }
+
+      nav {
+        flex: 1;
       }
 
       .layout {
@@ -25,7 +40,7 @@
 
       .sidebar {
         background: white;
-        border-right: 1px solid #E5E7EB;
+        border-right: 1px solid var(--border);
         padding: 24px 0;
         position: fixed;
         width: 250px;
@@ -36,20 +51,15 @@
       }
 
       .sidebar-header {
-        padding: 0 24px;
+        padding: 0 24px 24px;
         margin-bottom: 32px;
-        border-bottom: 1px solid #E5E7EB;
-        padding-bottom: 24px;
+        border-bottom: 1px solid var(--border);
       }
 
       .sidebar-logo {
         font-size: 20px;
         font-weight: 700;
-        color: #3B82F6;
-      }
-
-      nav {
-        flex: 1;
+        color: var(--primary);
       }
 
       .nav-section {
@@ -57,7 +67,7 @@
       }
 
       .nav-section:not(:first-child) {
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid var(--border);
         padding-top: 24px;
       }
 
@@ -72,43 +82,40 @@
 
       .nav-item {
         padding: 12px 24px;
-        color: #6B7280;
+        color: var(--text-muted);
         text-decoration: none;
         display: flex;
         align-items: center;
         gap: 12px;
         transition: all 0.3s;
-        cursor: pointer;
-        position: relative;
       }
 
       .nav-item:hover {
-        background: #F3F4F6;
-        color: #3B82F6;
+        background: var(--bg);
+        color: var(--primary);
       }
 
       .nav-item.active {
         background: #E0F2FE;
-        color: #3B82F6;
-        border-right: 4px solid #3B82F6;
+        color: var(--primary);
+        border-right: 4px solid var(--primary);
         font-weight: 600;
       }
 
       .nav-item-icon {
-        margin-right: 12px;
         font-size: 18px;
       }
 
       .user-profile {
         padding: 24px;
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid var(--border);
         margin-top: auto;
       }
 
       .user-avatar {
         width: 40px;
         height: 40px;
-        background: #3B82F6;
+        background: var(--primary);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -117,7 +124,6 @@
         font-weight: 700;
         margin-bottom: 8px;
         position: relative;
-        cursor: pointer;
       }
 
       .user-avatar.student-picture {
@@ -131,7 +137,7 @@
         position: absolute;
         bottom: -2px;
         right: -2px;
-        background: #EF4444;
+        background: var(--danger);
         color: white;
         width: 16px;
         height: 16px;
@@ -146,13 +152,13 @@
 
       .user-name {
         font-weight: 600;
-        color: #111827;
+        color: var(--text);
         font-size: 14px;
       }
 
       .user-role {
         font-size: 12px;
-        color: #6B7280;
+        color: var(--text-muted);
       }
 
       .main {
@@ -167,13 +173,13 @@
       h1 {
         font-size: 32px;
         font-weight: 700;
-        color: #111827;
+        color: var(--text);
         margin-bottom: 8px;
       }
 
       .header-subtitle {
         font-size: 14px;
-        color: #6B7280;
+        color: var(--text-muted);
       }
 
       .card {
@@ -187,10 +193,10 @@
       .card-title {
         font-size: 18px;
         font-weight: 700;
-        color: #111827;
+        color: var(--text);
         margin-bottom: 24px;
         padding-bottom: 16px;
-        border-bottom: 1px solid #F3F4F6;
+        border-bottom: 1px solid var(--bg);
       }
 
       .form-group {
@@ -222,17 +228,14 @@
         border: 1px solid #D1D5DB;
         border-radius: 6px;
         font-size: 14px;
-        transition: all 0.3s ease;
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        transition: all 0.3s;
+        font-family: inherit;
       }
 
-      input[type="text"]:focus,
-      input[type="email"]:focus,
-      input[type="password"]:focus,
-      input[type="tel"]:focus,
+      input:focus,
       select:focus {
         outline: none;
-        border-color: #3B82F6;
+        border-color: var(--primary);
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
@@ -257,18 +260,18 @@
       }
 
       .button-primary {
-        background: #3B82F6;
+        background: var(--primary);
         color: white;
       }
 
       .button-primary:hover {
-        background: #1E40AF;
+        background: var(--primary-dark);
       }
 
       .button-secondary {
         background: white;
-        color: #3B82F6;
-        border: 1px solid #3B82F6;
+        color: var(--primary);
+        border: 1px solid var(--primary);
       }
 
       .button-secondary:hover {
@@ -276,12 +279,12 @@
       }
 
       .button-danger {
-        background: #EF4444;
+        background: var(--danger);
         color: white;
       }
 
       .button-danger:hover {
-        background: #DC2626;
+        background: var(--danger-dark);
       }
 
       .button-group {
@@ -300,7 +303,7 @@
         display: flex;
         align-items: center;
         padding: 12px 0;
-        border-bottom: 1px solid #F3F4F6;
+        border-bottom: 1px solid var(--bg);
       }
 
       .toggle-item:last-child {
@@ -322,14 +325,14 @@
 
       .toggle-label-desc {
         font-size: 13px;
-        color: #6B7280;
+        color: var(--text-muted);
       }
 
       .checkbox {
         width: 20px;
         height: 20px;
         cursor: pointer;
-        accent-color: #3B82F6;
+        accent-color: var(--primary);
       }
 
       .section-divider {
@@ -370,7 +373,7 @@
       .avatar-preview {
         width: 64px;
         height: 64px;
-        background: #3B82F6;
+        background: var(--primary);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -382,13 +385,10 @@
         background-position: center;
       }
 
-      .student-picture {
+      #avatarToggle:checked~.avatar-upload .avatar-preview,
+      #avatarToggle:checked~.user-profile .user-avatar {
         background-image: url('../assets/pictures/antoine.jpeg');
         font-size: 0;
-      }
-
-      .student-picture a {
-        text-decoration: none;
       }
 
       .avatar-controls {
@@ -408,7 +408,7 @@
         border-radius: 6px;
         font-size: 14px;
         font-weight: 600;
-        color: #3B82F6;
+        color: var(--primary);
         cursor: pointer;
         transition: all 0.3s;
         display: inline-block;
@@ -420,24 +420,214 @@
 
       .file-input-hint {
         font-size: 12px;
-        color: #6B7280;
+        color: var(--text-muted);
       }
 
       .copyright {
         text-align: center;
         margin-top: 32px;
         padding-top: 20px;
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid var(--border);
         color: #94A3B8;
         font-size: 12px;
       }
-    </style>
-    <script>
-      function toggleAvatar() {
-        document.getElementById('avatarPreview').classList.toggle('student-picture');
-        document.getElementById('userAvatar').classList.toggle('student-picture');
+
+      .toast-container {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+        pointer-events: none;
       }
-    </script>
+
+      .toast {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        min-width: 300px;
+        max-width: 400px;
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        pointer-events: auto;
+      }
+
+      .toast.dismissing {
+        animation: fadeOut 0.3s ease-out forwards;
+      }
+
+      .toast-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+
+      .toast-message {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(400px);
+          opacity: 0;
+        }
+
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        to {
+          opacity: 0;
+          transform: translateX(100px);
+        }
+      }
+
+      .activity-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.95);
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        min-width: 400px;
+        display: none;
+        z-index: 1000;
+        opacity: 0;
+        transition: all 0.3s;
+      }
+
+      #activity-modal:target {
+        display: flex;
+        flex-direction: column;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      #activity-modal:target~#activity-modal-backdrop {
+        display: block;
+      }
+
+      .activity-modal-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        z-index: 999;
+      }
+
+      .activity-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .activity-modal-header h2 {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text);
+        margin: 0;
+      }
+
+      .activity-modal-close {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: var(--text-muted);
+        cursor: pointer;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s;
+        text-decoration: none;
+      }
+
+      .activity-modal-close:hover {
+        color: var(--text);
+      }
+
+      .activity-modal-content {
+        padding: 24px;
+      }
+
+      .activity-item {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .activity-avatar {
+        width: 64px;
+        height: 64px;
+        background: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      .activity-info {
+        flex: 1;
+      }
+
+      .activity-name {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+
+      .activity-status {
+        font-size: 14px;
+        color: #10B981;
+        margin-bottom: 12px;
+      }
+
+      .activity-email,
+      .activity-phone {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 4px;
+      }
+
+      .password-hints {
+        margin-bottom: 20px;
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .toast.danger {
+        border-left: 4px solid var(--danger);
+      }
+
+      .toast.danger .toast-title {
+        color: var(--danger-dark);
+      }
+    </style>
   </head>
 
   <body>
@@ -450,46 +640,23 @@
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a onclick="window.location.href='02-dashboard.html'" class="nav-item">
-              <span class="nav-item-icon">📊</span>
-              Tableau de bord
-            </a>
-            <a onclick="window.location.href='03-chat.html'" class="nav-item">
-              <span class="nav-item-icon">💬</span>
-              Messages
-            </a>
+            <a href="02-dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
+            <a href="03-chat.html" class="nav-item"><span class="nav-item-icon">💬</span> Messages</a>
           </div>
-
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a onclick="window.location.href='04-calendar.html'" class="nav-item">
-              <span class="nav-item-icon">📅</span>
-              Calendrier
-            </a>
-            <a onclick="window.location.href='05-tasks.html'" class="nav-item">
-              <span class="nav-item-icon">✅</span>
-              Tâches
-            </a>
+            <a href="04-calendar.html" class="nav-item"><span class="nav-item-icon">📅</span> Calendrier</a>
+            <a href="05-tasks.html" class="nav-item"><span class="nav-item-icon">✅</span> Tâches</a>
           </div>
-
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a onclick="window.location.href='06-settings.html'" class="nav-item active">
-              <span class="nav-item-icon">⚙️</span>
-              Paramètres
-            </a>
-            <a onclick="window.location.href='01-login.html'" class="nav-item">
-              <span class="nav-item-icon">🚪</span>
-              Déconnexion
-            </a>
+            <a href="06-settings.html" class="nav-item active"><span class="nav-item-icon">⚙️</span> Paramètres</a>
+            <a href="01-login.html" class="nav-item"><span class="nav-item-icon">🚪</span> Déconnexion</a>
           </div>
         </nav>
 
         <div class="user-profile">
-          <div class="user-avatar" id="userAvatar">
-            AK
-            <span class="user-avatar-badge">3</span>
-          </div>
+          <div class="user-avatar">AK<span class="user-avatar-badge">3</span></div>
           <div class="user-name">Antoine Kreuder</div>
           <div class="user-role">Élève</div>
         </div>
@@ -503,11 +670,11 @@
 
         <div class="card">
           <div class="card-title">👤 Informations personnelles</div>
-
+          <input type="checkbox" id="avatarToggle" class="file-input">
           <div class="avatar-upload">
-            <div class="avatar-preview" id="avatarPreview">AK</div>
+            <div class="avatar-preview">AK</div>
             <div class="avatar-controls">
-              <label class="file-input-label" onclick="toggleAvatar('avatarPreview')">Changer la photo</label>
+              <label for="avatarToggle" class="file-input-label">Changer la photo</label>
               <p class="file-input-hint">JPG, PNG ou GIF (Max 2MB)</p>
             </div>
           </div>
@@ -534,7 +701,9 @@
           </div>
 
           <div class="button-group">
-            <button class="button button-primary">Enregistrer les modifications</button>
+            <button class="button button-primary"
+              onclick="showToast('👤', 'Informations personnelles', 'Vos informations ont été sauvegardées')">Enregistrer
+              les modifications</button>
             <button class="button button-secondary">Annuler</button>
           </div>
         </div>
@@ -557,14 +726,16 @@
             <input type="password" id="confirm-password" placeholder="••••••••">
           </div>
 
-          <div style="margin-bottom: 20px; font-size: 12px; color: #6B7280;">
+          <div class="password-hints">
             <p>✓ Au moins 8 caractères</p>
             <p>✓ Contient des chiffres et des lettres</p>
             <p>✓ Contient au moins un caractère spécial</p>
           </div>
 
           <div class="button-group">
-            <button class="button button-primary">Changer le mot de passe</button>
+            <button class="button button-primary"
+              onclick="showToast('🔒', 'Sécurité du compte', 'Votre mot de passe est sécurisé')">Changer le mot de
+              passe</button>
             <button class="button button-secondary">Annuler</button>
           </div>
         </div>
@@ -572,7 +743,7 @@
         <div class="card">
           <div class="card-title">🔔 Préférences de notification</div>
 
-          <div class="toggle-group">
+          <div class="toggle-group" id="notification-group">
             <div class="toggle-item">
               <div class="toggle-label">
                 <span class="toggle-label-text">Messages non lus</span>
@@ -614,8 +785,8 @@
             </div>
           </div>
 
-          <div class="button-group" style="margin-top: 24px;">
-            <button class="button button-primary">Enregistrer les préférences</button>
+          <div class="button-group">
+            <button class="button button-primary" onclick="notificationToast()">Enregistrer les préférences</button>
           </div>
         </div>
 
@@ -654,7 +825,9 @@
           </div>
 
           <div class="button-group">
-            <button class="button button-primary">Enregistrer les préférences</button>
+            <button class="button button-primary"
+              onclick="showToast('🎨', 'Préférences d\'affichage', 'Thème mis à jour avec succès')">Enregistrer les
+              préférences</button>
           </div>
         </div>
 
@@ -687,16 +860,16 @@
             </div>
           </div>
 
-          <div class="button-group" style="margin-top: 24px;">
-            <button class="button button-secondary">Télécharger mes données</button>
-            <button class="button button-secondary">Voir mon activité</button>
+          <div class="button-group">
+            <button class="button button-secondary" onclick="downloadDataToast()">Télécharger mes données</button>
+            <a href="#activity-modal" class="button button-secondary">Voir mon activité</a>
           </div>
 
           <div class="danger-zone">
             <div class="danger-zone-title">⚠️ Zone dangereuse</div>
             <div class="danger-zone-desc">Une fois supprimé, votre compte ne pourra pas être récupéré. Cette action est
               irréversible.</div>
-            <button class="button button-danger">Supprimer le compte</button>
+            <button class="button button-danger" onclick="deleteAccountToast()">Supprimer le compte</button>
           </div>
         </div>
 
@@ -705,6 +878,52 @@
         </div>
       </main>
     </div>
+
+    <div id="toast-container" class="toast-container"></div>
+    <div id="activity-modal" class="activity-modal">
+      <div class="activity-modal-header">
+        <h2>Mon activité</h2>
+        <a href="#" class="activity-modal-close">✕</a>
+      </div>
+      <div class="activity-modal-content">
+        <div class="activity-item">
+          <div class="activity-avatar">AK</div>
+          <div class="activity-info">
+            <div class="activity-name">Antoine Kreuder</div>
+            <div class="activity-status">● En ligne</div>
+            <div class="activity-email">antoine.kreuder@learn.com</div>
+            <div class="activity-phone">+33 6 12 34 56 78</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="activity-modal-backdrop" class="activity-modal-backdrop"></div>
+
+    <script>
+      const showToast = (icon, title, message) => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = 'toast'; toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+        container.appendChild(toast);
+        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 300) }, 2700)
+      };
+      const notificationToast = () => {
+        const checkedCount = document.querySelectorAll('#notification-group .checkbox:checked').length;
+        showToast('🔔', 'Préférences de notification', `${checkedCount} notification${checkedCount > 1 ? 's' : ''} activée${checkedCount > 1 ? 's' : ''}`)
+      };
+
+      const downloadDataToast = () => showToast('💾', 'Téléchargement des données', 'Votre demande a été envoyée. Vous recevrez vos données par email.');
+      const deleteAccountToast = () => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div'); toast.className = 'toast danger';
+        toast.innerHTML = `<div class="toast-title">⚠️ Compte supprimé</div><div class="toast-message">Votre compte a été supprimé avec succès. Redirection en cours...</div>`;
+        container.appendChild(toast);
+        setTimeout(() => window.location.href = '01-login.html', 2000)
+      };
+
+      document.querySelector('.activity-modal-close').addEventListener('click', (e) => { e.preventDefault(); history.back(); });
+    </script>
   </body>
 
 </html>
