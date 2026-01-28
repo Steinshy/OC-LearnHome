@@ -201,6 +201,53 @@
         color: #94A3B8;
         font-size: 12px;
       }
+
+      .toast-container {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+        pointer-events: none;
+      }
+
+      .toast {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        min-width: 300px;
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        pointer-events: auto;
+      }
+
+      .toast.dismissing {
+        animation: fadeOut 0.3s ease-out forwards;
+      }
+
+      .toast-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 4px;
+      }
+
+      .toast-message {
+        font-size: 13px;
+        color: #6B7280;
+      }
+
+      @keyframes slideIn {
+        from { transform: translateX(400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+
+      @keyframes fadeOut {
+        from { opacity: 1; transform: translateX(0); }
+        to { opacity: 0; transform: translateX(100px); }
+      }
     </style>
   </head>
 
@@ -255,14 +302,17 @@
         © 2026 Learn@Home. All rights reserved.
       </div>
     </div>
+    <div id="toast-container" class="toast-container"></div>
     <script>
-      function validateDemoLogin() {
-        const e = document.getElementById('email').value.trim();
-        const p = document.getElementById('password').value.trim();
-        console.log(e, p);
-        window.location.href = '02-dashboard.html';
-        return false;
-      }
+      const showToast = (icon, title, message) => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+        container.appendChild(toast);
+        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 300) }, 2700);
+      };
+      const validateDemoLogin = () => { showToast('✅', 'Connexion', 'Redirection vers le tableau de bord...'); setTimeout(() => window.location.href = '02-dashboard.html', 1000); return false; };
     </script>
   </body>
 

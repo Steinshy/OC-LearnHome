@@ -35,28 +35,27 @@
       .layout {
         display: grid;
         grid-template-columns: 250px 1fr;
+        grid-template-areas: "nav main";
         min-height: 100vh;
       }
 
-      .sidebar {
+      .nav-sidebar {
+        grid-area: nav;
         background: white;
         border-right: 1px solid var(--border);
         padding: 24px 0;
-        position: fixed;
-        width: 250px;
-        height: 100vh;
         overflow-y: auto;
         display: flex;
         flex-direction: column;
       }
 
-      .sidebar-header {
+      .nav-sidebar-header {
         padding: 0 24px 24px;
         margin-bottom: 32px;
         border-bottom: 1px solid var(--border);
       }
 
-      .sidebar-logo {
+      .nav-sidebar-logo {
         font-size: 20px;
         font-weight: 700;
         color: var(--primary);
@@ -157,9 +156,8 @@
       }
 
       .main {
-        grid-column: 2;
+        grid-area: main;
         padding: 32px;
-        margin-left: 0;
       }
 
       .header {
@@ -391,14 +389,61 @@
         background: #D1FAE5;
         color: #065F46;
       }
+
+      .toast-container {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+        pointer-events: none;
+      }
+
+      .toast {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        min-width: 300px;
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        pointer-events: auto;
+      }
+
+      .toast.dismissing {
+        animation: fadeOut 0.3s ease-out forwards;
+      }
+
+      .toast-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 4px;
+      }
+
+      .toast-message {
+        font-size: 13px;
+        color: #6B7280;
+      }
+
+      @keyframes slideIn {
+        from { transform: translateX(400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+
+      @keyframes fadeOut {
+        from { opacity: 1; transform: translateX(0); }
+        to { opacity: 0; transform: translateX(100px); }
+      }
     </style>
   </head>
 
   <body>
     <div class="layout">
-      <aside class="sidebar">
-        <div class="sidebar-header">
-          <div class="sidebar-logo">📚 Learn@Home</div>
+      <aside class="nav-sidebar">
+        <div class="nav-sidebar-header">
+          <div class="nav-sidebar-logo">📚 Learn@Home</div>
         </div>
 
         <nav>
@@ -524,7 +569,16 @@
       </main>
     </div>
 
+    <div id="toast-container" class="toast-container"></div>
     <script>
+      const showToast = (icon, title, message) => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+        container.appendChild(toast);
+        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 300) }, 2700);
+      };
       const cycleTaskStatus = (event) => {
         event.stopPropagation();
         const element = event.target;
@@ -532,6 +586,7 @@
         element.dataset.status = next;
         element.textContent = { pending: "À faire", inprogress: "En cours", done: "Complétée" }[next];
         element.dataset.next = { pending: "inprogress", inprogress: "done", done: "pending" }[next];
+        showToast('📝', 'Statut mis à jour', 'L\'état de la tâche a changé');
       };
     </script>
   </body>

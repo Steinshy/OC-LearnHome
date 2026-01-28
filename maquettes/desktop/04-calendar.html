@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn@Home - Calendrier | Maquette Desktop</title>
     <style>
+      :root {
+        --primary: #3B82F6;
+        --primary-dark: #1E40AF;
+        --danger: #EF4444;
+        --danger-dark: #DC2626;
+        --bg: #F3F4F6;
+        --text: #111827;
+        --text-muted: #6B7280;
+        --border: #E5E7EB;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -14,13 +25,156 @@
 
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: #F3F4F6;
-        padding: 32px;
+        background: var(--bg);
       }
 
-      .container {
-        max-width: 1400px;
-        margin: 0 auto;
+      .page-layout {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        min-height: 100vh;
+      }
+
+      /* Navigation Sidebar */
+      .nav-sidebar {
+        background: white;
+        border-right: 1px solid var(--border);
+        padding: 24px 0;
+        position: fixed;
+        width: 250px;
+        height: 100vh;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .nav-sidebar-header {
+        padding: 0 24px 24px;
+        margin-bottom: 32px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-sidebar-logo {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      nav {
+        flex: 1;
+      }
+
+      .nav-section {
+        margin-bottom: 24px;
+      }
+
+      .nav-section:not(:first-child) {
+        border-top: 1px solid var(--border);
+        padding-top: 24px;
+      }
+
+      .nav-label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #9CA3AF;
+        text-transform: uppercase;
+        padding: 0 24px;
+        margin-bottom: 8px;
+      }
+
+      .nav-item {
+        padding: 12px 24px;
+        color: var(--text-muted);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.3s;
+      }
+
+      .nav-item:hover {
+        background: var(--bg);
+        color: var(--primary);
+      }
+
+      .nav-item.active {
+        background: #E0F2FE;
+        color: var(--primary);
+        border-right: 4px solid var(--primary);
+        font-weight: 600;
+      }
+
+      .nav-item-icon {
+        font-size: 18px;
+      }
+
+      .notification-badge {
+        background: #EF4444;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+
+      .user-profile {
+        padding: 24px;
+        border-top: 1px solid var(--border);
+        margin-top: auto;
+      }
+
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        margin-bottom: 8px;
+        position: relative;
+      }
+
+      .user-avatar-badge {
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        background: var(--danger);
+        color: white;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: 700;
+        border: 2px solid white;
+      }
+
+      .user-name {
+        font-weight: 600;
+        color: var(--text);
+        font-size: 14px;
+      }
+
+      .user-role {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      /* Main Content */
+      .main {
+        grid-column: 2;
+        padding: 32px;
+        margin-left: 0;
       }
 
       .header {
@@ -644,15 +798,93 @@
         color: #94A3B8;
         font-size: 12px;
       }
+
+      .toast-container {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+        pointer-events: none;
+      }
+
+      .toast {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        min-width: 300px;
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        pointer-events: auto;
+      }
+
+      .toast.dismissing {
+        animation: fadeOut 0.3s ease-out forwards;
+      }
+
+      .toast-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 4px;
+      }
+
+      .toast-message {
+        font-size: 13px;
+        color: #6B7280;
+      }
+
+      @keyframes slideIn {
+        from { transform: translateX(400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+
+      @keyframes fadeOut {
+        from { opacity: 1; transform: translateX(0); }
+        to { opacity: 0; transform: translateX(100px); }
+      }
     </style>
   </head>
 
   <body>
-    <div class="container">
-      <div class="header">
-        <h1>Calendrier</h1>
+    <div class="page-layout">
+      <aside class="nav-sidebar">
+        <div class="nav-sidebar-header">
+          <div class="nav-sidebar-logo">📚 Learn@Home</div>
+        </div>
+
+        <nav>
+          <div class="nav-section">
+            <div class="nav-label">Principal</div>
+            <a href="02-dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
+            <a href="03-chat.html" class="nav-item"><span class="nav-item-icon">💬</span> Messages<span class="notification-badge">3</span></a>
+          </div>
+          <div class="nav-section">
+            <div class="nav-label">Outils</div>
+            <a href="04-calendar.html" class="nav-item active"><span class="nav-item-icon">📅</span> Calendrier</a>
+            <a href="05-tasks.html" class="nav-item"><span class="nav-item-icon">✅</span> Tâches</a>
+          </div>
+          <div class="nav-section">
+            <div class="nav-label">Compte</div>
+            <a href="06-settings.html" class="nav-item"><span class="nav-item-icon">⚙️</span> Paramètres</a>
+            <a href="01-login.html" class="nav-item"><span class="nav-item-icon">🚪</span> Déconnexion</a>
+          </div>
+        </nav>
+
+        <div class="user-profile">
+          <div class="user-avatar">AK<span class="user-avatar-badge">3</span></div>
+          <div class="user-name">Antoine Kreuder</div>
+          <div class="user-role">Élève</div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="header">
+          <h1>Calendrier</h1>
         <div class="header-actions">
-          <button class="button button-secondary">Aujourd'hui</button>
+          <button class="button button-secondary" onclick="goToToday()">Aujourd'hui</button>
           <a href="#addEventModalFilled" class="button button-primary">Créer un événement</a>
         </div>
       </div>
@@ -661,9 +893,9 @@
         <div class="calendar-card">
           <div class="calendar-header">
             <div class="calendar-nav">
-              <button class="nav-btn">◀</button>
-              <div class="month-year">Janvier 2026</div>
-              <button class="nav-btn">▶</button>
+              <button class="nav-btn" onclick="previousMonth()">◀</button>
+              <div class="month-year" id="monthYearDisplay">Janvier 2026</div>
+              <button class="nav-btn" onclick="nextMonth()">▶</button>
             </div>
             <div style="display: flex; gap: 8px;">
               <button class="button button-secondary" style="padding: 6px 12px; font-size: 13px;">Mois</button>
@@ -682,133 +914,7 @@
             <div class="dow-item">Dim</div>
           </div>
 
-          <div class="calendar-days">
-            <div class="calendar-day other-month">30</div>
-            <div class="calendar-day other-month">31</div>
-
-            <div class="calendar-day">
-              <div class="calendar-day-num">1</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">2</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">3</div>
-              <div class="calendar-day-events">
-                <a href="#eventDetailsModal" class="event-pill event-blue">Cours Français</a>
-              </div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">4</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">5</div>
-              <div class="calendar-day-events">
-                <a href="#eventDetailsModal" class="event-pill event-green">Tâche échéance</a>
-              </div>
-            </div>
-
-            <div class="calendar-day">
-              <div class="calendar-day-num">6</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">7</div>
-              <div class="calendar-day-events">
-                <a href="#eventDetailsModal" class="event-pill event-blue">Session Tutor</a>
-              </div>
-            </div>
-            <div class="calendar-day today">
-              <div class="calendar-day-num">8</div>
-              <div class="calendar-day-events">
-                <a href="#eventDetailsModal" class="event-pill event-orange">Réunion</a>
-              </div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">9</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">10</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">11</div>
-              <div class="calendar-day-events">
-                <a href="#eventDetailsModal" class="event-pill event-blue">Cours Math</a>
-              </div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">12</div>
-            </div>
-
-            <div class="calendar-day">
-              <div class="calendar-day-num">13</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">14</div>
-              <div class="calendar-day-events">
-                <a href="#eventDetailsModal" class="event-pill event-blue">Session Tutor</a>
-                <span onclick="showEventDetailsModal()" class="event-pill event-green">Tâche</span>
-              </div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">15</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">16</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">17</div>
-              <div class="calendar-day-events">
-                <a href="#eventDetailsModal" class="event-pill event-orange">Exam</a>
-              </div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">18</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">19</div>
-            </div>
-
-            <div class="calendar-day">
-              <div class="calendar-day-num">20</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">21</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">22</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">23</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">24</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">25</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">26</div>
-            </div>
-
-            <div class="calendar-day">
-              <div class="calendar-day-num">27</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">28</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">29</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">30</div>
-            </div>
-            <div class="calendar-day">
-              <div class="calendar-day-num">31</div>
-            </div>
-
-            <div class="calendar-day other-month">1</div>
-            <div class="calendar-day other-month">2</div>
-          </div>
+          <div class="calendar-days" id="calendarDaysContainer"></div>
         </div>
 
         <div class="sidebar">
@@ -867,6 +973,7 @@
           </div>
         </div>
       </div>
+      </main>
     </div>
 
     <!-- Modal: Create Event -->
@@ -1039,23 +1146,76 @@
       </div>
     </div>
 
+    <div id="toast-container" class="toast-container"></div>
     <script>
-      const handleCreateEvent = () => {
-        alert('Évement créé avec succès!');
-        location.hash = '';
-      }
+      const showToast = (icon, title, message) => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+        container.appendChild(toast);
+        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 300) }, 2700);
+      };
+      let curr = new Date(2026, 0, 8);
+      const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+      const events = { '2026-01-03': ['Cours Français', 'blue'], '2026-01-05': ['Tâche échéance', 'green'], '2026-01-07': ['Session Tutor', 'blue'], '2026-01-08': ['Réunion', 'orange'], '2026-01-11': ['Cours Math', 'blue'], '2026-01-14': [['Session Tutor', 'blue'], ['Tâche', 'green']], '2026-01-17': ['Exam', 'orange'] };
 
-      const handleDeleteEvent = () => {
-        alert('Évènement supprimé avec succès!');
-        location.hash = '';
-      }
+      const render = () => {
+        const year = curr.getFullYear(), month = curr.getMonth();
+        const start = new Date(year, month, 1);
+        start.setDate(start.getDate() - start.getDay() + 1);
+        const today = new Date();
+        const container = document.getElementById('calendarDaysContainer');
+        container.innerHTML = '';
 
-      document.addEventListener('click', e => {
-        if (e.target.classList.contains('modal-overlay')) location.hash = '';
-      });
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') location.hash = '';
-      });
+        let date = new Date(start);
+        for (let i = 0; i < 42; i++) {
+          const dayDiv = document.createElement('div');
+          dayDiv.className = 'calendar-day';
+          if (date.getMonth() !== month) dayDiv.classList.add('other-month');
+          if (date.toDateString() === today.toDateString()) dayDiv.classList.add('today');
+
+          const dayNum = document.createElement('div');
+          dayNum.className = 'calendar-day-num';
+          dayNum.textContent = date.getDate();
+          dayDiv.appendChild(dayNum);
+
+          const dateStr = date.toISOString().split('T')[0];
+          const evts = events[dateStr];
+          if (evts) {
+            const evDiv = document.createElement('div');
+            evDiv.className = 'calendar-day-events';
+            (Array.isArray(evts[0]) ? evts : [evts]).forEach(([name, color]) => {
+              const pill = document.createElement('a');
+              pill.href = '#eventDetailsModal';
+              pill.className = `event-pill event-${color}`;
+              pill.textContent = name;
+              evDiv.appendChild(pill);
+            });
+            dayDiv.appendChild(evDiv);
+          }
+
+          dayDiv.onclick = () => {
+            document.querySelector('#addEventModalFilled input[type="date"]').value = dateStr;
+            location.hash = 'addEventModalFilled';
+          };
+          container.appendChild(dayDiv);
+          date.setDate(date.getDate() + 1);
+        }
+
+        document.getElementById('monthYearDisplay').textContent = `${months[month]} ${year}`;
+      };
+
+      const previousMonth = () => { curr.setMonth(curr.getMonth() - 1); render(); };
+      const nextMonth = () => { curr.setMonth(curr.getMonth() + 1); render(); };
+      const goToToday = () => { curr = new Date(); render(); };
+      const handleCreateEvent = () => { showToast('✅', 'Événement créé', 'Votre événement a été créé avec succès'); location.hash = ''; };
+      const handleDeleteEvent = () => { showToast('🗑️', 'Événement supprimé', 'L\'événement a été supprimé avec succès'); location.hash = ''; };
+
+      document.addEventListener('click', e => e.target.classList.contains('modal-overlay') && (location.hash = ''));
+      document.addEventListener('keydown', e => e.key === 'Escape' && (location.hash = ''));
+
+      render();
     </script>
 
     <div class="copyright">

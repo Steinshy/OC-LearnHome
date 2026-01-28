@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn@Home - Messages | Maquette Desktop</title>
     <style>
+      :root {
+        --primary: #3B82F6;
+        --primary-dark: #1E40AF;
+        --danger: #EF4444;
+        --danger-dark: #DC2626;
+        --bg: #F3F4F6;
+        --text: #111827;
+        --text-muted: #6B7280;
+        --border: #E5E7EB;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -14,23 +25,161 @@
 
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: #F3F4F6;
+        background: var(--bg);
       }
 
       .layout {
         display: grid;
-        grid-template-columns: 300px 1fr;
+        grid-template-columns: 250px 300px 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "nav contacts chat";
         min-height: 100vh;
       }
 
-      .sidebar {
+      /* Navigation Sidebar */
+      .nav-sidebar {
+        grid-area: nav;
+        background: white;
+        border-right: 1px solid var(--border);
+        padding: 24px 0;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .nav-sidebar-header {
+        padding: 0 24px 24px;
+        margin-bottom: 32px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-sidebar-logo {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      nav {
+        flex: 1;
+      }
+
+      .nav-section {
+        margin-bottom: 24px;
+      }
+
+      .nav-section:not(:first-child) {
+        border-top: 1px solid var(--border);
+        padding-top: 24px;
+      }
+
+      .nav-label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #9CA3AF;
+        text-transform: uppercase;
+        padding: 0 24px;
+        margin-bottom: 8px;
+      }
+
+      .nav-item {
+        padding: 12px 24px;
+        color: var(--text-muted);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.3s;
+      }
+
+      .nav-item:hover {
+        background: var(--bg);
+        color: var(--primary);
+      }
+
+      .nav-item.active {
+        background: #E0F2FE;
+        color: var(--primary);
+        border-right: 4px solid var(--primary);
+        font-weight: 600;
+      }
+
+      .nav-item-icon {
+        font-size: 18px;
+      }
+
+      .notification-badge {
+        background: #EF4444;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+
+      .user-profile {
+        padding: 24px;
+        border-top: 1px solid var(--border);
+        margin-top: auto;
+      }
+
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        margin-bottom: 8px;
+        position: relative;
+      }
+
+      .user-avatar-badge {
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        background: var(--danger);
+        color: white;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: 700;
+        border: 2px solid white;
+      }
+
+      .user-name {
+        font-weight: 600;
+        color: var(--text);
+        font-size: 14px;
+      }
+
+      .user-role {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      /* Contacts Sidebar */
+      .contacts-sidebar {
+        grid-area: contacts;
         background: white;
         border-right: 1px solid #E5E7EB;
         display: flex;
         flex-direction: column;
       }
 
-      .sidebar-header {
+      .contacts-sidebar-header {
         padding: 16px;
         border-bottom: 1px solid #E5E7EB;
       }
@@ -151,6 +300,7 @@
       }
 
       .chat-container {
+        grid-area: chat;
         display: flex;
         flex-direction: column;
         background: white;
@@ -312,7 +462,7 @@
         margin-left: auto;
       }
 
-      .new-file-message .file-name {
+      .new-file-message .message-file-name {
         font-size: 14px;
         color: #111827;
         word-break: break-word;
@@ -863,6 +1013,67 @@
         background: #F3F4F6;
         color: #111827;
       }
+
+      .toast-container {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+        pointer-events: none;
+      }
+
+      .toast {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        min-width: 300px;
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        pointer-events: auto;
+      }
+
+      .toast.dismissing {
+        animation: fadeOut 0.3s ease-out forwards;
+      }
+
+      .toast-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 4px;
+      }
+
+      .toast-message {
+        font-size: 13px;
+        color: #6B7280;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(400px);
+          opacity: 0;
+        }
+
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        to {
+          opacity: 0;
+          transform: translateX(100px);
+        }
+      }
     </style>
   </head>
 
@@ -872,8 +1083,38 @@
     <input type="checkbox" id="phone-call-modal-toggle" style="display: none;">
     <input type="checkbox" id="video-call-modal-toggle" style="display: none;">
     <div class="layout">
-      <aside class="sidebar">
-        <div class="sidebar-header">
+      <aside class="nav-sidebar">
+        <div class="nav-sidebar-header">
+          <div class="nav-sidebar-logo">📚 Learn@Home</div>
+        </div>
+
+        <nav>
+          <div class="nav-section">
+            <div class="nav-label">Principal</div>
+            <a href="02-dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
+            <a href="03-chat.html" class="nav-item active"><span class="nav-item-icon">💬</span> Messages</a>
+          </div>
+          <div class="nav-section">
+            <div class="nav-label">Outils</div>
+            <a href="04-calendar.html" class="nav-item"><span class="nav-item-icon">📅</span> Calendrier</a>
+            <a href="05-tasks.html" class="nav-item"><span class="nav-item-icon">✅</span> Tâches</a>
+          </div>
+          <div class="nav-section">
+            <div class="nav-label">Compte</div>
+            <a href="06-settings.html" class="nav-item"><span class="nav-item-icon">⚙️</span> Paramètres</a>
+            <a href="01-login.html" class="nav-item"><span class="nav-item-icon">🚪</span> Déconnexion</a>
+          </div>
+        </nav>
+
+        <div class="user-profile">
+          <div class="user-avatar">AK<span class="user-avatar-badge">3</span></div>
+          <div class="user-name">Antoine Kreuder</div>
+          <div class="user-role">Élève</div>
+        </div>
+      </aside>
+
+      <aside class="contacts-sidebar">
+        <div class="contacts-sidebar-header">
           <input type="text" class="search-box" placeholder="Rechercher un contact...">
           <label for="contacts-modal-toggle" class="add-contact-btn hover-up" data-hover="Ajouter un contact">+ Ajouter
             un contact</label>
@@ -992,11 +1233,11 @@
             <div class="message-avatar student-avatar">AT</div>
           </div>
 
-          <div class="message-group message-own new-file-message hidden-file-message">
+          <div class="message-group message-own new-file-message hidden-file-message" id="file-message">
             <div class="message-content">
               <div class="message-file">
                 <span class="message-file-icon">📄</span>
-                <span class="file-name"></span>
+                <span class="message-file-name" id="file-name"></span>
               </div>
               <div class="message-status status-sent">Envoyé à l'instant</div>
             </div>
@@ -1102,52 +1343,49 @@
         </div>
       </div>
     </div>
+    <div id="toast-container" class="toast-container"></div>
     <script>
-      const fileMessage = document.querySelector('.new-file-message');
-      const messages = document.querySelector('.messages');
+      const showToast = (icon, title, message) => {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+        document.getElementById('toast-container').appendChild(toast);
+        setTimeout(() => (toast.classList.add('dismissing'), setTimeout(() => toast.remove(), 300)), 2700);
+      };
+
       const handleAttachmentClick = () => document.getElementById('file-input').click();
       const handleMessageSend = () => document.querySelector('.hidden-auto-message').classList.add('visible');
-      const handleFileUpload = e => (fileMessage.querySelector('.file-name').textContent = e.target.files[0].name, fileMessage.classList.add('visible'), messages.scrollTop = messages.scrollHeight);
-      const contactManager = (() => {
-        const addBtn = document.getElementById('add-contact-confirm');
-        const contactsModal = document.getElementById('contacts-modal');
-        const rows = () => contactsModal.querySelectorAll('.contacts-list-modal .contact-row:not(.no-contact-found)');
-        const noContactRow = () => contactsModal.querySelector('.no-contact-found');
-
-        const updateVisibility = () => {
-          const visibleContacts = [...rows()].filter(r => !r.classList.contains('hidden'));
-          const hiddenContacts = [...rows()].filter(r => r.classList.contains('hidden'));
-
-          addBtn.disabled = hiddenContacts.length === 0;
-
-          if (visibleContacts.length === 0) {
-            noContactRow().style.display = 'flex';
-          } else {
-            noContactRow().style.display = 'none';
-          }
+      const handleFileUpload = () => {
+        const fileData = {
+          input: document.getElementById('file-input'),
+          fileMessage: document.getElementById('file-message'),
+          fileNameSpan: document.querySelector('.message-file-name'),
+          messages: document.querySelector('.messages'),
+          get file() { return this.input.files[0]; },
+          get name() { return this.file?.name || ''; }
         };
 
-        updateVisibility();
+        fileData.fileNameSpan.textContent = fileData.name;
+        fileData.fileMessage.classList.add('visible');
+        fileData.messages.scrollTop = fileData.messages.scrollHeight;
+      };
 
-        return {
-          addContact: () => {
-            const hiddenRow = [...rows()].find(r => r.classList.contains('hidden'));
-            if (hiddenRow) {
-              hiddenRow.classList.remove('hidden');
-              hiddenRow.style.display = 'flex';
-              updateVisibility();
-            }
-          },
-          removeContact: button => {
-            const row = button.closest('.contact-row');
-            if (row) {
-              row.classList.add('hidden');
-              row.style.display = 'none';
-              updateVisibility();
-            }
-          }
-        };
-      })();
+      const contactManager = {
+        rows: () => [...document.querySelectorAll('.contacts-list-modal .contact-row:not(.no-contact-found)')],
+        hiddenRows: () => contactManager.rows().find(row => row.classList.contains('hidden')),
+        update: () => (document.getElementById('add-contact-confirm').disabled = !contactManager.rows().some(row => row.classList.contains('hidden'))),
+        addContact() {
+          contactManager.hiddenRows() && (contactManager.hiddenRows().classList.remove('hidden'), (contactManager.hiddenRows().style.display = 'flex'));
+          contactManager.hiddenRows() && contactManager.update();
+        },
+
+        removeContact(btn) {
+          const row = btn.closest('.contact-row');
+          row.classList.add('hidden');
+          row.style.display = 'none';
+          contactManager.update();
+        }
+      };
     </script>
   </body>
 
