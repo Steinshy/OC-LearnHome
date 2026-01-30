@@ -135,6 +135,24 @@
         font-size: 0;
       }
 
+      .contact-avatar.jean {
+        background-image: url('../../assets/pictures/jean.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .contact-avatar.sophie {
+        background-image: url('../../assets/pictures/sophie.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .contact-avatar.marie {
+        background-image: url('../../assets/pictures/marie.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
       .contact-info {
         flex: 1;
         min-width: 0;
@@ -680,8 +698,26 @@
         font-size: 0;
       }
 
+      .modal-avatar.jean {
+        background-image: url('../../assets/pictures/jean.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
       .modal-avatar.yann {
         background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .modal-avatar.sophie {
+        background-image: url('../../assets/pictures/sophie.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .modal-avatar.marie {
+        background-image: url('../../assets/pictures/marie.jpeg');
         background-color: transparent;
         font-size: 0;
       }
@@ -824,19 +860,20 @@
               <div class="contact-name">Yann Uliong</div>
               <div class="contact-status status-online">● En ligne</div>
             </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-avatar" style="background: #10B981;">MD</div>
-            <div class="contact-info">
-              <div class="contact-name">Marie Dupont</div>
-              <div class="contact-status">● Hors ligne (23h)</div>
-            </div>
             <div class="status-badge">2</div>
           </div>
 
           <div class="contact-item">
-            <div class="contact-avatar" style="background: #F59E0B;">JL</div>
+            <div class="contact-avatar marie">MD</div>
+            <div class="contact-info">
+              <div class="contact-name">Marie Dupont</div>
+              <div class="contact-status">● Hors ligne (23h)</div>
+            </div>
+            <div class="status-badge">3</div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-avatar jean">JL</div>
             <div class="contact-info">
               <div class="contact-name">Jean Leclerc</div>
               <div class="contact-status status-online">● En ligne</div>
@@ -844,7 +881,7 @@
           </div>
 
           <div class="contact-item">
-            <div class="contact-avatar" style="background: #8B5CF6;">SB</div>
+            <div class="contact-avatar sophie">SB</div>
             <div class="contact-info">
               <div class="contact-name">Sophie Bernard</div>
               <div class="contact-status">● Hors ligne (2j)</div>
@@ -921,6 +958,14 @@
             </div>
           </div>
 
+          <div class="message-group">
+            <div class="contact-avatar yann">YU</div>
+            <div class="message-content">
+              <div class="message-text">Voici les ressources utiles pour bien comprendre:</div>
+              <div class="message-status status-read">Vu à l'instant</div>
+            </div>
+          </div>
+
           <div class="message-group message-own hidden-auto-message">
             <div class="message-content">
               <div class="message-text">Oui vas‑y je t’écoute !</div>
@@ -957,12 +1002,12 @@
 
         <div class="modal-section contacts-list-modal">
           <div class="contact-row">
-            <div class="modal-avatar" style="background:#10B981;">MD</div>
+            <div class="modal-avatar marie">MD</div>
             <div class="modal-name">Marie Dupont</div>
             <button class="modal-action-btn remove-contact">Supprimer</button>
           </div>
           <div class="contact-row">
-            <div class="modal-avatar" style="background:#F59E0B;">JL</div>
+            <div class="modal-avatar jean">JL</div>
             <div class="modal-name">Jean Leclerc</div>
             <button class="modal-action-btn remove-contact">Supprimer</button>
           </div>

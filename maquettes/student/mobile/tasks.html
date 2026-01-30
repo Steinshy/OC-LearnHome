@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Learn@Home - Gestion des Tâches | Maquette Mobile</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #F3F4F6;
+        padding-bottom: 20px;
+      }
+
+      .mobile-header {
+        background: white;
+        border-bottom: 1px solid #E5E7EB;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .back-btn {
+        width: 44px;
+        height: 44px;
+        border: none;
+        background: transparent;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .back-btn:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
+      h1 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      .container {
+        padding: 16px;
+      }
+
+      .controls {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+
+      .filters {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .filter-btn {
+        padding: 10px 16px;
+        border: 1px solid #D1D5DB;
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s;
+        color: #6B7280;
+        white-space: nowrap;
+        min-height: 44px;
+      }
+
+      .filter-btn:active,
+      .filter-btn.active {
+        background: #3B82F6;
+        color: white;
+        border-color: #3B82F6;
+      }
+
+      .filter-btn:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
+      .search-box {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        font-size: 16px;
+        -webkit-appearance: none;
+      }
+
+      .tasks-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .task-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        transition: all 0.3s;
+        border-left: 4px solid #E5E7EB;
+      }
+
+      .task-card:active {
+        transform: scale(0.98);
+      }
+
+      .task-card.priority-high {
+        border-left-color: #EF4444;
+      }
+
+      .task-card.priority-medium {
+        border-left-color: #F59E0B;
+      }
+
+      .task-card.priority-low {
+        border-left-color: #10B981;
+      }
+
+      .task-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .task-checkbox {
+        width: 24px;
+        height: 24px;
+        border: 2px solid #D1D5DB;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .task-checkbox:checked {
+        background: #3B82F6;
+        border-color: #3B82F6;
+        color: white;
+      }
+
+      .task-checkbox:checked::after {
+        content: '✓';
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .task-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .task-title {
+        font-weight: 600;
+        color: #111827;
+        font-size: 16px;
+        margin-bottom: 8px;
+        line-height: 1.4;
+      }
+
+      .task-checkbox:checked ~ .task-content .task-title {
+        text-decoration: line-through;
+        color: #9CA3AF;
+      }
+
+      .task-description {
+        font-size: 14px;
+        color: #6B7280;
+        line-height: 1.4;
+        margin-bottom: 12px;
+      }
+
+      .task-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 13px;
+        color: #9CA3AF;
+      }
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .task-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid #F3F4F6;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .priority-badge {
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .priority-high {
+        background: #FEE2E2;
+        color: #991B1B;
+      }
+
+      .priority-medium {
+        background: #FEF3C7;
+        color: #92400E;
+      }
+
+      .priority-low {
+        background: #DCFCE7;
+        color: #166534;
+      }
+
+      .status-badge {
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .status-pending {
+        background: #F3F4F6;
+        color: #374151;
+      }
+
+      .status-inprogress {
+        background: #DBEAFE;
+        color: #1E40AF;
+      }
+
+      .status-done {
+        background: #DCFCE7;
+        color: #166534;
+      }
+
+      .task-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .action-btn {
+        width: 36px;
+        height: 36px;
+        border: 1px solid #E5E7EB;
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        transition: all 0.3s;
+        min-height: 44px;
+        min-width: 44px;
+      }
+
+      .action-btn:active {
+        background: #F3F4F6;
+        border-color: #D1D5DB;
+      }
+
+      .action-btn:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="mobile-header">
+      <a href="dashboard.html" class="back-btn">←</a>
+      <h1>Gestion des Tâches</h1>
+      <div style="width: 44px;"></div>
+    </div>
+
+    <div class="container">
+      <div class="controls">
+        <div class="filters">
+          <button class="filter-btn active">Toutes</button>
+          <button class="filter-btn">À faire</button>
+          <button class="filter-btn">En cours</button>
+          <button class="filter-btn">Complétées</button>
+        </div>
+
+        <input type="text" class="search-box" placeholder="Rechercher une tâche...">
+      </div>
+
+      <div class="tasks-container">
+        <div class="task-card priority-high">
+          <div class="task-header">
+            <input type="checkbox" class="task-checkbox" id="task1">
+            <div class="task-content">
+              <div class="task-title">Équations du second degré - Exercices</div>
+              <div class="task-description">Compléter les 10 exercices de la feuille distribuée par Yann Uliong</div>
+              <div class="task-meta">
+                <div class="meta-item">📅 Échéance: 10 janvier 2026</div>
+                <div class="meta-item">👤 Créé par: Yann Uliong</div>
+              </div>
+            </div>
+          </div>
+          <div class="task-footer">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <div class="priority-badge priority-high">Haute</div>
+              <div class="status-badge status-pending">À faire</div>
+            </div>
+            <div class="task-actions">
+              <button class="action-btn">✎</button>
+              <button class="action-btn">🗑️</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-card priority-medium">
+          <div class="task-header">
+            <input type="checkbox" class="task-checkbox" id="task2">
+            <div class="task-content">
+              <div class="task-title">Lecture du chapitre 5 - Français</div>
+              <div class="task-description">Lire "Le Seigneur des Anneaux" chapitre 5 et faire un résumé de 2 pages</div>
+              <div class="task-meta">
+                <div class="meta-item">📅 Échéance: 12 janvier 2026</div>
+                <div class="meta-item">👤 Créé par: Yann Uliong</div>
+              </div>
+            </div>
+          </div>
+          <div class="task-footer">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <div class="priority-badge priority-medium">Normal</div>
+              <div class="status-badge status-inprogress">En cours</div>
+            </div>
+            <div class="task-actions">
+              <button class="action-btn">✎</button>
+              <button class="action-btn">🗑️</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-card priority-low">
+          <div class="task-header">
+            <input type="checkbox" class="task-checkbox" id="task3" checked>
+            <div class="task-content">
+              <div class="task-title">Révision vocabulaire anglais</div>
+              <div class="task-description">Apprendre 50 nouveaux mots de vocabulaire pour le test</div>
+              <div class="task-meta">
+                <div class="meta-item">📅 Échéance: 5 janvier 2026</div>
+                <div class="meta-item">👤 Créé par: Yann Uliong</div>
+              </div>
+            </div>
+          </div>
+          <div class="task-footer">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <div class="priority-badge priority-low">Basse</div>
+              <div class="status-badge status-done">Complétée</div>
+            </div>
+            <div class="task-actions">
+              <button class="action-btn">✎</button>
+              <button class="action-btn">🗑️</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-card priority-high">
+          <div class="task-header">
+            <input type="checkbox" class="task-checkbox" id="task4">
+            <div class="task-content">
+              <div class="task-title">Rapport de Sciences - Expérience sur la photosynthèse</div>
+              <div class="task-description">Rédiger un rapport détaillé incluant hypothèse, procédure, résultats et conclusions</div>
+              <div class="task-meta">
+                <div class="meta-item">📅 Échéance: 15 janvier 2026</div>
+                <div class="meta-item">👤 Créé par: Yann Uliong</div>
+              </div>
+            </div>
+          </div>
+          <div class="task-footer">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <div class="priority-badge priority-high">Haute</div>
+              <div class="status-badge status-pending">À faire</div>
+            </div>
+            <div class="task-actions">
+              <button class="action-btn">✎</button>
+              <button class="action-btn">🗑️</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-card priority-low">
+          <div class="task-header">
+            <input type="checkbox" class="task-checkbox" id="task5">
+            <div class="task-content">
+              <div class="task-title">Projet: Présentation Histoire - Révolution française</div>
+              <div class="task-description">Créer une présentation PowerPoint de 15-20 diapositives sur la Révolution française</div>
+              <div class="task-meta">
+                <div class="meta-item">📅 Échéance: 20 janvier 2026</div>
+                <div class="meta-item">👤 Créé par: Yann Uliong</div>
+              </div>
+            </div>
+          </div>
+          <div class="task-footer">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <div class="priority-badge priority-low">Basse</div>
+              <div class="status-badge status-pending">À faire</div>
+            </div>
+            <div class="task-actions">
+              <button class="action-btn">✎</button>
+              <button class="action-btn">🗑️</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+
+</html>

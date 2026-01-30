@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Learn@Home - Tableau de Bord | Maquette Mobile</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #F3F4F6;
+      }
+
+      .mobile-header {
+        background: white;
+        border-bottom: 1px solid #E5E7EB;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .menu-btn {
+        width: 44px;
+        height: 44px;
+        border: none;
+        background: transparent;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .menu-btn:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
+      .mobile-logo {
+        font-size: 18px;
+        font-weight: 700;
+        color: #3B82F6;
+      }
+
+      .user-avatar-mobile {
+        width: 36px;
+        height: 36px;
+        background: #3B82F6;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 14px;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .user-avatar-mobile.antoine {
+        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .user-avatar-mobile.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .user-avatar-badge {
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        background: #EF4444;
+        color: white;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-weight: 700;
+        border: 2px solid white;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        border-right: 1px solid #E5E7EB;
+        padding: 24px 0;
+        overflow-y: auto;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sidebar.open {
+        left: 0;
+      }
+
+      .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+
+      .sidebar-overlay.active {
+        display: block;
+      }
+
+      .sidebar-header {
+        padding: 0 24px;
+        margin-bottom: 32px;
+        border-bottom: 1px solid #E5E7EB;
+        padding-bottom: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .sidebar-logo {
+        font-size: 20px;
+        font-weight: 700;
+        color: #3B82F6;
+      }
+
+      .close-btn {
+        width: 36px;
+        height: 36px;
+        border: none;
+        background: transparent;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      nav {
+        flex: 1;
+      }
+
+      .nav-section {
+        margin-bottom: 24px;
+      }
+
+      .nav-section:not(:first-child) {
+        border-top: 1px solid #E5E7EB;
+        padding-top: 24px;
+      }
+
+      .nav-label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #9CA3AF;
+        text-transform: uppercase;
+        padding: 0 24px;
+        margin-bottom: 8px;
+      }
+
+      .nav-item {
+        padding: 14px 24px;
+        color: #6B7280;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.3s;
+        cursor: pointer;
+        position: relative;
+        font-size: 14px;
+        min-height: 44px;
+      }
+
+      .nav-item:hover,
+      .nav-item:active {
+        background: #F3F4F6;
+        color: #3B82F6;
+      }
+
+      .nav-item:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: -2px;
+      }
+
+      .nav-item.active {
+        background: #E0F2FE;
+        color: #3B82F6;
+        border-right: 4px solid #3B82F6;
+        font-weight: 600;
+      }
+
+      .nav-item-icon {
+        margin-right: 12px;
+        font-size: 18px;
+      }
+
+      .notification-badge {
+        background: #EF4444;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+
+      .user-profile {
+        padding: 24px;
+        border-top: 1px solid #E5E7EB;
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        background: #3B82F6;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        margin-bottom: 8px;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .user-avatar.antoine {
+        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .user-avatar.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .user-name {
+        font-weight: 600;
+        color: #111827;
+        font-size: 14px;
+      }
+
+      .user-role {
+        font-size: 12px;
+        color: #6B7280;
+      }
+
+      .main {
+        padding: 20px 16px;
+      }
+
+      .header {
+        margin-bottom: 24px;
+      }
+
+      h1 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 16px;
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        padding: 12px 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        flex: 1;
+      }
+
+      .button:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
+      .button-primary {
+        background: #3B82F6;
+        color: white;
+      }
+
+      .button-primary:hover,
+      .button-primary:active {
+        background: #1E40AF;
+      }
+
+      .button-secondary {
+        background: white;
+        color: #3B82F6;
+        border: 1px solid #3B82F6;
+      }
+
+      .button-secondary:hover,
+      .button-secondary:active {
+        background: #E0F2FE;
+      }
+
+      .message-box {
+        background: #DBEAFE;
+        border-left: 4px solid #3B82F6;
+        padding: 16px;
+        border-radius: 6px;
+        margin-bottom: 24px;
+      }
+
+      .message-title {
+        font-weight: 600;
+        color: #1E40AF;
+        margin-bottom: 4px;
+        font-size: 14px;
+      }
+
+      .message-text {
+        font-size: 13px;
+        color: #1E40AF;
+      }
+
+      .grid {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .card-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      .card-badge {
+        background: #E0F2FE;
+        color: #1E40AF;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      .stat-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #F3F4F6;
+        min-height: 44px;
+      }
+
+      .stat-item:last-child {
+        border-bottom: none;
+      }
+
+      .stat-label {
+        color: #6B7280;
+        font-size: 14px;
+      }
+
+      .stat-value {
+        color: #111827;
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      .stat-status {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      .status-pending {
+        background: #FEF3C7;
+        color: #92400E;
+      }
+
+      .status-done {
+        background: #D1FAE5;
+        color: #065F46;
+      }
+
+      .status-inprogress {
+        background: #E0E7FF;
+        color: #3730A3;
+      }
+
+      .event-item {
+        padding: 12px 0;
+        border-bottom: 1px solid #F3F4F6;
+      }
+
+      .event-item:last-child {
+        border-bottom: none;
+      }
+
+      .event-time {
+        font-size: 12px;
+        color: #9CA3AF;
+      }
+
+      .event-title {
+        font-weight: 600;
+        color: #111827;
+        margin: 4px 0;
+        font-size: 14px;
+      }
+
+      .event-location {
+        font-size: 12px;
+        color: #6B7280;
+      }
+
+      .copyright {
+        text-align: center;
+        margin-top: 32px;
+        padding-top: 20px;
+        border-top: 1px solid #E5E7EB;
+        color: #94A3B8;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="mobile-header">
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+      <div class="mobile-logo">📚 Learn@Home</div>
+      <div style="width: 44px;"></div>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">📚 Learn@Home</div>
+        <button class="close-btn" id="closeBtn" aria-label="Fermer">✕</button>
+      </div>
+
+      <nav>
+        <div class="nav-section">
+          <div class="nav-label">Principal</div>
+          <a href="dashboard.html" class="nav-item active">
+            <span class="nav-item-icon">📊</span>
+            Tableau de bord
+          </a>
+          <a href="chat.html" class="nav-item">
+            <span class="nav-item-icon">💬</span>
+            Messages
+            <span class="notification-badge">5</span>
+          </a>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-label">Outils</div>
+          <a href="calendar.html" class="nav-item">
+            <span class="nav-item-icon">📅</span>
+            Calendrier
+          </a>
+          <a href="tasks.html" class="nav-item">
+            <span class="nav-item-icon">✅</span>
+            Tâches
+          </a>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-label">Compte</div>
+          <a href="settings.html" class="nav-item">
+            <span class="nav-item-icon">⚙️</span>
+            Paramètres
+          </a>
+          <a href="login.html" class="nav-item">
+            <span class="nav-item-icon">🚪</span>
+            Déconnexion
+          </a>
+        </div>
+      </nav>
+
+      <div class="user-profile">
+        <div class="user-avatar antoine">
+          AK
+          <span class="user-avatar-badge">5</span>
+        </div>
+        <div class="user-name">Antoine Kreuder</div>
+        <div class="user-role">Élève</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="header">
+        <h1>Bienvenue, Antoine Kreuder</h1>
+        <div class="header-actions">
+          <a href="settings.html" class="button button-secondary">Préférences</a>
+          <button class="button button-primary">Créer</button>
+        </div>
+      </div>
+
+      <div class="message-box">
+        <div class="message-title">👋 Bienvenue sur Learn@Home</div>
+        <div class="message-text">Vous avez 5 messages non lus et 2 tâches à faire aujourd'hui.</div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">💬 Messages</div>
+            <div class="card-badge">5 non lus</div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Yann Uliong</span>
+            <span class="notification-badge">2</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Marie Dupont</span>
+            <span class="notification-badge">3</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">✅ Tâches</div>
+            <div class="card-badge">5 tâches</div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Mathématiques - Équations</span>
+            <span class="stat-status status-pending">À faire</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Français - Lecture</span>
+            <span class="stat-status status-inprogress">En cours</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Sciences - Rapport</span>
+            <span class="stat-status status-pending">À faire</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Anglais - Vocabulaire</span>
+            <span class="stat-status status-done">Complétée</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Histoire - Présentation</span>
+            <span class="stat-status status-pending">À faire</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">📅 Prochains événements</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">Aujourd'hui à 18:00</div>
+            <div class="event-title">Tutoring session - Mathématiques</div>
+            <div class="event-location">En ligne (Zoom)</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">Demain à 14:00</div>
+            <div class="event-title">Cours collectif - Français</div>
+            <div class="event-location">Centre d'apprentissage</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">📈 Vue d'ensemble</div>
+          <div style="margin-top: 16px;">
+            <div class="stat-item">
+              <span class="stat-label">Tâches complétées cette semaine</span>
+              <span class="stat-value">5</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Heures de tutorat</span>
+              <span class="stat-value">5h30</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Durée moyenne par session</span>
+              <span class="stat-value">45 minutes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        © 2026 Learn@Home. All rights reserved.
+      </div>
+    </main>
+
+    <script>
+      const menuBtn = document.getElementById('menuBtn');
+      const closeBtn = document.getElementById('closeBtn');
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+
+      menuBtn.addEventListener('click', () => {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+      });
+
+      closeBtn.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+      });
+
+      overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+      });
+    </script>
+  </body>
+
+</html>

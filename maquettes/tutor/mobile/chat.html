@@ -124,14 +124,14 @@
         font-size: 0;
       }
 
-      .contact-avatar.sophie {
-        background-image: url('../../assets/pictures/sophie.jpeg');
+      .contact-avatar.lea {
+        background-image: url('../../assets/pictures/lea.jpeg');
         background-color: transparent;
         font-size: 0;
       }
 
-      .contact-avatar.marie {
-        background-image: url('../../assets/pictures/marie.jpeg');
+      .contact-avatar.sophie {
+        background-image: url('../../assets/pictures/sophie.jpeg');
         background-color: transparent;
         font-size: 0;
       }
@@ -140,6 +140,11 @@
         font-weight: 600;
         color: #111827;
         font-size: 16px;
+      }
+
+      .chat-header-subtitle {
+        font-size: 12px;
+        color: #6B7280;
       }
 
       .chat-header-status {
@@ -299,6 +304,13 @@
       .message-own .message-text {
         background: #3B82F6;
         color: white;
+        max-width: 400px;
+        width: auto;
+      }
+
+      .message-own .message-file {
+        max-width: 300px;
+        width: auto;
       }
 
       .message-status {
@@ -320,6 +332,39 @@
 
       .message-status.status-read {
         color: #3B82F6;
+      }
+
+      .hidden-auto-message {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .hidden-auto-message.visible {
+        display: flex;
+        opacity: 1;
+      }
+
+      .new-file-message {
+        justify-content: flex-end;
+        margin-left: auto;
+      }
+
+      .new-file-message .file-name {
+        font-size: 14px;
+        color: #111827;
+        word-break: break-word;
+      }
+
+      .hidden-file-message {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .hidden-file-message.visible {
+        display: flex;
+        opacity: 1;
       }
 
       .status-read::after {
@@ -405,12 +450,12 @@
 
       .contacts-header {
         padding: 16px;
-        padding-top: 24px;
         border-bottom: 1px solid #E5E7EB;
         display: flex;
         justify-content: space-between;
         align-items: center;
         position: relative;
+        padding-top: 24px;
       }
 
       .contacts-header::before {
@@ -488,6 +533,12 @@
       .contact-status {
         font-size: 12px;
         color: #9CA3AF;
+        margin-top: 2px;
+      }
+
+      .contact-grade {
+        font-size: 12px;
+        color: #6B7280;
         margin-top: 2px;
       }
 
@@ -639,6 +690,12 @@
         font-size: 0;
       }
 
+      .info-profile-avatar.lea {
+        background-image: url('../../assets/pictures/lea.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
       .info-profile-avatar.sophie {
         background-image: url('../../assets/pictures/sophie.jpeg');
         background-color: transparent;
@@ -715,6 +772,234 @@
         color: #111827;
         font-weight: 500;
       }
+
+      .badge-count {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 4px;
+      }
+
+      .badge-count.status-pending {
+        background: #FEF3C7;
+        color: #92400E;
+      }
+
+      .badge-count.status-inprogress {
+        background: #DBEAFE;
+        color: #0C4A6E;
+      }
+
+      .badge-count.status-done {
+        background: #DCFCE7;
+        color: #166534;
+      }
+
+      .task-panel {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: 90vh;
+        background: white;
+        border-radius: 20px 20px 0 0;
+        z-index: 1000;
+        transform: translateY(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .task-panel.open {
+        transform: translateY(0);
+      }
+
+      .task-header {
+        padding: 16px;
+        padding-top: 24px;
+        border-bottom: 1px solid #E5E7EB;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 10;
+      }
+
+      .task-header::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 4px;
+        background: #D1D5DB;
+        border-radius: 2px;
+      }
+
+      .task-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #111827;
+      }
+
+      .close-task-btn {
+        width: 44px;
+        height: 44px;
+        border: none;
+        background: transparent;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .task-content {
+        padding: 16px;
+        overflow-y: auto;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .task-section {
+        margin-bottom: 0;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #E5E7EB;
+      }
+
+      .task-section:last-child {
+        border-bottom: none;
+      }
+
+      .task-section-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #6B7280;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+      }
+
+      .task-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid #F3F4F6;
+      }
+
+      .task-item:last-child {
+        border-bottom: none;
+      }
+
+      .task-icon {
+        font-size: 20px;
+        width: 24px;
+        text-align: center;
+        flex-shrink: 0;
+      }
+
+      .task-text {
+        flex: 1;
+      }
+
+      .task-label {
+        font-size: 12px;
+        color: #9CA3AF;
+        margin-bottom: 2px;
+      }
+
+      .task-value {
+        font-size: 14px;
+        color: #111827;
+        font-weight: 500;
+      }
+
+      .task-mini-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 8px;
+      }
+
+      .task-mini-card {
+        background: #F9FAFB;
+        border-radius: 8px;
+        padding: 12px;
+        border-left: 3px solid #E5E7EB;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      .task-mini-card:hover {
+        background: #F3F4F6;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .task-mini-card.priority-high {
+        border-left-color: #EF4444;
+      }
+
+      .task-mini-card.priority-medium {
+        border-left-color: #F59E0B;
+      }
+
+      .task-mini-card.priority-low {
+        border-left-color: #10B981;
+      }
+
+      .task-mini-title {
+        font-weight: 600;
+        font-size: 13px;
+        color: #111827;
+        margin-bottom: 6px;
+        line-height: 1.3;
+      }
+
+      .task-mini-meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 6px;
+      }
+
+      .task-mini-due {
+        font-size: 11px;
+        color: #6B7280;
+      }
+
+      .task-mini-status {
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 10px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .task-mini-status.status-pending {
+        background: #FEF3C7;
+        color: #92400E;
+      }
+
+      .task-mini-status.status-inprogress {
+        background: #DBEAFE;
+        color: #0C4A6E;
+      }
+
+      .task-mini-status.status-done {
+        background: #DCFCE7;
+        color: #166534;
+      }
     </style>
   </head>
 
@@ -727,38 +1012,41 @@
 
     <div class="chat-header">
       <div class="chat-header-info">
-        <div class="contact-avatar yann">YU</div>
+        <div class="contact-avatar antoine">AK</div>
         <div>
-          <div class="chat-header-title">Yann Uliong</div>
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <span class="chat-header-title">Antoine Kreuder</span>
+            <span class="chat-header-subtitle">3ème • Mathématiques, Sciences</span>
+          </div>
           <div class="chat-header-status">En ligne</div>
         </div>
       </div>
       <div class="chat-actions">
         <button class="btn-icon" id="contactsBtn">👥</button>
         <button class="btn-icon">📞</button>
+        <button class="btn-icon" id="taskBtn">📋</button>
         <button class="btn-icon" id="infoBtn">ℹ️</button>
       </div>
     </div>
 
     <div class="messages">
-      <div class="message-group">
-        <div class="message-avatar yann">YU</div>
+      <div class="message-group message-own">
         <div class="message-content">
-          <div class="message-text">Bonjour Antoine ! Comment ça va avec les équations ?</div>
+          <div class="message-text">Bonjour ! Comment ça va avec les équations ?</div>
           <div class="message-status status-read">Vu 14:32</div>
         </div>
+        <div class="message-avatar yann">YU</div>
       </div>
 
-      <div class="message-group">
-        <div class="message-avatar yann">YU</div>
+      <div class="message-group message-own">
         <div class="message-content">
           <div class="message-text">Je te partage des ressources utiles pour bien comprendre.</div>
           <div class="message-status status-read">Vu 14:35</div>
         </div>
+        <div class="message-avatar yann">YU</div>
       </div>
 
-      <div class="message-group">
-        <div class="message-avatar yann">YU</div>
+      <div class="message-group message-own">
         <div class="message-content">
           <div class="message-file">
             <span class="message-file-icon">📄</span>
@@ -766,38 +1054,50 @@
           </div>
           <div class="message-status status-read">Vu 14:35</div>
         </div>
+        <div class="message-avatar yann">YU</div>
       </div>
 
-      <div class="message-group message-own">
+      <div class="message-group">
+        <div class="contact-avatar antoine">AK</div>
         <div class="message-content">
           <div class="message-text">Merci ! Je regarde ça de suite</div>
           <div class="message-status status-read">Vu 14:49</div>
         </div>
-        <div class="message-avatar antoine">AK</div>
       </div>
 
-      <div class="message-group message-own">
+      <div class="message-group">
+        <div class="contact-avatar antoine">AK</div>
         <div class="message-content">
           <div class="message-text">Je peux te poser une question sur l'exercice 3 ?</div>
           <div class="message-status status-read">Vu 14:52</div>
         </div>
-        <div class="message-avatar antoine">AK</div>
       </div>
 
-      <div class="message-group">
-        <div class="message-avatar yann">YU</div>
+      <div class="message-group message-own">
         <div class="message-content">
           <div class="message-text">Bien sûr ! N'hésite pas.</div>
           <div class="message-status status-read">Vu à l'instant</div>
         </div>
+        <div class="message-avatar yann">YU</div>
       </div>
 
-      <div class="message-group">
-        <div class="contact-avatar yann">YU</div>
+      <div class="message-group message-own">
         <div class="message-content">
           <div class="message-text">Voici les ressources utiles pour bien comprendre:</div>
           <div class="message-status status-read">Vu à l'instant</div>
         </div>
+        <div class="message-avatar yann">YU</div>
+      </div>
+
+      <div class="message-group message-own new-file-message hidden-file-message">
+        <div class="message-content">
+          <div class="message-file">
+            <span class="message-file-icon">📄</span>
+            <span class="file-name"></span>
+          </div>
+          <div class="message-status status-read">Envoyé</div>
+        </div>
+        <div class="message-avatar yann">YU</div>
       </div>
     </div>
 
@@ -819,24 +1119,31 @@
       </div>
       <div class="info-content">
         <div class="info-profile">
-          <div class="info-profile-avatar yann">YU</div>
-          <div class="info-profile-name">Yann Uliong</div>
+          <div class="info-profile-avatar antoine">AK</div>
+          <div class="info-profile-name">Antoine Kreuder</div>
           <div class="info-profile-status">En ligne</div>
         </div>
         <div class="info-section">
-          <div class="info-section-title">Informations</div>
+          <div class="info-section-title">Informations académiques</div>
           <div class="info-item">
-            <div class="info-icon">👨‍🏫</div>
+            <div class="info-icon">🎓</div>
             <div class="info-text">
-              <div class="info-label">Rôle</div>
-              <div class="info-value">Tuteur</div>
+              <div class="info-label">Niveau scolaire</div>
+              <div class="info-value">3ème (8ème grade)</div>
             </div>
           </div>
           <div class="info-item">
             <div class="info-icon">📚</div>
             <div class="info-text">
-              <div class="info-label">Matières</div>
-              <div class="info-value">Mathématiques, Sciences</div>
+              <div class="info-label">Matières suivies</div>
+              <div class="info-value">Mathématiques, Sciences, Français</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🎨</div>
+            <div class="info-text">
+              <div class="info-label">Centres d'intérêt</div>
+              <div class="info-value">Arts plastiques, manga, jeux vidéo</div>
             </div>
           </div>
         </div>
@@ -846,7 +1153,7 @@
             <div class="info-icon">📧</div>
             <div class="info-text">
               <div class="info-label">Email</div>
-              <div class="info-value">yann.uliong@learn.com</div>
+              <div class="info-value">antoine.kreuder@learn.com</div>
             </div>
           </div>
           <div class="info-item">
@@ -860,43 +1167,101 @@
       </div>
     </div>
 
+    <!-- Task Panel -->
+    <div class="task-panel" id="taskPanel">
+      <div class="task-header">
+        <div class="task-title">📋 Tâches assignées</div>
+        <button class="close-task-btn" id="closeTaskBtn">✕</button>
+      </div>
+      <div class="task-content">
+        <div class="task-section">
+          <div class="task-section-title">Tâches en cours</div>
+          <div class="task-mini-list">
+            <div class="task-mini-card priority-high">
+              <div class="task-mini-title">Équations du second degré</div>
+              <div class="task-mini-meta">
+                <span class="task-mini-due">📅 10 jan. 2026</span>
+                <span class="task-mini-status status-pending">Pendante</span>
+              </div>
+            </div>
+
+            <div class="task-mini-card priority-high">
+              <div class="task-mini-title">Rapport de Sciences</div>
+              <div class="task-mini-meta">
+                <span class="task-mini-due">📅 15 jan. 2026</span>
+                <span class="task-mini-status status-pending">Pendante</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-section">
+          <div class="task-section-title">Tâches actives</div>
+          <div class="task-item">
+            <div class="task-icon">✅</div>
+            <div class="task-text">
+              <div class="task-label">Complétées</div>
+              <div class="task-value">1 tâche</div>
+            </div>
+          </div>
+          <div class="task-item">
+            <div class="task-icon">🔄</div>
+            <div class="task-text">
+              <div class="task-label">En cours</div>
+              <div class="task-value">0 tâche</div>
+            </div>
+          </div>
+          <div class="task-item">
+            <div class="task-icon">⏳</div>
+            <div class="task-text">
+              <div class="task-label">En attente</div>
+              <div class="task-value">2 tâches</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="contacts-panel" id="contactsPanel">
       <div class="contacts-header">
-        <div class="contacts-title">👥 Mes Contacts</div>
+        <div class="contacts-title">👥 Mes Élèves</div>
         <button class="close-contacts-btn" id="closeContactsBtn">✕</button>
       </div>
-      <input type="text" class="search-box" placeholder="Rechercher un contact...">
+      <input type="text" class="search-box" placeholder="Rechercher un élève...">
       <div class="contacts-list">
         <div class="contact-item active">
-          <div class="contact-avatar yann">YU</div>
+          <div class="contact-avatar antoine">AK</div>
           <div class="contact-info">
-            <div class="contact-name">Yann Uliong</div>
+            <div class="contact-name">Antoine Kreuder</div>
+            <div class="contact-grade">3ème • Mathématiques</div>
             <div class="contact-status status-online">● En ligne</div>
           </div>
-          <div class="status-badge">2</div>
         </div>
 
         <div class="contact-item">
-          <div class="contact-avatar marie">MD</div>
+          <div class="contact-avatar sophie">SM</div>
           <div class="contact-info">
-            <div class="contact-name">Marie Dupont</div>
+            <div class="contact-name">Sophie Martin</div>
+            <div class="contact-grade">4ème • Sciences</div>
             <div class="contact-status">● Hors ligne (23h)</div>
           </div>
-          <div class="status-badge">3</div>
+          <div class="status-badge">2</div>
         </div>
 
         <div class="contact-item">
           <div class="contact-avatar jean">JL</div>
           <div class="contact-info">
             <div class="contact-name">Jean Leclerc</div>
+            <div class="contact-grade">5ème • Français</div>
             <div class="contact-status status-online">● En ligne</div>
           </div>
         </div>
 
         <div class="contact-item">
-          <div class="contact-avatar sophie">SB</div>
+          <div class="contact-avatar lea">LB</div>
           <div class="contact-info">
-            <div class="contact-name">Sophie Bernard</div>
+            <div class="contact-name">Léa Bernard</div>
+            <div class="contact-grade">3ème • Anglais</div>
             <div class="contact-status">● Hors ligne (2j)</div>
           </div>
         </div>
@@ -907,6 +1272,9 @@
       const contactsBtn = document.getElementById('contactsBtn');
       const closeContactsBtn = document.getElementById('closeContactsBtn');
       const contactsPanel = document.getElementById('contactsPanel');
+      const taskBtn = document.getElementById('taskBtn');
+      const closeTaskBtn = document.getElementById('closeTaskBtn');
+      const taskPanel = document.getElementById('taskPanel');
       const infoBtn = document.getElementById('infoBtn');
       const closeInfoBtn = document.getElementById('closeInfoBtn');
       const infoPanel = document.getElementById('infoPanel');
@@ -922,8 +1290,14 @@
         overlay.classList.remove('active');
       };
 
-      contactsBtn.addEventListener('click', () => {
+      const closeAllPanels = () => {
+        closePanel(contactsPanel);
+        closePanel(taskPanel);
         closePanel(infoPanel);
+      };
+
+      contactsBtn.addEventListener('click', () => {
+        closeAllPanels();
         openPanel(contactsPanel);
       });
 
@@ -931,8 +1305,17 @@
         closePanel(contactsPanel);
       });
 
+      taskBtn.addEventListener('click', () => {
+        closeAllPanels();
+        openPanel(taskPanel);
+      });
+
+      closeTaskBtn.addEventListener('click', () => {
+        closePanel(taskPanel);
+      });
+
       infoBtn.addEventListener('click', () => {
-        closePanel(contactsPanel);
+        closeAllPanels();
         openPanel(infoPanel);
       });
 
@@ -941,8 +1324,7 @@
       });
 
       overlay.addEventListener('click', () => {
-        closePanel(contactsPanel);
-        closePanel(infoPanel);
+        closeAllPanels();
       });
     </script>
   </body>
