@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Learn@Home - Messages | Maquette Mobile</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #F3F4F6;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .mobile-header {
+        background: white;
+        border-bottom: 1px solid #E5E7EB;
+        padding: 12px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .back-btn {
+        width: 44px;
+        height: 44px;
+        border: none;
+        background: transparent;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .back-btn:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
+      .header-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #111827;
+        flex: 1;
+        text-align: center;
+      }
+
+      .contacts-btn {
+        width: 44px;
+        height: 44px;
+        border: none;
+        background: transparent;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .contacts-btn:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
+      .chat-header {
+        padding: 16px;
+        border-bottom: 1px solid #E5E7EB;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+      }
+
+      .chat-header-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+      }
+
+      .contact-avatar {
+        width: 40px;
+        height: 40px;
+        background: #3B82F6;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        flex-shrink: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .contact-avatar.antoine {
+        background-image: url('../../../assets/pictures/antoine.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .contact-avatar.yann {
+        background-image: url('../../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .chat-header-title {
+        font-weight: 600;
+        color: #111827;
+        font-size: 16px;
+      }
+
+      .chat-header-status {
+        font-size: 12px;
+        color: #10B981;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .chat-header-status::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: #10B981;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .chat-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .btn-icon {
+        width: 44px;
+        height: 44px;
+        border: 1px solid #E5E7EB;
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        transition: all 0.3s;
+      }
+
+      .btn-icon:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
+      .messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        background: #FAFAFA;
+      }
+
+      .message-group {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+        align-items: flex-end;
+      }
+
+      .message-avatar {
+        width: 32px;
+        height: 32px;
+        background: #10B981;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 14px;
+        font-weight: 700;
+        flex-shrink: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        align-self: flex-end;
+      }
+
+      .message-avatar.antoine {
+        background-image: url('../../../assets/pictures/antoine.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .message-avatar.yann {
+        background-image: url('../../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .message-content {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .message-meta {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 4px;
+        font-size: 12px;
+      }
+
+      .message-author {
+        font-weight: 600;
+        color: #111827;
+      }
+
+      .message-time {
+        color: #9CA3AF;
+      }
+
+      .message-text {
+        background: white;
+        padding: 10px 14px;
+        border-radius: 8px;
+        color: #111827;
+        font-size: 14px;
+        line-height: 1.5;
+        word-wrap: break-word;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        min-width: 150px;
+        max-width: 85%;
+        width: fit-content;
+      }
+
+      .message-file {
+        background: white;
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: 1px solid #E5E7EB;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 150px;
+        max-width: 85%;
+        width: fit-content;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      }
+
+      .message-file-icon {
+        font-size: 20px;
+      }
+
+      .message-own {
+        justify-content: flex-end;
+        margin-left: auto;
+      }
+
+      .message-own .message-group {
+        flex-direction: row-reverse;
+        gap: 8px;
+      }
+
+      .message-own .message-text {
+        background: #3B82F6;
+        color: white;
+      }
+
+      .message-status {
+        font-size: 11px;
+        color: #9CA3AF;
+        margin-top: 4px;
+        text-align: left;
+        align-self: flex-start;
+      }
+
+      .message-own .message-content {
+        align-items: flex-end;
+      }
+
+      .message-own .message-status {
+        text-align: right;
+        align-self: flex-end;
+      }
+
+      .message-status.status-read {
+        color: #3B82F6;
+      }
+
+      .status-read::after {
+        content: ' ✓✓';
+      }
+
+      .chat-input-area {
+        padding: 12px 16px;
+        border-top: 1px solid #E5E7EB;
+        background: white;
+      }
+
+      .input-wrapper {
+        display: flex;
+        gap: 8px;
+        align-items: flex-end;
+      }
+
+      .message-input {
+        flex: 1;
+        padding: 12px 16px;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        font-size: 16px;
+        font-family: inherit;
+        resize: none;
+        max-height: 100px;
+        -webkit-appearance: none;
+      }
+
+      .message-input:focus {
+        outline: none;
+        border-color: #3B82F6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .send-btn {
+        width: 44px;
+        height: 44px;
+        background: #3B82F6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        transition: all 0.3s;
+        flex-shrink: 0;
+      }
+
+      .send-btn:hover,
+      .send-btn:active {
+        background: #1E40AF;
+      }
+
+      .send-btn:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
+      .contacts-panel {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: 90vh;
+        background: white;
+        border-radius: 20px 20px 0 0;
+        z-index: 1000;
+        transform: translateY(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .contacts-panel.open {
+        transform: translateY(0);
+      }
+
+      .contacts-header {
+        padding: 16px;
+        padding-top: 24px;
+        border-bottom: 1px solid #E5E7EB;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+      }
+
+      .contacts-header::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 4px;
+        background: #D1D5DB;
+        border-radius: 2px;
+      }
+
+      .contacts-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #111827;
+      }
+
+      .close-contacts-btn {
+        width: 44px;
+        height: 44px;
+        border: none;
+        background: transparent;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .search-box {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        font-size: 16px;
+        margin: 16px;
+        -webkit-appearance: none;
+      }
+
+      .contacts-list {
+        overflow-y: auto;
+        flex: 1;
+      }
+
+      .contact-item {
+        padding: 16px;
+        border-bottom: 1px solid #F3F4F6;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-height: 44px;
+      }
+
+      .contact-item:active {
+        background: #F9FAFB;
+      }
+
+      .contact-item.active {
+        background: #E0F2FE;
+      }
+
+      .contact-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .contact-name {
+        font-weight: 600;
+        color: #111827;
+        font-size: 14px;
+      }
+
+      .contact-status {
+        font-size: 12px;
+        color: #9CA3AF;
+        margin-top: 2px;
+      }
+
+      .status-online {
+        color: #10B981;
+      }
+
+      .status-badge {
+        background: #EF4444;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+
+      .overlay.active {
+        display: block;
+      }
+
+      .info-panel {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: 90vh;
+        background: white;
+        border-radius: 20px 20px 0 0;
+        z-index: 1000;
+        transform: translateY(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+        overflow-y: auto;
+      }
+
+      .info-panel.open {
+        transform: translateY(0);
+      }
+
+      .info-header {
+        padding: 16px;
+        padding-top: 24px;
+        border-bottom: 1px solid #E5E7EB;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 10;
+      }
+
+      .info-header::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 4px;
+        background: #D1D5DB;
+        border-radius: 2px;
+      }
+
+      .info-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #111827;
+      }
+
+      .close-info-btn {
+        width: 44px;
+        height: 44px;
+        border: none;
+        background: transparent;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .info-content {
+        padding: 24px 16px;
+      }
+
+      .info-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 32px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #E5E7EB;
+      }
+
+      .info-profile-avatar {
+        width: 80px;
+        height: 80px;
+        background: #3B82F6;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 32px;
+        margin-bottom: 12px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .info-profile-avatar.antoine {
+        background-image: url('../../../assets/pictures/antoine.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .info-profile-avatar.yann {
+        background-image: url('../../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .info-profile-name {
+        font-size: 20px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 4px;
+      }
+
+      .info-profile-status {
+        font-size: 14px;
+        color: #10B981;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .info-profile-status::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: #10B981;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .info-section {
+        margin-bottom: 24px;
+      }
+
+      .info-section-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #6B7280;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid #F3F4F6;
+      }
+
+      .info-item:last-child {
+        border-bottom: none;
+      }
+
+      .info-icon {
+        font-size: 20px;
+        width: 24px;
+        text-align: center;
+      }
+
+      .info-text {
+        flex: 1;
+      }
+
+      .info-label {
+        font-size: 12px;
+        color: #9CA3AF;
+        margin-bottom: 2px;
+      }
+
+      .info-value {
+        font-size: 14px;
+        color: #111827;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="mobile-header">
+      <a href="dashboard.html" class="back-btn">←</a>
+      <div class="header-title">Messages</div>
+      <div style="width: 44px;"></div>
+    </div>
+
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="contact-avatar yann">YU</div>
+        <div>
+          <div class="chat-header-title">Yann Uliong</div>
+          <div class="chat-header-status">En ligne</div>
+        </div>
+      </div>
+      <div class="chat-actions">
+        <button class="btn-icon" id="contactsBtn">👥</button>
+        <button class="btn-icon">📞</button>
+        <button class="btn-icon" id="infoBtn">ℹ️</button>
+      </div>
+    </div>
+
+    <div class="messages">
+      <div class="message-group">
+        <div class="message-avatar yann">YU</div>
+        <div class="message-content">
+          <div class="message-text">Bonjour Antoine ! Comment ça va avec les équations ?</div>
+          <div class="message-status status-read">Vu 14:32</div>
+        </div>
+      </div>
+
+      <div class="message-group">
+        <div class="message-avatar yann">YU</div>
+        <div class="message-content">
+          <div class="message-text">Je te partage des ressources utiles pour bien comprendre.</div>
+          <div class="message-status status-read">Vu 14:35</div>
+        </div>
+      </div>
+
+      <div class="message-group">
+        <div class="message-avatar yann">YU</div>
+        <div class="message-content">
+          <div class="message-file">
+            <span class="message-file-icon">📄</span>
+            <span>Exercices_Math.pdf (2.4 MB)</span>
+          </div>
+          <div class="message-status status-read">Vu 14:35</div>
+        </div>
+      </div>
+
+      <div class="message-group message-own">
+        <div class="message-content">
+          <div class="message-text">Merci ! Je regarde ça de suite</div>
+          <div class="message-status status-read">Vu 14:49</div>
+        </div>
+        <div class="message-avatar antoine">AK</div>
+      </div>
+
+      <div class="message-group message-own">
+        <div class="message-content">
+          <div class="message-text">Je peux te poser une question sur l'exercice 3 ?</div>
+          <div class="message-status status-read">Vu 14:52</div>
+        </div>
+        <div class="message-avatar antoine">AK</div>
+      </div>
+
+      <div class="message-group">
+        <div class="message-avatar yann">YU</div>
+        <div class="message-content">
+          <div class="message-text">Bien sûr ! N'hésite pas.</div>
+          <div class="message-status status-read">Vu à l'instant</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <div class="input-wrapper">
+        <button class="btn-icon">📎</button>
+        <textarea class="message-input" placeholder="Tapez votre message..." rows="1"></textarea>
+        <button class="send-btn">➤</button>
+      </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Info Panel -->
+    <div class="info-panel" id="infoPanel">
+      <div class="info-header">
+        <div class="info-title">Informations</div>
+        <button class="close-info-btn" id="closeInfoBtn">✕</button>
+      </div>
+      <div class="info-content">
+        <div class="info-profile">
+          <div class="info-profile-avatar yann">YU</div>
+          <div class="info-profile-name">Yann Uliong</div>
+          <div class="info-profile-status">En ligne</div>
+        </div>
+        <div class="info-section">
+          <div class="info-section-title">Informations</div>
+          <div class="info-item">
+            <div class="info-icon">👨‍🏫</div>
+            <div class="info-text">
+              <div class="info-label">Rôle</div>
+              <div class="info-value">Tuteur</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📚</div>
+            <div class="info-text">
+              <div class="info-label">Matières</div>
+              <div class="info-value">Mathématiques, Sciences</div>
+            </div>
+          </div>
+        </div>
+        <div class="info-section">
+          <div class="info-section-title">Contact</div>
+          <div class="info-item">
+            <div class="info-icon">📧</div>
+            <div class="info-text">
+              <div class="info-label">Email</div>
+              <div class="info-value">yann.uliong@learn.com</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📱</div>
+            <div class="info-text">
+              <div class="info-label">Téléphone</div>
+              <div class="info-value">+33 6 12 34 56 78</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contacts-panel" id="contactsPanel">
+      <div class="contacts-header">
+        <div class="contacts-title">👥 Mes Contacts</div>
+        <button class="close-contacts-btn" id="closeContactsBtn">✕</button>
+      </div>
+      <input type="text" class="search-box" placeholder="Rechercher un contact...">
+      <div class="contacts-list">
+        <div class="contact-item active">
+          <div class="contact-avatar yann">YU</div>
+          <div class="contact-info">
+            <div class="contact-name">Yann Uliong</div>
+            <div class="contact-status status-online">● En ligne</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-avatar" style="background: #10B981;">MD</div>
+          <div class="contact-info">
+            <div class="contact-name">Marie Dupont</div>
+            <div class="contact-status">● Hors ligne (23h)</div>
+          </div>
+          <div class="status-badge">2</div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-avatar" style="background: #F59E0B;">JL</div>
+          <div class="contact-info">
+            <div class="contact-name">Jean Leclerc</div>
+            <div class="contact-status status-online">● En ligne</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-avatar" style="background: #8B5CF6;">SB</div>
+          <div class="contact-info">
+            <div class="contact-name">Sophie Bernard</div>
+            <div class="contact-status">● Hors ligne (2j)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const contactsBtn = document.getElementById('contactsBtn');
+      const closeContactsBtn = document.getElementById('closeContactsBtn');
+      const contactsPanel = document.getElementById('contactsPanel');
+      const infoBtn = document.getElementById('infoBtn');
+      const closeInfoBtn = document.getElementById('closeInfoBtn');
+      const infoPanel = document.getElementById('infoPanel');
+      const overlay = document.getElementById('overlay');
+
+      const openPanel = (panel) => {
+        panel.classList.add('open');
+        overlay.classList.add('active');
+      };
+
+      const closePanel = (panel) => {
+        panel.classList.remove('open');
+        overlay.classList.remove('active');
+      };
+
+      contactsBtn.addEventListener('click', () => {
+        closePanel(infoPanel);
+        openPanel(contactsPanel);
+      });
+
+      closeContactsBtn.addEventListener('click', () => {
+        closePanel(contactsPanel);
+      });
+
+      infoBtn.addEventListener('click', () => {
+        closePanel(contactsPanel);
+        openPanel(infoPanel);
+      });
+
+      closeInfoBtn.addEventListener('click', () => {
+        closePanel(infoPanel);
+      });
+
+      overlay.addEventListener('click', () => {
+        closePanel(contactsPanel);
+        closePanel(infoPanel);
+      });
+    </script>
+  </body>
+
+</html>

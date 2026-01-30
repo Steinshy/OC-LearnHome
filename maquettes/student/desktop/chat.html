@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn@Home - Messages | Maquette Desktop</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #F3F4F6;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        background: white;
+        border-right: 1px solid #E5E7EB;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sidebar-header {
+        padding: 16px;
+        border-bottom: 1px solid #E5E7EB;
+      }
+
+      .search-box {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      .search-box::placeholder {
+        color: #9CA3AF;
+      }
+
+      .search-box::placeholder {
+        transition: opacity 0.2s ease;
+      }
+
+      .search-box:focus::placeholder {
+        opacity: 0;
+      }
+
+      .add-contact-btn {
+        width: 100%;
+        margin-top: 12px;
+        padding: 10px 12px;
+        background: #3B82F6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        display: block;
+        text-align: center;
+      }
+
+      .add-contact-btn:hover {
+        background: #1E40AF;
+      }
+
+      .add-contact-btn:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
+      label.add-contact-btn {
+        display: block;
+      }
+
+      .contacts-list {
+        overflow-y: auto;
+        flex: 1;
+      }
+
+      .contact-item {
+        padding: 12px 16px;
+        border-bottom: 1px solid #F3F4F6;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .contact-item:hover {
+        background: #F9FAFB;
+      }
+
+      .contact-item.active {
+        background: #E0F2FE;
+        border-right: 4px solid #3B82F6;
+      }
+
+      .contact-avatar {
+        width: 40px;
+        height: 40px;
+        background: #3B82F6;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        flex-shrink: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .contact-avatar.antoine {
+        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .contact-avatar.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .contact-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .contact-name {
+        font-weight: 600;
+        color: #111827;
+        font-size: 14px;
+      }
+
+      .contact-status {
+        font-size: 12px;
+        color: #9CA3AF;
+        margin-top: 2px;
+      }
+
+      .status-online {
+        color: #10B981;
+      }
+
+      .status-badge {
+        background: #EF4444;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      .chat-container {
+        display: flex;
+        flex-direction: column;
+        background: white;
+      }
+
+      .chat-header {
+        padding: 24px 16px 16px 16px;
+        border-bottom: 1px solid #E5E7EB;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .chat-header-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .chat-header-title {
+        font-weight: 600;
+        color: #111827;
+        font-size: 16px;
+      }
+
+      .chat-header-status {
+        font-size: 12px;
+        color: #10B981;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .chat-header-status::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: #10B981;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .chat-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .btn-icon {
+        width: 36px;
+        height: 36px;
+        border: 1px solid #E5E7EB;
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        transition: all 0.3s;
+        position: relative;
+      }
+
+      .btn-icon:hover {
+        background: #F3F4F6;
+        border-color: #D1D5DB;
+        transform: scale(1.08);
+      }
+
+      .btn-icon:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
+      label.btn-icon {
+        display: flex;
+        padding: 0;
+        border: 1px solid #E5E7EB;
+      }
+
+
+      .messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        background: #FAFAFA;
+      }
+
+      .message-group {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+        align-items: flex-end;
+      }
+
+      .hidden-auto-message {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .hidden-auto-message.visible {
+        display: flex;
+        opacity: 1;
+      }
+
+      .message-avatar {
+        width: 32px;
+        height: 32px;
+        background: #10B981;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 14px;
+        font-weight: 700;
+        flex-shrink: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        align-self: flex-end;
+      }
+
+      .message-avatar.antoine {
+        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .message-avatar.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .message-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .message-meta {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 4px;
+        font-size: 12px;
+      }
+
+      .message-author {
+        font-weight: 600;
+        color: #111827;
+      }
+
+      .message-time {
+        color: #9CA3AF;
+      }
+
+      .message-text {
+        background: white;
+        padding: 10px 14px;
+        border-radius: 8px;
+        color: #111827;
+        font-size: 14px;
+        line-height: 1.5;
+        max-width: 400px;
+        word-wrap: break-word;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      }
+
+      .message-file {
+        background: white;
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: 1px solid #E5E7EB;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        max-width: 300px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      }
+
+      .message-file-icon {
+        font-size: 20px;
+      }
+
+      .new-file-message {
+        /* same layout as message-own */
+        justify-content: flex-end;
+        margin-left: auto;
+      }
+
+      .new-file-message .file-name {
+        font-size: 14px;
+        color: #111827;
+        word-break: break-word;
+      }
+
+      .message-own {
+        justify-content: flex-end;
+        margin-left: auto;
+      }
+
+      .message-own .message-group {
+        flex-direction: row-reverse;
+        gap: 8px;
+      }
+
+      .message-own .message-text {
+        background: #3B82F6;
+        color: white;
+        max-width: 400px;
+      }
+
+      .message-status {
+        font-size: 12px;
+        color: #9CA3AF;
+        margin-top: 4px;
+        align-self: flex-start;
+      }
+
+      .message-own .message-content {
+        align-items: flex-end;
+      }
+
+      .message-own .message-status {
+        text-align: right;
+        align-self: flex-end;
+      }
+
+      .message-status.status-read {
+        color: #3B82F6;
+      }
+
+      .hidden-file-message {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .hidden-file-message.visible {
+        display: flex;
+        opacity: 1;
+      }
+
+      .status-sent::after {
+        content: '✓';
+      }
+
+      .status-read::after {
+        content: '✓✓';
+      }
+
+      .chat-input-area {
+        padding: 20px 16px 16px 16px;
+        border-top: 1px solid #E5E7EB;
+        background: white;
+      }
+
+      .input-wrapper {
+        display: flex;
+        gap: 8px;
+        align-items: flex-end;
+      }
+
+
+      /* === Tooltip reusable classes === */
+      [data-hover] {
+        position: relative;
+      }
+
+      [data-hover]::after {
+        content: attr(data-hover);
+        position: absolute;
+        background: #111827;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s, transform 0.2s;
+        z-index: 9999;
+      }
+
+      [data-hover].hover-up::after {
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      [data-hover].hover-up:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-4px);
+      }
+
+      [data-hover].hover-down::after {
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      [data-hover].hover-down:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(4px);
+      }
+
+      .message-input {
+        flex: 1;
+        padding: 10px 14px;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        font-size: 14px;
+        font-family: inherit;
+        resize: none;
+        max-height: 100px;
+      }
+
+      .message-input:focus {
+        outline: none;
+        border-color: #3B82F6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .message-input::placeholder {
+        transition: opacity 0.2s ease;
+      }
+
+      .message-input:focus::placeholder {
+        opacity: 0;
+      }
+
+      .send-btn {
+        width: 36px;
+        height: 36px;
+        background: #3B82F6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        transition: all 0.3s;
+        flex-shrink: 0;
+      }
+
+      .send-btn:hover {
+        background: #1E40AF;
+      }
+
+      .send-btn:active {
+        transform: scale(0.95);
+      }
+
+      .send-btn:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
+      .empty-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: #9CA3AF;
+      }
+
+      .empty-icon {
+        font-size: 64px;
+        margin-bottom: 16px;
+        opacity: 0.5;
+      }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+      }
+
+      #contacts-modal-toggle:checked~#contacts-modal,
+      #info-modal-toggle:checked~#info-modal {
+        display: flex;
+      }
+
+      .modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal-content {
+        position: relative;
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        width: 320px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+      }
+
+      .modal-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .modal-section {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .contacts-list-modal {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 16px;
+        max-height: 240px;
+        overflow-y: auto;
+      }
+
+      .contact-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: space-between;
+      }
+
+      .template-contact.hidden {
+        display: none;
+      }
+
+      .modal-action-btn {
+        padding: 8px 12px;
+        background: #3B82F6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .modal-action-btn:hover {
+        background: #1E40AF;
+      }
+
+      .modal-action-btn:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
+      .modal-action-btn.remove-contact {
+        background: #EF4444;
+      }
+
+      .modal-action-btn.remove-contact:hover {
+        background: #B91C1C;
+      }
+
+      .modal-action-btn.add-contact {
+        width: 100%;
+        margin-top: 8px;
+        background: #3B82F6;
+      }
+
+      .modal-action-btn.add-contact:disabled {
+        background: #9CA3AF;
+        cursor: not-allowed;
+        opacity: 0.8;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .modal-avatar {
+        width: 48px;
+        height: 48px;
+        background: #3B82F6;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 18px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .modal-avatar.antoine {
+        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .modal-avatar.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .info-section {
+        margin-bottom: 24px;
+      }
+
+      .info-section-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #6B7280;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid #F3F4F6;
+      }
+
+      .info-item:last-child {
+        border-bottom: none;
+      }
+
+      .info-icon {
+        font-size: 20px;
+        width: 24px;
+        text-align: center;
+      }
+
+      .info-text {
+        flex: 1;
+      }
+
+      .info-label {
+        font-size: 12px;
+        color: #9CA3AF;
+        margin-bottom: 2px;
+      }
+
+      .info-value {
+        font-size: 14px;
+        color: #111827;
+        font-weight: 500;
+      }
+
+      .modal-name {
+        font-weight: 600;
+        font-size: 16px;
+        color: #111827;
+      }
+
+      .modal-status {
+        font-size: 14px;
+        color: #10B981;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .modal-status::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: #10B981;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .modal-close {
+        margin-top: 8px;
+        width: 100%;
+        padding: 10px 0;
+        background: #3B82F6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .modal-close:hover {
+        background: #1E40AF;
+      }
+
+      .modal-close:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
+      label.modal-close {
+        display: block;
+        margin-top: 8px;
+        width: 100%;
+        padding: 10px 0;
+        background: #3B82F6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      label.modal-close:hover {
+        background: #1E40AF;
+      }
+
+      .copyright {
+        text-align: center;
+        margin-top: 32px;
+        padding-top: 20px;
+        border-top: 1px solid #E5E7EB;
+        color: #94A3B8;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="checkbox" id="contacts-modal-toggle" style="display: none;">
+    <input type="checkbox" id="info-modal-toggle" style="display: none;">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <input type="text" class="search-box" placeholder="Rechercher un contact...">
+          <label for="contacts-modal-toggle" class="add-contact-btn hover-up" data-hover="Ajouter un contact">+ Ajouter
+            un contact</label>
+        </div>
+
+        <div class="contacts-list">
+          <div class="contact-item active">
+            <div class="contact-avatar yann">YU</div>
+            <div class="contact-info">
+              <div class="contact-name">Yann Uliong</div>
+              <div class="contact-status status-online">● En ligne</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-avatar" style="background: #10B981;">MD</div>
+            <div class="contact-info">
+              <div class="contact-name">Marie Dupont</div>
+              <div class="contact-status">● Hors ligne (23h)</div>
+            </div>
+            <div class="status-badge">2</div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-avatar" style="background: #F59E0B;">JL</div>
+            <div class="contact-info">
+              <div class="contact-name">Jean Leclerc</div>
+              <div class="contact-status status-online">● En ligne</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-avatar" style="background: #8B5CF6;">SB</div>
+            <div class="contact-info">
+              <div class="contact-name">Sophie Bernard</div>
+              <div class="contact-status">● Hors ligne (2j)</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="chat-container">
+        <div class="chat-header">
+          <div class="chat-header-info">
+            <div class="contact-avatar yann">YU</div>
+            <div>
+              <div class="chat-header-title">Yann Uliong</div>
+              <div class="chat-header-status">En ligne</div>
+            </div>
+          </div>
+          <div class="chat-actions">
+            <button class="btn-icon hover-down" data-hover="Appel audio">📞</button>
+            <button class="btn-icon hover-down" data-hover="Appel vidéo">📹</button>
+            <label for="info-modal-toggle" class="btn-icon hover-down" data-hover="Informations">ℹ️</label>
+          </div>
+        </div>
+
+        <div class="messages">
+          <div class="message-group">
+            <div class="contact-avatar yann">YU</div>
+            <div class="message-content">
+              <div class="message-text">Bonjour Antoine ! Comment ça va avec les équations ?</div>
+              <div class="message-status status-read">Vu 14:32</div>
+            </div>
+          </div>
+
+          <div class="message-group">
+            <div class="contact-avatar yann">YU</div>
+            <div class="message-content">
+              <div class="message-text">Je te partage des ressources utiles pour bien comprendre.</div>
+              <div class="message-status status-read">Vu 14:35</div>
+            </div>
+          </div>
+
+          <div class="message-group">
+            <div class="contact-avatar yann">YU</div>
+            <div class="message-content">
+              <div class="message-file">
+                <span class="message-file-icon">📄</span>
+                <span>Exercices_Math.pdf (2.4 MB)</span>
+              </div>
+              <div class="message-status status-read">Vu 14:35</div>
+            </div>
+          </div>
+
+          <div class="message-group message-own">
+            <div class="message-content">
+              <div class="message-text">Merci ! Je regarde ça de suite</div>
+              <div class="message-status status-read">Vu 14:49</div>
+            </div>
+            <div class="message-avatar antoine">AK</div>
+          </div>
+
+          <div class="message-group message-own">
+            <div class="message-content">
+              <div class="message-text">Je peux te poser une question sur l'exercice 3 ?</div>
+              <div class="message-status status-read">Vu 14:52</div>
+            </div>
+            <div class="message-avatar antoine">AK</div>
+          </div>
+
+          <div class="message-group">
+            <div class="contact-avatar yann">YU</div>
+            <div class="message-content">
+              <div class="message-text">Bien sûr ! N'hésite pas.</div>
+              <div class="message-status status-read">Vu à l'instant</div>
+            </div>
+          </div>
+
+          <div class="message-group message-own hidden-auto-message">
+            <div class="message-content">
+              <div class="message-text">Oui vas‑y je t’écoute !</div>
+              <div class="message-status status-read">Vu à l'instant</div>
+            </div>
+            <div class="message-avatar antoine">AK</div>
+          </div>
+          <div class="message-group message-own new-file-message hidden-file-message">
+            <div class="message-content">
+              <div class="message-file">
+                <span class="message-file-icon">📄</span>
+                <span class="file-name"></span>
+              </div>
+              <div class="message-status status-read">Envoyé</div>
+            </div>
+            <div class="message-avatar antoine">AK</div>
+          </div>
+        </div>
+
+        <div class="chat-input-area">
+          <div class="input-wrapper">
+            <button class="btn-icon hover-up" id="attachment-btn" data-hover="Joindre un fichier">📎</button>
+            <input type="file" id="file-input" style="display: none;">
+            <textarea class="message-input" id="message-input" placeholder="Tapez votre message..." rows="1"></textarea>
+            <button class="send-btn hover-up" id="send-btn" data-hover="Envoyer">➤</button>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div id="contacts-modal" class="modal">
+      <label for="contacts-modal-toggle" class="modal-backdrop"></label>
+      <div class="modal-content">
+        <h2 class="modal-title">Gérer les contacts</h2>
+
+        <div class="modal-section contacts-list-modal">
+          <div class="contact-row">
+            <div class="modal-avatar" style="background:#10B981;">MD</div>
+            <div class="modal-name">Marie Dupont</div>
+            <button class="modal-action-btn remove-contact">Supprimer</button>
+          </div>
+          <div class="contact-row">
+            <div class="modal-avatar" style="background:#F59E0B;">JL</div>
+            <div class="modal-name">Jean Leclerc</div>
+            <button class="modal-action-btn remove-contact">Supprimer</button>
+          </div>
+          <div class="contact-row hidden">
+            <div class="modal-avatar" style="background:#EC4899;">AM</div>
+            <div class="modal-name">Alice Moreau</div>
+            <button class="modal-action-btn remove-contact">Supprimer</button>
+          </div>
+          <div class="contact-row hidden">
+            <div class="modal-avatar" style="background:#06B6D4;">BL</div>
+            <div class="modal-name">Bruno Lefevre</div>
+            <button class="modal-action-btn remove-contact">Supprimer</button>
+          </div>
+        </div>
+
+        <button id="add-contact-confirm" class="modal-action-btn add-contact">+
+          Ajouter un contact</button>
+        <label for="contacts-modal-toggle" class="modal-close">Fermer</label>
+      </div>
+    </div>
+    <div id="info-modal" class="modal">
+      <label for="info-modal-toggle" class="modal-backdrop"></label>
+      <div class="modal-content">
+        <h2 class="modal-title">Informations du contact</h2>
+        <div class="modal-section">
+          <div class="modal-avatar yann">YU</div>
+          <div>
+            <div class="modal-name">Yann Uliong</div>
+            <div class="modal-status">En ligne</div>
+          </div>
+        </div>
+        <div class="info-content">
+          <div class="info-section">
+            <div class="info-section-title">Informations</div>
+            <div class="info-item">
+              <div class="info-icon">👨‍🏫</div>
+              <div class="info-text">
+                <div class="info-label">Rôle</div>
+                <div class="info-value">Tuteur</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">📚</div>
+              <div class="info-text">
+                <div class="info-label">Matières</div>
+                <div class="info-value">Mathématiques, Sciences</div>
+              </div>
+            </div>
+          </div>
+          <div class="info-section">
+            <div class="info-section-title">Contact</div>
+            <div class="info-item">
+              <div class="info-icon">📧</div>
+              <div class="info-text">
+                <div class="info-label">Email</div>
+                <div class="info-value">yann.uliong@learn.com</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">📱</div>
+              <div class="info-text">
+                <div class="info-label">Téléphone</div>
+                <div class="info-value">+33 6 12 34 56 78</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <label for="info-modal-toggle" class="modal-close">Fermer</label>
+      </div>
+    </div>
+    <script>
+      // Message sending and file upload functionality removed
+    </script>
+
+    <div class="copyright">
+      © 2026 Learn@Home. All rights reserved.
+    </div>
+  </body>
+
+</html>
