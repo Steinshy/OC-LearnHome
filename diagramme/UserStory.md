@@ -131,10 +131,42 @@
 **Je souhaite** ouvrir une fenêtre d’ajout et renseigner les informations nécessaires  
 **Afin de** ajouter un nouveau contact.
 
-#### Modification ou suppression d’un contact
-**En tant que** utilisateur connecté  
-**Je souhaite** modifier ou supprimer un contact existant  
+#### Modification ou suppression d'un contact
+**En tant que** utilisateur connecté
+**Je souhaite** modifier ou supprimer un contact existant
 **Afin de** maintenir à jour ma liste de contacts.
+
+<h2 align="center">Paramètres</h2>
+
+#### Accès à la page des paramètres
+**En tant que** utilisateur connecté
+**Je souhaite** accéder à la page des paramètres
+**Afin de** gérer mes préférences et informations de compte.
+
+#### Mise à jour des informations personnelles
+**En tant que** utilisateur connecté
+**Je souhaite** mettre à jour mon prénom, nom, email et téléphone
+**Afin de** maintenir mon profil à jour.
+
+#### Modification du mot de passe
+**En tant que** utilisateur connecté
+**Je souhaite** changer mon mot de passe en saisissant mon mot de passe actuel et un nouveau mot de passe
+**Afin de** sécuriser l'accès à mon compte.
+
+#### Configuration des préférences de notification
+**En tant que** utilisateur connecté
+**Je souhaite** gérer les types de notifications (messages, tâches, événements) et les canaux (email, push)
+**Afin de** recevoir uniquement les alertes qui me sont pertinentes.
+
+#### Ajustement des préférences d'affichage
+**En tant que** utilisateur connecté
+**Je souhaite** modifier mes préférences de langue, fuseau horaire et thème d'affichage
+**Afin de** personnaliser mon expérience utilisateur.
+
+#### Gestion de la confidentialité et des données
+**En tant que** utilisateur connecté
+**Je souhaite** contrôler la visibilité de mon profil, le partage de données et les communications marketing
+**Afin de** gérer ma vie privée et mes préférences de communication.
 
 <h2 align="center">Cas spécifiques</h2>
 
@@ -160,48 +192,82 @@ Ces user stories sont la documentation fonctionnelle de Learn@Home, couvrant l'e
 
 ## Diagramme de Flux Utilisateur
 
+### Flux Élève
+
 ```
-                          ┌─────────────────┐
-                          │ Non Connecté    │
-                          └────────┬────────┘
-                                   │
-                    ┌──────────────┴──────────────┐
-                    ▼                             ▼
-              ┌──────────┐                ┌──────────────┐
-              │ Connexion│                │ Inscription  │
-              └────┬─────┘                └──────┬───────┘
-                   │                             │
-                   │                    Valider les infos
-                   │                             │
-                   │ Identifiants valides        │
-                   └──────────────┬──────────────┘
-                                  ▼
-                          ┌─────────────────┐
-                          │ Utilisateur     │
-                          │ Connecté        │
-                          └────────┬────────┘
-                                   │
-                ┌──────────────────┼──────────────────┐
-                ▼                  ▼                  ▼
-         ┌────────────┐      ┌──────────┐      ┌──────────────┐
-         │ Tableau de │      │   Chat   │      │  Calendrier  │
-         │   Bord     │      └──────────┘      └──────────────┘
-         └──────┬─────┘            │                   │
-                │                  ▼                   ▼
-                │           ┌──────────────┐   ┌──────────────┐
-                │           │ Voir Messages│   │ Voir Événements│
-                │           │ Envoyer Msg  │   │ Créer Événement│
-                │           │ Ajouter Contact  │ Modifier Evt │
-                │           └──────────────┘   └──────────────┘
-                ▼
-         ┌──────────────┐
-         │   Tâches     │
-         └──────┬───────┘
-                │
-         ┌──────┴──────┐
-         ▼             ▼
-    ┌────────┐    ┌─────────┐
-    │ Voir   │    │ Créer   │
-    │ Tâches │    │ Tâche   │
-    └────────┘    └─────────┘
+                          ┌─────────────────────────┐
+                          │     Non Connecté        │
+                          └──────────┬──────────────┘
+                                     │
+                     ┌───────────────┴────────────────┐
+                     │                                │
+                     ▼                                ▼
+                ┌──────────────┐           ┌──────────────────┐
+                │  Connexion   │           │  Inscription     │
+                └────┬─────────┘           └────────┬─────────┘
+                     │                              │
+                     └──────────────┬───────────────┘
+                                    │ Validation ok
+                    ┌───────────────┴───────────────┐
+                    │                               │
+                    ▼                               ▼
+            ┌──────────────────┐         ┌──────────────────┐
+            │  Récupération    │         │  Élève Connecté  │
+            │  mot de passe    │         └────────┬─────────┘
+            └──────────────────┘                  │
+                                        ┌─────────┼───────────────┬────────────────┬─────────────────┐
+                                        │         │               │                │                 │
+                                        ▼         ▼               ▼                ▼                 ▼
+                            ┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐
+                            │ Tableau Bord ││    Chat      ││ Calendrier   ││   Tâches     ││ Paramètres   │
+                            └──────┬───────┘└──────┬───────┘└──────┬───────┘└──────┬───────┘└──────┬───────┘
+                                   │               │               │               │               │
+                                   ▼               ▼               ▼               ▼               ▼
+                            ┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐
+                            │ Msg non lus  ││ Messages     ││ Consulter    ││ Consulter    ││ Infos        │
+                            │ Tâches       ││ Envoyer      ││              ││              ││ Sécurité     │
+                            │ Événements   ││ Fichiers     ││              ││              ││ Notifications│
+                            │              ││ Contacts     ││              ││              ││ Affichage    │
+                            │              ││ Confidentiel ││              ││              ││ Supprimer    │
+                            └──────────────┘└──────────────┘└──────────────┘└──────────────┘└──────────────┘
+```
+
+### Flux Tuteur
+
+```
+                          ┌─────────────────────────┐
+                          │     Non Connecté        │
+                          └──────────┬──────────────┘
+                                     │
+                     ┌───────────────┴────────────────┐
+                     │                                │
+                     ▼                                ▼
+                ┌──────────────┐           ┌──────────────────┐
+                │  Connexion   │           │  Inscription     │
+                └────┬─────────┘           └────────┬─────────┘
+                     │                              │
+                     └──────────────┬───────────────┘
+                                    │
+                    ┌───────────────┴───────────────┐
+                    │                               │
+                    ▼                               ▼
+            ┌──────────────────┐         ┌──────────────────┐
+            │  Récupération    │         │  Tuteur Connecté │
+            │  mot de passe    │         └────────┬─────────┘
+            └──────────────────┘                  │
+                                        ┌─────────┼───────────────┬────────────────┬─────────────────┐
+                                        │         │               │                │                 │
+                                        ▼         ▼               ▼                ▼                 ▼
+                            ┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐
+                            │ Tableau Bord ││    Chat      ││ Calendrier   ││    Tâches    ││ Paramètres   │
+                            └──────┬───────┘└──────┬───────┘└──────┬───────┘└──────┬───────┘└──────┬───────┘
+                                   │               │               │               │               │
+                                   ▼               ▼               ▼               ▼               ▼
+                            ┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐
+                            │ Msg non lus  ││ Messages     ││ Consulter    ││ Consulter    ││ Infos        │
+                            │ Tâches       ││ Envoyer      ││ Création     ││ Création     ││ Sécurité     │
+                            │ Calendrier   ││ Fichiers     ││ Modifier     ││ Modifier     ││ Notifications│
+                            │ Chat         ││ Contacts     ││ Supprimer    ││ Supprimer    ││ Affichage    │
+                            │ Paramètres   ││ Informaition ││              ││              ││ Supprimer    │
+                            └──────────────┘└──────────────┘└──────────────┘└──────────────┘└──────────────┘     
 ```
