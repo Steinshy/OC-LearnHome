@@ -26,6 +26,7 @@
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         background: var(--bg);
+        overflow: hidden;
       }
 
       .layout {
@@ -89,6 +90,7 @@
         align-items: center;
         gap: 12px;
         transition: all 0.3s;
+        font-size: 14px;
       }
 
       .nav-item:hover {
@@ -123,9 +125,20 @@
       }
 
       .user-profile {
-        padding: 24px;
+        padding: 12px 16px;
+        margin: 0 12px;
         border-top: 1px solid var(--border);
         margin-top: auto;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        transition: background 0.2s;
+        border-radius: 8px;
+      }
+
+      .user-profile:hover {
+        background: var(--bg);
       }
 
       .user-avatar {
@@ -138,8 +151,20 @@
         justify-content: center;
         color: white;
         font-weight: 700;
-        margin-bottom: 8px;
         position: relative;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        flex-shrink: 0;
+      }
+
+      .user-avatar.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-size: 0;
       }
 
       .user-avatar-badge {
@@ -159,10 +184,18 @@
         border: 2px solid white;
       }
 
+      .user-info {
+        flex: 1;
+        min-width: 0;
+      }
+
       .user-name {
         font-weight: 600;
         color: var(--text);
         font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .user-role {
@@ -223,6 +256,11 @@
         background: #1E40AF;
       }
 
+      .add-contact-btn:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
       label.add-contact-btn {
         display: block;
       }
@@ -262,6 +300,39 @@
         color: white;
         font-weight: 700;
         flex-shrink: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .contact-avatar.antoine {
+        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .contact-avatar.sophie {
+        background-image: url('../../assets/pictures/sophie.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .contact-avatar.jean {
+        background-image: url('../../assets/pictures/jean.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .contact-avatar.lea {
+        background-image: url('../../assets/pictures/lea.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .contact-avatar.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
       }
 
       .contact-info {
@@ -278,6 +349,12 @@
       .contact-status {
         font-size: 12px;
         color: #9CA3AF;
+        margin-top: 2px;
+      }
+
+      .contact-grade {
+        font-size: 12px;
+        color: #6B7280;
         margin-top: 2px;
       }
 
@@ -299,6 +376,7 @@
         flex-shrink: 0;
       }
 
+      /* Chat Container */
       .chat-container {
         grid-area: chat;
         display: flex;
@@ -329,9 +407,26 @@
         font-size: 16px;
       }
 
+      .chat-header-subtitle {
+        font-size: 12px;
+        color: #6B7280;
+      }
+
       .chat-header-status {
         font-size: 12px;
         color: #10B981;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .chat-header-status::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: #10B981;
+        border-radius: 50%;
+        display: inline-block;
       }
 
       .chat-actions {
@@ -371,7 +466,6 @@
         border: 1px solid #E5E7EB;
       }
 
-
       .messages {
         flex: 1;
         overflow-y: auto;
@@ -388,17 +482,6 @@
         margin-bottom: 8px;
       }
 
-      .hidden-auto-message {
-        display: none;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .hidden-auto-message.visible {
-        display: flex;
-        opacity: 1;
-      }
-
       .message-avatar {
         width: 32px;
         height: 32px;
@@ -411,22 +494,42 @@
         font-size: 14px;
         font-weight: 700;
         flex-shrink: 0;
-      }
-
-      .message-avatar.student-avatar {
-        background-image: url('../assets/pictures/antoine.jpeg');
         background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .message-avatar.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         font-size: 0;
+      }
+
+      .message-avatar.antoine {
+        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .message-content {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
       }
 
       .message-author {
         font-weight: 600;
         color: #111827;
+        font-size: 14px;
       }
 
       .message-time {
         color: #9CA3AF;
+        font-size: 12px;
       }
 
       .message-text {
@@ -504,6 +607,17 @@
         gap: 4px;
       }
 
+      .hidden-auto-message {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .hidden-auto-message.visible {
+        display: flex;
+        opacity: 1;
+      }
+
       .hidden-file-message {
         display: none;
         opacity: 0;
@@ -515,6 +629,15 @@
         opacity: 1;
       }
 
+      .message-status {
+        font-size: 12px;
+        color: #9CA3AF;
+        margin-top: 4px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
       .status-sent::after {
         content: '✓';
         color: #9CA3AF;
@@ -523,8 +646,12 @@
 
       .status-read::after {
         content: '✓✓';
-        color: #10B981;
+        color: #3B82F6;
         font-weight: 600;
+      }
+
+      .message-status.status-read {
+        color: #3B82F6;
       }
 
       .chat-input-area {
@@ -683,6 +810,7 @@
         margin-bottom: 20px;
       }
 
+
       #info-modal .modal-section {
         flex-direction: column;
         gap: 0;
@@ -705,6 +833,7 @@
       #info-modal .modal-status {
         font-size: 13px;
         color: #10B981;
+        text-align: center;
       }
 
       #phone-call-modal .modal-section {
@@ -915,7 +1044,46 @@
         justify-content: center;
         color: white;
         font-weight: 700;
-        font-size: 16px;
+        font-size: 18px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .modal-avatar.antoine {
+        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .modal-avatar.marie {
+        background-image: url('../../assets/pictures/marie.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .modal-avatar.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .modal-avatar.jean {
+        background-image: url('../../assets/pictures/jean.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .modal-avatar.lea {
+        background-image: url('../../assets/pictures/lea.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .modal-avatar.sophie {
+        background-image: url('../../assets/pictures/sophie.jpeg');
+        background-color: transparent;
+        font-size: 0;
       }
 
       .modal-name {
@@ -1059,6 +1227,373 @@
           transform: translateX(100px);
         }
       }
+
+      /* Info Modal Styling */
+      .info-content {
+        margin-top: 16px;
+      }
+
+      .info-section {
+        margin-bottom: 24px;
+      }
+
+      .info-section-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #6B7280;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid #F3F4F6;
+      }
+
+      .info-item:last-child {
+        border-bottom: none;
+      }
+
+      .info-icon {
+        font-size: 20px;
+        width: 24px;
+        text-align: center;
+      }
+
+      .info-text {
+        flex: 1;
+      }
+
+      .info-label {
+        font-size: 12px;
+        color: #9CA3AF;
+        margin-bottom: 2px;
+      }
+
+      .info-value {
+        font-size: 14px;
+        color: #111827;
+        font-weight: 500;
+      }
+
+      .modal-close {
+        margin-top: 16px;
+        width: 100%;
+        padding: 10px 0;
+        background: #3B82F6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        text-align: center;
+        display: block;
+      }
+
+      .modal-close:hover {
+        background: #1E40AF;
+      }
+
+      /* Task Panel */
+      .task-panel {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.95);
+        width: 500px;
+        max-height: 80vh;
+        background: white;
+        border-radius: 12px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+      }
+
+      .task-panel.open {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .task-header {
+        padding: 24px;
+        border-bottom: 1px solid #E5E7EB;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        background: white;
+        z-index: 10;
+        border-radius: 12px 12px 0 0;
+      }
+
+      .task-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #111827;
+      }
+
+      .close-task-btn {
+        width: 44px;
+        height: 44px;
+        border: none;
+        background: transparent;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .task-content {
+        padding: 16px;
+        overflow-y: auto;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .task-section {
+        margin-bottom: 0;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #E5E7EB;
+      }
+
+      .task-section:last-child {
+        border-bottom: none;
+      }
+
+      .task-section-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #6B7280;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+      }
+
+      .task-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid #F3F4F6;
+      }
+
+      .task-item:last-child {
+        border-bottom: none;
+      }
+
+      .task-icon {
+        font-size: 20px;
+        width: 24px;
+        text-align: center;
+        flex-shrink: 0;
+      }
+
+      .task-text {
+        flex: 1;
+      }
+
+      .task-label {
+        font-size: 12px;
+        color: #9CA3AF;
+        margin-bottom: 2px;
+      }
+
+      .task-value {
+        font-size: 14px;
+        color: #111827;
+        font-weight: 500;
+      }
+
+      .task-mini-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 8px;
+      }
+
+      .task-mini-card {
+        background: #F9FAFB;
+        border-radius: 8px;
+        padding: 12px;
+        border-left: 3px solid #E5E7EB;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      .task-mini-card:hover {
+        background: #F3F4F6;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .task-mini-card.priority-high {
+        border-left-color: #EF4444;
+      }
+
+      .task-mini-card.priority-medium {
+        border-left-color: #F59E0B;
+      }
+
+      .task-mini-card.priority-low {
+        border-left-color: #10B981;
+      }
+
+      .task-mini-title {
+        font-weight: 600;
+        font-size: 13px;
+        color: #111827;
+        margin-bottom: 6px;
+        line-height: 1.3;
+      }
+
+      .task-mini-meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 6px;
+      }
+
+      .task-mini-due {
+        font-size: 11px;
+        color: #6B7280;
+      }
+
+      .task-mini-status {
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 10px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .task-mini-status.status-pending {
+        background: #FEF3C7;
+        color: #92400E;
+      }
+
+      .task-mini-status.status-inprogress {
+        background: #DBEAFE;
+        color: #0C4A6E;
+      }
+
+      .task-mini-status.status-done {
+        background: #DCFCE7;
+        color: #166534;
+      }
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+      }
+
+      .overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Disabled Button States */
+      button:disabled,
+      button[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background-color: #9CA3AF;
+      }
+
+      .button-primary:disabled,
+      .button-primary[disabled] {
+        background: #9CA3AF;
+        color: white;
+      }
+
+      .button-secondary:disabled,
+      .button-secondary[disabled] {
+        background: #F3F4F6;
+        color: #9CA3AF;
+        border-color: #D1D5DB;
+      }
+
+      .button-danger:disabled,
+      .button-danger[disabled] {
+        background: #FECACA;
+        color: #991B1B;
+      }
+
+      /* Loading Button States */
+      button.loading {
+        cursor: not-allowed;
+        position: relative;
+        color: transparent;
+      }
+
+      button.loading::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -8px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 0.6s linear infinite;
+      }
+
+      .button-primary.loading {
+        background: #3B82F6;
+        opacity: 0.8;
+      }
+
+      .button-secondary.loading {
+        background: #F3F4F6;
+      }
+
+      .button-secondary.loading::after {
+        border-color: rgba(59, 130, 246, 0.3);
+        border-top-color: #3B82F6;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .action-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .filter-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      input:disabled,
+      textarea:disabled,
+      select:disabled {
+        background-color: #F3F4F6;
+        color: #9CA3AF;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
     </style>
   </head>
 
@@ -1068,6 +1603,7 @@
     <input type="checkbox" id="phone-call-modal-toggle" style="display: none;">
     <input type="checkbox" id="video-call-modal-toggle" style="display: none;">
     <div class="layout">
+      <!-- Navigation Sidebar -->
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
           <div class="nav-sidebar-logo">📚 Learn@Home</div>
@@ -1076,28 +1612,35 @@
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="02-dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
-            <a href="03-chat.html" class="nav-item active"><span class="nav-item-icon">💬</span> Messages</a>
+            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
+            <a href="chat.html" class="nav-item active" aria-current="page"><span class="nav-item-icon">💬</span>
+              Messages</a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="04-calendar.html" class="nav-item"><span class="nav-item-icon">📅</span> Calendrier</a>
-            <a href="05-tasks.html" class="nav-item"><span class="nav-item-icon">✅</span> Tâches</a>
+            <a href="calendar.html" class="nav-item"><span class="nav-item-icon">📅</span> Calendrier</a>
+            <a href="tasks.html" class="nav-item"><span class="nav-item-icon">✅</span> Tâches</a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="06-settings.html" class="nav-item"><span class="nav-item-icon">⚙️</span> Paramètres</a>
-            <a href="01-login.html" class="nav-item"><span class="nav-item-icon">🚪</span> Déconnexion</a>
+            <a href="settings.html" class="nav-item"><span class="nav-item-icon">⚙️</span> Paramètres</a>
+            <a href="login.html" class="nav-item"><span class="nav-item-icon">🚪</span> Déconnexion</a>
           </div>
         </nav>
 
         <div class="user-profile">
-          <div class="user-avatar">AK<span class="user-avatar-badge">3</span></div>
-          <div class="user-name">Antoine Kreuder</div>
-          <div class="user-role">Élève</div>
+          <div class="user-avatar yann">
+            YU
+            <span class="user-avatar-badge">6</span>
+          </div>
+          <div class="user-info">
+            <div class="user-name">Yann Uliong</div>
+            <div class="user-role">Tuteur</div>
+          </div>
         </div>
       </aside>
 
+      <!-- Contacts Sidebar -->
       <aside class="contacts-sidebar">
         <div class="contacts-sidebar-header">
           <input type="text" class="search-box" placeholder="Rechercher un contact...">
@@ -1107,128 +1650,144 @@
 
         <div class="contacts-list">
           <div class="contact-item active">
-            <div class="contact-avatar">YU</div>
+            <div class="contact-avatar antoine">AK</div>
             <div class="contact-info">
-              <div class="contact-name">Yann Uliong</div>
+              <div class="contact-name">Antoine Kreuder</div>
+              <div class="contact-grade">3ème • Mathématiques</div>
               <div class="contact-status status-online">● En ligne</div>
             </div>
           </div>
 
           <div class="contact-item">
-            <div class="contact-avatar" style="background: #10B981;">MD</div>
+            <div class="contact-avatar sophie">SM</div>
             <div class="contact-info">
-              <div class="contact-name">Marie Dupont</div>
+              <div class="contact-name">Sophie Martin</div>
+              <div class="contact-grade">4ème • Sciences</div>
               <div class="contact-status">● Hors ligne (23h)</div>
             </div>
             <div class="status-badge">2</div>
           </div>
 
           <div class="contact-item">
-            <div class="contact-avatar" style="background: #F59E0B;">JL</div>
+            <div class="contact-avatar jean">JL</div>
             <div class="contact-info">
               <div class="contact-name">Jean Leclerc</div>
+              <div class="contact-grade">5ème • Français</div>
               <div class="contact-status status-online">● En ligne</div>
             </div>
           </div>
 
           <div class="contact-item">
-            <div class="contact-avatar" style="background: #8B5CF6;">SB</div>
+            <div class="contact-avatar lea">LB</div>
             <div class="contact-info">
-              <div class="contact-name">Sophie Bernard</div>
+              <div class="contact-name">Léa Bernard</div>
+              <div class="contact-grade">3ème • Anglais</div>
               <div class="contact-status">● Hors ligne (2j)</div>
             </div>
           </div>
         </div>
       </aside>
 
+      <!-- Chat Area -->
       <main class="chat-container">
         <div class="chat-header">
           <div class="chat-header-info">
-            <div class="contact-avatar">YU</div>
+            <div class="contact-avatar antoine">AK</div>
             <div>
-              <div class="chat-header-title">Yann Uliong</div>
-              <div class="chat-header-status">● En ligne</div>
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <span class="chat-header-title">Antoine Kreuder</span>
+                <span class="chat-header-subtitle">3ème • Mathématiques, Sciences</span>
+              </div>
+              <div class="chat-header-status">En ligne</div>
             </div>
           </div>
           <div class="chat-actions">
-            <label for="phone-call-modal-toggle" class="btn-icon hover-down" data-hover="Appel audio">📞</label>
-            <label for="video-call-modal-toggle" class="btn-icon hover-down" data-hover="Appel vidéo">📹</label>
-            <label for="info-modal-toggle" class="btn-icon hover-down" data-hover="Informations">ℹ️</label>
+            <button class="btn-icon" id="taskBtn">📋</button>
+            <button class="btn-icon">📞</button>
+            <button class="btn-icon">📹</button>
+            <label for="info-modal-toggle" class="btn-icon" id="infoBtn">ℹ️</label>
           </div>
         </div>
 
         <div class="messages">
-          <div class="message-group">
-            <div class="contact-avatar">YU</div>
+          <div class="message-group message-own">
             <div class="message-content">
-              <div class="message-text">Bonjour Antoine ! Comment ça va avec les équations ?</div>
-              <div class="message-status status-read">Vu à 13h30</div>
+              <div class="message-text">Bonjour ! Comment ça va avec les équations ?</div>
+              <div class="message-status status-read">Vu 14:32</div>
             </div>
+            <div class="message-avatar yann">YU</div>
           </div>
 
-          <div class="message-group">
-            <div class="contact-avatar">YU</div>
+          <div class="message-group message-own">
             <div class="message-content">
               <div class="message-text">Je te partage des ressources utiles pour bien comprendre.</div>
-              <div class="message-status status-read">Vu à 14h35</div>
+              <div class="message-status status-read">Vu 14:35</div>
             </div>
+            <div class="message-avatar yann">YU</div>
           </div>
 
-          <div class="message-group">
-            <div class="contact-avatar">YU</div>
+          <div class="message-group message-own">
             <div class="message-content">
               <div class="message-file">
                 <span class="message-file-icon">📄</span>
                 <span>Exercices_Math.pdf (2.4 MB)</span>
               </div>
-              <div class="message-status status-read">Vu à 14h40</div>
+              <div class="message-status status-read">Vu 14:35</div>
             </div>
-          </div>
-
-          <div class="message-group message-own">
-            <div class="message-content">
-              <div class="message-text">Merci ! Je regarde ça de suite</div>
-              <div class="message-status status-read">Vu à 14h49</div>
-            </div>
-            <div class="message-avatar student-avatar">AT</div>
-          </div>
-
-          <div class="message-group message-own">
-            <div class="message-content">
-              <div class="message-text">Je peux te poser une question sur l'exercice 3 ?</div>
-              <div class="message-status status-read">Vu à 14h52</div>
-            </div>
-            <div class="message-avatar student-avatar">AT</div>
+            <div class="message-avatar yann">YU</div>
           </div>
 
           <div class="message-group">
-            <div class="contact-avatar">YU</div>
+            <div class="contact-avatar antoine">AK</div>
             <div class="message-content">
-              <div class="message-text">Oui bien sûr, vas-y, je t’écoute pour l’exercice 3 !</div>
+              <div class="message-text">Merci ! Je regarde ça de suite</div>
+              <div class="message-status status-read">Vu 14:49</div>
+            </div>
+          </div>
+
+          <div class="message-group">
+            <div class="contact-avatar antoine">AK</div>
+            <div class="message-content">
+              <div class="message-text">Je peux te poser une question sur l'exercice 3 ?</div>
+              <div class="message-status status-read">Vu 14:52</div>
+            </div>
+          </div>
+
+          <div class="message-group message-own">
+            <div class="message-content">
+              <div class="message-text">Bien sûr ! N'hésite pas.</div>
               <div class="message-status status-read">Vu à l'instant</div>
             </div>
+            <div class="message-avatar yann">YU</div>
+          </div>
+
+          <div class="message-group message-own">
+            <div class="message-content">
+              <div class="message-text">Voici les ressources utiles pour bien comprendre:</div>
+              <div class="message-status status-read">Vu à l'instant</div>
+            </div>
+            <div class="message-avatar yann">YU</div>
           </div>
 
           <div class="message-group message-own hidden-auto-message">
             <div class="message-content">
-              <div class="message-text">En fait, je comprends pas pourquoi on doit utiliser une boucle pour la troisième
-                partie. J’arrive à le faire sans, mais je pense que c’est pas ce qui est demandé…</div>
-              <div class="message-status status-sent">Envoyé à l'instant</div>
+              <div class="message-text">Merci beaucoup !</div>
+              <div class="message-status status-sent">Envoyé</div>
             </div>
-            <div class="message-avatar student-avatar">AT</div>
+            <div class="message-avatar yann">YU</div>
           </div>
-
-          <div class="message-group message-own new-file-message hidden-file-message" id="file-message">
+          <div class="message-group message-own new-file-message hidden-file-message">
             <div class="message-content">
               <div class="message-file">
                 <span class="message-file-icon">📄</span>
-                <span class="message-file-name" id="file-name"></span>
+                <span class="message-file-name"></span>
               </div>
-              <div class="message-status status-sent">Envoyé à l'instant</div>
+              <div class="message-status status-sent">Envoyé</div>
             </div>
-            <div class="message-avatar student-avatar">AT</div>
+            <div class="message-avatar yann">YU</div>
           </div>
         </div>
+
 
         <div class="chat-input-area">
           <div class="input-wrapper">
@@ -1242,6 +1801,64 @@
         </div>
       </main>
     </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Task Panel -->
+    <div class="task-panel" id="taskPanel">
+      <div class="task-header">
+        <div class="task-title">📋 Tâches assignées</div>
+        <button class="close-task-btn" id="closeTaskBtn">✕</button>
+      </div>
+      <div class="task-content">
+        <div class="task-section">
+          <div class="task-section-title">Tâches en cours</div>
+          <div class="task-mini-list">
+            <div class="task-mini-card priority-high">
+              <div class="task-mini-title">Équations du second degré</div>
+              <div class="task-mini-meta">
+                <span class="task-mini-due">📅 10 jan. 2026</span>
+                <span class="task-mini-status status-pending">Pendante</span>
+              </div>
+            </div>
+
+            <div class="task-mini-card priority-high">
+              <div class="task-mini-title">Rapport de Sciences</div>
+              <div class="task-mini-meta">
+                <span class="task-mini-due">📅 15 jan. 2026</span>
+                <span class="task-mini-status status-pending">Pendante</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-section">
+          <div class="task-section-title">Tâches actives</div>
+          <div class="task-item">
+            <div class="task-icon">✅</div>
+            <div class="task-text">
+              <div class="task-label">Complétées</div>
+              <div class="task-value">1 tâche</div>
+            </div>
+          </div>
+          <div class="task-item">
+            <div class="task-icon">🔄</div>
+            <div class="task-text">
+              <div class="task-label">En cours</div>
+              <div class="task-value">0 tâche</div>
+            </div>
+          </div>
+          <div class="task-item">
+            <div class="task-icon">⏳</div>
+            <div class="task-text">
+              <div class="task-label">En attente</div>
+              <div class="task-value">2 tâches</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="contacts-modal" class="modal">
       <label for="contacts-modal-toggle" class="modal-backdrop"></label>
       <div class="modal-content">
@@ -1250,26 +1867,20 @@
 
         <div class="modal-section contacts-list-modal">
           <div class="contact-row">
-            <div class="modal-avatar" style="background:#10B981;">MD</div>
-            <div class="modal-name">Marie Dupont</div>
+            <div class="modal-avatar sophie"></div>
+            <div class="modal-name">Sophie Martin</div>
             <button class="modal-action-btn remove-contact"
               onclick="contactManager.removeContact(this)">Supprimer</button>
           </div>
           <div class="contact-row">
-            <div class="modal-avatar" style="background:#F59E0B;">JL</div>
+            <div class="modal-avatar jean"></div>
             <div class="modal-name">Jean Leclerc</div>
             <button class="modal-action-btn remove-contact"
               onclick="contactManager.removeContact(this)">Supprimer</button>
           </div>
           <div class="contact-row hidden" style="display: none;">
-            <div class="modal-avatar" style="background:#EC4899;">AM</div>
-            <div class="modal-name">Alice Moreau</div>
-            <button class="modal-action-btn remove-contact"
-              onclick="contactManager.removeContact(this)">Supprimer</button>
-          </div>
-          <div class="contact-row hidden" style="display: none;">
-            <div class="modal-avatar" style="background:#06B6D4;">BL</div>
-            <div class="modal-name">Bruno Lefevre</div>
+            <div class="modal-avatar lea"></div>
+            <div class="modal-name">Léa Bernard</div>
             <button class="modal-action-btn remove-contact"
               onclick="contactManager.removeContact(this)">Supprimer</button>
           </div>
@@ -1285,13 +1896,58 @@
     <div id="info-modal" class="modal">
       <label for="info-modal-toggle" class="modal-backdrop"></label>
       <div class="modal-content">
-        <label for="info-modal-toggle" class="modal-close-icon">✕</label>
         <h2 class="modal-title">Informations du contact</h2>
         <div class="modal-section">
-          <div class="modal-avatar">YU</div>
-          <div class="modal-name">Yann Uliong</div>
-          <div class="modal-status">● En ligne</div>
+          <div class="modal-avatar antoine"></div>
+          <div>
+            <div class="modal-name">Antoine Kreuder</div>
+            <div class="modal-status">● En ligne</div>
+          </div>
         </div>
+        <div class="info-content">
+          <div class="info-section">
+            <div class="info-section-title">Informations académiques</div>
+            <div class="info-item">
+              <div class="info-icon">🎓</div>
+              <div class="info-text">
+                <div class="info-label">Niveau scolaire</div>
+                <div class="info-value">3ème (8ème grade)</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">📚</div>
+              <div class="info-text">
+                <div class="info-label">Matières suivies</div>
+                <div class="info-value">Mathématiques, Sciences, Français</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">🎨</div>
+              <div class="info-text">
+                <div class="info-label">Centres d'intérêt</div>
+                <div class="info-value">Arts plastiques, manga, jeux vidéo</div>
+              </div>
+            </div>
+          </div>
+          <div class="info-section">
+            <div class="info-section-title">Contact</div>
+            <div class="info-item">
+              <div class="info-icon">📧</div>
+              <div class="info-text">
+                <div class="info-label">Email</div>
+                <div class="info-value">antoine.kreuder@learn.com</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">📱</div>
+              <div class="info-text">
+                <div class="info-label">Téléphone</div>
+                <div class="info-value">+33 6 12 34 56 78</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <label for="info-modal-toggle" class="modal-close">Fermer</label>
       </div>
     </div>
     <div id="phone-call-modal" class="modal">
@@ -1300,7 +1956,7 @@
         <label for="phone-call-modal-toggle" class="modal-close-icon">✕</label>
         <h2 class="modal-title">Appel audio</h2>
         <div class="modal-section">
-          <div class="modal-avatar">YU</div>
+          <div class="modal-avatar yann"></div>
           <div class="modal-name">Yann Uliong</div>
           <div class="modal-status">● En ligne</div>
         </div>
@@ -1317,7 +1973,7 @@
         <label for="video-call-modal-toggle" class="modal-close-icon">✕</label>
         <h2 class="modal-title">Appel vidéo</h2>
         <div class="modal-section">
-          <div class="modal-avatar">YU</div>
+          <div class="modal-avatar yann"></div>
           <div class="modal-name">Yann Uliong</div>
           <div class="modal-status">● En ligne</div>
         </div>
@@ -1335,7 +1991,7 @@
         toast.className = 'toast';
         toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
         document.getElementById('toast-container').appendChild(toast);
-        setTimeout(() => (toast.classList.add('dismissing'), setTimeout(() => toast.remove(), 300)), 2700);
+        setTimeout(() => (toast.classList.add('dismissing'), setTimeout(() => toast.remove(), 500)), 2700);
       };
 
       const handleAttachmentClick = () => document.getElementById('file-input').click();
@@ -1343,34 +1999,78 @@
       const handleFileUpload = (event) => {
         const fileData = {
           input: document.getElementById('file-input'),
-          fileMessage: document.getElementById('file-message'),
+          fileMessage: document.querySelector('.hidden-file-message'),
           fileNameSpan: document.querySelector('.message-file-name'),
           messages: document.querySelector('.messages'),
           get file() { return this.input.files[0]; },
           get name() { return this.file?.name || ''; }
         };
 
-        fileData.fileNameSpan.textContent = fileData.name;
-        fileData.fileMessage.classList.add('visible');
-        fileData.messages.scrollTop = fileData.messages.scrollHeight;
+        if (fileData.fileNameSpan && fileData.fileMessage) {
+          fileData.fileNameSpan.textContent = fileData.name;
+          fileData.fileMessage.classList.add('visible');
+          fileData.messages.scrollTop = fileData.messages.scrollHeight;
+        }
       };
 
       const contactManager = {
         rows: () => [...document.querySelectorAll('.contacts-list-modal .contact-row:not(.no-contact-found)')],
         hiddenRows: () => contactManager.rows().find(row => row.classList.contains('hidden')),
-        update: () => (document.getElementById('add-contact-confirm').disabled = !contactManager.rows().some(row => row.classList.contains('hidden'))),
+        update: () => {
+          const addBtn = document.getElementById('add-contact-confirm');
+          if (addBtn) {
+            addBtn.disabled = !contactManager.rows().some(row => row.classList.contains('hidden'));
+          }
+        },
         addContact() {
-          contactManager.hiddenRows() && (contactManager.hiddenRows().classList.remove('hidden'), (contactManager.hiddenRows().style.display = 'flex'));
-          contactManager.hiddenRows() && contactManager.update();
+          const hiddenRow = contactManager.hiddenRows();
+          if (hiddenRow) {
+            hiddenRow.classList.remove('hidden');
+            hiddenRow.style.display = 'flex';
+            contactManager.update();
+          }
         },
 
         removeContact(btn) {
           const row = btn.closest('.contact-row');
-          row.classList.add('hidden');
-          row.style.display = 'none';
-          contactManager.update();
+          if (row) {
+            row.classList.add('hidden');
+            row.style.display = 'none';
+            contactManager.update();
+          }
         }
       };
+
+      // Initialize contact manager state
+      contactManager.update();
+
+      // Task Panel
+      const taskBtn = document.getElementById('taskBtn');
+      const closeTaskBtn = document.getElementById('closeTaskBtn');
+      const taskPanel = document.getElementById('taskPanel');
+      const overlay = document.getElementById('overlay');
+
+      const openPanel = (panel) => {
+        panel.classList.add('open');
+        overlay.classList.add('active');
+      };
+
+      const closePanel = (panel) => {
+        panel.classList.remove('open');
+        overlay.classList.remove('active');
+      };
+
+      taskBtn.addEventListener('click', () => {
+        openPanel(taskPanel);
+      });
+
+      closeTaskBtn.addEventListener('click', () => {
+        closePanel(taskPanel);
+      });
+
+      overlay.addEventListener('click', () => {
+        closePanel(taskPanel);
+      });
     </script>
   </body>
 

@@ -184,8 +184,4 @@ Ces cas d'usage couvrent l'accès, le suivi des tâches, la gestion du temps, la
                             │ Chat         ││ Contacts     ││ Supprimer    ││ Supprimer    ││ Affichage    │
                             │ Paramètres   ││ Informaition ││              ││              ││ Supprimer    │
                             └──────────────┘└──────────────┘└──────────────┘└──────────────┘└──────────────┘
-                                                                      
-                                           
-                                   
-
 ```

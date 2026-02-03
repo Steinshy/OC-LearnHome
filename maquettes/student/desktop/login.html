@@ -90,6 +90,21 @@
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
+      input[type="email"]::placeholder,
+      input[type="password"]::placeholder {
+        color: #9CA3AF;
+      }
+
+      input[type="email"]::placeholder,
+      input[type="password"]::placeholder {
+        transition: opacity 0.2s ease;
+      }
+
+      input[type="email"]:focus::placeholder,
+      input[type="password"]:focus::placeholder {
+        opacity: 0;
+      }
+
       .remember-forgot {
         display: flex;
         justify-content: space-between;
@@ -193,6 +208,21 @@
         margin-bottom: 4px;
       }
 
+      .error-message {
+        color: #DC2626;
+        font-size: 12px;
+        margin-top: 4px;
+        display: none;
+      }
+
+      .error-message.show {
+        display: block;
+      }
+
+      input:invalid:not(:placeholder-shown) {
+        border-color: #DC2626;
+      }
+
       .copyright {
         text-align: center;
         margin-top: 24px;
@@ -240,13 +270,115 @@
       }
 
       @keyframes slideIn {
-        from { transform: translateX(400px); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+        from {
+          transform: translateX(400px);
+          opacity: 0;
+        }
+
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
       }
 
       @keyframes fadeOut {
-        from { opacity: 1; transform: translateX(0); }
-        to { opacity: 0; transform: translateX(100px); }
+        from {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        to {
+          opacity: 0;
+          transform: translateX(100px);
+        }
+      }
+
+      /* Disabled Button States */
+      button:disabled,
+      button[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background-color: #9CA3AF;
+      }
+
+      .button-primary:disabled,
+      .button-primary[disabled] {
+        background: #9CA3AF;
+        color: white;
+      }
+
+      .button-secondary:disabled,
+      .button-secondary[disabled] {
+        background: #F3F4F6;
+        color: #9CA3AF;
+        border-color: #D1D5DB;
+      }
+
+      .button-danger:disabled,
+      .button-danger[disabled] {
+        background: #FECACA;
+        color: #991B1B;
+      }
+
+      /* Loading Button States */
+      button.loading {
+        cursor: not-allowed;
+        position: relative;
+        color: transparent;
+      }
+
+      button.loading::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -8px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 0.6s linear infinite;
+      }
+
+      .button-primary.loading {
+        background: #3B82F6;
+        opacity: 0.8;
+      }
+
+      .button-secondary.loading {
+        background: #F3F4F6;
+      }
+
+      .button-secondary.loading::after {
+        border-color: rgba(59, 130, 246, 0.3);
+        border-top-color: #3B82F6;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .action-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .filter-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      input:disabled,
+      textarea:disabled,
+      select:disabled {
+        background-color: #F3F4F6;
+        color: #9CA3AF;
+        cursor: not-allowed;
+        opacity: 0.7;
       }
     </style>
   </head>
@@ -260,17 +392,17 @@
         <p class="subtitle">Accédez à votre compte pour continuer</p>
       </div>
 
-      <form onsubmit="return validateDemoLogin()">
+      <form id="login-form" onsubmit="validateLogin(event)">
         <div class="form-group">
           <label for="email">Adresse email</label>
-          <input type="email" id="email" value="demo@learn.com" placeholder="demo@learn.com" required
-            pattern="demo@learn.com" title="L’email de démonstration est demo@learn.com">
+          <input type="email" id="email" value="demo@learn.com" placeholder="demo@learn.com" required>
+          <div class="error-message" id="email-error">Veuillez entrer une adresse email valide</div>
         </div>
 
         <div class="form-group">
           <label for="password">Mot de passe</label>
-          <input type="password" id="password" value="Demo1234" placeholder="Demo1234" required pattern="Demo1234"
-            title="Le mot de passe de démonstration est Demo1234">
+          <input type="password" id="password" value="Demo1234" placeholder="Demo1234" required minlength="6">
+          <div class="error-message" id="password-error">Le mot de passe est requis (minimum 6 caractères)</div>
         </div>
 
         <div class="remember-forgot">
@@ -278,12 +410,24 @@
             <input type="checkbox" id="remember">
             <span>Rester connecté</span>
           </label>
-          <a onclick="window.location.href='01-recovery.html'" href="#forgot">Mot de passe oublié ?</a>
+          <a onclick="window.location.href='recovery.html'" href="#forgot">Mot de passe oublié ?</a>
         </div>
 
-        <button onclick="window.location.href='02-dashboard.html'" type="submit" class="button-primary">Se
+        <button onclick="window.location.href='dashboard.html'" type="submit" class="button-primary">Se
           connecter</button>
       </form>
+
+      <!-- Button State Examples:
+
+      Disabled State: <button class="button-primary" disabled>Se connecter</button>
+      Loading State: <button class="button-primary loading">Se connecter</button>
+
+      For forms, add onsubmit handler to toggle loading state:
+      onclick="this.classList.add('loading'); this.disabled = true;"
+      onload="this.classList.remove('loading'); this.disabled = false;"
+
+      Form field disabled: <input type="email" disabled placeholder="user@example.com">
+      -->
 
       <div class="divider">
         <span>Nouveau ?</span>
@@ -310,9 +454,13 @@
         toast.className = 'toast';
         toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
         container.appendChild(toast);
-        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 300) }, 2700);
+        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
       };
-      const validateDemoLogin = () => { showToast('✅', 'Connexion', 'Redirection vers le tableau de bord...'); setTimeout(() => window.location.href = '02-dashboard.html', 1000); return false; };
+      const validateLogin = (event) => {
+        event.preventDefault();
+        showToast('✅', 'Connexion', 'Connexion en cours...');
+        setTimeout(() => { window.location.href = 'dashboard.html'; }, 500);
+      };
     </script>
   </body>
 

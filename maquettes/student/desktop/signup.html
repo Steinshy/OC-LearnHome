@@ -90,6 +90,24 @@
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
+      input[type="text"]::placeholder,
+      input[type="email"]::placeholder,
+      input[type="password"]::placeholder {
+        color: #9CA3AF;
+      }
+
+      input[type="text"]::placeholder,
+      input[type="email"]::placeholder,
+      input[type="password"]::placeholder {
+        transition: opacity 0.2s ease;
+      }
+
+      input[type="text"]:focus::placeholder,
+      input[type="email"]:focus::placeholder,
+      input[type="password"]:focus::placeholder {
+        opacity: 0;
+      }
+
       .button-primary {
         width: 100%;
         padding: 12px 16px;
@@ -173,21 +191,6 @@
         margin-bottom: 4px;
       }
 
-      .hidden-confirm-block {
-        display: none;
-        margin-top: 16px;
-        padding: 12px 16px;
-        background: #E0F2FE;
-        border-left: 4px solid #3B82F6;
-        border-radius: 6px;
-        font-size: 14px;
-        color: #1E40AF;
-      }
-
-      .hidden-confirm-block.visible {
-        display: block;
-      }
-
       .alert {
         position: fixed;
         top: -60px;
@@ -230,6 +233,21 @@
         transform: translateX(-50%) translateY(4px);
       }
 
+      .error-message {
+        color: #DC2626;
+        font-size: 12px;
+        margin-top: 4px;
+        display: none;
+      }
+
+      .error-message.show {
+        display: block;
+      }
+
+      input:invalid:not(:placeholder-shown) {
+        border-color: #DC2626;
+      }
+
       .copyright {
         text-align: center;
         margin-top: 24px;
@@ -237,6 +255,155 @@
         border-top: 1px solid #E2E8F0;
         color: #94A3B8;
         font-size: 12px;
+      }
+
+      .toast-container {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+        pointer-events: none;
+      }
+
+      .toast {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        min-width: 300px;
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        pointer-events: auto;
+      }
+
+      .toast.dismissing {
+        animation: fadeOut 0.3s ease-out forwards;
+      }
+
+      .toast-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 4px;
+      }
+
+      .toast-message {
+        font-size: 13px;
+        color: #6B7280;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(400px);
+          opacity: 0;
+        }
+
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        to {
+          opacity: 0;
+          transform: translateX(100px);
+        }
+      }
+
+      /* Disabled Button States */
+      button:disabled,
+      button[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background-color: #9CA3AF;
+      }
+
+      .button-primary:disabled,
+      .button-primary[disabled] {
+        background: #9CA3AF;
+        color: white;
+      }
+
+      .button-secondary:disabled,
+      .button-secondary[disabled] {
+        background: #F3F4F6;
+        color: #9CA3AF;
+        border-color: #D1D5DB;
+      }
+
+      .button-danger:disabled,
+      .button-danger[disabled] {
+        background: #FECACA;
+        color: #991B1B;
+      }
+
+      /* Loading Button States */
+      button.loading {
+        cursor: not-allowed;
+        position: relative;
+        color: transparent;
+      }
+
+      button.loading::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -8px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 0.6s linear infinite;
+      }
+
+      .button-primary.loading {
+        background: #3B82F6;
+        opacity: 0.8;
+      }
+
+      .button-secondary.loading {
+        background: #F3F4F6;
+      }
+
+      .button-secondary.loading::after {
+        border-color: rgba(59, 130, 246, 0.3);
+        border-top-color: #3B82F6;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .action-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .filter-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      input:disabled,
+      textarea:disabled,
+      select:disabled {
+        background-color: #F3F4F6;
+        color: #9CA3AF;
+        cursor: not-allowed;
+        opacity: 0.7;
       }
     </style>
   </head>
@@ -253,29 +420,45 @@
         <p class="subtitle">Créez un compte étudiant pour commencer</p>
       </div>
 
-      <form onsubmit="validateDemoSignup(event)">
+      <form id="signup-form" onsubmit="validateSignup(event)">
         <div class="form-group">
           <label for="fullname">Nom complet</label>
-          <input type="text" id="fullname" placeholder="Your name" value="Antoine Kreuder" required>
+          <input type="text" id="fullname" placeholder="Your name" value="Antoine Kreuder" required minlength="2">
+          <div class="error-message" id="fullname-error">Veuillez entrer un nom valide (minimum 2 caractères)</div>
         </div>
 
         <div class="form-group">
           <label for="email">Adresse email</label>
           <input type="email" id="email" placeholder="you@example.com" value="antoine.kreuder@learn.com" required>
+          <div class="error-message" id="email-error">Veuillez entrer une adresse email valide</div>
         </div>
 
         <div class="form-group">
           <label for="password">Mot de passe</label>
-          <input type="password" id="password" required value="Student2026" required>
+          <input type="password" id="password" required value="Student2026" minlength="6">
+          <div class="error-message" id="password-error">Le mot de passe doit contenir au minimum 6 caractères</div>
         </div>
 
         <div class="form-group">
           <label for="password2">Confirmer le mot de passe</label>
-          <input type="password" id="password2" required value="Student2026" required>
+          <input type="password" id="password2" required value="Student2026" minlength="6">
+          <div class="error-message" id="password2-error">Les mots de passe ne correspondent pas</div>
         </div>
 
         <button type="submit" class="button-primary hover-up" data-hover="Créer le compte">Créer le compte</button>
       </form>
+
+      <!-- Button State Examples:
+
+      Disabled State: <button class="button-primary" disabled>Se connecter</button>
+      Loading State: <button class="button-primary loading">Se connecter</button>
+
+      For forms, add onsubmit handler to toggle loading state:
+      onclick="this.classList.add('loading'); this.disabled = true;"
+      onload="this.classList.remove('loading'); this.disabled = false;"
+
+      Form field disabled: <input type="email" disabled placeholder="user@example.com">
+      -->
 
       <div class="divider">
         <span>Déjà inscrit ?</span>
@@ -295,15 +478,22 @@
       </div>
     </div>
   </body>
+  <div id="toast-container" class="toast-container"></div>
   <script>
-    const validateDemoSignup = (event) => {
+    const showToast = (icon, title, message) => {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+      container.appendChild(toast);
+      setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
+    };
+
+    const validateSignup = (event) => {
       event.preventDefault();
-      const alertBox = document.getElementById('alert-box');
-      alertBox.classList.add('show');
-      setTimeout(() => {
-        document.location.href = 'dashboard.html';
-      }, 1500);
-    }
+      showToast('✅', 'Inscription', 'Création de votre compte en cours...');
+      setTimeout(() => { window.location.href = 'dashboard.html'; }, 500);
+    };
   </script>
 
 </html>

@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, ">
     <title>Learn@Home - Tableau de Bord | Maquette Mobile</title>
     <style>
       * {
@@ -20,7 +20,7 @@
       .mobile-header {
         background: white;
         border-bottom: 1px solid #E5E7EB;
-        padding: 16px;
+        padding: 8px 16px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -30,11 +30,11 @@
       }
 
       .menu-btn {
-        width: 44px;
-        height: 44px;
+        width: 36px;
+        height: 36px;
         border: none;
         background: transparent;
-        font-size: 24px;
+        font-size: 20px;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -484,6 +484,155 @@
         color: #94A3B8;
         font-size: 12px;
       }
+
+      /* Responsive Breakpoints for Mobile Pages */
+
+      /* Tablet (768px and up) */
+      @media (min-width: 768px) {
+        .mobile-header {
+          padding: 20px 32px;
+        }
+
+        .mobile-logo {
+          font-size: 20px;
+        }
+
+        .main-content {
+          padding: 32px;
+          max-width: 900px;
+          margin: 0 auto;
+        }
+
+        .content-section,
+        .card {
+          padding: 24px;
+        }
+
+        h1,
+        h2 {
+          font-size: 28px;
+        }
+
+        .button,
+        .button-primary,
+        .button-secondary {
+          padding: 12px 20px;
+          font-size: 15px;
+        }
+      }
+
+      /* Large Tablet (1024px and up) */
+      @media (min-width: 1024px) {
+        .mobile-header {
+          padding: 24px 48px;
+        }
+
+        .main-content {
+          padding: 48px;
+        }
+
+        .content-section,
+        .card {
+          padding: 32px;
+        }
+
+        h1,
+        h2 {
+          font-size: 32px;
+        }
+
+        .sidebar {
+          width: 300px;
+        }
+      }
+
+      /* Disabled Button States */
+      button:disabled,
+      button[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background-color: #9CA3AF;
+      }
+
+      .button-primary:disabled,
+      .button-primary[disabled] {
+        background: #9CA3AF;
+        color: white;
+      }
+
+      .button-secondary:disabled,
+      .button-secondary[disabled] {
+        background: #F3F4F6;
+        color: #9CA3AF;
+        border-color: #D1D5DB;
+      }
+
+      .button-danger:disabled,
+      .button-danger[disabled] {
+        background: #FECACA;
+        color: #991B1B;
+      }
+
+      /* Loading Button States */
+      button.loading {
+        cursor: not-allowed;
+        position: relative;
+        color: transparent;
+      }
+
+      button.loading::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -8px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 0.6s linear infinite;
+      }
+
+      .button-primary.loading {
+        background: #3B82F6;
+        opacity: 0.8;
+      }
+
+      .button-secondary.loading {
+        background: #F3F4F6;
+      }
+
+      .button-secondary.loading::after {
+        border-color: rgba(59, 130, 246, 0.3);
+        border-top-color: #3B82F6;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .action-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .filter-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      input:disabled,
+      textarea:disabled,
+      select:disabled {
+        background-color: #F3F4F6;
+        color: #9CA3AF;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
     </style>
   </head>
 
@@ -504,7 +653,7 @@
       <nav>
         <div class="nav-section">
           <div class="nav-label">Principal</div>
-          <a href="dashboard.html" class="nav-item active">
+          <a href="dashboard.html" class="nav-item active" aria-current="page">
             <span class="nav-item-icon">📊</span>
             Tableau de bord
           </a>
@@ -551,16 +700,8 @@
     </aside>
 
     <main class="main">
-      <div class="header">
-        <h1>Bienvenue, Antoine Kreuder</h1>
-        <div class="header-actions">
-          <a href="settings.html" class="button button-secondary">Préférences</a>
-          <button class="button button-primary">Créer</button>
-        </div>
-      </div>
-
       <div class="message-box">
-        <div class="message-title">👋 Bienvenue sur Learn@Home</div>
+        <div class="message-title">👋 Bienvenue sur Learn@Home, Antoine !</div>
         <div class="message-text">Vous avez 5 messages non lus et 2 tâches à faire aujourd'hui.</div>
       </div>
 

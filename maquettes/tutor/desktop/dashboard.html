@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn@Home - Tableau de Bord (Tuteur) | Maquette Desktop</title>
     <style>
+      :root {
+        --primary: #3B82F6;
+        --primary-dark: #1E40AF;
+        --danger: #EF4444;
+        --danger-dark: #DC2626;
+        --bg: #F3F4F6;
+        --text: #111827;
+        --text-muted: #6B7280;
+        --border: #E5E7EB;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -14,18 +25,23 @@
 
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: #F3F4F6;
+        background: var(--bg);
       }
 
-      .layout {
+      nav {
+        flex: 1;
+      }
+
+      .page-layout {
         display: grid;
         grid-template-columns: 250px 1fr;
+        grid-template-areas: "nav main";
         min-height: 100vh;
       }
 
-      .sidebar {
+      .nav-sidebar {
         background: white;
-        border-right: 1px solid #E5E7EB;
+        border-right: 1px solid var(--border);
         padding: 24px 0;
         position: fixed;
         width: 250px;
@@ -35,21 +51,16 @@
         flex-direction: column;
       }
 
-      .sidebar-header {
-        padding: 0 24px;
+      .nav-sidebar-header {
+        padding: 0 24px 24px;
         margin-bottom: 32px;
-        border-bottom: 1px solid #E5E7EB;
-        padding-bottom: 24px;
+        border-bottom: 1px solid var(--border);
       }
 
-      .sidebar-logo {
+      .nav-sidebar-logo {
         font-size: 20px;
         font-weight: 700;
-        color: #3B82F6;
-      }
-
-      nav {
-        flex: 1;
+        color: var(--primary);
       }
 
       .nav-section {
@@ -57,7 +68,7 @@
       }
 
       .nav-section:not(:first-child) {
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid var(--border);
         padding-top: 24px;
       }
 
@@ -72,59 +83,63 @@
 
       .nav-item {
         padding: 12px 24px;
-        color: #6B7280;
+        color: var(--text-muted);
         text-decoration: none;
         display: flex;
         align-items: center;
         gap: 12px;
         transition: all 0.3s;
-        cursor: pointer;
-        position: relative;
+        font-size: 14px;
       }
 
       .nav-item:hover {
-        background: #F3F4F6;
-        color: #3B82F6;
-      }
-
-      .nav-item:focus {
-        outline: 2px solid #3B82F6;
-        outline-offset: -2px;
+        background: var(--bg);
+        color: var(--primary);
       }
 
       .nav-item.active {
         background: #E0F2FE;
-        color: #3B82F6;
-        border-right: 4px solid #3B82F6;
+        color: var(--primary);
+        border-right: 4px solid var(--primary);
         font-weight: 600;
       }
 
       .nav-item-icon {
-        margin-right: 12px;
         font-size: 18px;
       }
 
       .user-profile {
-        padding: 24px;
-        border-top: 1px solid #E5E7EB;
+        padding: 12px 16px;
+        margin: 0 12px;
+        border-top: 1px solid var(--border);
         margin-top: auto;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        transition: background 0.2s;
+        border-radius: 8px;
+      }
+
+      .user-profile:hover {
+        background: var(--bg);
       }
 
       .user-avatar {
         width: 40px;
         height: 40px;
-        background: #3B82F6;
+        background: var(--primary);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
         font-weight: 700;
-        margin-bottom: 8px;
         position: relative;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        flex-shrink: 0;
       }
 
       .user-avatar.antoine {
@@ -161,10 +176,10 @@
         position: absolute;
         bottom: -2px;
         right: -2px;
-        background: #EF4444;
+        background: var(--danger);
         color: white;
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -174,22 +189,29 @@
         border: 2px solid white;
       }
 
+      .user-info {
+        flex: 1;
+        min-width: 0;
+      }
+
       .user-name {
         font-weight: 600;
-        color: #111827;
+        color: var(--text);
         font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .user-role {
         font-size: 12px;
-        color: #6B7280;
+        color: var(--text-muted);
       }
 
       /* Main Content */
       .main {
-        grid-column: 2;
+        grid-area: main;
         padding: 32px;
-        margin-left: 0;
       }
 
       .header {
@@ -378,7 +400,7 @@
       }
 
       .notification-badge {
-        background: #EF4444;
+        background: var(--danger);
         color: white;
         width: 24px;
         height: 24px;
@@ -400,20 +422,108 @@
         color: #94A3B8;
         font-size: 12px;
       }
+
+      /* Disabled Button States */
+      button:disabled,
+      button[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background-color: #9CA3AF;
+      }
+
+      .button-primary:disabled,
+      .button-primary[disabled] {
+        background: #9CA3AF;
+        color: white;
+      }
+
+      .button-secondary:disabled,
+      .button-secondary[disabled] {
+        background: #F3F4F6;
+        color: #9CA3AF;
+        border-color: #D1D5DB;
+      }
+
+      .button-danger:disabled,
+      .button-danger[disabled] {
+        background: #FECACA;
+        color: #991B1B;
+      }
+
+      /* Loading Button States */
+      button.loading {
+        cursor: not-allowed;
+        position: relative;
+        color: transparent;
+      }
+
+      button.loading::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -8px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 0.6s linear infinite;
+      }
+
+      .button-primary.loading {
+        background: #3B82F6;
+        opacity: 0.8;
+      }
+
+      .button-secondary.loading {
+        background: #F3F4F6;
+      }
+
+      .button-secondary.loading::after {
+        border-color: rgba(59, 130, 246, 0.3);
+        border-top-color: #3B82F6;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .action-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .filter-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      input:disabled,
+      textarea:disabled,
+      select:disabled {
+        background-color: #F3F4F6;
+        color: #9CA3AF;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
     </style>
   </head>
 
   <body>
-    <div class="layout">
-      <aside class="sidebar">
-        <div class="sidebar-header">
-          <div class="sidebar-logo">📚 Learn@Home</div>
+    <div class="page-layout">
+      <aside class="nav-sidebar">
+        <div class="nav-sidebar-header">
+          <div class="nav-sidebar-logo">📚 Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item active">
+            <a href="dashboard.html" class="nav-item active" aria-current="page">
               <span class="nav-item-icon">📊</span>
               Tableau de bord
             </a>
@@ -452,24 +562,18 @@
         <div class="user-profile">
           <div class="user-avatar yann">
             YU
-            <span class="user-avatar-badge">2</span>
+            <span class="user-avatar-badge">6</span>
           </div>
-          <div class="user-name">Yann Uliong</div>
-          <div class="user-role">Tuteur</div>
+          <div class="user-info">
+            <div class="user-name">Yann Uliong</div>
+            <div class="user-role">Tuteur</div>
+          </div>
         </div>
       </aside>
 
       <main class="main">
-        <div class="header">
-          <h1>Bienvenue, Yann Uliong</h1>
-          <div class="header-actions">
-            <a href="settings.html" class="button button-secondary">Préférences</a>
-            <button class="button button-primary">Créer</button>
-          </div>
-        </div>
-
         <div class="message-box">
-          <div class="message-title">👋 Bienvenue sur Learn@Home</div>
+          <div class="message-title">Bienvenue sur Learn@Home, M. Yann Uliong</div>
           <div class="message-text">Vous avez 6 messages non lus et 5 tâches créées pour vos élèves.</div>
         </div>
 
@@ -480,7 +584,7 @@
               <div class="card-badge">6 non lus</div>
             </div>
             <div class="stat-item">
-              <span class="stat-label">Sophie Martin</span>
+              <span class="stat-label">Antoine Kreuder</span>
               <span class="notification-badge">2</span>
             </div>
             <div class="stat-item">
@@ -488,7 +592,7 @@
               <span class="notification-badge">2</span>
             </div>
             <div class="stat-item">
-              <span class="stat-label">Léa Bernard</span>
+              <span class="stat-label">Sophie Martin</span>
               <span class="notification-badge">2</span>
             </div>
           </div>
@@ -499,23 +603,23 @@
               <div class="card-badge">5 actives</div>
             </div>
             <div class="stat-item">
-              <span class="stat-label">Équations - Assigné à Antoine</span>
+              <span class="stat-label">Équations - Assigné à Antoine Kreuder</span>
               <span class="stat-status status-pending">Pendante</span>
             </div>
             <div class="stat-item">
-              <span class="stat-label">Lecture Ch.5 - Assigné à Sophie</span>
+              <span class="stat-label">Lecture Ch.5 - Assigné à Sophie Martin</span>
               <span class="stat-status status-inprogress">En cours</span>
             </div>
             <div class="stat-item">
-              <span class="stat-label">Rapport - Assigné à Antoine</span>
+              <span class="stat-label">Rapport - Assigné à Antoine Kreuder</span>
               <span class="stat-status status-done">Complétée</span>
             </div>
             <div class="stat-item">
-              <span class="stat-label">Exercices Math - Assigné à Jean</span>
+              <span class="stat-label">Exercices Math - Assigné à Jean Leclerc</span>
               <span class="stat-status status-pending">Pendante</span>
             </div>
             <div class="stat-item">
-              <span class="stat-label">Rédaction - Assigné à Léa</span>
+              <span class="stat-label">Rédaction - Assigné à Léa Bernard</span>
               <span class="stat-status status-inprogress">En cours</span>
             </div>
           </div>

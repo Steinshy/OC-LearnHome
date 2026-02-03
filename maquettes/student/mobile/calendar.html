@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, ">
     <title>Learn@Home - Calendrier | Maquette Mobile</title>
     <style>
       * {
@@ -21,7 +21,7 @@
       .mobile-header {
         background: white;
         border-bottom: 1px solid #E5E7EB;
-        padding: 16px;
+        padding: 8px 16px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -30,9 +30,9 @@
         z-index: 100;
       }
 
-      .back-btn {
-        width: 44px;
-        height: 44px;
+      .menu-btn {
+        width: 36px;
+        height: 36px;
         border: none;
         background: transparent;
         font-size: 20px;
@@ -42,9 +42,248 @@
         justify-content: center;
       }
 
-      .back-btn:focus {
+      .menu-btn:focus {
         outline: 2px solid #3B82F6;
         outline-offset: 2px;
+      }
+
+      .mobile-logo {
+        font-size: 18px;
+        font-weight: 700;
+        color: #3B82F6;
+      }
+
+      .user-avatar-mobile {
+        width: 36px;
+        height: 36px;
+        background: #3B82F6;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 14px;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .user-avatar-mobile.antoine {
+        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .user-avatar-mobile.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .user-avatar-badge {
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        background: #EF4444;
+        color: white;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-weight: 700;
+        border: 2px solid white;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        border-right: 1px solid #E5E7EB;
+        padding: 24px 0;
+        overflow-y: auto;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sidebar.open {
+        left: 0;
+      }
+
+      .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+
+      .sidebar-overlay.active {
+        display: block;
+      }
+
+      .sidebar-header {
+        padding: 0 24px;
+        margin-bottom: 32px;
+        border-bottom: 1px solid #E5E7EB;
+        padding-bottom: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .sidebar-logo {
+        font-size: 20px;
+        font-weight: 700;
+        color: #3B82F6;
+      }
+
+      .close-btn {
+        width: 36px;
+        height: 36px;
+        border: none;
+        background: transparent;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      nav {
+        flex: 1;
+      }
+
+      .nav-section {
+        margin-bottom: 24px;
+      }
+
+      .nav-section:not(:first-child) {
+        border-top: 1px solid #E5E7EB;
+        padding-top: 24px;
+      }
+
+      .nav-label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #9CA3AF;
+        text-transform: uppercase;
+        padding: 0 24px;
+        margin-bottom: 8px;
+      }
+
+      .nav-item {
+        padding: 14px 24px;
+        color: #6B7280;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.3s;
+        cursor: pointer;
+        position: relative;
+        font-size: 14px;
+        min-height: 44px;
+      }
+
+      .nav-item:hover,
+      .nav-item:active {
+        background: #F3F4F6;
+        color: #3B82F6;
+      }
+
+      .nav-item:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: -2px;
+      }
+
+      .nav-item.active {
+        background: #E0F2FE;
+        color: #3B82F6;
+        border-right: 4px solid #3B82F6;
+        font-weight: 600;
+      }
+
+      .nav-item-icon {
+        margin-right: 12px;
+        font-size: 18px;
+      }
+
+      .notification-badge {
+        background: #EF4444;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+
+      .user-profile {
+        padding: 24px;
+        border-top: 1px solid #E5E7EB;
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        background: #3B82F6;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        margin-bottom: 8px;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .user-avatar.antoine {
+        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .user-avatar.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .user-name {
+        font-weight: 600;
+        color: #111827;
+        font-size: 14px;
+      }
+
+      .user-role {
+        font-size: 12px;
+        color: #6B7280;
       }
 
       h1 {
@@ -368,6 +607,7 @@
         from {
           transform: translateY(100%);
         }
+
         to {
           transform: translateY(0);
         }
@@ -508,23 +748,214 @@
         outline: 2px solid #3B82F6;
         outline-offset: 2px;
       }
+
+      /* Responsive Breakpoints for Mobile Pages */
+
+      /* Tablet (768px and up) */
+      @media (min-width: 768px) {
+        .mobile-header {
+          padding: 20px 32px;
+        }
+
+        .mobile-logo {
+          font-size: 20px;
+        }
+
+        .main-content {
+          padding: 32px;
+          max-width: 900px;
+          margin: 0 auto;
+        }
+
+        .content-section, .card {
+          padding: 24px;
+        }
+
+        h1, h2 {
+          font-size: 28px;
+        }
+
+        .button, .button-primary, .button-secondary {
+          padding: 12px 20px;
+          font-size: 15px;
+        }
+      }
+
+      /* Large Tablet (1024px and up) */
+      @media (min-width: 1024px) {
+        .mobile-header {
+          padding: 24px 48px;
+        }
+
+        .main-content {
+          padding: 48px;
+        }
+
+        .content-section, .card {
+          padding: 32px;
+        }
+
+        h1, h2 {
+          font-size: 32px;
+        }
+
+        .sidebar {
+          width: 300px;
+        }
+      }
+
+      /* Disabled Button States */
+      button:disabled, button[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background-color: #9CA3AF;
+      }
+
+      .button-primary:disabled, .button-primary[disabled] {
+        background: #9CA3AF;
+        color: white;
+      }
+
+      .button-secondary:disabled, .button-secondary[disabled] {
+        background: #F3F4F6;
+        color: #9CA3AF;
+        border-color: #D1D5DB;
+      }
+
+      .button-danger:disabled, .button-danger[disabled] {
+        background: #FECACA;
+        color: #991B1B;
+      }
+
+      /* Loading Button States */
+      button.loading {
+        cursor: not-allowed;
+        position: relative;
+        color: transparent;
+      }
+
+      button.loading::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -8px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 0.6s linear infinite;
+      }
+
+      .button-primary.loading {
+        background: #3B82F6;
+        opacity: 0.8;
+      }
+
+      .button-secondary.loading {
+        background: #F3F4F6;
+      }
+
+      .button-secondary.loading::after {
+        border-color: rgba(59, 130, 246, 0.3);
+        border-top-color: #3B82F6;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      .action-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .filter-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      input:disabled, textarea:disabled, select:disabled {
+        background-color: #F3F4F6;
+        color: #9CA3AF;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
     </style>
   </head>
 
   <body>
     <div class="mobile-header">
-      <a href="dashboard.html" class="back-btn">←</a>
-      <h1>Calendrier</h1>
-      <button class="button button-secondary" style="padding: 8px 12px; font-size: 13px;">Aujourd'hui</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+      <div class="mobile-logo">📚 Learn@Home</div>
+      <div style="width: 44px;"></div>
     </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">📚 Learn@Home</div>
+        <button class="close-btn" id="closeBtn" aria-label="Fermer">✕</button>
+      </div>
+
+      <nav>
+        <div class="nav-section">
+          <div class="nav-label">Principal</div>
+          <a href="dashboard.html" class="nav-item">
+            <span class="nav-item-icon">📊</span>
+            Tableau de bord
+          </a>
+          <a href="chat.html" class="nav-item">
+            <span class="nav-item-icon">💬</span>
+            Messages
+            <span class="notification-badge">5</span>
+          </a>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-label">Outils</div>
+          <a href="calendar.html" class="nav-item active" aria-current="page">
+            <span class="nav-item-icon">📅</span>
+            Calendrier
+          </a>
+          <a href="tasks.html" class="nav-item">
+            <span class="nav-item-icon">✅</span>
+            Tâches
+          </a>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-label">Compte</div>
+          <a href="settings.html" class="nav-item">
+            <span class="nav-item-icon">⚙️</span>
+            Paramètres
+          </a>
+          <a href="login.html" class="nav-item">
+            <span class="nav-item-icon">🚪</span>
+            Déconnexion
+          </a>
+        </div>
+      </nav>
+
+      <div class="user-profile">
+        <div class="user-avatar antoine">
+          AK
+          <span class="user-avatar-badge">5</span>
+        </div>
+        <div class="user-name">Antoine Kreuder</div>
+        <div class="user-role">Élève</div>
+      </div>
+    </aside>
 
     <div class="container">
       <div class="calendar-card">
         <div class="calendar-header">
           <div class="calendar-nav">
-            <button class="nav-btn">◀</button>
+            <button class="nav-btn" aria-label="Mois précédent">◀</button>
             <div class="month-year">Janvier 2026</div>
-            <button class="nav-btn">▶</button>
+            <button class="nav-btn" aria-label="Mois suivant">▶</button>
           </div>
         </div>
 
@@ -550,7 +981,7 @@
           <div class="calendar-day">
             <div class="calendar-day-num">3</div>
             <div class="calendar-day-events">
-              <a href="#" class="event-pill event-blue" onclick="openDetailsModal(); return false;">Cours</a>
+              <a href="#" class="event-pill event-blue" onclick="openDetailsModal()">Cours</a>
             </div>
           </div>
           <div class="calendar-day">
@@ -565,13 +996,13 @@
           <div class="calendar-day">
             <div class="calendar-day-num">7</div>
             <div class="calendar-day-events">
-              <a href="#" class="event-pill event-blue" onclick="openDetailsModal(); return false;">Session</a>
+              <a href="#" class="event-pill event-blue" onclick="openDetailsModal()">Session</a>
             </div>
           </div>
           <div class="calendar-day today">
             <div class="calendar-day-num">8</div>
             <div class="calendar-day-events">
-              <a href="#" class="event-pill event-orange" onclick="openDetailsModal(); return false;">Réunion</a>
+              <a href="#" class="event-pill event-orange" onclick="openDetailsModal()">Réunion</a>
             </div>
           </div>
           <div class="calendar-day">
@@ -583,7 +1014,7 @@
           <div class="calendar-day">
             <div class="calendar-day-num">11</div>
             <div class="calendar-day-events">
-              <a href="#" class="event-pill event-blue" onclick="openDetailsModal(); return false;">Cours</a>
+              <a href="#" class="event-pill event-blue" onclick="openDetailsModal()">Cours</a>
             </div>
           </div>
           <div class="calendar-day">
@@ -595,7 +1026,7 @@
           <div class="calendar-day">
             <div class="calendar-day-num">14</div>
             <div class="calendar-day-events">
-              <a href="#" class="event-pill event-blue" onclick="openDetailsModal(); return false;">Session</a>
+              <a href="#" class="event-pill event-blue" onclick="openDetailsModal()">Session</a>
             </div>
           </div>
           <div class="calendar-day">
@@ -607,7 +1038,7 @@
           <div class="calendar-day">
             <div class="calendar-day-num">17</div>
             <div class="calendar-day-events">
-              <a href="#" class="event-pill event-orange" onclick="openDetailsModal(); return false;">Exam</a>
+              <a href="#" class="event-pill event-orange" onclick="openDetailsModal()">Exam</a>
             </div>
           </div>
           <div class="calendar-day">
@@ -660,12 +1091,12 @@
       <div class="card">
         <div class="card-title">Aujourd'hui (8 jan)</div>
         <div class="event-list">
-          <a href="#" class="event-item orange" onclick="openDetailsModal(); return false;">
+          <a href="#" class="event-item orange" onclick="openDetailsModal()">
             <div class="event-time">15:00 - 16:00</div>
             <div class="event-name">Réunion Tuteur</div>
             <div class="event-location">En ligne (Zoom)</div>
           </a>
-          <a href="#" class="event-item" onclick="openDetailsModal(); return false;">
+          <a href="#" class="event-item" onclick="openDetailsModal()">
             <div class="event-time">18:00 - 19:00</div>
             <div class="event-name">Session Tutorat</div>
             <div class="event-location">En ligne</div>
@@ -736,7 +1167,8 @@
               <div class="event-detail-icon">📝</div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Description</div>
-                <div class="event-detail-value">Suivi des progrès en mathématiques et revue des devoirs précédents.</div>
+                <div class="event-detail-value">Suivi des progrès en mathématiques et revue des devoirs précédents.
+                </div>
               </div>
             </div>
 
@@ -757,32 +1189,40 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button class="button button-danger" onclick="handleDeleteEvent()">Supprimer</button>
-        </div>
       </div>
     </div>
 
     <script>
-      function openDetailsModal() {
+      const openDetailsModal = () => {
         document.getElementById('eventDetailsModal').classList.add('active');
-      }
+      };
 
-      function closeDetailsModal() {
+      const closeDetailsModal = () => {
         document.getElementById('eventDetailsModal').classList.remove('active');
-      }
+      };
 
-      function handleDeleteEvent() {
-        if (confirm('Supprimer cet événement ? Cette action est irréversible.')) {
-          alert('Évènement supprimé avec succès!');
-          closeDetailsModal();
-        }
-      }
+      document.getElementById('eventDetailsModal').addEventListener('click', (event) => {
+        (event.target === document.getElementById('eventDetailsModal')) ? closeDetailsModal() : null;
+      });
 
-      document.getElementById('eventDetailsModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-          closeDetailsModal();
-        }
+      const menuBtn = document.getElementById('menuBtn');
+      const closeBtn = document.getElementById('closeBtn');
+      const sidebar = document.getElementById('sidebar');
+      const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+      menuBtn.addEventListener('click', () => {
+        sidebar.classList.add('open');
+        sidebarOverlay.classList.add('active');
+      });
+
+      closeBtn.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        sidebarOverlay.classList.remove('active');
+      });
+
+      sidebarOverlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        sidebarOverlay.classList.remove('active');
       });
     </script>
   </body>

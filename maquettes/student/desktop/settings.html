@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn@Home - Paramètres | Maquette Desktop</title>
     <style>
+      :root {
+        --primary: #3B82F6;
+        --primary-dark: #1E40AF;
+        --danger: #EF4444;
+        --danger-dark: #DC2626;
+        --bg: #F3F4F6;
+        --text: #111827;
+        --text-muted: #6B7280;
+        --border: #E5E7EB;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -14,18 +25,19 @@
 
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: #F3F4F6;
+        background: var(--bg);
       }
 
       .layout {
         display: grid;
         grid-template-columns: 250px 1fr;
+        grid-template-areas: "nav main";
         min-height: 100vh;
       }
 
-      .sidebar {
+      .nav-sidebar {
         background: white;
-        border-right: 1px solid #E5E7EB;
+        border-right: 1px solid var(--border);
         padding: 24px 0;
         position: fixed;
         width: 250px;
@@ -35,17 +47,16 @@
         flex-direction: column;
       }
 
-      .sidebar-header {
-        padding: 0 24px;
+      .nav-sidebar-header {
+        padding: 0 24px 24px;
         margin-bottom: 32px;
-        border-bottom: 1px solid #E5E7EB;
-        padding-bottom: 24px;
+        border-bottom: 1px solid var(--border);
       }
 
-      .sidebar-logo {
+      .nav-sidebar-logo {
         font-size: 20px;
         font-weight: 700;
-        color: #3B82F6;
+        color: var(--primary);
       }
 
       nav {
@@ -57,7 +68,7 @@
       }
 
       .nav-section:not(:first-child) {
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid var(--border);
         padding-top: 24px;
       }
 
@@ -72,40 +83,33 @@
 
       .nav-item {
         padding: 12px 24px;
-        color: #6B7280;
+        color: var(--text-muted);
         text-decoration: none;
         display: flex;
         align-items: center;
         gap: 12px;
         transition: all 0.3s;
-        cursor: pointer;
-        position: relative;
+        font-size: 14px;
       }
 
       .nav-item:hover {
-        background: #F3F4F6;
-        color: #3B82F6;
-      }
-
-      .nav-item:focus {
-        outline: 2px solid #3B82F6;
-        outline-offset: -2px;
+        background: var(--bg);
+        color: var(--primary);
       }
 
       .nav-item.active {
         background: #E0F2FE;
-        color: #3B82F6;
-        border-right: 4px solid #3B82F6;
+        color: var(--primary);
+        border-right: 4px solid var(--primary);
         font-weight: 600;
       }
 
       .nav-item-icon {
-        margin-right: 12px;
         font-size: 18px;
       }
 
       .notification-badge {
-        background: #EF4444;
+        background: var(--danger);
         color: white;
         width: 24px;
         height: 24px;
@@ -120,33 +124,41 @@
       }
 
       .user-profile {
-        padding: 24px;
-        border-top: 1px solid #E5E7EB;
+        padding: 12px 16px;
+        margin: 0 12px;
+        border-top: 1px solid var(--border);
         margin-top: auto;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        transition: background 0.2s;
+        border-radius: 8px;
+      }
+
+      .user-profile:hover {
+        background: var(--bg);
       }
 
       .user-avatar {
         width: 40px;
         height: 40px;
-        background: #3B82F6;
+        background: var(--primary);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
         font-weight: 700;
-        margin-bottom: 8px;
         position: relative;
-        cursor: pointer;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        flex-shrink: 0;
       }
 
       .user-avatar.student-picture {
         background-image: url('../../assets/pictures/antoine.jpeg');
-        background-size: cover;
-        background-position: center;
         font-size: 0;
       }
 
@@ -166,10 +178,10 @@
         position: absolute;
         bottom: -2px;
         right: -2px;
-        background: #EF4444;
+        background: var(--danger);
         color: white;
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -179,19 +191,27 @@
         border: 2px solid white;
       }
 
+      .user-info {
+        flex: 1;
+        min-width: 0;
+      }
+
       .user-name {
         font-weight: 600;
-        color: #111827;
+        color: var(--text);
         font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .user-role {
         font-size: 12px;
-        color: #6B7280;
+        color: var(--text-muted);
       }
 
       .main {
-        grid-column: 2;
+        grid-area: main;
         padding: 32px;
       }
 
@@ -269,6 +289,27 @@
         outline: none;
         border-color: #3B82F6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      input[type="text"]::placeholder,
+      input[type="email"]::placeholder,
+      input[type="password"]::placeholder,
+      input[type="tel"]::placeholder {
+        color: #9CA3AF;
+      }
+
+      input[type="text"]::placeholder,
+      input[type="email"]::placeholder,
+      input[type="password"]::placeholder,
+      input[type="tel"]::placeholder {
+        transition: opacity 0.2s ease;
+      }
+
+      input[type="text"]:focus::placeholder,
+      input[type="email"]:focus::placeholder,
+      input[type="password"]:focus::placeholder,
+      input[type="tel"]:focus::placeholder {
+        opacity: 0;
       }
 
       .input-group {
@@ -498,27 +539,172 @@
         color: #94A3B8;
         font-size: 12px;
       }
-    </style>
-    <script>
-      function toggleAvatar() {
-        document.getElementById('avatarPreview').classList.toggle('student-picture');
-        document.getElementById('userAvatar').classList.toggle('student-picture');
+
+      .toast-container {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+        pointer-events: none;
       }
 
-      document.addEventListener('DOMContentLoaded', function () {
-        const fileInputLabel = document.querySelector('.file-input-label');
-        if (fileInputLabel) {
-          fileInputLabel.addEventListener('click', toggleAvatar);
+      .toast {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        min-width: 300px;
+        max-width: 400px;
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        pointer-events: auto;
+      }
+
+      .toast.dismissing {
+        animation: fadeOut 0.3s ease-out forwards;
+      }
+
+      .toast-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 4px;
+      }
+
+      .toast-message {
+        font-size: 13px;
+        color: #6B7280;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(400px);
+          opacity: 0;
         }
-      });
-    </script>
+
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        to {
+          opacity: 0;
+          transform: translateX(100px);
+        }
+      }
+
+      .toast.danger {
+        border-left: 4px solid #EF4444;
+      }
+
+      .toast.danger .toast-title {
+        color: #DC2626;
+      }
+
+      /* Disabled Button States */
+      button:disabled,
+      button[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background-color: #9CA3AF;
+      }
+
+      .button-primary:disabled,
+      .button-primary[disabled] {
+        background: #9CA3AF;
+        color: white;
+      }
+
+      .button-secondary:disabled,
+      .button-secondary[disabled] {
+        background: #F3F4F6;
+        color: #9CA3AF;
+        border-color: #D1D5DB;
+      }
+
+      .button-danger:disabled,
+      .button-danger[disabled] {
+        background: #FECACA;
+        color: #991B1B;
+      }
+
+      /* Loading Button States */
+      button.loading {
+        cursor: not-allowed;
+        position: relative;
+        color: transparent;
+      }
+
+      button.loading::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -8px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 0.6s linear infinite;
+      }
+
+      .button-primary.loading {
+        background: #3B82F6;
+        opacity: 0.8;
+      }
+
+      .button-secondary.loading {
+        background: #F3F4F6;
+      }
+
+      .button-secondary.loading::after {
+        border-color: rgba(59, 130, 246, 0.3);
+        border-top-color: #3B82F6;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .action-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .filter-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      input:disabled,
+      textarea:disabled,
+      select:disabled {
+        background-color: #F3F4F6;
+        color: #9CA3AF;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+    </style>
   </head>
 
   <body>
     <div class="layout">
-      <aside class="sidebar">
-        <div class="sidebar-header">
-          <div class="sidebar-logo">📚 Learn@Home</div>
+      <aside class="nav-sidebar">
+        <div class="nav-sidebar-header">
+          <div class="nav-sidebar-logo">📚 Learn@Home</div>
         </div>
 
         <nav>
@@ -549,7 +735,7 @@
 
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item active">
+            <a href="settings.html" class="nav-item active" aria-current="page">
               <span class="nav-item-icon">⚙️</span>
               Paramètres
             </a>
@@ -561,12 +747,13 @@
         </nav>
 
         <div class="user-profile">
-          <div class="user-avatar antoine" id="userAvatar">
-            AK
-            <span class="user-avatar-badge">6</span>
+          <div class="user-avatar antoine">AK
+            <span class="user-avatar-badge">5</span>
           </div>
-          <div class="user-name">Antoine Kreuder</div>
-          <div class="user-role">Élève</div>
+          <div class="user-info">
+            <div class="user-name">Antoine Kreuder</div>
+            <div class="user-role">Élève</div>
+          </div>
         </div>
       </aside>
 
@@ -609,7 +796,9 @@
           </div>
 
           <div class="button-group">
-            <button class="button button-primary">Enregistrer les modifications</button>
+            <button class="button button-primary"
+              onclick="showToast('👤', 'Informations personnelles', 'Vos informations ont été sauvegardées')">Enregistrer
+              les modifications</button>
             <button class="button button-secondary">Annuler</button>
           </div>
         </div>
@@ -639,14 +828,16 @@
           </div>
 
           <div class="button-group">
-            <button class="button button-primary">Changer le mot de passe</button>
+            <button class="button button-primary"
+              onclick="showToast('🔒', 'Sécurité du compte', 'Votre mot de passe a été mis à jour')">Changer le mot de
+              passe</button>
             <button class="button button-secondary">Annuler</button>
           </div>
         </div>
 
         <div class="card">
           <div class="card-title">🔔 Préférences de notification</div>
-          <div class="toggle-group">
+          <div class="toggle-group" id="notification-group">
             <div class="toggle-item">
               <div class="toggle-label">
                 <span class="toggle-label-text">Messages non lus</span>
@@ -689,7 +880,7 @@
           </div>
 
           <div class="button-group" style="margin-top: 24px;">
-            <button class="button button-primary">Enregistrer les préférences</button>
+            <button class="button button-primary" onclick="notificationToast()">Enregistrer les préférences</button>
           </div>
         </div>
 
@@ -727,7 +918,9 @@
           </div>
 
           <div class="button-group">
-            <button class="button button-primary">Enregistrer les préférences</button>
+            <button class="button button-primary"
+              onclick="showToast('🎨', 'Préférences d\'affichage', 'Thème mis à jour avec succès')">Enregistrer les
+              préférences</button>
           </div>
         </div>
 
@@ -760,15 +953,16 @@
           </div>
 
           <div class="button-group" style="margin-top: 24px;">
-            <button class="button button-secondary">Télécharger mes données</button>
-            <button class="button button-secondary">Voir mon activité</button>
+            <button class="button button-secondary" onclick="downloadDataToast()">Télécharger mes données</button>
+            <button class="button button-secondary"
+              onclick="showToast('📊', 'Mon activité', 'Chargement de votre activité...')">Voir mon activité</button>
           </div>
 
           <div class="danger-zone">
             <div class="danger-zone-title">⚠️ Zone dangereuse</div>
             <div class="danger-zone-desc">Une fois supprimé, votre compte ne pourra pas être récupéré. Cette action est
               irréversible.</div>
-            <button class="button button-danger">Supprimer le compte</button>
+            <button class="button button-danger" onclick="deleteAccountToast()">Supprimer le compte</button>
           </div>
         </div>
 
@@ -777,6 +971,34 @@
         </div>
       </main>
     </div>
+    <script>
+      const showToast = (icon, title, message) => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = 'toast'; toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+        container.appendChild(toast);
+        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700)
+      };
+      const notificationToast = () => {
+        const checkedCount = document.querySelectorAll('#notification-group .checkbox:checked').length;
+        showToast('🔔', 'Préférences de notification', `${checkedCount} notification${checkedCount > 1 ? 's' : ''} activée${checkedCount > 1 ? 's' : ''}`)
+      };
+
+      const downloadDataToast = () => showToast('💾', 'Téléchargement des données', 'Votre demande a été envoyée. Vous recevrez vos données par email.');
+      const deleteAccountToast = () => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div'); toast.className = 'toast danger';
+        toast.innerHTML = `<div class="toast-title">⚠️ Compte supprimé</div><div class="toast-message">Votre compte a été supprimé avec succès. Redirection en cours...</div>`;
+        container.appendChild(toast);
+        setTimeout(() => window.location.href = 'login.html', 2700);
+      };
+
+      const activityModalClose = document.querySelector('.activity-modal-close');
+      if (activityModalClose) {
+        activityModalClose.addEventListener('click', (e) => { e.preventDefault(); history.back(); });
+      }
+    </script>
+    <div id="toast-container" class="toast-container"></div>
   </body>
 
 </html>

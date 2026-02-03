@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, ">
     <title>Learn@Home - Paramètres | Maquette Mobile</title>
     <style>
       * {
@@ -21,7 +21,7 @@
       .mobile-header {
         background: white;
         border-bottom: 1px solid #E5E7EB;
-        padding: 16px;
+        padding: 8px 16px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -31,11 +31,11 @@
       }
 
       .menu-btn {
-        width: 44px;
-        height: 44px;
+        width: 36px;
+        height: 36px;
         border: none;
         background: transparent;
-        font-size: 24px;
+        font-size: 20px;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -360,6 +360,27 @@
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
+      input[type="text"]::placeholder,
+      input[type="email"]::placeholder,
+      input[type="password"]::placeholder,
+      input[type="tel"]::placeholder {
+        color: #9CA3AF;
+      }
+
+      input[type="text"]::placeholder,
+      input[type="email"]::placeholder,
+      input[type="password"]::placeholder,
+      input[type="tel"]::placeholder {
+        transition: opacity 0.2s ease;
+      }
+
+      input[type="text"]:focus::placeholder,
+      input[type="email"]:focus::placeholder,
+      input[type="password"]:focus::placeholder,
+      input[type="tel"]:focus::placeholder {
+        opacity: 0;
+      }
+
       .button {
         padding: 14px 16px;
         border: none;
@@ -560,6 +581,226 @@
         color: #991B1B;
         margin-bottom: 16px;
       }
+
+      .toast-container {
+        position: fixed;
+        top: 16px;
+        left: 16px;
+        right: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+        pointer-events: none;
+      }
+
+      .toast {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        min-width: 0;
+        max-width: 100%;
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        pointer-events: auto;
+      }
+
+      .toast.dismissing {
+        animation: fadeOut 0.3s ease-out forwards;
+      }
+
+      .toast-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 4px;
+      }
+
+      .toast-message {
+        font-size: 13px;
+        color: #6B7280;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(-100px);
+          opacity: 0;
+        }
+
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        to {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+      }
+
+      .toast.danger {
+        border-left: 4px solid #EF4444;
+      }
+
+      .toast.danger .toast-title {
+        color: #DC2626;
+      }
+
+      /* Responsive Breakpoints for Mobile Pages */
+
+      /* Tablet (768px and up) */
+      @media (min-width: 768px) {
+        .mobile-header {
+          padding: 20px 32px;
+        }
+
+        .mobile-logo {
+          font-size: 20px;
+        }
+
+        .main-content {
+          padding: 32px;
+          max-width: 900px;
+          margin: 0 auto;
+        }
+
+        .content-section,
+        .card {
+          padding: 24px;
+        }
+
+        h1,
+        h2 {
+          font-size: 28px;
+        }
+
+        .button,
+        .button-primary,
+        .button-secondary {
+          padding: 12px 20px;
+          font-size: 15px;
+        }
+      }
+
+      /* Large Tablet (1024px and up) */
+      @media (min-width: 1024px) {
+        .mobile-header {
+          padding: 24px 48px;
+        }
+
+        .main-content {
+          padding: 48px;
+        }
+
+        .content-section,
+        .card {
+          padding: 32px;
+        }
+
+        h1,
+        h2 {
+          font-size: 32px;
+        }
+
+        .sidebar {
+          width: 300px;
+        }
+      }
+
+      /* Disabled Button States */
+      button:disabled,
+      button[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background-color: #9CA3AF;
+      }
+
+      .button-primary:disabled,
+      .button-primary[disabled] {
+        background: #9CA3AF;
+        color: white;
+      }
+
+      .button-secondary:disabled,
+      .button-secondary[disabled] {
+        background: #F3F4F6;
+        color: #9CA3AF;
+        border-color: #D1D5DB;
+      }
+
+      .button-danger:disabled,
+      .button-danger[disabled] {
+        background: #FECACA;
+        color: #991B1B;
+      }
+
+      /* Loading Button States */
+      button.loading {
+        cursor: not-allowed;
+        position: relative;
+        color: transparent;
+      }
+
+      button.loading::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -8px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 0.6s linear infinite;
+      }
+
+      .button-primary.loading {
+        background: #3B82F6;
+        opacity: 0.8;
+      }
+
+      .button-secondary.loading {
+        background: #F3F4F6;
+      }
+
+      .button-secondary.loading::after {
+        border-color: rgba(59, 130, 246, 0.3);
+        border-top-color: #3B82F6;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .action-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .filter-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      input:disabled,
+      textarea:disabled,
+      select:disabled {
+        background-color: #F3F4F6;
+        color: #9CA3AF;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
     </style>
     <script>
       function toggleAvatar() {
@@ -617,7 +858,7 @@
 
         <div class="nav-section">
           <div class="nav-label">Compte</div>
-          <a href="settings.html" class="nav-item active">
+          <a href="settings.html" class="nav-item active" aria-current="page">
             <span class="nav-item-icon">⚙️</span>
             Paramètres
           </a>
@@ -631,7 +872,7 @@
       <div class="user-profile">
         <div class="user-avatar yann" id="userAvatar">
           YU
-          <span class="user-avatar-badge">3</span>
+          <span class="user-avatar-badge">6</span>
         </div>
         <div class="user-name">Yann Uliong</div>
         <div class="user-role">Tuteur</div>
@@ -674,7 +915,9 @@
           <input type="tel" id="phone" value="+33 6 12 34 56 78" placeholder="+33 6 XX XX XX XX" required>
         </div>
 
-        <button class="button button-primary">Enregistrer les modifications</button>
+        <button class="button button-primary"
+          onclick="showToast('👤', 'Informations personnelles', 'Vos informations ont été sauvegardées')">Enregistrer
+          les modifications</button>
         <button class="button button-secondary">Annuler</button>
       </div>
 
@@ -702,13 +945,15 @@
           <p>✓ Contient au moins un caractère spécial</p>
         </div>
 
-        <button class="button button-primary">Changer le mot de passe</button>
+        <button class="button button-primary"
+          onclick="showToast('🔒', 'Sécurité du compte', 'Votre mot de passe est sécurisé')">Changer le mot de
+          passe</button>
         <button class="button button-secondary">Annuler</button>
       </div>
 
       <div class="card">
         <div class="card-title">🔔 Préférences de notification</div>
-        <div class="toggle-group">
+        <div class="toggle-group" id="notification-group">
           <div class="toggle-item">
             <div class="toggle-label">
               <span class="toggle-label-text">Messages non lus</span>
@@ -750,7 +995,8 @@
           </div>
         </div>
 
-        <button class="button button-primary" style="margin-top: 24px;">Enregistrer les préférences</button>
+        <button class="button button-primary" style="margin-top: 24px;" onclick="notificationToast()">Enregistrer les
+          préférences</button>
       </div>
 
       <div class="card">
@@ -786,7 +1032,9 @@
           </select>
         </div>
 
-        <button class="button button-primary">Enregistrer les préférences</button>
+        <button class="button button-primary"
+          onclick="showToast('🎨', 'Préférences d\'affichage', 'Thème mis à jour avec succès')">Enregistrer les
+          préférences</button>
       </div>
 
       <div class="card">
@@ -817,14 +1065,15 @@
           </div>
         </div>
 
-        <button class="button button-secondary" style="margin-top: 24px;">Télécharger mes données</button>
+        <button class="button button-secondary" style="margin-top: 24px;" onclick="downloadDataToast()">Télécharger mes
+          données</button>
         <button class="button button-secondary">Voir mon activité</button>
 
         <div class="danger-zone">
           <div class="danger-zone-title">⚠️ Zone dangereuse</div>
           <div class="danger-zone-desc">Une fois supprimé, votre compte ne pourra pas être récupéré. Cette action est
             irréversible.</div>
-          <button class="button button-danger">Supprimer le compte</button>
+          <button class="button button-danger" onclick="deleteAccountToast()">Supprimer le compte</button>
         </div>
       </div>
     </main>
@@ -849,7 +1098,34 @@
         sidebar.classList.remove('open');
         overlay.classList.remove('active');
       });
+
+      const showToast = (icon, title, message) => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = 'toast'; toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+        container.appendChild(toast);
+        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700)
+      };
+      const notificationToast = () => {
+        const checkedCount = document.querySelectorAll('#notification-group .checkbox:checked').length;
+        showToast('🔔', 'Préférences de notification', `${checkedCount} notification${checkedCount > 1 ? 's' : ''} activée${checkedCount > 1 ? 's' : ''}`)
+      };
+
+      const downloadDataToast = () => showToast('💾', 'Téléchargement des données', 'Votre demande a été envoyée. Vous recevrez vos données par email.');
+      const deleteAccountToast = () => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div'); toast.className = 'toast danger';
+        toast.innerHTML = `<div class="toast-title">⚠️ Compte supprimé</div><div class="toast-message">Votre compte a été supprimé avec succès. Redirection en cours...</div>`;
+        container.appendChild(toast);
+        setTimeout(() => window.location.href = 'login.html', 2000)
+      };
+
+      const activityModalClose = document.querySelector('.activity-modal-close');
+      if (activityModalClose) {
+        activityModalClose.addEventListener('click', (e) => { e.preventDefault(); history.back(); });
+      }
     </script>
+    <div id="toast-container" class="toast-container"></div>
   </body>
 
 </html>

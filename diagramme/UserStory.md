@@ -19,10 +19,15 @@
 **Je souhaite** accéder au formulaire de création de compte depuis la page de connexion, puis saisir l’ensemble des informations requises  
 **Afin de** créer mon compte et accéder à la plateforme.
 
-#### Cas d’erreur
-**En tant que** nouvel utilisateur  
-**Je souhaite** soumettre le formulaire avec des données manquantes ou incorrectes  
-**Afin de** recevoir un message d’erreur m’indiquant les corrections nécessaires pour finaliser mon inscription.
+#### Cas d'erreur
+**En tant que** nouvel utilisateur
+**Je souhaite** soumettre le formulaire avec des données manquantes ou incorrectes
+**Afin de** recevoir un message d'erreur m'indiquant les corrections nécessaires pour finaliser mon inscription.
+
+#### Inscription réussie
+**En tant que** nouvel utilisateur
+**Je souhaite** soumettre le formulaire avec des données valides
+**Afin de** être redirigé vers mon tableau de bord et commencer à utiliser la plateforme.
 
 ### Connexion — Accès à la plateforme
 
@@ -32,14 +37,24 @@
 **Afin de** être informé en cas d’erreur et corriger mes informations.
 
 #### Mot de passe oublié
-**En tant que** utilisateur non connecté  
-**Je souhaite** cliquer sur “Mot de passe oublié” et renseigner mon adresse e-mail  
+**En tant que** utilisateur non connecté
+**Je souhaite** cliquer sur "Mot de passe oublié" et renseigner mon adresse e-mail
 **Afin de** recevoir un lien me permettant de réinitialiser mon mot de passe.
 
+#### Redirection après réinitialisation du mot de passe
+**En tant que** utilisateur ayant réinitialisé son mot de passe
+**Je souhaite** être redirigé vers la page de connexion
+**Afin de** me connecter avec mon nouveau mot de passe.
+
 #### Connexion réussie
-**En tant que** utilisateur non connecté  
-**Je souhaite** saisir des identifiants valides  
+**En tant que** utilisateur non connecté
+**Je souhaite** saisir des identifiants valides
 **Afin de** accéder à mon tableau de bord.
+
+#### Redirection post-connexion
+**En tant que** utilisateur ayant saisi des identifiants valides
+**Je souhaite** être redirigé automatiquement vers mon tableau de bord
+**Afin de** accéder immédiatement à la plateforme sans étape supplémentaire.
 
 <h2 align="center">Tableau de bord</h2>
 
@@ -269,5 +284,76 @@ Ces user stories sont la documentation fonctionnelle de Learn@Home, couvrant l'e
                             │ Calendrier   ││ Fichiers     ││ Modifier     ││ Modifier     ││ Notifications│
                             │ Chat         ││ Contacts     ││ Supprimer    ││ Supprimer    ││ Affichage    │
                             │ Paramètres   ││ Informaition ││              ││              ││ Supprimer    │
-                            └──────────────┘└──────────────┘└──────────────┘└──────────────┘└──────────────┘     
+                            └──────────────┘└──────────────┘└──────────────┘└──────────────┘└──────────────┘
+```
+
+<h2 align="center">Flux de Redirection</h2>
+
+### Redirection Post-Connexion
+
+```
+            ┌──────────────────────┐
+            │   Page Connexion     │
+            │  (Identifiants OK)   │
+            └──────────┬───────────┘
+                       │
+                       │ Validation
+                       ▼
+            ┌──────────────────────┐
+            │  Session Utilisateur │
+            │     Créée            │
+            └──────────┬───────────┘
+                       │
+                       │ Redirection Automatique
+                       ▼
+            ┌──────────────────────┐
+            │  Tableau de Bord     │
+            │ Utilisateur Connecté │
+            └──────────────────────┘
+```
+
+### Redirection Post-Inscription
+
+```
+            ┌──────────────────────┐
+            │  Page Inscription    │
+            │  (Données Valides)   │
+            └──────────┬───────────┘
+                       │
+                       │ Validation
+                       ▼
+            ┌──────────────────────┐
+            │  Compte Créé         │
+            │  Session Initiée     │
+            └──────────┬───────────┘
+                       │
+                       │ Redirection Automatique
+                       ▼
+            ┌──────────────────────┐
+            │  Tableau de Bord     │
+            │  (Nouveau Compte)    │
+            └──────────────────────┘
+```
+
+### Redirection Post-Récupération Mot de Passe
+
+```
+            ┌──────────────────────┐
+            │  Page Récupération   │
+            │  (Nouveau MdP OK)    │
+            └──────────┬───────────┘
+                       │
+                       │ Validation
+                       ▼
+            ┌──────────────────────┐
+            │  Mot de Passe Changé │
+            └──────────┬───────────┘
+                       │
+                       │ Redirection Automatique
+                       ▼
+            ┌──────────────────────┐
+            │  Page Connexion      │
+            │  (Accès avec Nouveau │
+            │   Mot de Passe)      │
+            └──────────────────────┘
 ```

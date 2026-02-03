@@ -40,10 +40,12 @@
       }
 
       .nav-sidebar {
-        grid-area: nav;
         background: white;
         border-right: 1px solid var(--border);
         padding: 24px 0;
+        position: fixed;
+        width: 250px;
+        height: 100vh;
         overflow-y: auto;
         display: flex;
         flex-direction: column;
@@ -87,6 +89,7 @@
         align-items: center;
         gap: 12px;
         transition: all 0.3s;
+        font-size: 14px;
       }
 
       .nav-item:hover {
@@ -106,9 +109,20 @@
       }
 
       .user-profile {
-        padding: 24px;
+        padding: 12px 16px;
+        margin: 0 12px;
         border-top: 1px solid var(--border);
         margin-top: auto;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        transition: background 0.2s;
+        border-radius: 8px;
+      }
+
+      .user-profile:hover {
+        background: var(--bg);
       }
 
       .user-avatar {
@@ -121,14 +135,26 @@
         justify-content: center;
         color: white;
         font-weight: 700;
-        margin-bottom: 8px;
         position: relative;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        flex-shrink: 0;
       }
 
       .user-avatar.student-picture {
-        background-image: url('../assets/pictures/antoine.jpeg');
+        background-image: url('../../assets/pictures/antoine.jpeg');
         background-size: cover;
         background-position: center;
+        font-size: 0;
+      }
+
+      .user-avatar.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         font-size: 0;
       }
 
@@ -149,10 +175,18 @@
         border: 2px solid white;
       }
 
+      .user-info {
+        flex: 1;
+        min-width: 0;
+      }
+
       .user-name {
         font-weight: 600;
         color: var(--text);
         font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .user-role {
@@ -236,6 +270,27 @@
         outline: none;
         border-color: var(--primary);
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      input[type="text"]::placeholder,
+      input[type="email"]::placeholder,
+      input[type="password"]::placeholder,
+      input[type="tel"]::placeholder {
+        color: #9CA3AF;
+      }
+
+      input[type="text"]::placeholder,
+      input[type="email"]::placeholder,
+      input[type="password"]::placeholder,
+      input[type="tel"]::placeholder {
+        transition: opacity 0.2s ease;
+      }
+
+      input[type="text"]:focus::placeholder,
+      input[type="email"]:focus::placeholder,
+      input[type="password"]:focus::placeholder,
+      input[type="tel"]:focus::placeholder {
+        opacity: 0;
       }
 
       .input-group {
@@ -384,9 +439,15 @@
         background-position: center;
       }
 
+      .avatar-preview.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
+      }
+
       #avatarToggle:checked~.avatar-upload .avatar-preview,
       #avatarToggle:checked~.user-profile .user-avatar {
-        background-image: url('../assets/pictures/antoine.jpeg');
+        background-image: url('../../assets/pictures/yann.jpg');
         font-size: 0;
       }
 
@@ -587,6 +648,15 @@
         font-weight: 700;
         font-size: 24px;
         flex-shrink: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .activity-avatar.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
+        background-color: transparent;
+        font-size: 0;
       }
 
       .activity-info {
@@ -626,6 +696,94 @@
       .toast.danger .toast-title {
         color: var(--danger-dark);
       }
+
+      /* Disabled Button States */
+      button:disabled,
+      button[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background-color: #9CA3AF;
+      }
+
+      .button-primary:disabled,
+      .button-primary[disabled] {
+        background: #9CA3AF;
+        color: white;
+      }
+
+      .button-secondary:disabled,
+      .button-secondary[disabled] {
+        background: #F3F4F6;
+        color: #9CA3AF;
+        border-color: #D1D5DB;
+      }
+
+      .button-danger:disabled,
+      .button-danger[disabled] {
+        background: #FECACA;
+        color: #991B1B;
+      }
+
+      /* Loading Button States */
+      button.loading {
+        cursor: not-allowed;
+        position: relative;
+        color: transparent;
+      }
+
+      button.loading::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -8px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 0.6s linear infinite;
+      }
+
+      .button-primary.loading {
+        background: #3B82F6;
+        opacity: 0.8;
+      }
+
+      .button-secondary.loading {
+        background: #F3F4F6;
+      }
+
+      .button-secondary.loading::after {
+        border-color: rgba(59, 130, 246, 0.3);
+        border-top-color: #3B82F6;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .action-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .filter-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      input:disabled,
+      textarea:disabled,
+      select:disabled {
+        background-color: #F3F4F6;
+        color: #9CA3AF;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
     </style>
   </head>
 
@@ -639,25 +797,31 @@
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="02-dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
-            <a href="03-chat.html" class="nav-item"><span class="nav-item-icon">💬</span> Messages</a>
+            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
+            <a href="chat.html" class="nav-item"><span class="nav-item-icon">💬</span> Messages</a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="04-calendar.html" class="nav-item"><span class="nav-item-icon">📅</span> Calendrier</a>
-            <a href="05-tasks.html" class="nav-item"><span class="nav-item-icon">✅</span> Tâches</a>
+            <a href="calendar.html" class="nav-item"><span class="nav-item-icon">📅</span> Calendrier</a>
+            <a href="tasks.html" class="nav-item"><span class="nav-item-icon">✅</span> Tâches</a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="06-settings.html" class="nav-item active"><span class="nav-item-icon">⚙️</span> Paramètres</a>
-            <a href="01-login.html" class="nav-item"><span class="nav-item-icon">🚪</span> Déconnexion</a>
+            <a href="settings.html" class="nav-item active" aria-current="page"><span class="nav-item-icon">⚙️</span>
+              Paramètres</a>
+            <a href="login.html" class="nav-item"><span class="nav-item-icon">🚪</span> Déconnexion</a>
           </div>
         </nav>
 
         <div class="user-profile">
-          <div class="user-avatar">AK<span class="user-avatar-badge">3</span></div>
-          <div class="user-name">Antoine Kreuder</div>
-          <div class="user-role">Élève</div>
+          <div class="user-avatar yann">
+            YU
+            <span class="user-avatar-badge">6</span>
+          </div>
+          <div class="user-info">
+            <div class="user-name">Yann Uliong</div>
+            <div class="user-role">Tuteur</div>
+          </div>
         </div>
       </aside>
 
@@ -671,7 +835,7 @@
           <div class="card-title">👤 Informations personnelles</div>
           <input type="checkbox" id="avatarToggle" class="file-input">
           <div class="avatar-upload">
-            <div class="avatar-preview">AK</div>
+            <div class="avatar-preview yann" id="avatarPreview">YU</div>
             <div class="avatar-controls">
               <label for="avatarToggle" class="file-input-label">Changer la photo</label>
               <p class="file-input-hint">JPG, PNG ou GIF (Max 2MB)</p>
@@ -681,17 +845,17 @@
           <div class="form-row">
             <div class="form-group">
               <label for="firstname">Prénom</label>
-              <input type="text" id="firstname" value="Antoine" placeholder="Votre prénom">
+              <input type="text" id="firstname" value="Yann" placeholder="Votre prénom">
             </div>
             <div class="form-group">
               <label for="lastname">Nom</label>
-              <input type="text" id="lastname" value="Kreuder" placeholder="Votre nom">
+              <input type="text" id="lastname" value="Uliong" placeholder="Votre nom">
             </div>
           </div>
 
           <div class="form-group">
             <label for="email">Adresse email</label>
-            <input type="email" id="email" value="antoine.kreuder@learn.com" placeholder="vous@exemple.com">
+            <input type="email" id="email" value="yann.uliong@learn.com" placeholder="vous@exemple.com">
           </div>
 
           <div class="form-group">
@@ -712,17 +876,17 @@
 
           <div class="form-group">
             <label for="current-password">Mot de passe actuel</label>
-            <input type="password" id="current-password" placeholder="••••••••">
+            <input type="password" id="current-password">
           </div>
 
           <div class="form-group">
             <label for="new-password">Nouveau mot de passe</label>
-            <input type="password" id="new-password" placeholder="••••••••">
+            <input type="password" id="new-password">
           </div>
 
           <div class="form-group">
             <label for="confirm-password">Confirmer le mot de passe</label>
-            <input type="password" id="confirm-password" placeholder="••••••••">
+            <input type="password" id="confirm-password">
           </div>
 
           <div class="password-hints">
@@ -886,11 +1050,11 @@
       </div>
       <div class="activity-modal-content">
         <div class="activity-item">
-          <div class="activity-avatar">AK</div>
+          <div class="activity-avatar yann">YU</div>
           <div class="activity-info">
-            <div class="activity-name">Antoine Kreuder</div>
+            <div class="activity-name">Yann Uliong</div>
             <div class="activity-status">● En ligne</div>
-            <div class="activity-email">antoine.kreuder@learn.com</div>
+            <div class="activity-email">yann.uliong@learn.com</div>
             <div class="activity-phone">+33 6 12 34 56 78</div>
           </div>
         </div>
@@ -905,7 +1069,7 @@
         const toast = document.createElement('div');
         toast.className = 'toast'; toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
         container.appendChild(toast);
-        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 300) }, 2700)
+        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700)
       };
       const notificationToast = () => {
         const checkedCount = document.querySelectorAll('#notification-group .checkbox:checked').length;
@@ -918,7 +1082,7 @@
         const toast = document.createElement('div'); toast.className = 'toast danger';
         toast.innerHTML = `<div class="toast-title">⚠️ Compte supprimé</div><div class="toast-message">Votre compte a été supprimé avec succès. Redirection en cours...</div>`;
         container.appendChild(toast);
-        setTimeout(() => window.location.href = '01-login.html', 2000)
+        setTimeout(() => window.location.href = 'login.html', 2700);
       };
 
       document.querySelector('.activity-modal-close').addEventListener('click', (e) => { e.preventDefault(); history.back(); });
