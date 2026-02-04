@@ -1,0 +1,43 @@
+name: CI - Lint & Format Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint-and-format:
+    name: Check HTML/CSS/JS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install CI dependencies
+        working-directory: .github
+        run: npm ci
+
+      - name: Run ESLint (HTML/JS)
+        run: .github/node_modules/.bin/eslint . --config .github/eslint.config.js
+
+      - name: Check Prettier formatting
+        run: .github/node_modules/.bin/prettier --check "**/*.{html,css,js,mjs,cjs,json}" --ignore-path .gitignore
+
+      - name: Verify HTML files exist
+        run: |
+          echo "Checking HTML files structure..."
+          test -f maquettes/index.html && echo "✓ index.html found" || exit 1
+          test -d maquettes/student/desktop && echo "✓ Student desktop pages found" || exit 1
+          test -d maquettes/student/mobile && echo "✓ Student mobile pages found" || exit 1
+          test -d maquettes/tutor/desktop && echo "✓ Tutor desktop pages found" || exit 1
+          test -d maquettes/tutor/mobile && echo "✓ Tutor mobile pages found" || exit 1
