@@ -208,7 +208,7 @@
         border-color: #DC2626;
       }
 
-      /* Disabled Button States */
+      
       button:disabled,
       button[disabled] {
         opacity: 0.6;
@@ -235,7 +235,7 @@
         color: #991B1B;
       }
 
-      /* Loading Button States */
+      
       button.loading {
         cursor: not-allowed;
         position: relative;
@@ -314,17 +314,7 @@
         <button class="button-primary" type="submit">Envoyer le lien</button>
       </form>
 
-      <!-- Button State Examples:
-
-      Disabled State: <button class="button-primary" disabled>Se connecter</button>
-      Loading State: <button class="button-primary loading">Se connecter</button>
-
-      For forms, add onsubmit handler to toggle loading state:
-      onclick="this.classList.add('loading'); this.disabled = true;"
-      onload="this.classList.remove('loading'); this.disabled = false;"
-
-      Form field disabled: <input type="email" disabled placeholder="user@example.com">
-      -->
+      
 
       <p class="back-link">
         Retour à la <a onclick="window.location.href='01-login.html'" href="#login">connexion</a>

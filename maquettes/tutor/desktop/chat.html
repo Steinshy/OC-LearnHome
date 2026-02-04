@@ -37,7 +37,7 @@
         min-height: 100vh;
       }
 
-      /* Navigation Sidebar */
+      
       .nav-sidebar {
         grid-area: nav;
         background: white;
@@ -203,7 +203,7 @@
         color: var(--text-muted);
       }
 
-      /* Contacts Sidebar */
+      
       .contacts-sidebar {
         grid-area: contacts;
         background: white;
@@ -376,7 +376,7 @@
         flex-shrink: 0;
       }
 
-      /* Chat Container */
+      
       .chat-container {
         grid-area: chat;
         display: flex;
@@ -1228,7 +1228,7 @@
         }
       }
 
-      /* Info Modal Styling */
+      
       .info-content {
         margin-top: 16px;
       }
@@ -1298,7 +1298,7 @@
         background: #1E40AF;
       }
 
-      /* Task Panel */
+      
       .task-panel {
         position: fixed;
         top: 50%;
@@ -1507,7 +1507,7 @@
         pointer-events: auto;
       }
 
-      /* Disabled Button States */
+      
       button:disabled,
       button[disabled] {
         opacity: 0.6;
@@ -1534,7 +1534,7 @@
         color: #991B1B;
       }
 
-      /* Loading Button States */
+      
       button.loading {
         cursor: not-allowed;
         position: relative;
@@ -1603,7 +1603,7 @@
     <input type="checkbox" id="phone-call-modal-toggle" style="display: none;">
     <input type="checkbox" id="video-call-modal-toggle" style="display: none;">
     <div class="layout">
-      <!-- Navigation Sidebar -->
+      
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
           <div class="nav-sidebar-logo">📚 Learn@Home</div>
@@ -1640,7 +1640,7 @@
         </div>
       </aside>
 
-      <!-- Contacts Sidebar -->
+      
       <aside class="contacts-sidebar">
         <div class="contacts-sidebar-header">
           <input type="text" class="search-box" placeholder="Rechercher un contact...">
@@ -1688,7 +1688,7 @@
         </div>
       </aside>
 
-      <!-- Chat Area -->
+      
       <main class="chat-container">
         <div class="chat-header">
           <div class="chat-header-info">
@@ -1804,7 +1804,7 @@
 
     <div class="overlay" id="overlay"></div>
 
-    <!-- Task Panel -->
+    
     <div class="task-panel" id="taskPanel">
       <div class="task-header">
         <div class="task-title">📋 Tâches assignées</div>
@@ -2041,10 +2041,8 @@
         }
       };
 
-      // Initialize contact manager state
       contactManager.update();
 
-      // Task Panel
       const taskBtn = document.getElementById('taskBtn');
       const closeTaskBtn = document.getElementById('closeTaskBtn');
       const taskPanel = document.getElementById('taskPanel');

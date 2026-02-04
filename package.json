@@ -1,0 +1,20 @@
+{
+  "type": "module",
+  "name": "learnhome-mockups",
+  "version": "1.0.0",
+  "description": "Learn@Home mockups - ESLint dependencies only",
+  "private": true,
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "eslint-plugin-html": "^8.1.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsdoc": "^62.5.0",
+    "eslint-plugin-security": "^3.0.1",
+    "eslint-plugin-sonarjs": "^3.0.6",
+    "eslint-plugin-unicorn": "^62.0.0",
+    "globals": "17.3.0",
+    "@typescript-eslint/parser": "^8.54.0",
+    "prettier": "^3.7.4"
+  }
+}
