@@ -34,7 +34,7 @@
         min-height: 100vh;
       }
 
-      
+
       .nav-sidebar {
         background: white;
         border-right: 1px solid var(--border);
@@ -199,7 +199,7 @@
         color: var(--text-muted);
       }
 
-      
+
       .main {
         grid-column: 2;
         padding: 32px;
@@ -564,7 +564,7 @@
         }
       }
 
-      
+
       button:disabled,
       button[disabled] {
         opacity: 0.6;
@@ -591,7 +591,7 @@
         color: #991B1B;
       }
 
-      
+
       button.loading {
         cursor: not-allowed;
         position: relative;
@@ -651,6 +651,195 @@
         cursor: not-allowed;
         opacity: 0.7;
       }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.2s ease-out;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        max-width: 500px;
+        width: 90%;
+        padding: 32px;
+        animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+
+      .modal-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #6B7280;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        transition: all 0.2s;
+      }
+
+      .modal-close:hover {
+        background: #F3F4F6;
+        color: #111827;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 8px;
+      }
+
+      .form-label.required::after {
+        content: ' *';
+        color: #EF4444;
+      }
+
+      .form-input,
+      .form-textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        font-size: 14px;
+        font-family: inherit;
+        transition: all 0.2s;
+      }
+
+      .form-input:focus,
+      .form-textarea:focus {
+        outline: none;
+        border-color: #3B82F6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .form-input.error,
+      .form-textarea.error {
+        border-color: #EF4444;
+      }
+
+      .form-input.error:focus,
+      .form-textarea.error:focus {
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+      }
+
+      .form-textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .form-error {
+        font-size: 13px;
+        color: #EF4444;
+        margin-top: 6px;
+        display: none;
+      }
+
+      .form-input.error~.form-error,
+      .form-textarea.error~.form-error {
+        display: block;
+      }
+
+      .char-counter {
+        font-size: 12px;
+        color: #9CA3AF;
+        margin-top: 6px;
+        text-align: right;
+      }
+
+      .char-counter.warning {
+        color: #F59E0B;
+      }
+
+      .char-counter.error {
+        color: #EF4444;
+      }
+
+      .modal-footer {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        margin-top: 32px;
+      }
+
+      .button-secondary {
+        padding: 10px 16px;
+        border: 1px solid #D1D5DB;
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s;
+        color: #6B7280;
+      }
+
+      .button-secondary:hover {
+        background: #F3F4F6;
+        border-color: #9CA3AF;
+      }
+
+      .button-secondary:active {
+        background: #E5E7EB;
+      }
     </style>
   </head>
 
@@ -695,6 +884,7 @@
       <main class="main">
         <div class="header">
           <h1>Gestion des Tâches</h1>
+          <button class="button button-primary" id="addTaskBtn">+ Ajouter une tâche</button>
         </div>
 
         <div class="controls">
@@ -840,6 +1030,45 @@
         </div>
       </main>
     </div>
+
+    <!-- Modal: Ajouter une tâche -->
+    <div class="modal" id="taskModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Ajouter une tâche</h2>
+          <button class="modal-close" id="closeTaskModal" aria-label="Fermer le formulaire">×</button>
+        </div>
+        <form id="taskForm">
+          <div class="form-group">
+            <label for="taskTitle" class="form-label required">Titre</label>
+            <input type="text" id="taskTitle" class="form-input" placeholder="Ex: Équations du second degré"
+              maxlength="100" required>
+            <div class="char-counter"><span id="titleCounter">0</span>/100</div>
+            <div class="form-error" id="titleError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="taskDescription" class="form-label">Description</label>
+            <textarea id="taskDescription" class="form-textarea"
+              placeholder="Ex: Compléter les 10 exercices de la feuille distribuée..." maxlength="500"></textarea>
+            <div class="char-counter"><span id="descCounter">0</span>/500</div>
+            <div class="form-error" id="descError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="taskDate" class="form-label required">Date d'échéance</label>
+            <input type="date" id="taskDate" class="form-input" required>
+            <div class="form-error" id="dateError"></div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="button-secondary" id="cancelTaskBtn">Annuler</button>
+            <button type="submit" class="button button-primary">Créer la tâche</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <div id="toast-container" class="toast-container"></div>
     <script>
       const showToast = (icon, title, message) => {
@@ -850,7 +1079,175 @@
         container.appendChild(toast);
         setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
       };
+
       document.querySelectorAll('.task-checkbox').forEach(cb => cb.addEventListener('change', () => showToast('✅', 'Tâche mise à jour', cb.checked ? 'Tâche marquée comme complétée' : 'Tâche marquée comme incomplète')));
+
+      // Task modal logic
+      const taskModal = document.getElementById('taskModal');
+      const taskForm = document.getElementById('taskForm');
+      const addTaskBtn = document.getElementById('addTaskBtn');
+      const closeTaskModal = document.getElementById('closeTaskModal');
+      const cancelTaskBtn = document.getElementById('cancelTaskBtn');
+      const taskTitle = document.getElementById('taskTitle');
+      const taskDescription = document.getElementById('taskDescription');
+      const taskDate = document.getElementById('taskDate');
+      const titleCounter = document.getElementById('titleCounter');
+      const descCounter = document.getElementById('descCounter');
+
+      // Set minimum date to today
+      const today = new Date();
+      const todayStr = today.toISOString().split('T')[0];
+      taskDate.min = todayStr;
+
+      // Open modal
+      const openTaskModal = () => {
+        taskModal.classList.add('active');
+        taskTitle.focus();
+      };
+
+      // Close modal
+      const closeModal = () => {
+        if (taskForm.hasUnsavedChanges()) {
+          if (confirm('Vous avez des modifications non enregistrées. Continuer ?')) {
+            taskModal.classList.remove('active');
+            resetForm();
+          }
+        } else {
+          taskModal.classList.remove('active');
+          resetForm();
+        }
+      };
+
+      // Reset form
+      const resetForm = () => {
+        taskForm.reset();
+        document.querySelectorAll('.form-input, .form-textarea').forEach(input => {
+          input.classList.remove('error');
+        });
+        document.querySelectorAll('.form-error').forEach(error => {
+          error.textContent = '';
+        });
+        titleCounter.textContent = '0';
+        descCounter.textContent = '0';
+      };
+
+      // Track unsaved changes
+      const markFormDirty = () => {
+        taskForm.hasUnsavedChanges = () => {
+          return taskTitle.value.trim() !== '' ||
+            taskDescription.value.trim() !== '' ||
+            taskDate.value !== '';
+        };
+      };
+
+      taskTitle.addEventListener('input', () => {
+        titleCounter.textContent = taskTitle.value.length;
+        markFormDirty();
+        if (taskTitle.value.length >= 100) {
+          showFieldError('title', 'Le titre ne doit pas dépasser 100 caractères');
+        } else {
+          clearError('title');
+        }
+      });
+
+      taskDescription.addEventListener('input', () => {
+        descCounter.textContent = taskDescription.value.length;
+        markFormDirty();
+        if (taskDescription.value.length >= 500) {
+          showFieldError('description', 'La description ne doit pas dépasser 500 caractères');
+        } else {
+          clearError('description');
+        }
+      });
+
+      taskDate.addEventListener('change', () => {
+        markFormDirty();
+        clearError('date');
+      });
+
+      // Clear error message
+      const clearError = (fieldName) => {
+        const field = document.getElementById(`task${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}`);
+        const errorEl = document.getElementById(`${fieldName}Error`);
+        field.classList.remove('error');
+        errorEl.textContent = '';
+      };
+
+      // Validate form
+      const validateForm = () => {
+        let isValid = true;
+
+        // Title validation
+        const trimmedTitle = taskTitle.value.trim();
+        if (trimmedTitle === '') {
+          showFieldError('title', 'Le titre de la tâche est obligatoire');
+          isValid = false;
+        } else if (taskTitle.value.length > 100) {
+          showFieldError('title', 'Le titre ne doit pas dépasser 100 caractères');
+          isValid = false;
+        }
+
+        // Description validation
+        if (taskDescription.value.length > 500) {
+          showFieldError('description', 'La description ne doit pas dépasser 500 caractères');
+          isValid = false;
+        }
+
+        // Date validation
+        if (taskDate.value === '') {
+          showFieldError('date', 'Une date d\'échéance est obligatoire');
+          isValid = false;
+        } else {
+          const selectedDate = new Date(taskDate.value);
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+          if (selectedDate < today) {
+            showFieldError('date', 'La date d\'échéance ne peut pas être dans le passé');
+            isValid = false;
+          }
+        }
+
+        return isValid;
+      };
+
+      // Show field error
+      const showFieldError = (fieldName, message) => {
+        const field = document.getElementById(`task${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}`);
+        const errorEl = document.getElementById(`${fieldName}Error`);
+        field.classList.add('error');
+        errorEl.textContent = message;
+      };
+
+      // Submit form
+      taskForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (!validateForm()) {
+          return;
+        }
+
+        // Show success notification
+        showToast('✅', 'Tâche créée', 'Votre nouvelle tâche a été ajoutée avec succès');
+
+        // Close modal and reset form
+        taskModal.classList.remove('active');
+        resetForm();
+      });
+
+      // Event listeners
+      addTaskBtn.addEventListener('click', openTaskModal);
+      closeTaskModal.addEventListener('click', closeModal);
+      cancelTaskBtn.addEventListener('click', closeModal);
+
+      // Close modal when clicking outside
+      taskModal.addEventListener('click', (e) => {
+        if (e.target === taskModal) {
+          closeModal();
+        }
+      });
+
+      // Initialize hasUnsavedChanges function
+      taskForm.hasUnsavedChanges = () => false;
     </script>
   </body>
 

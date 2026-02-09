@@ -51,14 +51,16 @@
 ### Élève
 
 - En tant qu'élève, je veux visualiser mes tâches afin de suivre mes devoirs et responsabilités.
+- En tant qu'élève, je veux consulter les détails d'une tâche pour connaître exactement ce que je dois faire.
 - En tant qu'élève, je veux ajouter une tâche pour noter ce que je dois faire.
 - En tant qu'élève, je veux supprimer une tâche pour garder une liste à jour.
+- En tant qu'élève, je veux marquer une tâche comme complétée pour suivre ma progression.
 
 ### Tuteur
 
 - En tant que tuteur, je veux visualiser les tâches de mon élève pour le soutenir dans ses progrès.
 - En tant que tuteur, je veux ajouter une tâche à mon élève pour lui attribuer du travail adapté.
-- En tant que tuteur, je veux supprimer une tâche à mon élève pour adapter la charge de travail.
+- En tant que tuteur, je veux supprimer une tâche assignée à mon élève pour adapter la charge de travail.
 
 <h2 align="center">Chat</h2>
 
@@ -90,6 +92,8 @@
 - En tant qu'élève, je veux gérer mes préférences de notification pour contrôler le type et la fréquence des alertes reçues.
 - En tant qu'élève, je veux ajuster mes préférences d'affichage (langue, fuseau horaire) pour personnaliser mon expérience.
 - En tant qu'élève, je veux gérer mes paramètres de confidentialité et contrôler le partage de mes données.
+- En tant qu'élève, je veux télécharger une copie de mes données personnelles pour avoir une sauvegarde ou les transférer ailleurs.
+- En tant qu'élève, je veux supprimer définitivement mon compte et toutes mes données pour quitter la plateforme.
 
 ### Tuteur
 
@@ -99,6 +103,8 @@
 - En tant que tuteur, je veux gérer mes préférences de notification pour contrôler le type et la fréquence des alertes reçues.
 - En tant que tuteur, je veux ajuster mes préférences d'affichage (langue, fuseau horaire) pour personnaliser mon expérience.
 - En tant que tuteur, je veux gérer mes paramètres de confidentialité et contrôler le partage de mes données.
+- En tant que tuteur, je veux télécharger une copie de mes données personnelles pour avoir une sauvegarde ou les transférer ailleurs.
+- En tant que tuteur, je veux supprimer définitivement mon compte et toutes mes données pour quitter la plateforme.
 
 **En résumé :**
 Ces cas d'usage couvrent l'accès, le suivi des tâches, la gestion du temps, la communication et les paramètres utilisateur, répondant ainsi de manière concise aux besoins essentiels des élèves et des tuteurs sur l'application.
@@ -139,10 +145,11 @@ Ces cas d'usage couvrent l'accès, le suivi des tâches, la gestion du temps, la
                                    ▼               ▼               ▼               ▼               ▼
                             ┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐
                             │ Msg non lus  ││ Messages     ││ Consulter    ││ Consulter    ││ Infos        │
-                            │ Tâches       ││ Envoyer      ││              ││              ││ Sécurité     │
-                            │ Événements   ││ Fichiers     ││              ││              ││ Notifications│
-                            │              ││ Contacts     ││              ││              ││ Affichage    │
-                            │              ││ Confidentiel ││              ││              ││ Supprimer    │
+                            │ Tâches       ││ Envoyer      ││              ││ Création     ││ Sécurité     │
+                            │ Événements   ││ Fichiers     ││              ││ Suppression  ││ Notifications│
+                            │              ││ Contacts     ││              ││ Marquage     ││ Affichage    │
+                            │              ││ Confidentiel ││              ││              ││ Télécharger  │
+                            │              ││              ││              ││              ││ Supprimer    │
                             └──────────────┘└──────────────┘└──────────────┘└──────────────┘└──────────────┘
 ```
 
@@ -180,8 +187,9 @@ Ces cas d'usage couvrent l'accès, le suivi des tâches, la gestion du temps, la
                             ┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐
                             │ Msg non lus  ││ Messages     ││ Consulter    ││ Consulter    ││ Infos        │
                             │ Tâches       ││ Envoyer      ││ Création     ││ Création     ││ Sécurité     │
-                            │ Calendrier   ││ Fichiers     ││ Modifier     ││ Modifier     ││ Notifications│
-                            │ Chat         ││ Contacts     ││ Supprimer    ││ Supprimer    ││ Affichage    │
-                            │ Paramètres   ││ Informaition ││              ││              ││ Supprimer    │
+                            │ Calendrier   ││ Fichiers     ││ Modifier     ││ Suppression  ││ Notifications│
+                            │ Chat         ││ Contacts     ││ Supprimer    ││ Marquage     ││ Affichage    │
+                            │ Paramètres   ││ Informaition ││              ││              ││ Télécharger  │
+                            │              ││              ││              ││              ││ Supprimer    │
                             └──────────────┘└──────────────┘└──────────────┘└──────────────┘└──────────────┘
 ```

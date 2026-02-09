@@ -10,198 +10,214 @@
 - Centres d’intérêt : bénévolat (Restos du Cœur), chorale, cuisine  
 - Objectif : rendre les matières scientifiques accessibles et attrayantes, transmettre ses connaissances et accompagner l’élève de manière bienveillante.
 
-<h2 align="center">Connexion &amp; Inscription</h2>
+#### T001 — Inscription — Création de compte
 
-### Inscription — Création de compte
-
-#### Cas nominal
-**En tant que** nouvel utilisateur  
-**Je souhaite** accéder au formulaire de création de compte depuis la page de connexion, puis saisir l’ensemble des informations requises  
+##### T001.1-Cas nominal
+**En tant que** nouvel utilisateur
+**Je souhaite** saisir l'ensemble des informations requises
 **Afin de** créer mon compte et accéder à la plateforme.
 
-#### Cas d'erreur
+##### T001.2-Inscription réussie
 **En tant que** nouvel utilisateur
-**Je souhaite** soumettre le formulaire avec des données manquantes ou incorrectes
-**Afin de** recevoir un message d'erreur m'indiquant les corrections nécessaires pour finaliser mon inscription.
+**Je souhaite** saisir l'ensemble des informations requises et valider l'inscription
+**Afin de** afficher une notification de succès et être redirigé vers la page de tableau de bord.
 
-#### Inscription réussie
+##### T001.3-Cas d'erreur
 **En tant que** nouvel utilisateur
-**Je souhaite** soumettre le formulaire avec des données valides
-**Afin de** être redirigé vers mon tableau de bord et commencer à utiliser la plateforme.
+**Je souhaite** saisir l'ensemble des informations requises
+**Afin de** recevoir un message d'erreur m'indiquant les erreurs de saisie.
 
-### Connexion — Accès à la plateforme
+#### T002 — Connexion — Accès à la plateforme
 
-#### Identifiants invalides
-**En tant que** utilisateur non connecté  
-**Je souhaite** saisir mes identifiants et valider la connexion  
-**Afin de** être informé en cas d’erreur et corriger mes informations.
-
-#### Mot de passe oublié
-**En tant que** utilisateur non connecté
-**Je souhaite** cliquer sur "Mot de passe oublié" et renseigner mon adresse e-mail
-**Afin de** recevoir un lien me permettant de réinitialiser mon mot de passe.
-
-#### Redirection après réinitialisation du mot de passe
-**En tant que** utilisateur ayant réinitialisé son mot de passe
-**Je souhaite** être redirigé vers la page de connexion
-**Afin de** me connecter avec mon nouveau mot de passe.
-
-#### Connexion réussie
+##### T002.1-Cas nominal
 **En tant que** utilisateur non connecté
 **Je souhaite** saisir des identifiants valides
-**Afin de** accéder à mon tableau de bord.
+**Afin de** pouvoir me connecter à la plateforme.
 
-#### Redirection post-connexion
+##### T002.2-Connexion réussie
 **En tant que** utilisateur ayant saisi des identifiants valides
-**Je souhaite** être redirigé automatiquement vers mon tableau de bord
-**Afin de** accéder immédiatement à la plateforme sans étape supplémentaire.
+**Je souhaite** saisir mes identifiants et valider la connexion
+**Afin de** afficher une notification de succès et être redirigé vers la page de tableau de bord.
 
-<h2 align="center">Tableau de bord</h2>
+##### T002.3-Cas d'erreur
+**En tant que** utilisateur non connecté
+**Je souhaite** saisir des identifiants invalides
+**Afin de** afficher un message d'erreur m'indiquant les erreurs de saisie.
 
-#### Suivi de la messagerie
-**En tant que** utilisateur connecté  
-**Je souhaite** visualiser le nombre de messages non lus  
-**Afin de** identifier rapidement les discussions nécessitant mon attention.
+#### T003 — Mot de passe oublié
 
-#### Suivi des tâches
-**En tant que** utilisateur connecté  
-**Je souhaite** afficher la liste de mes tâches  
-**Afin de** connaître les actions à réaliser.
+##### T003.1-Cas nominal
+**En tant que** utilisateur non connecté
+**Je souhaite** renseigner mon adresse e-mail
+**Afin de** recevoir un email me permettant de réinitialiser mon mot de passe
 
-#### Suivi du calendrier
-**En tant que** utilisateur connecté  
-**Je souhaite** visualiser mes événements et rendez-vous à venir  
-**Afin de** organiser efficacement mon temps.
+##### T003.2-Demande de réinitialisation de mot de passe réussie
+**En tant que** utilisateur non connecté
+**Je souhaite** renseigner mon adresse e-mail
+**Afin de** afficher une notification de succès et recevoir un email me permettant de réinitialiser mon mot de passe suivie d'une redirection vers la page de connexion.
 
-<h2 align="center">Calendrier</h2>
+##### T003.3-Cas d'erreur de la demande de réinitialisation de mot de passe
+**En tant que** utilisateur non connecté
+**Je souhaite** renseigner une adresse e-mail invalide
+**Afin de** afficher un message d'erreur m'indiquant que l'adresse e-mail est invalide
 
-#### Consultation du calendrier
-**En tant que** utilisateur connecté  
-**Je souhaite** accéder à la page du calendrier  
-**Afin de** consulter mes événements et rendez-vous.
+#### T004 — Tableau de bord
 
-#### Ajout d’un événement
-**En tant que** utilisateur connecté  
-**Je souhaite** ouvrir une fenêtre d’ajout, renseigner les informations nécessaires et enregistrer  
-**Afin de** créer un nouvel événement dans mon calendrier.
+##### T004.1-ÉLÈVE/TUTEUR — Suivi de la messagerie
+**En tant que** élève connecté
+**Je souhaite** visualiser le nombre de messages non lus
+**Afin de** identifier rapidement les messages nécessitant mon attention.
 
-#### Suppression d’un événement
-**En tant que** utilisateur connecté  
-**Je souhaite** sélectionner un événement et le supprimer  
-**Afin de** maintenir mon planning à jour.
+##### T004.2-ÉLÈVE/TUTEUR — Suivi des tâches
+**En tant que** élève connecté
+**Je souhaite** afficher la liste de mes tâches
+**Afin de** connaître les tâches à réaliser.
 
-<h2 align="center">Tâches</h2>
+##### T004.3-ÉLÈVE/TUTEUR — Suivi du calendrier
+**En tant que** élève connecté
+**Je souhaite** visualiser mes événements et rendez-vous à venir
+**Afin de** connaître les événements et rendez-vous à venir.
 
-#### Accès aux tâches
-**En tant que** utilisateur connecté  
-**Je souhaite** consulter la page des tâches  
-**Afin de** visualiser l’ensemble de mes actions à réaliser.
+##### T004.4-ÉLÈVE/TUTEUR — Vue d'ensemble
+**En tant que** élève ou tuteur connecté
+**Je souhaite** visualiser un tableau de bord récapitulatif
+**Afin de** avoir une vue d'ensemble de mes activités.
 
-#### Consultation d’une tâche
-**En tant que** utilisateur connecté  
-**Je souhaite** sélectionner une tâche  
-**Afin de** en afficher les détails.
+#### T005 — Chat
 
-#### Ajout d’une tâche
-**En tant que** utilisateur connecté  
-**Je souhaite** ouvrir une fenêtre d’ajout, remplir les informations nécessaires puis enregistrer  
-**Afin de** créer une nouvelle tâche.
+##### T005.1-ÉLÈVE/TUTEUR — Accès à la messagerie
+**En tant que** élève ou tuteur connecté
+**Je souhaite** accéder à la page de chat
+**Afin de** consulter mes discussions avec mon tuteur.
 
-#### Suppression d’une tâche
-**En tant que** utilisateur connecté  
-**Je souhaite** supprimer une tâche existante  
-**Afin de** maintenir ma liste de tâches à jour.
+##### T005.2-ÉLÈVE/TUTEUR — Consultation d'un fil de discussion
+**En tant que** élève ou tuteur connecté
+**Je souhaite** sélectionner mon tuteur
+**Afin de** afficher l'historique de nos échanges.
 
-<h2 align="center">Chat</h2>
+##### T005.3-ÉLÈVE/TUTEUR — Envoi d'un message
+**En tant que** élève ou tuteur connecté
+**Je souhaite** ouvrir une fenêtre de saisie
+**Afin de** envoyer un message à mon tuteur.
 
-#### Accès à la messagerie
-**En tant que** utilisateur connecté  
-**Je souhaite** accéder à la page de chat  
-**Afin de** consulter mes discussions.
+##### T005.4-ÉLÈVE/TUTEUR — Envoi d'un fichier
+**En tant que** élève ou tuteur connecté
+**Je souhaite** joindre un fichier à mon message
+**Afin de** partager un document ou un devoir avec mon tuteur.
 
-#### Consultation d’un fil de discussion
-**En tant que** utilisateur connecté  
-**Je souhaite** sélectionner un contact  
-**Afin de** afficher l’historique de nos échanges.
+##### T005.5-ÉLÈVE/TUTEUR — Consultation de la liste des contacts
+**En tant que** utilisateur connecté
+**Je souhaite** visualiser ma liste de contacts
+**Afin de** connaître les personnes avec lesquelles je peux échanger.
 
-#### Envoi d’un message
-**En tant que** utilisateur connecté  
-**Je souhaite** ouvrir une fenêtre de saisie  
-**Afin de** envoyer un message.
+##### T005.6-ÉLÈVE/TUTEUR — Consultation des informations détaillées d'un contact
+**En tant que** utilisateur connecté
+**Je souhaite** sélectionner un contact et cliquer sur "Voir les informations"
+**Afin de** consulter les informations détaillées de ce contact.
 
-#### Envoi d’un fichier
-**En tant que** utilisateur connecté  
-**Je souhaite** joindre un fichier à mon message  
-**Afin de** partager un document avec mon contact.
-
-<h2 align="center">Gestion des contacts</h2>
-
-#### Consultation des contacts
-**En tant que** utilisateur connecté  
-**Je souhaite** accéder à la liste de mes contacts  
-**Afin de** gérer mes échanges avec les autres utilisateurs.
-
-#### Ajout d’un contact
-**En tant que** utilisateur connecté  
-**Je souhaite** ouvrir une fenêtre d’ajout et renseigner les informations nécessaires  
+##### T005.7-ÉLÈVE/TUTEUR — Ajout d'un contact
+**En tant que** utilisateur connecté
+**Je souhaite** ouvrir une fenêtre d'ajout et renseigner les informations nécessaires
 **Afin de** ajouter un nouveau contact.
 
-#### Modification ou suppression d'un contact
+##### T005.8-ÉLÈVE/TUTEUR — Suppression d'un contact
 **En tant que** utilisateur connecté
-**Je souhaite** modifier ou supprimer un contact existant
-**Afin de** maintenir à jour ma liste de contacts.
+**Je souhaite** sélectionner un contact et cliquer sur "Supprimer"
+**Afin de** supprimer le contact de ma liste.
 
-<h2 align="center">Paramètres</h2>
+#### T006 — Calendrier
 
-#### Accès à la page des paramètres
+##### T006.1-ÉLÈVE/TUTEUR — Consultation du calendrier
+**En tant que** élève ou tuteur connecté
+**Je souhaite** accéder à la page du calendrier
+**Afin de** consulter mes événements et rendez-vous.
+
+##### T006.2-ÉLÈVE/TUTEUR — Consultation d'un événement ou rendez-vous
+**En tant que** élève ou tuteur connecté
+**Je souhaite** sélectionner un événement ou rendez-vous
+**Afin de** consulter les détails de l'événement ou rendez-vous.
+
+#### T007 — Tâches
+
+##### T007.1-ÉLÈVE/TUTEUR — Accès à la page des tâches
+**En tant que** élève ou tuteur connecté
+**Je souhaite** accéder à la page des tâches
+**Afin de** visualiser l'ensemble de mes devoirs à réaliser.
+
+##### T007.2-ÉLÈVE/TUTEUR — Consultation des détails d'une tâche
+**En tant que** élève ou tuteur connecté
+**Je souhaite** sélectionner une tâche pour voir ses détails
+**Afin de** consulter les détails de la tâche.
+
+##### T007.3-ÉLÈVE — Ajout d'une tâche
+**En tant que** élève connecté
+**Je souhaite** ajouter une nouvelle tâche personnelle (devoir, révision, etc.)
+**Afin de** ajouter une tâche à ma liste de tâches.
+
+##### T007.4-TUTEUR — Ajout d'une tâche
+**En tant que** tuteur connecté
+**Je souhaite** ajouter une tâche à la liste de tâches tout en assignant un élève
+**Afin de** structurer le travail de l'élève et l'accompagner dans son apprentissage.
+
+##### T007.5-ÉLÈVE/TUTEUR — Edition d'une tâche
+**En tant que** élève ou tuteur connecté
+**Je souhaite** sélectionner une tâche et cliquer sur "Modifier"
+**Afin de** modifier les informations de la tâche.
+
+##### T007.6-ÉLÈVE/TUTEUR — Suppression d'une tâche
+**En tant que** élève ou tuteur connecté
+**Je souhaite** sélectionner une tâche et cliquer sur "Supprimer"
+**Afin de** supprimer la tâche de ma liste.
+
+##### T007.7-ÉLÈVE/TUTEUR — Marquage du statut de complétude
+**En tant que** élève ou tuteur connecté
+**Je souhaite** marquer une tâche comme complétée
+**Afin de** suivre ma progression et savoir ce qui reste à faire.
+
+#### T008 — Paramètres
+
+##### T008.1 — Accès à la page des paramètres
 **En tant que** utilisateur connecté
 **Je souhaite** accéder à la page des paramètres
 **Afin de** gérer mes préférences et informations de compte.
 
-#### Mise à jour des informations personnelles
+##### T008.2 — Mise à jour des informations personnelles
 **En tant que** utilisateur connecté
 **Je souhaite** mettre à jour mon prénom, nom, email et téléphone
 **Afin de** maintenir mon profil à jour.
 
-#### Modification du mot de passe
+##### T008.3 — Modification du mot de passe
 **En tant que** utilisateur connecté
 **Je souhaite** changer mon mot de passe en saisissant mon mot de passe actuel et un nouveau mot de passe
 **Afin de** sécuriser l'accès à mon compte.
 
-#### Configuration des préférences de notification
+##### T008.4 — Configuration des préférences de notification
 **En tant que** utilisateur connecté
 **Je souhaite** gérer les types de notifications (messages, tâches, événements) et les canaux (email, push)
 **Afin de** recevoir uniquement les alertes qui me sont pertinentes.
 
-#### Ajustement des préférences d'affichage
+##### T008.5 — Ajustement des préférences d'affichage
 **En tant que** utilisateur connecté
 **Je souhaite** modifier mes préférences de langue, fuseau horaire et thème d'affichage
 **Afin de** personnaliser mon expérience utilisateur.
 
-#### Gestion de la confidentialité et des données
+##### T008.6 — Gestion de la confidentialité et des données
 **En tant que** utilisateur connecté
 **Je souhaite** contrôler la visibilité de mon profil, le partage de données et les communications marketing
 **Afin de** gérer ma vie privée et mes préférences de communication.
 
-<h2 align="center">Cas spécifiques</h2>
+##### T008.7 — Demande de téléchargement des données personnelles
+**En tant que** utilisateur connecté
+**Je souhaite** cliquer sur "Télécharger mes données" puis une notification me confirmant la demande.
+**Afin de** recevoir un email me permettant de télécharger une copie de mes données personnelles.
 
-### Tuteur
+##### T008.8 — Demande de suppression du compte
+**En tant que** utilisateur connecté
+**Je souhaite** cliquer sur "Supprimer mon compte" puis une notification me confirmant la demande.
+**Afin de** supprimer mon compte et être redirigé vers la page de connexion.
 
-#### Ajout d’une tâche pour l’élève
-**En tant que** tuteur connecté  
-**Je souhaite** ajouter une tâche destinée à mon élève  
-**Afin de** structurer son travail et l’accompagner dans son apprentissage.
-
-#### Suppression d’une tâche de l’élève
-**En tant que** tuteur connecté  
-**Je souhaite** supprimer une tâche assignée à mon élève  
-**Afin de** ajuster son planning ou retirer une tâche devenue obsolète.
-
----
 
 ## Conclusion
-**En résumé :**
-Ces user stories sont la documentation fonctionnelle de Learn@Home, couvrant l'ensemble des besoins essentiels pour l’élève et le tuteur bénévole. Elles structurent le développement de la plateforme.
 
 ---
 
@@ -283,7 +299,7 @@ Ces user stories sont la documentation fonctionnelle de Learn@Home, couvrant l'e
                             │ Tâches       ││ Envoyer      ││ Création     ││ Création     ││ Sécurité     │
                             │ Calendrier   ││ Fichiers     ││ Modifier     ││ Modifier     ││ Notifications│
                             │ Chat         ││ Contacts     ││ Supprimer    ││ Supprimer    ││ Affichage    │
-                            │ Paramètres   ││ Informaition ││              ││              ││ Supprimer    │
+                            │ Paramètres   ││ Informations ││              ││              ││ Supprimer    │
                             └──────────────┘└──────────────┘└──────────────┘└──────────────┘└──────────────┘
 ```
 
