@@ -478,6 +478,8 @@
         font-size: 12px;
         font-weight: 600;
         white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
       }
 
       .priority-high {
@@ -919,30 +921,6 @@
         background: #1E40AF;
       }
 
-      .fab-button {
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        background: #3B82F6;
-        color: white;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-        transition: all 0.3s;
-        z-index: 900;
-      }
-
-      .fab-button:active {
-        background: #1E40AF;
-        transform: scale(0.95);
-      }
     </style>
   </head>
 
@@ -1010,6 +988,11 @@
     </aside>
 
     <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h1>Gestion des Tâches</h1>
+        <button class="button button-primary" id="addTaskBtn" style="white-space: nowrap;">+ Créer</button>
+      </div>
+
       <div class="controls">
         <div class="filters">
           <button class="filter-btn active">Toutes</button>
@@ -1147,9 +1130,6 @@
 
       </div>
     </div>
-
-    <!-- FAB: Ajouter une tâche -->
-    <button class="fab-button" id="addTaskBtn" aria-label="Ajouter une tâche">+</button>
 
     <!-- Modal: Ajouter une tâche -->
     <div class="modal" id="taskModal">

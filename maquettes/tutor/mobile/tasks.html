@@ -527,6 +527,8 @@
         font-size: 12px;
         font-weight: 600;
         white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
       }
 
       .priority-high {
@@ -852,9 +854,9 @@
       }
 
 
-      
 
-      
+
+
       @media (min-width: 768px) {
         .mobile-header {
           padding: 20px 32px;
@@ -888,7 +890,7 @@
         }
       }
 
-      
+
       @media (min-width: 1024px) {
         .mobile-header {
           padding: 24px 48px;
@@ -913,7 +915,7 @@
         }
       }
 
-      
+
       button:disabled,
       button[disabled] {
         opacity: 0.6;
@@ -940,7 +942,7 @@
         color: #991B1B;
       }
 
-      
+
       button.loading {
         cursor: not-allowed;
         position: relative;
@@ -1213,11 +1215,11 @@
       </div>
     </div>
 
-    
+
     <div class="modal-backdrop" id="modalBackdrop"></div>
     <div class="modal" id="createTaskModal" data-mode="create">
       <div class="modal-header">
-        <h2 class="modal-title" id="modalTitle">Créer une nouvelle tâche</h2>
+        <h2 class="modal-title" id="modalTitle">+ Créer une nouvelle tâche</h2>
         <button class="modal-close" id="closeModalBtn" aria-label="Fermer le modal">&times;</button>
       </div>
 

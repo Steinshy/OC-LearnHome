@@ -28,13 +28,18 @@
         background: var(--bg);
       }
 
+      nav {
+        flex: 1;
+      }
+
       .page-layout {
         display: grid;
         grid-template-columns: 250px 1fr;
+        grid-template-areas: "nav main";
         min-height: 100vh;
       }
 
-      
+
       .nav-sidebar {
         background: white;
         border-right: 1px solid var(--border);
@@ -57,10 +62,6 @@
         font-size: 20px;
         font-weight: 700;
         color: var(--primary);
-      }
-
-      nav {
-        flex: 1;
       }
 
       .nav-section {
@@ -199,10 +200,11 @@
         color: var(--text-muted);
       }
 
-      
+
       .main {
-        grid-column: 2;
+        grid-area: main;
         padding: 32px;
+        margin-left: 0;
       }
 
       .header {
@@ -892,7 +894,7 @@
         font-size: 12px;
       }
 
-      
+
       button:disabled,
       button[disabled] {
         opacity: 0.6;
@@ -919,7 +921,7 @@
         color: #991B1B;
       }
 
-      
+
       button.loading {
         cursor: not-allowed;
         position: relative;
@@ -1026,7 +1028,7 @@
           <h1>Calendrier</h1>
           <div class="header-actions">
             <button class="button button-secondary">Aujourd'hui</button>
-            <a href="#addEventModalFilled" class="button button-primary">Créer un événement</a>
+            <a href="#addEventModalFilled" class="button button-primary">+ Créer un événement</a>
           </div>
         </div>
 
@@ -1246,11 +1248,11 @@
       </main>
     </div>
 
-    
+
     <div class="modal-overlay" id="addEventModalFilled">
       <div class="modal">
         <div class="modal-header">
-          <h2 class="modal-title">Créer un événement</h2>
+          <h2 class="modal-title">+ Créer un événement</h2>
           <a href="#" class="modal-close">✕</a>
         </div>
         <div class="modal-body">
@@ -1324,7 +1326,7 @@
       </div>
     </div>
 
-    
+
     <div class="modal-overlay" id="eventDetailsModal">
       <div class="modal">
         <div class="modal-header">
@@ -1406,7 +1408,7 @@
       </div>
     </div>
 
-    
+
     <div class="modal-overlay" id="confirmDeleteModal">
       <div class="modal" style="max-width: 400px;">
         <div class="modal-body" style="padding: 40px 24px 24px;">

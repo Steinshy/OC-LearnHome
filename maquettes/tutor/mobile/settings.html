@@ -841,6 +841,7 @@
           <a href="chat.html" class="nav-item">
             <span class="nav-item-icon">💬</span>
             Messages
+            <div class="notification-badge">6</div>
           </a>
         </div>
 
@@ -1067,7 +1068,8 @@
 
         <button class="button button-secondary" style="margin-top: 24px;" onclick="downloadDataToast()">Télécharger mes
           données</button>
-        <button class="button button-secondary">Voir mon activité</button>
+        <button class="button button-secondary"
+          onclick="showToast('📊', 'Mon activité', 'Chargement de votre activité...')">Voir mon activité</button>
 
         <div class="danger-zone">
           <div class="danger-zone-title">⚠️ Zone dangereuse</div>
@@ -1120,10 +1122,6 @@
         setTimeout(() => window.location.href = 'login.html', 2000)
       };
 
-      const activityModalClose = document.querySelector('.activity-modal-close');
-      if (activityModalClose) {
-        activityModalClose.addEventListener('click', (e) => { e.preventDefault(); history.back(); });
-      }
     </script>
     <div id="toast-container" class="toast-container"></div>
   </body>

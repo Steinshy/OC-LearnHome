@@ -108,6 +108,21 @@
         font-size: 18px;
       }
 
+      .notification-badge {
+        background: var(--danger);
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+
       .user-profile {
         padding: 12px 16px;
         margin: 0 12px;
@@ -554,136 +569,7 @@
         }
       }
 
-      .activity-modal {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.95);
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        min-width: 400px;
-        display: none;
-        z-index: 1000;
-        opacity: 0;
-        transition: all 0.3s;
-      }
-
-      #activity-modal:target {
-        display: flex;
-        flex-direction: column;
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-
-      #activity-modal:target~#activity-modal-backdrop {
-        display: block;
-      }
-
-      .activity-modal-backdrop {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        display: none;
-        z-index: 999;
-      }
-
-      .activity-modal-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .activity-modal-header h2 {
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--text);
-        margin: 0;
-      }
-
-      .activity-modal-close {
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: var(--text-muted);
-        cursor: pointer;
-        padding: 0;
-        width: 32px;
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: color 0.3s;
-        text-decoration: none;
-      }
-
-      .activity-modal-close:hover {
-        color: var(--text);
-      }
-
-      .activity-modal-content {
-        padding: 24px;
-      }
-
-      .activity-item {
-        display: flex;
-        gap: 16px;
-        align-items: flex-start;
-      }
-
-      .activity-avatar {
-        width: 64px;
-        height: 64px;
-        background: var(--primary);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 700;
-        font-size: 24px;
-        flex-shrink: 0;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-
-      .activity-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
-        background-color: transparent;
-        font-size: 0;
-      }
-
-      .activity-info {
-        flex: 1;
-      }
-
-      .activity-name {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--text);
-        margin-bottom: 4px;
-      }
-
-      .activity-status {
-        font-size: 14px;
-        color: #10B981;
-        margin-bottom: 12px;
-      }
-
-      .activity-email,
-      .activity-phone {
-        font-size: 13px;
-        color: var(--text-muted);
-        margin-bottom: 4px;
-      }
-
-      .password-hints {
+.password-hints {
         margin-bottom: 20px;
         font-size: 12px;
         color: var(--text-muted);
@@ -798,7 +684,7 @@
           <div class="nav-section">
             <div class="nav-label">Principal</div>
             <a href="dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
-            <a href="chat.html" class="nav-item"><span class="nav-item-icon">💬</span> Messages</a>
+            <a href="chat.html" class="nav-item"><span class="nav-item-icon">💬</span> Messages<div class="notification-badge">6</div></a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
@@ -1023,9 +909,10 @@
             </div>
           </div>
 
-          <div class="button-group">
+          <div class="button-group" style="margin-top: 24px;">
             <button class="button button-secondary" onclick="downloadDataToast()">Télécharger mes données</button>
-            <a href="#activity-modal" class="button button-secondary">Voir mon activité</a>
+            <button class="button button-secondary"
+              onclick="showToast('📊', 'Mon activité', 'Chargement de votre activité...')">Voir mon activité</button>
           </div>
 
           <div class="danger-zone">
@@ -1043,25 +930,6 @@
     </div>
 
     <div id="toast-container" class="toast-container"></div>
-    <div id="activity-modal" class="activity-modal">
-      <div class="activity-modal-header">
-        <h2>Mon activité</h2>
-        <a href="#" class="activity-modal-close">✕</a>
-      </div>
-      <div class="activity-modal-content">
-        <div class="activity-item">
-          <div class="activity-avatar yann">YU</div>
-          <div class="activity-info">
-            <div class="activity-name">Yann Uliong</div>
-            <div class="activity-status">● En ligne</div>
-            <div class="activity-email">yann.uliong@learnhome.com</div>
-            <div class="activity-phone">+33 6 12 34 56 78</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="activity-modal-backdrop" class="activity-modal-backdrop"></div>
 
     <script>
       const showToast = (icon, title, message) => {
@@ -1085,7 +953,6 @@
         setTimeout(() => window.location.href = 'login.html', 2700);
       };
 
-      document.querySelector('.activity-modal-close').addEventListener('click', (e) => { e.preventDefault(); history.back(); });
     </script>
   </body>
 

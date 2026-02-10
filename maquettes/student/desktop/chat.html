@@ -340,6 +340,21 @@
         flex-shrink: 0;
       }
 
+      .notification-badge {
+        background: #EF4444;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+
       .chat-container {
         grid-area: chat;
         display: flex;
@@ -1113,7 +1128,9 @@
             <div class="nav-label">Principal</div>
             <a href="dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
             <a href="chat.html" class="nav-item active" aria-current="page"><span class="nav-item-icon">💬</span>
-              Messages</a>
+              Messages
+              <div class="notification-badge">3</div>
+            </a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
@@ -1153,7 +1170,6 @@
               <div class="contact-name">Yann Uliong</div>
               <div class="contact-status status-online">● En ligne</div>
             </div>
-            <div class="status-badge">2</div>
           </div>
 
           <div class="contact-item">
