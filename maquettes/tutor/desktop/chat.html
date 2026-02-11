@@ -6,17 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn@Home - Messages | Maquette Desktop</title>
     <style>
-      :root {
-        --primary: #3B82F6;
-        --primary-dark: #1E40AF;
-        --danger: #EF4444;
-        --danger-dark: #DC2626;
-        --bg: #F3F4F6;
-        --text: #111827;
-        --text-muted: #6B7280;
-        --border: #E5E7EB;
-      }
-
       * {
         margin: 0;
         padding: 0;
@@ -25,14 +14,13 @@
 
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: var(--bg);
+        background: #F3F4F6;
         overflow: hidden;
       }
 
       .layout {
         display: grid;
         grid-template-columns: 250px 300px 1fr;
-        grid-template-rows: 1fr;
         grid-template-areas: "nav contacts chat";
         min-height: 100vh;
       }
@@ -41,7 +29,7 @@
       .nav-sidebar {
         grid-area: nav;
         background: white;
-        border-right: 1px solid var(--border);
+        border-right: 1px solid #E5E7EB;
         padding: 24px 0;
         overflow-y: auto;
         display: flex;
@@ -51,13 +39,13 @@
       .nav-sidebar-header {
         padding: 0 24px 24px;
         margin-bottom: 32px;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid #E5E7EB;
       }
 
       .nav-sidebar-logo {
         font-size: 20px;
         font-weight: 700;
-        color: var(--primary);
+        color: #3B82F6;
       }
 
       nav {
@@ -69,7 +57,7 @@
       }
 
       .nav-section:not(:first-child) {
-        border-top: 1px solid var(--border);
+        border-top: 1px solid #E5E7EB;
         padding-top: 24px;
       }
 
@@ -84,7 +72,7 @@
 
       .nav-item {
         padding: 12px 24px;
-        color: var(--text-muted);
+        color: #6B7280;
         text-decoration: none;
         display: flex;
         align-items: center;
@@ -94,14 +82,14 @@
       }
 
       .nav-item:hover {
-        background: var(--bg);
-        color: var(--primary);
+        background: #F3F4F6;
+        color: #3B82F6;
       }
 
       .nav-item.active {
         background: #E0F2FE;
-        color: var(--primary);
-        border-right: 4px solid var(--primary);
+        color: #3B82F6;
+        border-right: 4px solid #3B82F6;
         font-weight: 600;
       }
 
@@ -127,7 +115,7 @@
       .user-profile {
         padding: 12px 16px;
         margin: 0 12px;
-        border-top: 1px solid var(--border);
+        border-top: 1px solid #E5E7EB;
         margin-top: auto;
         display: flex;
         align-items: center;
@@ -138,13 +126,13 @@
       }
 
       .user-profile:hover {
-        background: var(--bg);
+        background: #F3F4F6;
       }
 
       .user-avatar {
         width: 40px;
         height: 40px;
-        background: var(--primary);
+        background: #3B82F6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -200,11 +188,11 @@
 
       .user-role {
         font-size: 12px;
-        color: var(--text-muted);
+        color: #6B7280;
       }
 
 
-      .contacts-sidebar {
+      .sidebar {
         grid-area: contacts;
         background: white;
         border-right: 1px solid #E5E7EB;
@@ -212,7 +200,7 @@
         flex-direction: column;
       }
 
-      .contacts-sidebar-header {
+      .sidebar-header {
         padding: 16px;
         border-bottom: 1px solid #E5E7EB;
       }
@@ -1646,8 +1634,8 @@
       </aside>
 
 
-      <aside class="contacts-sidebar">
-        <div class="contacts-sidebar-header">
+      <aside class="sidebar">
+        <div class="sidebar-header">
           <input type="text" class="search-box" placeholder="Rechercher un contact...">
           <label for="contacts-modal-toggle" class="add-contact-btn hover-up" data-hover="Ajouter un contact">+ Ajouter
             un contact</label>

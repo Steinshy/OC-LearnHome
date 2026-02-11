@@ -233,6 +233,7 @@
         font-weight: 600;
         font-size: 14px;
         transition: all 0.3s;
+        text-decoration: none;
       }
 
       .button-primary {
@@ -244,6 +245,11 @@
         background: #1E40AF;
       }
 
+      .button-primary:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
       .button-secondary {
         background: white;
         color: #3B82F6;
@@ -252,6 +258,11 @@
 
       .button-secondary:hover {
         background: #E0F2FE;
+      }
+
+      .button-secondary:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
       }
 
       .layout {
@@ -391,8 +402,8 @@
       }
 
       .event-pill {
-        padding: 2px 4px;
-        border-radius: 4px;
+        padding: 6px 12px;
+        border-radius: 12px;
         font-size: 12px;
         font-weight: 600;
         color: white;
@@ -400,6 +411,7 @@
         width: fit-content;
         text-decoration: none;
         cursor: pointer;
+        line-height: 1.4;
       }
 
       .event-blue {
@@ -742,6 +754,11 @@
         background: #DC2626;
       }
 
+      .button-danger:focus {
+        outline: 2px solid #3B82F6;
+        outline-offset: 2px;
+      }
+
       .modal-with-error .form-input,
       .modal-with-error .form-textarea,
       .modal-with-error .form-select {
@@ -1027,6 +1044,7 @@
           <h1>Calendrier</h1>
           <div class="header-actions">
             <button class="button button-secondary">Aujourd'hui</button>
+            <a href="#addEventModalFilled" class="button button-primary">+ Créer un événement</a>
           </div>
         </div>
 
@@ -1303,6 +1321,10 @@
             </div>
           </form>
         </div>
+        <div class="modal-footer">
+          <a href="#" class="button button-secondary">Annuler</a>
+          <button id="create-event-btn" class="button button-primary">Créer l'événement</button>
+        </div>
       </div>
     </div>
 
@@ -1376,6 +1398,28 @@
     <div class="copyright">
       © 2026 Learn@Home. All rights reserved.
     </div>
+
+    <script>
+      const handleCreateEvent = () => {
+        alert('Événement créé avec succès!');
+        location.hash = '';
+      }
+
+      const handleDeleteEvent = () => {
+        alert('Événement supprimé avec succès!');
+        location.hash = '';
+      }
+
+      document.getElementById('create-event-btn').addEventListener('click', handleCreateEvent);
+      document.getElementById('delete-event-btn').addEventListener('click', handleDeleteEvent);
+
+      document.addEventListener('click', e => {
+        if (e.target.classList.contains('modal-overlay')) location.hash = '';
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') location.hash = '';
+      });
+    </script>
   </body>
 
 </html>
