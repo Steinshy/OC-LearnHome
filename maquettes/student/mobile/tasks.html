@@ -1391,7 +1391,6 @@
       const taskDate = document.getElementById('taskDate');
       const titleCounter = document.getElementById('titleCounter');
       const descCounter = document.getElementById('descCounter');
-      let currentEditCard = null;
 
       // Set minimum date to today
       const today = new Date();
@@ -1440,7 +1439,6 @@
         modalTitle.textContent = 'Modifier la tâche';
         submitTaskBtn.textContent = 'Enregistrer les modifications';
         submitTaskBtn.dataset.action = 'edit';
-        currentEditCard = taskCard;
         
         taskModal.classList.add('active');
         taskTitle.focus();
@@ -1474,7 +1472,6 @@
         modalTitle.textContent = 'Ajouter une tâche';
         submitTaskBtn.textContent = 'Créer la tâche';
         submitTaskBtn.dataset.action = 'create';
-        currentEditCard = null;
       };
 
       // Track unsaved changes

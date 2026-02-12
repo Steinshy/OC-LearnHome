@@ -1176,7 +1176,7 @@
           </div>
         </div>
 
-        <button class="button button-primary settings-submit-btn" onclick="notificationToast()">Enregistrer les
+        <button class="button button-primary settings-submit-btn" onclick="handleNotificationToast()">Enregistrer les
           préférences</button>
       </div>
 
@@ -1261,7 +1261,7 @@
           </div>
         </div>
 
-        <button class="button button-secondary settings-submit-btn" onclick="downloadDataToast()">Télécharger mes
+        <button class="button button-secondary settings-submit-btn" onclick="handleDownloadDataToast()">Télécharger mes
           données</button>
         <button class="button button-secondary"
           onclick="showToast('📊', 'Mon activité', 'Chargement de votre activité...')">Voir mon activité</button>
@@ -1303,12 +1303,12 @@
         container.appendChild(toast);
         setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700)
       };
-      const notificationToast = () => {
+      const handleNotificationToast = () => {
         const checkedCount = document.querySelectorAll('#notification-group .checkbox:checked').length;
         showToast('🔔', 'Préférences de notification', `${checkedCount} notification${checkedCount > 1 ? 's' : ''} activée${checkedCount > 1 ? 's' : ''}`)
       };
 
-      const downloadDataToast = () => showToast('💾', 'Téléchargement des données', 'Votre demande a été envoyée. Vous recevrez vos données par email.');
+      const handleDownloadDataToast = () => showToast('💾', 'Téléchargement des données', 'Votre demande a été envoyée. Vous recevrez vos données par email.');
       const deleteAccountToast = () => {
         const container = document.getElementById('toast-container');
         const toast = document.createElement('div'); toast.className = 'toast danger';

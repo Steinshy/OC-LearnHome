@@ -1514,13 +1514,10 @@
       const form = modalTaskForm('taskForm');
       const modalTitle = modalTaskForm('modalTitle');
       const submitBtn = modalTaskForm('submitTaskBtn');
-      let currentEditCard = null;
-
       const closeModal = () => {
         modal.classList.remove('active');
         backdrop.classList.remove('active');
         form.reset();
-        currentEditCard = null;
         modal.dataset.mode = 'create';
         modalTitle.textContent = 'Créer une nouvelle tâche';
         submitBtn.textContent = 'Créer la tâche';
@@ -1559,8 +1556,6 @@
       const openModalForEdit = (taskCard) => {
         const taskTitle = taskCard.querySelector('.task-title').textContent;
         const taskDescription = taskCard.querySelector('.task-description').textContent;
-        const assignedToLine = taskCard.querySelector('.task-meta .meta-item:nth-child(2)').textContent;
-        const assignedTo = assignedToLine.replace('👤 Assigné à: ', '').split(' ')[0].toLowerCase();
         const deadlineLine = taskCard.querySelector('.task-meta .meta-item:nth-child(1)').textContent;
         const deadlineText = deadlineLine.replace('📅 Échéance: ', '');
         const priorityBadge = taskCard.querySelector('.priority-badge');
@@ -1607,7 +1602,6 @@
         modalTitle.textContent = 'Modifier la tâche';
         submitBtn.textContent = 'Enregistrer les modifications';
         submitBtn.dataset.action = 'edit';
-        currentEditCard = taskCard;
       };
 
       // Gérer la sélection des dropdowns dans le modal
@@ -1628,7 +1622,6 @@
         const taskTitle = modalTaskForm('taskTitle').value;
         const taskDeadline = modalTaskForm('taskDeadline').value;
         const selectedStudent = modal.querySelector('#taskStudentDropdown .dropdown-item.selected')?.textContent || modal.querySelector('#taskStudentDropdown .dropdown-toggle').textContent;
-        const selectedPriority = modal.querySelector('#taskPriorityDropdown .dropdown-item.selected')?.textContent || modal.querySelector('#taskPriorityDropdown .dropdown-toggle').textContent;
         if (taskTitle && taskDeadline && selectedStudent !== '-- Sélectionner un élève --') {
           if (modal.dataset.mode === 'edit') {
             showToast('✏️', 'Tâche modifiée', 'Les modifications ont été enregistrées');

@@ -725,7 +725,7 @@
         container.appendChild(toast);
         setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
       };
-      const cycleTaskStatus = (event) => {
+      const handleCycleTaskStatus = (event) => {
         event.stopPropagation();
         const element = event.target;
         const next = element.dataset.next;
