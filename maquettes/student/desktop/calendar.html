@@ -1,20 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn@Home - Calendrier | Maquette Desktop</title>
     <style>
       :root {
-        --primary: #3B82F6;
-        --primary-dark: #1E40AF;
-        --danger: #EF4444;
-        --danger-dark: #DC2626;
-        --bg: #F3F4F6;
+        --primary: #3b82f6;
+        --primary-dark: #1e40af;
+        --danger: #ef4444;
+        --danger-dark: #dc2626;
+        --bg: #f3f4f6;
         --text: #111827;
-        --text-muted: #6B7280;
-        --border: #E5E7EB;
+        --text-muted: #6b7280;
+        --border: #e5e7eb;
       }
 
       * {
@@ -24,7 +23,13 @@
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
         background: var(--bg);
       }
 
@@ -38,7 +43,6 @@
         grid-template-areas: "nav main";
         min-height: 100vh;
       }
-
 
       .nav-sidebar {
         background: white;
@@ -76,7 +80,7 @@
       .nav-label {
         font-size: 12px;
         font-weight: 600;
-        color: #9CA3AF;
+        color: #9ca3af;
         text-transform: uppercase;
         padding: 0 24px;
         margin-bottom: 8px;
@@ -99,7 +103,7 @@
       }
 
       .nav-item.active {
-        background: #E0F2FE;
+        background: #e0f2fe;
         color: var(--primary);
         border-right: 4px solid var(--primary);
         font-weight: 600;
@@ -119,7 +123,7 @@
       }
 
       .notification-badge {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
         width: 24px;
         height: 24px;
@@ -168,7 +172,7 @@
       }
 
       .user-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
@@ -209,7 +213,6 @@
         color: var(--text-muted);
       }
 
-
       .main {
         grid-area: main;
         padding: 32px;
@@ -249,31 +252,31 @@
       }
 
       .button-primary {
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
       }
 
       .button-primary:hover {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       .button-primary:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .button-secondary {
         background: white;
-        color: #3B82F6;
-        border: 1px solid #3B82F6;
+        color: #3b82f6;
+        border: 1px solid #3b82f6;
       }
 
       .button-secondary:hover {
-        background: #E0F2FE;
+        background: #e0f2fe;
       }
 
       .button-secondary:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -311,7 +314,7 @@
       .nav-btn {
         width: 32px;
         height: 32px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         background: white;
         border-radius: 6px;
         cursor: pointer;
@@ -322,7 +325,7 @@
       }
 
       .nav-btn:hover {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .month-year {
@@ -341,7 +344,7 @@
       .dow-item {
         text-align: center;
         font-weight: 600;
-        color: #6B7280;
+        color: #6b7280;
         font-size: 12px;
         padding: 8px 0;
         text-transform: uppercase;
@@ -355,7 +358,7 @@
 
       .calendar-day {
         aspect-ratio: 1;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
         border-radius: 6px;
         padding: 4px;
         display: flex;
@@ -368,8 +371,8 @@
       }
 
       .calendar-day:hover {
-        border-color: #3B82F6;
-        background: #E0F2FE;
+        border-color: #3b82f6;
+        background: #e0f2fe;
       }
 
       .calendar-day.other-month {
@@ -377,7 +380,7 @@
       }
 
       .calendar-day.today {
-        border: 2px solid #3B82F6;
+        border: 2px solid #3b82f6;
         font-weight: 700;
       }
 
@@ -402,15 +405,15 @@
       }
 
       .event-dot-blue {
-        background: #3B82F6;
+        background: #3b82f6;
       }
 
       .event-dot-green {
-        background: #10B981;
+        background: #10b981;
       }
 
       .event-dot-orange {
-        background: #F59E0B;
+        background: #f59e0b;
       }
 
       .event-pill {
@@ -427,15 +430,15 @@
       }
 
       .event-blue {
-        background: #3B82F6;
+        background: #3b82f6;
       }
 
       .event-green {
-        background: #10B981;
+        background: #10b981;
       }
 
       .event-orange {
-        background: #F59E0B;
+        background: #f59e0b;
       }
 
       .sidebar {
@@ -467,9 +470,9 @@
       .event-item {
         display: block;
         padding: 12px;
-        background: #F9FAFB;
+        background: #f9fafb;
         border-radius: 6px;
-        border-left: 4px solid #3B82F6;
+        border-left: 4px solid #3b82f6;
         cursor: pointer;
         transition: all 0.3s;
         text-decoration: none;
@@ -477,21 +480,21 @@
       }
 
       .event-item:hover {
-        background: #F3F4F6;
-        border-left-color: #1E40AF;
+        background: #f3f4f6;
+        border-left-color: #1e40af;
       }
 
       .event-item.green {
-        border-left-color: #10B981;
+        border-left-color: #10b981;
       }
 
       .event-item.orange {
-        border-left-color: #F59E0B;
+        border-left-color: #f59e0b;
       }
 
       .event-time {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-bottom: 4px;
       }
 
@@ -504,7 +507,7 @@
 
       .event-location {
         font-size: 12px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .legend {
@@ -518,7 +521,7 @@
         align-items: center;
         gap: 8px;
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .legend-color {
@@ -528,15 +531,15 @@
       }
 
       .color-lesson {
-        background: #3B82F6;
+        background: #3b82f6;
       }
 
       .color-deadline {
-        background: #10B981;
+        background: #10b981;
       }
 
       .color-appointment {
-        background: #F59E0B;
+        background: #f59e0b;
       }
 
       .modal-overlay {
@@ -591,7 +594,7 @@
 
       .modal-header {
         padding: 24px 24px 16px 24px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -607,7 +610,7 @@
         background: none;
         border: none;
         font-size: 24px;
-        color: #6B7280;
+        color: #6b7280;
         cursor: pointer;
         transition: color 0.2s;
         padding: 0;
@@ -632,7 +635,7 @@
 
       .modal-footer {
         padding: 16px 24px;
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid #e5e7eb;
         display: flex;
         gap: 12px;
         justify-content: flex-end;
@@ -659,7 +662,7 @@
       }
 
       .form-label .required {
-        color: #EF4444;
+        color: #ef4444;
       }
 
       .form-input,
@@ -668,7 +671,7 @@
         width: 100%;
         padding: 12px;
         padding-right: 32px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-family: inherit;
         font-size: 14px;
@@ -685,20 +688,20 @@
       }
 
       .form-select:hover {
-        border-color: #9CA3AF;
+        border-color: #9ca3af;
       }
 
       .form-input:focus,
       .form-textarea:focus,
       .form-select:focus {
         outline: none;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
       .form-input::placeholder,
       .form-textarea::placeholder {
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       .form-input::placeholder,
@@ -737,7 +740,7 @@
         cursor: pointer;
         width: 18px;
         height: 18px;
-        accent-color: #3B82F6;
+        accent-color: #3b82f6;
       }
 
       .form-checkbox label {
@@ -756,42 +759,42 @@
       }
 
       .category-badge.lesson {
-        background: #DBEAFE;
-        color: #1E40AF;
+        background: #dbeafe;
+        color: #1e40af;
       }
 
       .category-badge.deadline {
-        background: #DCFCE7;
+        background: #dcfce7;
         color: #166534;
       }
 
       .category-badge.appointment {
-        background: #FEF3C7;
-        color: #92400E;
+        background: #fef3c7;
+        color: #92400e;
       }
 
       .button-danger {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
       }
 
       .button-danger:hover {
-        background: #DC2626;
+        background: #dc2626;
       }
 
       .button-danger:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .modal-with-error .form-input,
       .modal-with-error .form-textarea,
       .modal-with-error .form-select {
-        border-color: #EF4444;
+        border-color: #ef4444;
       }
 
       .error-message {
-        color: #EF4444;
+        color: #ef4444;
         font-size: 12px;
         margin-top: 4px;
       }
@@ -810,7 +813,7 @@
 
       .event-detail-icon {
         font-size: 20px;
-        color: #3B82F6;
+        color: #3b82f6;
         margin-top: 2px;
         min-width: 20px;
       }
@@ -821,7 +824,7 @@
 
       .event-detail-label {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-bottom: 2px;
       }
 
@@ -850,7 +853,7 @@
       }
 
       .confirmation-message {
-        color: #6B7280;
+        color: #6b7280;
         font-size: 14px;
         margin-bottom: 24px;
         line-height: 1.5;
@@ -870,8 +873,8 @@
         text-align: center;
         margin-top: 32px;
         padding-top: 20px;
-        border-top: 1px solid #E5E7EB;
-        color: #94A3B8;
+        border-top: 1px solid #e5e7eb;
+        color: #94a3b8;
         font-size: 12px;
       }
 
@@ -909,7 +912,7 @@
 
       .toast-message {
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       @keyframes slideIn {
@@ -936,33 +939,31 @@
         }
       }
 
-
       button:disabled,
       button[disabled] {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: #9CA3AF;
+        background-color: #9ca3af;
       }
 
       .button-primary:disabled,
       .button-primary[disabled] {
-        background: #9CA3AF;
+        background: #9ca3af;
         color: white;
       }
 
       .button-secondary:disabled,
       .button-secondary[disabled] {
-        background: #F3F4F6;
-        color: #9CA3AF;
-        border-color: #D1D5DB;
+        background: #f3f4f6;
+        color: #9ca3af;
+        border-color: #d1d5db;
       }
 
       .button-danger:disabled,
       .button-danger[disabled] {
-        background: #FECACA;
-        color: #991B1B;
+        background: #fecaca;
+        color: #991b1b;
       }
-
 
       button.loading {
         cursor: not-allowed;
@@ -971,7 +972,7 @@
       }
 
       button.loading::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -986,17 +987,17 @@
       }
 
       .button-primary.loading {
-        background: #3B82F6;
+        background: #3b82f6;
         opacity: 0.8;
       }
 
       .button-secondary.loading {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .button-secondary.loading::after {
         border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3B82F6;
+        border-top-color: #3b82f6;
       }
 
       @keyframes spin {
@@ -1018,8 +1019,8 @@
       input:disabled,
       textarea:disabled,
       select:disabled {
-        background-color: #F3F4F6;
-        color: #9CA3AF;
+        background-color: #f3f4f6;
+        color: #9ca3af;
         cursor: not-allowed;
         opacity: 0.7;
       }
@@ -1060,31 +1061,44 @@
     <div class="page-layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span> Tableau de bord</a>
-            <a href="chat.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span> Messages<span
-                class="notification-badge">5</span></a>
+            <a href="dashboard.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
+              de bord</a
+            >
+            <a href="chat.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
+              Messages<span class="notification-badge">5</span></a
+            >
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span>
-              Calendrier</a>
-            <a href="tasks.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span> Tâches</a>
+            <a href="calendar.html" class="nav-item active" aria-current="page"
+              ><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a
+            >
+            <a href="tasks.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a
+            >
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span> Paramètres</a>
-            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span> Déconnexion</a>
+            <a href="settings.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a
+            >
+            <a href="login.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span> Déconnexion</a
+            >
           </div>
         </nav>
 
         <div class="user-profile">
-          <div class="user-avatar antoine">AK
+          <div class="user-avatar antoine">
+            AK
             <span class="user-avatar-badge">5</span>
           </div>
           <div class="user-info">
@@ -1316,19 +1330,20 @@
           <form>
             <div class="form-group">
               <label class="form-label">Titre <span class="required">*</span></label>
-              <input type="text" class="form-input" placeholder="Ex: Cours de Français" value="Cours de Français">
+              <input type="text" class="form-input" placeholder="Ex: Cours de Français" value="Cours de Français" />
             </div>
 
             <div class="form-group">
               <label class="form-label">Description</label>
-              <textarea class="form-textarea"
-                placeholder="Ajouter une description (optionnel)">Chapitre sur les verbes irréguliers et la grammaire avancée.</textarea>
+              <textarea class="form-textarea" placeholder="Ajouter une description (optionnel)">
+Chapitre sur les verbes irréguliers et la grammaire avancée.</textarea
+              >
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">Date <span class="required">*</span></label>
-                <input type="date" class="form-input" value="2026-01-15">
+                <input type="date" class="form-input" value="2026-01-15" />
               </div>
               <div class="form-group">
                 <label class="form-label">Catégorie <span class="required">*</span></label>
@@ -1344,18 +1359,22 @@
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">Heure début <span class="required">*</span></label>
-                <input type="time" class="form-input" value="14:00">
+                <input type="time" class="form-input" value="14:00" />
               </div>
               <div class="form-group">
                 <label class="form-label">Heure fin <span class="required">*</span></label>
-                <input type="time" class="form-input" value="15:30">
+                <input type="time" class="form-input" value="15:30" />
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-label">Lieu</label>
-              <input type="text" class="form-input" placeholder="Ex: Salle 205, En ligne (Zoom)"
-                value="Salle 205 - Centre d'apprentissage">
+              <input
+                type="text"
+                class="form-input"
+                placeholder="Ex: Salle 205, En ligne (Zoom)"
+                value="Salle 205 - Centre d'apprentissage"
+              />
             </div>
 
             <div class="form-group">
@@ -1370,7 +1389,7 @@
 
             <div class="form-group">
               <div class="form-checkbox">
-                <input type="checkbox" id="notification2" name="notification" checked>
+                <input type="checkbox" id="notification2" name="notification" checked />
                 <label for="notification2">Notifier 15 minutes avant l'événement</label>
               </div>
             </div>
@@ -1399,7 +1418,7 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon"><img src="../../assets/icons/calendar.svg" alt=""></div>
+              <div class="event-detail-icon"><img src="../../assets/icons/calendar.svg" alt="" /></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Date</div>
                 <div class="event-detail-value">Jeudi 8 janvier 2026</div>
@@ -1423,10 +1442,11 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon"><img src="../../assets/icons/file-edit.svg" alt=""></div>
+              <div class="event-detail-icon"><img src="../../assets/icons/file-edit.svg" alt="" /></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Description</div>
-                <div class="event-detail-value">Suivi des progrès en mathématiques et revue des devoirs précédents.
+                <div class="event-detail-value">
+                  Suivi des progrès en mathématiques et revue des devoirs précédents.
                 </div>
               </div>
             </div>
@@ -1440,7 +1460,7 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon"><img src="../../assets/icons/bell.svg" alt=""></div>
+              <div class="event-detail-icon"><img src="../../assets/icons/bell.svg" alt="" /></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Notification</div>
                 <div class="event-detail-value">15 minutes avant l'événement</div>
@@ -1450,41 +1470,41 @@
         </div>
       </div>
     </div>
-    <div class="copyright">
-      © 2026 Learn@Home. All rights reserved.
-    </div>
+    <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
 
     <script>
       const handleCreateEvent = () => {
-        alert('Événement créé avec succès!');
-        location.hash = '';
-      }
+        alert("Événement créé avec succès!");
+        location.hash = "";
+      };
 
       const handleDeleteEvent = () => {
-        showToast('🗑️', 'Événement supprimé', 'L\'événement a été supprimé avec succès');
-        location.hash = '';
-      }
+        showToast("🗑️", "Événement supprimé", "L'événement a été supprimé avec succès");
+        location.hash = "";
+      };
 
-      document.getElementById('create-event-btn').addEventListener('click', handleCreateEvent);
-      document.getElementById('delete-event-btn').addEventListener('click', handleDeleteEvent);
+      document.getElementById("create-event-btn").addEventListener("click", handleCreateEvent);
+      document.getElementById("delete-event-btn").addEventListener("click", handleDeleteEvent);
 
-      document.addEventListener('click', e => {
-        if (e.target.classList.contains('modal-overlay')) location.hash = '';
+      document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("modal-overlay")) location.hash = "";
       });
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') location.hash = '';
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") location.hash = "";
       });
 
       const showToast = (icon, title, message) => {
-        const container = document.getElementById('toast-container');
-        const toast = document.createElement('div');
-        toast.className = 'toast';
+        const container = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+        toast.className = "toast";
         toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
         container.appendChild(toast);
-        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
+        setTimeout(() => {
+          toast.classList.add("dismissing");
+          setTimeout(() => toast.remove(), 500);
+        }, 2700);
       };
     </script>
     <div id="toast-container" class="toast-container"></div>
   </body>
-
 </html>

@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, ">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, " />
     <title>Learn@Home - Inscription | Maquette Mobile</title>
     <style>
       * {
@@ -13,8 +12,14 @@
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
         min-height: 100vh;
         display: flex;
         align-items: center;
@@ -39,13 +44,13 @@
       .logo {
         font-size: 24px;
         font-weight: 700;
-        color: #3B82F6;
+        color: #3b82f6;
         margin-bottom: 8px;
       }
 
       .logo-subtitle {
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
         margin-bottom: 24px;
       }
 
@@ -58,7 +63,7 @@
 
       .subtitle {
         font-size: 14px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .form-group {
@@ -78,7 +83,7 @@
       input[type="password"] {
         width: 100%;
         padding: 14px 16px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 16px;
         transition: all 0.3s ease;
@@ -87,14 +92,14 @@
 
       input:focus {
         outline: none;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
       input[type="text"]::placeholder,
       input[type="email"]::placeholder,
       input[type="password"]::placeholder {
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       input[type="text"]::placeholder,
@@ -112,7 +117,7 @@
       .button-primary {
         width: 100%;
         padding: 16px;
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
         border: none;
         border-radius: 6px;
@@ -126,7 +131,7 @@
       }
 
       .button-primary:hover {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       .button-primary:active {
@@ -137,31 +142,31 @@
         display: flex;
         align-items: center;
         margin: 24px 0;
-        color: #D1D5DB;
+        color: #d1d5db;
       }
 
       .divider::before,
       .divider::after {
-        content: '';
+        content: "";
         flex: 1;
         height: 1px;
-        background: #D1D5DB;
+        background: #d1d5db;
       }
 
       .divider span {
         padding: 0 12px;
         font-size: 14px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .signup-link {
         text-align: center;
         font-size: 14px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .signup-link a {
-        color: #3B82F6;
+        color: #3b82f6;
         text-decoration: none;
         font-weight: 600;
         display: inline-flex;
@@ -175,18 +180,18 @@
       }
 
       .signup-link a:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .info-box {
-        background: #E0F2FE;
-        border-left: 4px solid #3B82F6;
+        background: #e0f2fe;
+        border-left: 4px solid #3b82f6;
         padding: 12px 16px;
         border-radius: 4px;
         margin-top: 24px;
         font-size: 12px;
-        color: #1E40AF;
+        color: #1e40af;
       }
 
       .info-box strong {
@@ -199,7 +204,7 @@
         top: -60px;
         left: 50%;
         transform: translateX(-50%);
-        background: #3B82F6;
+        background: #3b82f6;
         color: #e0f2fe;
         padding: 12px 20px;
         border-radius: 6px;
@@ -219,13 +224,13 @@
         text-align: center;
         margin-top: 24px;
         padding-top: 20px;
-        border-top: 1px solid #E2E8F0;
-        color: #94A3B8;
+        border-top: 1px solid #e2e8f0;
+        color: #94a3b8;
         font-size: 12px;
       }
 
       .error-message {
-        color: #DC2626;
+        color: #dc2626;
         font-size: 12px;
         margin-top: 4px;
         display: none;
@@ -236,7 +241,7 @@
       }
 
       input:invalid:not(:placeholder-shown) {
-        border-color: #DC2626;
+        border-color: #dc2626;
       }
 
       .toast-container {
@@ -275,7 +280,7 @@
 
       .toast-message {
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       @keyframes slideIn {
@@ -301,9 +306,6 @@
           transform: translateX(100px);
         }
       }
-
-
-
 
       @media (min-width: 768px) {
         .mobile-header {
@@ -338,7 +340,6 @@
         }
       }
 
-
       @media (min-width: 1024px) {
         .mobile-header {
           padding: 24px 48px;
@@ -363,33 +364,31 @@
         }
       }
 
-
       button:disabled,
       button[disabled] {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: #9CA3AF;
+        background-color: #9ca3af;
       }
 
       .button-primary:disabled,
       .button-primary[disabled] {
-        background: #9CA3AF;
+        background: #9ca3af;
         color: white;
       }
 
       .button-secondary:disabled,
       .button-secondary[disabled] {
-        background: #F3F4F6;
-        color: #9CA3AF;
-        border-color: #D1D5DB;
+        background: #f3f4f6;
+        color: #9ca3af;
+        border-color: #d1d5db;
       }
 
       .button-danger:disabled,
       .button-danger[disabled] {
-        background: #FECACA;
-        color: #991B1B;
+        background: #fecaca;
+        color: #991b1b;
       }
-
 
       button.loading {
         cursor: not-allowed;
@@ -398,7 +397,7 @@
       }
 
       button.loading::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -413,17 +412,17 @@
       }
 
       .button-primary.loading {
-        background: #3B82F6;
+        background: #3b82f6;
         opacity: 0.8;
       }
 
       .button-secondary.loading {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .button-secondary.loading::after {
         border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3B82F6;
+        border-top-color: #3b82f6;
       }
 
       @keyframes spin {
@@ -445,8 +444,8 @@
       input:disabled,
       textarea:disabled,
       select:disabled {
-        background-color: #F3F4F6;
-        color: #9CA3AF;
+        background-color: #f3f4f6;
+        color: #9ca3af;
         cursor: not-allowed;
         opacity: 0.7;
       }
@@ -455,9 +454,7 @@
 
   <body>
     <div class="container">
-      <div class="alert" id="alert-box">
-        Création de votre compte en cours…
-      </div>
+      <div class="alert" id="alert-box">Création de votre compte en cours…</div>
       <div class="header">
         <div class="logo">📚 Learn@Home</div>
         <div class="logo-subtitle">Plateforme de tutorat en ligne</div>
@@ -468,26 +465,31 @@
       <form onsubmit="validateSignup(event)">
         <div class="form-group">
           <label for="fullname">Nom complet</label>
-          <input type="text" id="fullname" placeholder="Your name" value="Antoine Kreuder" minlength="2" required>
+          <input type="text" id="fullname" placeholder="Your name" value="Antoine Kreuder" minlength="2" required />
           <div class="error-message" id="fullname-error">Le nom complet est requis (minimum 2 caractères)</div>
         </div>
 
         <div class="form-group">
           <label for="email">Adresse email</label>
-          <input type="email" id="email" placeholder="student@learnhome.com" value="antoine.kreuder@learnhome.com"
-            required>
+          <input
+            type="email"
+            id="email"
+            placeholder="student@learnhome.com"
+            value="antoine.kreuder@learnhome.com"
+            required
+          />
           <div class="error-message" id="email-error">Veuillez entrer une adresse email valide</div>
         </div>
 
         <div class="form-group">
           <label for="password">Mot de passe</label>
-          <input type="password" id="password" value="Student2026" minlength="6" required>
+          <input type="password" id="password" value="Student2026" minlength="6" required />
           <div class="error-message" id="password-error">Le mot de passe est requis (minimum 6 caractères)</div>
         </div>
 
         <div class="form-group">
           <label for="password2">Confirmer le mot de passe</label>
-          <input type="password" id="password2" value="Student2026" minlength="6" required>
+          <input type="password" id="password2" value="Student2026" minlength="6" required />
           <div class="error-message" id="password2-error">Les mots de passe ne correspondent pas</div>
         </div>
 
@@ -498,36 +500,36 @@
         <span>Déjà inscrit ?</span>
       </div>
 
-      <p class="signup-link">
-        Retour à la page de <a href="login.html">Connexion</a>
-      </p>
+      <p class="signup-link">Retour à la page de <a href="login.html">Connexion</a></p>
 
       <div class="info-box">
         <strong>Note :</strong>
         Cette page est en cours de développement.
       </div>
 
-      <div class="copyright">
-        © 2026 Learn@Home. All rights reserved.
-      </div>
+      <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
     </div>
   </body>
   <div id="toast-container" class="toast-container"></div>
   <script>
     const showToast = (icon, title, message) => {
-      const container = document.getElementById('toast-container');
-      const toast = document.createElement('div');
-      toast.className = 'toast';
+      const container = document.getElementById("toast-container");
+      const toast = document.createElement("div");
+      toast.className = "toast";
       toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
       container.appendChild(toast);
-      setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
+      setTimeout(() => {
+        toast.classList.add("dismissing");
+        setTimeout(() => toast.remove(), 500);
+      }, 2700);
     };
 
     const validateSignup = (event) => {
       event.preventDefault();
-      showToast('✅', 'Inscription', 'Création de votre compte en cours...');
-      setTimeout(() => { window.location.href = 'dashboard.html'; }, 500);
+      showToast("✅", "Inscription", "Création de votre compte en cours...");
+      setTimeout(() => {
+        window.location.href = "dashboard.html";
+      }, 500);
     };
   </script>
-
 </html>

@@ -40,17 +40,21 @@ export default [
     },
     rules: {
       // Relaxed for inline scripts in HTML mockups
-      'no-unused-vars': ['warn', {
-        argsIgnorePattern: '^(_|event$|e$)',
-        varsIgnorePattern: '^(handle|toggle|show|hide|close|open|validate|update|create|delete|save|cancel|filter|search|sort|format|render|init|setup)',
-        caughtErrorsIgnorePattern: '^_',
-      }],
+      'no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^(_|event$|e$)',
+          varsIgnorePattern:
+            '^(handle|toggle|show|hide|close|open|validate|update|create|delete|save|cancel|filter|search|sort|format|render|init|setup)',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
       'no-console': 'off',
       'no-debugger': 'warn',
       'no-alert': 'off',
 
       // Code quality (not formatting — Prettier handles that)
-      'eqeqeq': ['error', 'always'],
+      eqeqeq: ['error', 'always'],
       'no-var': 'warn',
       'prefer-const': 'warn',
     },
@@ -74,8 +78,8 @@ export default [
     },
     rules: {
       // ── Code quality ──────────────────────────────────────────────
-      'eqeqeq': ['error', 'always'],
-      'curly': ['error', 'all'],
+      eqeqeq: ['error', 'always'],
+      curly: ['error', 'all'],
       'no-var': 'error',
       'prefer-const': ['error', { destructuring: 'any' }],
       'prefer-arrow-callback': 'warn',
@@ -85,13 +89,16 @@ export default [
       'no-console': 'warn',
       'no-debugger': 'error',
       'no-alert': 'warn',
-      'no-unused-vars': ['error', {
-        argsIgnorePattern: '^_',
-        caughtErrorsIgnorePattern: '^_',
-      }],
+      'no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
 
       // ── Complexity guards ─────────────────────────────────────────
-      'complexity': ['warn', 20],
+      complexity: ['warn', 20],
       'max-depth': ['warn', 5],
       'max-lines-per-function': ['warn', { max: 200, skipBlankLines: true, skipComments: true }],
 

@@ -1,20 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn@Home - Calendrier (Tuteur) | Maquette Desktop</title>
     <style>
       :root {
-        --primary: #3B82F6;
-        --primary-dark: #1E40AF;
-        --danger: #EF4444;
-        --danger-dark: #DC2626;
-        --bg: #F3F4F6;
+        --primary: #3b82f6;
+        --primary-dark: #1e40af;
+        --danger: #ef4444;
+        --danger-dark: #dc2626;
+        --bg: #f3f4f6;
         --text: #111827;
-        --text-muted: #6B7280;
-        --border: #E5E7EB;
+        --text-muted: #6b7280;
+        --border: #e5e7eb;
       }
 
       * {
@@ -24,7 +23,13 @@
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
         background: var(--bg);
       }
 
@@ -38,7 +43,6 @@
         grid-template-areas: "nav main";
         min-height: 100vh;
       }
-
 
       .nav-sidebar {
         background: white;
@@ -76,7 +80,7 @@
       .nav-label {
         font-size: 12px;
         font-weight: 600;
-        color: #9CA3AF;
+        color: #9ca3af;
         text-transform: uppercase;
         padding: 0 24px;
         margin-bottom: 8px;
@@ -99,7 +103,7 @@
       }
 
       .nav-item.active {
-        background: #E0F2FE;
+        background: #e0f2fe;
         color: var(--primary);
         border-right: 4px solid var(--primary);
         font-weight: 600;
@@ -125,7 +129,7 @@
       }
 
       .notification-badge {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
         width: 24px;
         height: 24px;
@@ -174,7 +178,7 @@
       }
 
       .user-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         background-size: cover;
         background-position: center;
@@ -218,7 +222,6 @@
         color: var(--text-muted);
       }
 
-
       .main {
         grid-area: main;
         padding: 32px;
@@ -258,31 +261,31 @@
       }
 
       .button-primary {
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
       }
 
       .button-primary:hover {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       .button-primary:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .button-secondary {
         background: white;
-        color: #3B82F6;
-        border: 1px solid #3B82F6;
+        color: #3b82f6;
+        border: 1px solid #3b82f6;
       }
 
       .button-secondary:hover {
-        background: #E0F2FE;
+        background: #e0f2fe;
       }
 
       .button-secondary:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -320,7 +323,7 @@
       .nav-btn {
         width: 32px;
         height: 32px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         background: white;
         border-radius: 6px;
         cursor: pointer;
@@ -331,11 +334,11 @@
       }
 
       .nav-btn:hover {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .nav-btn:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -355,7 +358,7 @@
       .dow-item {
         text-align: center;
         font-weight: 600;
-        color: #6B7280;
+        color: #6b7280;
         font-size: 12px;
         padding: 8px 0;
         text-transform: uppercase;
@@ -369,7 +372,7 @@
 
       .calendar-day {
         aspect-ratio: 1;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
         border-radius: 6px;
         padding: 4px;
         display: flex;
@@ -383,12 +386,12 @@
       }
 
       .calendar-day:hover {
-        border-color: #3B82F6;
-        background: #E0F2FE;
+        border-color: #3b82f6;
+        background: #e0f2fe;
       }
 
       .calendar-day:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: -2px;
       }
 
@@ -397,8 +400,8 @@
       }
 
       .calendar-day.today {
-        border: 1px solid #3B82F6;
-        box-shadow: inset 0 0 0 1px #3B82F6;
+        border: 1px solid #3b82f6;
+        box-shadow: inset 0 0 0 1px #3b82f6;
         font-weight: 700;
       }
 
@@ -423,15 +426,15 @@
       }
 
       .event-dot-blue {
-        background: #3B82F6;
+        background: #3b82f6;
       }
 
       .event-dot-green {
-        background: #10B981;
+        background: #10b981;
       }
 
       .event-dot-orange {
-        background: #F59E0B;
+        background: #f59e0b;
       }
 
       .event-pill {
@@ -448,15 +451,15 @@
       }
 
       .event-blue {
-        background: #3B82F6;
+        background: #3b82f6;
       }
 
       .event-green {
-        background: #10B981;
+        background: #10b981;
       }
 
       .event-orange {
-        background: #F59E0B;
+        background: #f59e0b;
       }
 
       .sidebar {
@@ -488,9 +491,9 @@
       .event-item {
         display: block;
         padding: 12px;
-        background: #F9FAFB;
+        background: #f9fafb;
         border-radius: 6px;
-        border-left: 4px solid #3B82F6;
+        border-left: 4px solid #3b82f6;
         cursor: pointer;
         transition: all 0.3s;
         text-decoration: none;
@@ -498,30 +501,30 @@
       }
 
       .event-item:hover {
-        background: #F3F4F6;
-        border-left-color: #1E40AF;
+        background: #f3f4f6;
+        border-left-color: #1e40af;
       }
 
       .event-item:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .event-item.blue {
-        border-left-color: #3B82F6;
+        border-left-color: #3b82f6;
       }
 
       .event-item.green {
-        border-left-color: #10B981;
+        border-left-color: #10b981;
       }
 
       .event-item.orange {
-        border-left-color: #F59E0B;
+        border-left-color: #f59e0b;
       }
 
       .event-time {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-bottom: 4px;
       }
 
@@ -534,7 +537,7 @@
 
       .event-location {
         font-size: 12px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .legend {
@@ -548,7 +551,7 @@
         align-items: center;
         gap: 8px;
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .legend-color {
@@ -558,15 +561,15 @@
       }
 
       .color-lesson {
-        background: #3B82F6;
+        background: #3b82f6;
       }
 
       .color-deadline {
-        background: #10B981;
+        background: #10b981;
       }
 
       .color-appointment {
-        background: #F59E0B;
+        background: #f59e0b;
       }
 
       .modal-overlay {
@@ -621,7 +624,7 @@
 
       .modal-header {
         padding: 24px 24px 16px 24px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -637,7 +640,7 @@
         background: none;
         border: none;
         font-size: 24px;
-        color: #6B7280;
+        color: #6b7280;
         cursor: pointer;
         transition: color 0.2s;
         padding: 0;
@@ -653,7 +656,7 @@
       }
 
       .modal-close:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -667,7 +670,7 @@
 
       .modal-footer {
         padding: 16px 24px;
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid #e5e7eb;
         display: flex;
         gap: 12px;
         justify-content: flex-end;
@@ -694,14 +697,14 @@
       }
 
       .form-label .required {
-        color: #EF4444;
+        color: #ef4444;
       }
 
       .form-input,
       .form-textarea {
         width: 100%;
         padding: 12px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-family: inherit;
         font-size: 14px;
@@ -720,7 +723,7 @@
         width: 100%;
         padding: 12px;
         padding-right: 32px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 14px;
         background: white;
@@ -736,7 +739,7 @@
       }
 
       .dropdown-toggle:hover {
-        border-color: #9CA3AF;
+        border-color: #9ca3af;
       }
 
       .dropdown-toggle:focus {
@@ -746,7 +749,7 @@
       }
 
       .dropdown-toggle::after {
-        content: '';
+        content: "";
         width: 12px;
         height: 12px;
         background-image: url("../../assets/icons/chevron-down.svg");
@@ -767,9 +770,11 @@
         left: 0;
         right: 0;
         background: white;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
         z-index: 1000;
         overflow: hidden;
         max-height: 200px;
@@ -812,20 +817,20 @@
       }
 
       .dropdown-item.selected::before {
-        content: '✓';
+        content: "✓";
         font-weight: 700;
       }
 
       .form-input:focus,
       .form-textarea:focus {
         outline: none;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
       .form-input::placeholder,
       .form-textarea::placeholder {
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       .form-input::placeholder,
@@ -864,7 +869,7 @@
         cursor: pointer;
         width: 18px;
         height: 18px;
-        accent-color: #3B82F6;
+        accent-color: #3b82f6;
       }
 
       .form-checkbox label {
@@ -883,42 +888,42 @@
       }
 
       .category-badge.lesson {
-        background: #DBEAFE;
-        color: #1E40AF;
+        background: #dbeafe;
+        color: #1e40af;
       }
 
       .category-badge.deadline {
-        background: #DCFCE7;
+        background: #dcfce7;
         color: #166534;
       }
 
       .category-badge.appointment {
-        background: #FEF3C7;
-        color: #92400E;
+        background: #fef3c7;
+        color: #92400e;
       }
 
       .button-danger {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
       }
 
       .button-danger:hover {
-        background: #DC2626;
+        background: #dc2626;
       }
 
       .button-danger:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .modal-with-error .form-input,
       .modal-with-error .form-textarea,
       .modal-with-error .dropdown-toggle {
-        border-color: #EF4444;
+        border-color: #ef4444;
       }
 
       .error-message {
-        color: #EF4444;
+        color: #ef4444;
         font-size: 12px;
         margin-top: 4px;
       }
@@ -937,7 +942,7 @@
 
       .event-detail-icon {
         font-size: 20px;
-        color: #3B82F6;
+        color: #3b82f6;
         margin-top: 2px;
         min-width: 20px;
       }
@@ -948,7 +953,7 @@
 
       .event-detail-label {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-bottom: 2px;
       }
 
@@ -977,7 +982,7 @@
       }
 
       .confirmation-message {
-        color: #6B7280;
+        color: #6b7280;
         font-size: 14px;
         margin-bottom: 24px;
         line-height: 1.5;
@@ -1027,7 +1032,7 @@
 
       .toast-message {
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       @keyframes slideIn {
@@ -1055,7 +1060,7 @@
       .student-avatar {
         width: 28px;
         height: 28px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1074,38 +1079,36 @@
         text-align: center;
         margin-top: 32px;
         padding-top: 20px;
-        border-top: 1px solid #E5E7EB;
-        color: #94A3B8;
+        border-top: 1px solid #e5e7eb;
+        color: #94a3b8;
         font-size: 12px;
       }
-
 
       button:disabled,
       button[disabled] {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: #9CA3AF;
+        background-color: #9ca3af;
       }
 
       .button-primary:disabled,
       .button-primary[disabled] {
-        background: #9CA3AF;
+        background: #9ca3af;
         color: white;
       }
 
       .button-secondary:disabled,
       .button-secondary[disabled] {
-        background: #F3F4F6;
-        color: #9CA3AF;
-        border-color: #D1D5DB;
+        background: #f3f4f6;
+        color: #9ca3af;
+        border-color: #d1d5db;
       }
 
       .button-danger:disabled,
       .button-danger[disabled] {
-        background: #FECACA;
-        color: #991B1B;
+        background: #fecaca;
+        color: #991b1b;
       }
-
 
       button.loading {
         cursor: not-allowed;
@@ -1114,7 +1117,7 @@
       }
 
       button.loading::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -1129,17 +1132,17 @@
       }
 
       .button-primary.loading {
-        background: #3B82F6;
+        background: #3b82f6;
         opacity: 0.8;
       }
 
       .button-secondary.loading {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .button-secondary.loading::after {
         border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3B82F6;
+        border-top-color: #3b82f6;
       }
 
       @keyframes spin {
@@ -1161,8 +1164,8 @@
       input:disabled,
       textarea:disabled,
       select:disabled {
-        background-color: #F3F4F6;
-        color: #9CA3AF;
+        background-color: #f3f4f6;
+        color: #9ca3af;
         cursor: not-allowed;
         opacity: 0.7;
       }
@@ -1212,26 +1215,38 @@
     <div class="page-layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span> Tableau de bord</a>
-            <a href="chat.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span> Messages<span
-                class="notification-badge">6</span></a>
+            <a href="dashboard.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
+              de bord</a
+            >
+            <a href="chat.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
+              Messages<span class="notification-badge">6</span></a
+            >
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span>
-              Calendrier</a>
-            <a href="tasks.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span> Tâches</a>
+            <a href="calendar.html" class="nav-item active" aria-current="page"
+              ><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a
+            >
+            <a href="tasks.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a
+            >
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span> Paramètres</a>
-            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span> Déconnexion</a>
+            <a href="settings.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a
+            >
+            <a href="login.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span> Déconnexion</a
+            >
           </div>
         </nav>
 
@@ -1331,9 +1346,7 @@
               <div class="calendar-day">
                 <div class="calendar-day-num">10</div>
                 <div class="calendar-day-events">
-                  <a href="#eventDetailsModal" class="event-pill event-green">
-                    Équations - Jean Leclerc
-                  </a>
+                  <a href="#eventDetailsModal" class="event-pill event-green"> Équations - Jean Leclerc </a>
                 </div>
               </div>
               <div class="calendar-day">
@@ -1342,9 +1355,7 @@
               <div class="calendar-day">
                 <div class="calendar-day-num">12</div>
                 <div class="calendar-day-events">
-                  <a href="#eventDetailsModal" class="event-pill event-green">
-                    Lecture Ch.5 - Sophie Martin
-                  </a>
+                  <a href="#eventDetailsModal" class="event-pill event-green"> Lecture Ch.5 - Sophie Martin </a>
                 </div>
               </div>
 
@@ -1382,9 +1393,7 @@
               <div class="calendar-day">
                 <div class="calendar-day-num">20</div>
                 <div class="calendar-day-events">
-                  <a href="#eventDetailsModal" class="event-pill event-green">
-                    Rédaction - Léa Bernard
-                  </a>
+                  <a href="#eventDetailsModal" class="event-pill event-green"> Rédaction - Léa Bernard </a>
                 </div>
               </div>
               <div class="calendar-day">
@@ -1472,7 +1481,6 @@
       </main>
     </div>
 
-
     <div class="modal-overlay" id="addEventModalFilled">
       <div class="modal">
         <div class="modal-header">
@@ -1483,20 +1491,25 @@
           <form>
             <div class="form-group">
               <label class="form-label">Titre <span class="required">*</span></label>
-              <input type="text" class="form-input" placeholder="Ex: Session avec élève"
-                value="Session avec Antoine Kreuder - Mathématiques">
+              <input
+                type="text"
+                class="form-input"
+                placeholder="Ex: Session avec élève"
+                value="Session avec Antoine Kreuder - Mathématiques"
+              />
             </div>
 
             <div class="form-group">
               <label class="form-label">Description</label>
-              <textarea class="form-textarea"
-                placeholder="Ajouter une description (optionnel)">Révision des équations et exercices du devoir.</textarea>
+              <textarea class="form-textarea" placeholder="Ajouter une description (optionnel)">
+Révision des équations et exercices du devoir.</textarea
+              >
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">Date <span class="required">*</span></label>
-                <input type="date" class="form-input" value="2026-01-15">
+                <input type="date" class="form-input" value="2026-01-15" />
               </div>
               <div class="form-group">
                 <label class="form-label">Catégorie <span class="required">*</span></label>
@@ -1515,17 +1528,17 @@
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">Heure début <span class="required">*</span></label>
-                <input type="time" class="form-input" value="14:00">
+                <input type="time" class="form-input" value="14:00" />
               </div>
               <div class="form-group">
                 <label class="form-label">Heure fin <span class="required">*</span></label>
-                <input type="time" class="form-input" value="15:00">
+                <input type="time" class="form-input" value="15:00" />
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-label">Lieu</label>
-              <input type="text" class="form-input" placeholder="Ex: En ligne (Zoom)" value="En ligne (Zoom)">
+              <input type="text" class="form-input" placeholder="Ex: En ligne (Zoom)" value="En ligne (Zoom)" />
             </div>
 
             <div class="form-group">
@@ -1543,7 +1556,7 @@
 
             <div class="form-group">
               <div class="form-checkbox">
-                <input type="checkbox" id="notification2" name="notification" checked>
+                <input type="checkbox" id="notification2" name="notification" checked />
                 <label for="notification2">Notifier 15 minutes avant l'événement</label>
               </div>
             </div>
@@ -1555,7 +1568,6 @@
         </div>
       </div>
     </div>
-
 
     <div class="modal-overlay" id="eventDetailsModal">
       <div class="modal">
@@ -1573,7 +1585,7 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon"><img src="../../assets/icons/calendar.svg" alt=""></div>
+              <div class="event-detail-icon"><img src="../../assets/icons/calendar.svg" alt="" /></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Date</div>
                 <div class="event-detail-value">Jeudi 15 janvier 2026</div>
@@ -1597,7 +1609,7 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon"><img src="../../assets/icons/user.svg" alt=""></div>
+              <div class="event-detail-icon"><img src="../../assets/icons/user.svg" alt="" /></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Élève</div>
                 <div class="event-detail-value">Antoine Kreuder</div>
@@ -1605,11 +1617,11 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon"><img src="../../assets/icons/file-edit.svg" alt=""></div>
+              <div class="event-detail-icon"><img src="../../assets/icons/file-edit.svg" alt="" /></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Description</div>
-                <div class="event-detail-value">Révision des équations et exercices du devoir. Focus sur les erreurs
-                  courantes.
+                <div class="event-detail-value">
+                  Révision des équations et exercices du devoir. Focus sur les erreurs courantes.
                 </div>
               </div>
             </div>
@@ -1623,7 +1635,7 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon"><img src="../../assets/icons/bell.svg" alt=""></div>
+              <div class="event-detail-icon"><img src="../../assets/icons/bell.svg" alt="" /></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Notification</div>
                 <div class="event-detail-value">15 minutes avant l'événement</div>
@@ -1638,16 +1650,15 @@
       </div>
     </div>
 
-
     <div class="modal-overlay" id="confirmDeleteModal">
       <div class="modal modal--sm">
         <div class="modal-body modal-body--compact">
           <div class="confirmation-content">
             <h2 class="confirmation-title">Supprimer cet événement ?</h2>
             <p class="confirmation-message">
-              Cette action est <strong>irréversible</strong>. L'événement <strong>"Session avec Antoine Kreuder -
-                Mathématiques"</strong> sera
-              définitivement supprimé de votre calendrier.
+              Cette action est <strong>irréversible</strong>. L'événement
+              <strong>"Session avec Antoine Kreuder - Mathématiques"</strong> sera définitivement supprimé de votre
+              calendrier.
             </p>
             <div class="confirmation-buttons">
               <button id="delete-event-btn" class="button button-danger">Supprimer définitivement</button>
@@ -1661,54 +1672,54 @@
 
     <script>
       const showToast = (icon, title, message) => {
-        const container = document.getElementById('toast-container');
-        const toast = document.createElement('div');
-        toast.className = 'toast';
+        const container = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+        toast.className = "toast";
         toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
         container.appendChild(toast);
-        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
+        setTimeout(() => {
+          toast.classList.add("dismissing");
+          setTimeout(() => toast.remove(), 500);
+        }, 2700);
       };
 
       // Gérer la sélection des dropdowns dans le modal
-      const eventModal = document.getElementById('addEventModalFilled');
+      const eventModal = document.getElementById("addEventModalFilled");
       if (eventModal) {
-        eventModal.querySelectorAll('.dropdown-item').forEach(item => {
-          item.addEventListener('click', function() {
-            const dropdown = this.closest('.custom-dropdown');
-            const toggle = dropdown.querySelector('.dropdown-toggle');
-            const allItems = dropdown.querySelectorAll('.dropdown-item');
-            
-            allItems.forEach(i => i.classList.remove('selected'));
-            this.classList.add('selected');
+        eventModal.querySelectorAll(".dropdown-item").forEach((item) => {
+          item.addEventListener("click", function () {
+            const dropdown = this.closest(".custom-dropdown");
+            const toggle = dropdown.querySelector(".dropdown-toggle");
+            const allItems = dropdown.querySelectorAll(".dropdown-item");
+
+            allItems.forEach((i) => i.classList.remove("selected"));
+            this.classList.add("selected");
             toggle.textContent = this.textContent.trim();
           });
         });
       }
 
       const handleCreateEvent = () => {
-        showToast('✅', 'Événement créé', 'L\'événement a été créé avec succès');
-        location.hash = '';
-      }
+        showToast("✅", "Événement créé", "L'événement a été créé avec succès");
+        location.hash = "";
+      };
 
       const handleDeleteEvent = () => {
-        showToast('🗑️', 'Événement supprimé', 'L\'événement a été supprimé avec succès');
-        location.hash = '';
-      }
+        showToast("🗑️", "Événement supprimé", "L'événement a été supprimé avec succès");
+        location.hash = "";
+      };
 
-      document.getElementById('create-event-btn').addEventListener('click', handleCreateEvent);
-      document.getElementById('delete-event-btn').addEventListener('click', handleDeleteEvent);
+      document.getElementById("create-event-btn").addEventListener("click", handleCreateEvent);
+      document.getElementById("delete-event-btn").addEventListener("click", handleDeleteEvent);
 
-      document.addEventListener('click', e => {
-        if (e.target.classList.contains('modal-overlay')) location.hash = '';
+      document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("modal-overlay")) location.hash = "";
       });
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') location.hash = '';
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") location.hash = "";
       });
     </script>
 
-    <div class="copyright">
-      © 2026 Learn@Home. All rights reserved.
-    </div>
+    <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
   </body>
-
 </html>

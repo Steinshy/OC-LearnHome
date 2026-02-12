@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn@Home - Maquettes</title>
     <style>
       * {
@@ -13,8 +12,14 @@
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
         min-height: 100vh;
         padding: 40px 20px;
       }
@@ -24,7 +29,9 @@
         margin: 0 auto;
         background: white;
         border-radius: 16px;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 12px -4px rgba(0, 0, 0, 0.04);
+        box-shadow:
+          0 20px 25px -5px rgba(0, 0, 0, 0.08),
+          0 8px 12px -4px rgba(0, 0, 0, 0.04);
         padding: 40px;
       }
 
@@ -36,13 +43,13 @@
       }
 
       .header-info h1 {
-        color: #1E40AF;
+        color: #1e40af;
         margin-bottom: 10px;
         font-size: 32px;
       }
 
       .subtitle {
-        color: #64748B;
+        color: #64748b;
         font-size: 16px;
       }
 
@@ -53,10 +60,10 @@
 
       .role-btn {
         padding: 12px 24px;
-        border: 2px solid #E2E8F0;
+        border: 2px solid #e2e8f0;
         border-radius: 8px;
         background: white;
-        color: #1E40AF;
+        color: #1e40af;
         cursor: pointer;
         font-weight: 600;
         font-size: 14px;
@@ -64,26 +71,26 @@
       }
 
       .role-btn:hover {
-        border-color: #3B82F6;
-        color: #3B82F6;
+        border-color: #3b82f6;
+        color: #3b82f6;
       }
 
       .role-btn:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .role-btn.active {
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
       }
 
       .role-indicator {
         display: inline-block;
         padding: 4px 12px;
-        background: #E0F2FE;
-        color: #1E40AF;
+        background: #e0f2fe;
+        color: #1e40af;
         border-radius: 20px;
         font-size: 12px;
         font-weight: 600;
@@ -100,28 +107,28 @@
       }
 
       .section-title {
-        color: #1E40AF;
+        color: #1e40af;
         font-size: 26px;
         font-weight: 700;
         margin-bottom: 8px;
         padding-bottom: 16px;
-        border-bottom: 3px solid #3B82F6;
+        border-bottom: 3px solid #3b82f6;
         position: relative;
         display: inline-block;
       }
 
       .section-title::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -3px;
         left: 0;
         width: 100%;
         height: 3px;
-        background: linear-gradient(90deg, #3B82F6, #06B6D4);
+        background: linear-gradient(90deg, #3b82f6, #06b6d4);
       }
 
       .section-subtitle {
-        color: #64748B;
+        color: #64748b;
         font-size: 15px;
         margin-bottom: 24px;
         margin-top: 8px;
@@ -137,36 +144,38 @@
       .link {
         display: block;
         padding: 32px 28px;
-        background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
-        border: 1px solid #E2E8F0;
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        border: 1px solid #e2e8f0;
         border-radius: 14px;
         text-decoration: none;
-        color: #1E293B;
+        color: #1e293b;
         transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         position: relative;
         overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+        box-shadow:
+          0 2px 8px rgba(0, 0, 0, 0.04),
+          0 1px 2px rgba(0, 0, 0, 0.02);
         will-change: transform, box-shadow;
       }
 
       .link::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         height: 3px;
-        background: linear-gradient(90deg, #3B82F6, #06B6D4);
+        background: linear-gradient(90deg, #3b82f6, #06b6d4);
         transform: scaleX(0);
         transition: transform 0.3s ease;
       }
 
       .link[data-role="student"]::before {
-        background: linear-gradient(90deg, #10B981, #06B7DB);
+        background: linear-gradient(90deg, #10b981, #06b7db);
       }
 
       .link[data-role="tutor"]::before {
-        background: linear-gradient(90deg, #F59E0B, #EC4899);
+        background: linear-gradient(90deg, #f59e0b, #ec4899);
       }
 
       .link:hover::before {
@@ -185,7 +194,7 @@
         padding: 4px 10px;
         border-radius: 20px;
         background: rgba(255, 255, 255, 0.15);
-        color: #1E293B;
+        color: #1e293b;
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.2);
         transition: all 0.3s ease;
@@ -193,7 +202,7 @@
 
       .link[data-role="student"]::after {
         background: rgba(16, 185, 129, 0.15);
-        color: #065F46;
+        color: #065f46;
         border-color: rgba(16, 185, 129, 0.2);
       }
 
@@ -210,7 +219,7 @@
 
       .link[data-role="student"]:hover::after {
         background: rgba(255, 255, 255, 0.9);
-        color: #065F46;
+        color: #065f46;
       }
 
       .link[data-role="tutor"]:hover::after {
@@ -219,30 +228,32 @@
       }
 
       .link[data-role="shared"]::before {
-        background: linear-gradient(90deg, #8B5CF6, #6366F1);
+        background: linear-gradient(90deg, #8b5cf6, #6366f1);
       }
 
       .link[data-role="shared"]::after {
         background: rgba(139, 92, 246, 0.15);
-        color: #5B21B6;
+        color: #5b21b6;
         border-color: rgba(139, 92, 246, 0.2);
       }
 
       .link[data-role="shared"]:hover::after {
         background: rgba(255, 255, 255, 0.9);
-        color: #5B21B6;
+        color: #5b21b6;
       }
 
       .link:hover {
-        background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
+        background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
         color: white;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
         transform: translateY(-4px);
-        box-shadow: 0 20px 25px rgba(59, 130, 246, 0.15), 0 8px 12px rgba(0, 0, 0, 0.08);
+        box-shadow:
+          0 20px 25px rgba(59, 130, 246, 0.15),
+          0 8px 12px rgba(0, 0, 0, 0.08);
       }
 
       .link:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 3px;
       }
 
@@ -280,7 +291,7 @@
 
       .link-path {
         font-size: 11px;
-        color: #CBD5E1;
+        color: #cbd5e1;
         opacity: 0.7;
         transition: all 0.3s ease;
         font-weight: 500;
@@ -338,8 +349,8 @@
         text-align: center;
         margin-top: 40px;
         padding-top: 20px;
-        border-top: 1px solid #E2E8F0;
-        color: #94A3B8;
+        border-top: 1px solid #e2e8f0;
+        color: #94a3b8;
         font-size: 12px;
       }
 
@@ -402,30 +413,32 @@
         }
       }
 
-      
-      button:disabled, button[disabled] {
+      button:disabled,
+      button[disabled] {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: #9CA3AF;
+        background-color: #9ca3af;
       }
 
-      .button-primary:disabled, .button-primary[disabled] {
-        background: #9CA3AF;
+      .button-primary:disabled,
+      .button-primary[disabled] {
+        background: #9ca3af;
         color: white;
       }
 
-      .button-secondary:disabled, .button-secondary[disabled] {
-        background: #F3F4F6;
-        color: #9CA3AF;
-        border-color: #D1D5DB;
+      .button-secondary:disabled,
+      .button-secondary[disabled] {
+        background: #f3f4f6;
+        color: #9ca3af;
+        border-color: #d1d5db;
       }
 
-      .button-danger:disabled, .button-danger[disabled] {
-        background: #FECACA;
-        color: #991B1B;
+      .button-danger:disabled,
+      .button-danger[disabled] {
+        background: #fecaca;
+        color: #991b1b;
       }
 
-      
       button.loading {
         cursor: not-allowed;
         position: relative;
@@ -433,7 +446,7 @@
       }
 
       button.loading::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -448,21 +461,23 @@
       }
 
       .button-primary.loading {
-        background: #3B82F6;
+        background: #3b82f6;
         opacity: 0.8;
       }
 
       .button-secondary.loading {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .button-secondary.loading::after {
         border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3B82F6;
+        border-top-color: #3b82f6;
       }
 
       @keyframes spin {
-        to { transform: rotate(360deg); }
+        to {
+          transform: rotate(360deg);
+        }
       }
 
       .action-btn:disabled {
@@ -475,9 +490,11 @@
         cursor: not-allowed;
       }
 
-      input:disabled, textarea:disabled, select:disabled {
-        background-color: #F3F4F6;
-        color: #9CA3AF;
+      input:disabled,
+      textarea:disabled,
+      select:disabled {
+        background-color: #f3f4f6;
+        color: #9ca3af;
         cursor: not-allowed;
         opacity: 0.7;
       }
@@ -503,7 +520,6 @@
         </div>
       </div>
 
-      
       <div class="section" id="section-student">
         <h2 class="section-title">👨‍🎓 Élève</h2>
         <p class="section-subtitle">Pages et maquettes</p>
@@ -575,7 +591,6 @@
         </div>
       </div>
 
-      
       <div class="section section-hidden" id="section-tutor">
         <h2 class="section-title">👨‍🏫 Tuteur</h2>
         <p class="section-subtitle">Pages et maquettes</p>
@@ -647,24 +662,21 @@
         </div>
       </div>
 
-      <div class="copyright">
-        © 2026 Learn@Home. All rights reserved.
-      </div>
+      <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
     </div>
 
     <script>
       const switchRole = (role) => {
-        document.querySelectorAll('.role-btn').forEach(roleBtn => roleBtn.classList.remove('active'));
-        document.querySelector(`[data-role="${role}"]`).classList.add('active');
-        ['student', 'tutor'].forEach(sectionRole => {
-          document.getElementById(`section-${sectionRole}`).classList.toggle('section-hidden', sectionRole !== role);
+        document.querySelectorAll(".role-btn").forEach((roleBtn) => roleBtn.classList.remove("active"));
+        document.querySelector(`[data-role="${role}"]`).classList.add("active");
+        ["student", "tutor"].forEach((sectionRole) => {
+          document.getElementById(`section-${sectionRole}`).classList.toggle("section-hidden", sectionRole !== role);
         });
-        localStorage.setItem('selectedRole', role);
+        localStorage.setItem("selectedRole", role);
       };
-      document.addEventListener('DOMContentLoaded', () => {
-        switchRole(localStorage.getItem('selectedRole') || 'student');
+      document.addEventListener("DOMContentLoaded", () => {
+        switchRole(localStorage.getItem("selectedRole") || "student");
       });
     </script>
   </body>
-
 </html>

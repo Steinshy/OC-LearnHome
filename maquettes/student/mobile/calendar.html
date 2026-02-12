@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, ">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, " />
     <title>Learn@Home - Calendrier | Maquette Mobile</title>
     <style>
       * {
@@ -13,15 +12,21 @@
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: #F3F4F6;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: #f3f4f6;
         padding-bottom: 20px;
         overflow-x: hidden;
       }
 
       .mobile-header {
         background: white;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         padding: 8px 16px;
         display: flex;
         justify-content: space-between;
@@ -44,20 +49,20 @@
       }
 
       .menu-btn:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .mobile-logo {
         font-size: 18px;
         font-weight: 700;
-        color: #3B82F6;
+        color: #3b82f6;
       }
 
       .user-avatar-mobile {
         width: 36px;
         height: 36px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -72,13 +77,13 @@
       }
 
       .user-avatar-mobile.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .user-avatar-mobile.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
@@ -87,7 +92,7 @@
         position: absolute;
         bottom: -2px;
         right: -2px;
-        background: #EF4444;
+        background: #ef4444;
         color: white;
         width: 14px;
         height: 14px;
@@ -107,7 +112,7 @@
         width: 280px;
         height: 100vh;
         background: white;
-        border-right: 1px solid #E5E7EB;
+        border-right: 1px solid #e5e7eb;
         padding: 24px 0;
         overflow-y: auto;
         transition: left 0.3s ease;
@@ -138,7 +143,7 @@
       .sidebar-header {
         padding: 0 24px;
         margin-bottom: 32px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         padding-bottom: 24px;
         display: flex;
         justify-content: space-between;
@@ -148,7 +153,7 @@
       .sidebar-logo {
         font-size: 20px;
         font-weight: 700;
-        color: #3B82F6;
+        color: #3b82f6;
       }
 
       .close-btn {
@@ -172,14 +177,14 @@
       }
 
       .nav-section:not(:first-child) {
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid #e5e7eb;
         padding-top: 24px;
       }
 
       .nav-label {
         font-size: 12px;
         font-weight: 600;
-        color: #9CA3AF;
+        color: #9ca3af;
         text-transform: uppercase;
         padding: 0 24px;
         margin-bottom: 8px;
@@ -187,7 +192,7 @@
 
       .nav-item {
         padding: 14px 24px;
-        color: #6B7280;
+        color: #6b7280;
         text-decoration: none;
         display: flex;
         align-items: center;
@@ -201,19 +206,19 @@
 
       .nav-item:hover,
       .nav-item:active {
-        background: #F3F4F6;
-        color: #3B82F6;
+        background: #f3f4f6;
+        color: #3b82f6;
       }
 
       .nav-item:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: -2px;
       }
 
       .nav-item.active {
-        background: #E0F2FE;
-        color: #3B82F6;
-        border-right: 4px solid #3B82F6;
+        background: #e0f2fe;
+        color: #3b82f6;
+        border-right: 4px solid #3b82f6;
         font-weight: 600;
       }
 
@@ -244,7 +249,7 @@
       }
 
       .notification-badge {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
         width: 24px;
         height: 24px;
@@ -260,7 +265,7 @@
 
       .user-profile {
         padding: 24px;
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid #e5e7eb;
         margin-top: auto;
         display: flex;
         flex-direction: column;
@@ -271,7 +276,7 @@
       .user-avatar {
         width: 40px;
         height: 40px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -286,13 +291,13 @@
       }
 
       .user-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .user-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
@@ -305,7 +310,7 @@
 
       .user-role {
         font-size: 12px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       h1 {
@@ -330,16 +335,16 @@
 
       .button-secondary {
         background: white;
-        color: #3B82F6;
-        border: 1px solid #3B82F6;
+        color: #3b82f6;
+        border: 1px solid #3b82f6;
       }
 
       .button-secondary:active {
-        background: #E0F2FE;
+        background: #e0f2fe;
       }
 
       .button-secondary:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -373,7 +378,7 @@
       .nav-btn {
         width: 36px;
         height: 36px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         background: white;
         border-radius: 6px;
         cursor: pointer;
@@ -385,11 +390,11 @@
       }
 
       .nav-btn:active {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .nav-btn:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -410,7 +415,7 @@
       .dow-item {
         text-align: center;
         font-weight: 600;
-        color: #6B7280;
+        color: #6b7280;
         font-size: 11px;
         padding: 8px 0;
         text-transform: uppercase;
@@ -424,7 +429,7 @@
 
       .calendar-day {
         aspect-ratio: 1;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
         border-radius: 6px;
         padding: 4px;
         display: flex;
@@ -439,12 +444,12 @@
       }
 
       .calendar-day:active {
-        border-color: #3B82F6;
-        background: #E0F2FE;
+        border-color: #3b82f6;
+        background: #e0f2fe;
       }
 
       .calendar-day:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: -2px;
       }
 
@@ -453,8 +458,8 @@
       }
 
       .calendar-day.today {
-        border: 1px solid #3B82F6;
-        box-shadow: inset 0 0 0 1px #3B82F6;
+        border: 1px solid #3b82f6;
+        box-shadow: inset 0 0 0 1px #3b82f6;
         font-weight: 700;
       }
 
@@ -491,15 +496,15 @@
       }
 
       .event-blue {
-        background: #3B82F6;
+        background: #3b82f6;
       }
 
       .event-green {
-        background: #10B981;
+        background: #10b981;
       }
 
       .event-orange {
-        background: #F59E0B;
+        background: #f59e0b;
       }
 
       .card {
@@ -526,9 +531,9 @@
       .event-item {
         display: block;
         padding: 12px;
-        background: #F9FAFB;
+        background: #f9fafb;
         border-radius: 6px;
-        border-left: 4px solid #3B82F6;
+        border-left: 4px solid #3b82f6;
         cursor: pointer;
         transition: all 0.3s;
         text-decoration: none;
@@ -537,21 +542,21 @@
       }
 
       .event-item:active {
-        background: #F3F4F6;
-        border-left-color: #1E40AF;
+        background: #f3f4f6;
+        border-left-color: #1e40af;
       }
 
       .event-item.green {
-        border-left-color: #10B981;
+        border-left-color: #10b981;
       }
 
       .event-item.orange {
-        border-left-color: #F59E0B;
+        border-left-color: #f59e0b;
       }
 
       .event-time {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-bottom: 4px;
       }
 
@@ -564,7 +569,7 @@
 
       .event-location {
         font-size: 12px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .legend {
@@ -578,7 +583,7 @@
         align-items: center;
         gap: 8px;
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .legend-color {
@@ -588,15 +593,15 @@
       }
 
       .color-lesson {
-        background: #3B82F6;
+        background: #3b82f6;
       }
 
       .color-deadline {
-        background: #10B981;
+        background: #10b981;
       }
 
       .color-appointment {
-        background: #F59E0B;
+        background: #f59e0b;
       }
 
       .modal-overlay {
@@ -644,7 +649,7 @@
 
       .modal-header {
         padding: 20px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -664,7 +669,7 @@
         background: none;
         border: none;
         font-size: 24px;
-        color: #6B7280;
+        color: #6b7280;
         cursor: pointer;
         transition: color 0.2s;
         padding: 0;
@@ -680,7 +685,7 @@
       }
 
       .modal-close:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -690,7 +695,7 @@
 
       .modal-footer {
         padding: 16px 20px;
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid #e5e7eb;
         display: flex;
         gap: 12px;
         justify-content: flex-end;
@@ -713,7 +718,7 @@
 
       .event-detail-icon {
         font-size: 20px;
-        color: #3B82F6;
+        color: #3b82f6;
         margin-top: 2px;
         min-width: 20px;
       }
@@ -724,7 +729,7 @@
 
       .event-detail-label {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-bottom: 2px;
       }
 
@@ -750,37 +755,34 @@
       }
 
       .category-badge.lesson {
-        background: #DBEAFE;
-        color: #1E40AF;
+        background: #dbeafe;
+        color: #1e40af;
       }
 
       .category-badge.deadline {
-        background: #DCFCE7;
+        background: #dcfce7;
         color: #166534;
       }
 
       .category-badge.appointment {
-        background: #FEF3C7;
-        color: #92400E;
+        background: #fef3c7;
+        color: #92400e;
       }
 
       .button-danger {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
       }
 
       .button-danger:active {
-        background: #DC2626;
+        background: #dc2626;
       }
 
       .button-danger:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
-      
-
-      
       @media (max-width: 360px) {
         .sidebar {
           width: 100%;
@@ -1013,7 +1015,9 @@
           font-size: 26px;
         }
 
-        .button, .button-primary, .button-secondary {
+        .button,
+        .button-primary,
+        .button-secondary {
           padding: 10px 16px;
           font-size: 14px;
         }
@@ -1100,7 +1104,8 @@
           margin: 0 auto;
         }
 
-        .content-section, .card {
+        .content-section,
+        .card {
           padding: 24px;
         }
 
@@ -1117,11 +1122,14 @@
           font-size: 16px;
         }
 
-        h1, h2 {
+        h1,
+        h2 {
           font-size: 28px;
         }
 
-        .button, .button-primary, .button-secondary {
+        .button,
+        .button-primary,
+        .button-secondary {
           padding: 12px 20px;
           font-size: 15px;
         }
@@ -1142,7 +1150,8 @@
           margin: 0 auto;
         }
 
-        .content-section, .card {
+        .content-section,
+        .card {
           padding: 32px;
         }
 
@@ -1210,7 +1219,8 @@
           gap: 24px;
         }
 
-        h1, h2 {
+        h1,
+        h2 {
           font-size: 32px;
         }
 
@@ -1219,30 +1229,32 @@
         }
       }
 
-      
-      button:disabled, button[disabled] {
+      button:disabled,
+      button[disabled] {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: #9CA3AF;
+        background-color: #9ca3af;
       }
 
-      .button-primary:disabled, .button-primary[disabled] {
-        background: #9CA3AF;
+      .button-primary:disabled,
+      .button-primary[disabled] {
+        background: #9ca3af;
         color: white;
       }
 
-      .button-secondary:disabled, .button-secondary[disabled] {
-        background: #F3F4F6;
-        color: #9CA3AF;
-        border-color: #D1D5DB;
+      .button-secondary:disabled,
+      .button-secondary[disabled] {
+        background: #f3f4f6;
+        color: #9ca3af;
+        border-color: #d1d5db;
       }
 
-      .button-danger:disabled, .button-danger[disabled] {
-        background: #FECACA;
-        color: #991B1B;
+      .button-danger:disabled,
+      .button-danger[disabled] {
+        background: #fecaca;
+        color: #991b1b;
       }
 
-      
       button.loading {
         cursor: not-allowed;
         position: relative;
@@ -1250,7 +1262,7 @@
       }
 
       button.loading::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -1265,21 +1277,23 @@
       }
 
       .button-primary.loading {
-        background: #3B82F6;
+        background: #3b82f6;
         opacity: 0.8;
       }
 
       .button-secondary.loading {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .button-secondary.loading::after {
         border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3B82F6;
+        border-top-color: #3b82f6;
       }
 
       @keyframes spin {
-        to { transform: rotate(360deg); }
+        to {
+          transform: rotate(360deg);
+        }
       }
 
       .action-btn:disabled {
@@ -1292,9 +1306,11 @@
         cursor: not-allowed;
       }
 
-      input:disabled, textarea:disabled, select:disabled {
-        background-color: #F3F4F6;
-        color: #9CA3AF;
+      input:disabled,
+      textarea:disabled,
+      select:disabled {
+        background-color: #f3f4f6;
+        color: #9ca3af;
         cursor: not-allowed;
         opacity: 0.7;
       }
@@ -1316,13 +1332,13 @@
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
         padding: 16px;
         margin-bottom: 16px;
-        border: 1px solid #F0F0F0;
+        border: 1px solid #f0f0f0;
         transition: all 0.3s ease;
       }
 
       .card:hover {
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-        border-color: #E5E7EB;
+        border-color: #e5e7eb;
       }
 
       .card-title {
@@ -1336,27 +1352,27 @@
       .event-item {
         display: block;
         padding: 11px;
-        background: linear-gradient(135deg, #F0F7FF 0%, #F9FAFB 100%);
+        background: linear-gradient(135deg, #f0f7ff 0%, #f9fafb 100%);
         border-radius: 7px;
-        border-left: 3px solid #3B82F6;
+        border-left: 3px solid #3b82f6;
         cursor: pointer;
         transition: all 0.2s;
         text-decoration: none;
         color: inherit;
         min-height: 44px;
-        border: 1px solid #E5E7EB;
-        border-left: 3px solid #3B82F6;
+        border: 1px solid #e5e7eb;
+        border-left: 3px solid #3b82f6;
       }
 
       .event-item:active {
-        background: linear-gradient(135deg, #E0F2FE 0%, #F3F4F6 100%);
-        border-left-color: #1E40AF;
+        background: linear-gradient(135deg, #e0f2fe 0%, #f3f4f6 100%);
+        border-left-color: #1e40af;
         transform: translateX(2px);
       }
 
       .event-time {
         font-size: 11px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-bottom: 3px;
         font-weight: 500;
       }
@@ -1410,7 +1426,7 @@
 
       .event-detail-label {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         text-transform: uppercase;
         font-weight: 600;
         margin-bottom: 4px;
@@ -1432,15 +1448,15 @@
       }
 
       .category-badge.lesson {
-        background: #3B82F6;
+        background: #3b82f6;
       }
 
       .category-badge.deadline {
-        background: #10B981;
+        background: #10b981;
       }
 
       .category-badge.appointment {
-        background: #F59E0B;
+        background: #f59e0b;
       }
 
       .confirmation-content {
@@ -1457,7 +1473,7 @@
       }
 
       .confirmation-message {
-        color: #6B7280;
+        color: #6b7280;
         font-size: 14px;
         line-height: 1.6;
         margin: 0;
@@ -1581,7 +1597,7 @@
 
       .toast-message {
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       @keyframes slideIn {
@@ -1640,14 +1656,14 @@
   <body>
     <div class="mobile-header">
       <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-      <div class="mobile-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+      <div class="mobile-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
       <div class="mobile-header-spacer"></div>
     </div>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+        <div class="sidebar-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
         <button class="close-btn" id="closeBtn" aria-label="Fermer">✕</button>
       </div>
 
@@ -1655,11 +1671,11 @@
         <div class="nav-section">
           <div class="nav-label">Principal</div>
           <a href="dashboard.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span>
             Tableau de bord
           </a>
           <a href="chat.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
             Messages
             <span class="notification-badge">5</span>
           </a>
@@ -1668,11 +1684,11 @@
         <div class="nav-section">
           <div class="nav-label">Outils</div>
           <a href="calendar.html" class="nav-item active" aria-current="page">
-            <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span>
             Calendrier
           </a>
           <a href="tasks.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span>
             Tâches
           </a>
         </div>
@@ -1680,11 +1696,11 @@
         <div class="nav-section">
           <div class="nav-label">Compte</div>
           <a href="settings.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span>
             Paramètres
           </a>
           <a href="login.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span>
             Déconnexion
           </a>
         </div>
@@ -1876,7 +1892,6 @@
       </div>
     </div>
 
-    
     <div class="modal-overlay" id="eventDetailsModal">
       <div class="modal">
         <div class="modal-header">
@@ -1893,7 +1908,7 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon"><img src="../../assets/icons/calendar.svg" alt=""></div>
+              <div class="event-detail-icon"><img src="../../assets/icons/calendar.svg" alt="" /></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Date</div>
                 <div class="event-detail-value">Jeudi 8 janvier 2026</div>
@@ -1917,10 +1932,11 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon"><img src="../../assets/icons/file-edit.svg" alt=""></div>
+              <div class="event-detail-icon"><img src="../../assets/icons/file-edit.svg" alt="" /></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Description</div>
-                <div class="event-detail-value">Suivi des progrès en mathématiques et revue des devoirs précédents.
+                <div class="event-detail-value">
+                  Suivi des progrès en mathématiques et revue des devoirs précédents.
                 </div>
               </div>
             </div>
@@ -1934,7 +1950,7 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon"><img src="../../assets/icons/bell.svg" alt=""></div>
+              <div class="event-detail-icon"><img src="../../assets/icons/bell.svg" alt="" /></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Notification</div>
                 <div class="event-detail-value">15 minutes avant l'événement</div>
@@ -1961,7 +1977,7 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon"><img src="../../assets/icons/calendar.svg" alt=""></div>
+              <div class="event-detail-icon"><img src="../../assets/icons/calendar.svg" alt="" /></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Date</div>
                 <div class="event-detail-value">Jeudi 15 janvier 2026</div>
@@ -1993,10 +2009,12 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon"><img src="../../assets/icons/file-edit.svg" alt=""></div>
+              <div class="event-detail-icon"><img src="../../assets/icons/file-edit.svg" alt="" /></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Description</div>
-                <div class="event-detail-value">Révision des équations et exercices du devoir. Focus sur les erreurs courantes.</div>
+                <div class="event-detail-value">
+                  Révision des équations et exercices du devoir. Focus sur les erreurs courantes.
+                </div>
               </div>
             </div>
 
@@ -2009,7 +2027,7 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon"><img src="../../assets/icons/bell.svg" alt=""></div>
+              <div class="event-detail-icon"><img src="../../assets/icons/bell.svg" alt="" /></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Notification</div>
                 <div class="event-detail-value">15 minutes avant l'événement</div>
@@ -2030,8 +2048,8 @@
           <div class="confirmation-content">
             <h2 class="confirmation-title">Supprimer cet événement ?</h2>
             <p class="confirmation-message">
-              Cette action est <strong>irréversible</strong>. L'événement <strong>"Session Tutorat - Mathématiques"</strong> sera
-              définitivement supprimé de votre calendrier.
+              Cette action est <strong>irréversible</strong>. L'événement
+              <strong>"Session Tutorat - Mathématiques"</strong> sera définitivement supprimé de votre calendrier.
             </p>
             <div class="confirmation-buttons">
               <button class="button button-danger" onclick="handleDeleteEvent()">Supprimer définitivement</button>
@@ -2044,64 +2062,66 @@
 
     <script>
       const showToast = (icon, title, message) => {
-        const container = document.getElementById('toast-container');
-        const toast = document.createElement('div');
-        toast.className = 'toast';
+        const container = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+        toast.className = "toast";
         toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
         container.appendChild(toast);
-        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500); }, 2700);
+        setTimeout(() => {
+          toast.classList.add("dismissing");
+          setTimeout(() => toast.remove(), 500);
+        }, 2700);
       };
 
       const openDetailsModal = () => {
-        document.getElementById('eventDetailsModal').classList.add('active');
+        document.getElementById("eventDetailsModal").classList.add("active");
       };
 
       const closeDetailsModal = () => {
-        document.getElementById('eventDetailsModal').classList.remove('active');
+        document.getElementById("eventDetailsModal").classList.remove("active");
       };
 
       const openDeleteConfirmModal = () => {
-        document.getElementById('confirmDeleteModal').classList.add('active');
+        document.getElementById("confirmDeleteModal").classList.add("active");
       };
 
       const closeDeleteConfirmModal = () => {
-        document.getElementById('confirmDeleteModal').classList.remove('active');
+        document.getElementById("confirmDeleteModal").classList.remove("active");
       };
 
       const handleDeleteEvent = () => {
-        showToast('🗑️', 'Événement supprimé', 'L\'événement a été supprimé avec succès');
+        showToast("🗑️", "Événement supprimé", "L'événement a été supprimé avec succès");
         closeDeleteConfirmModal();
       };
 
-      document.getElementById('eventDetailsModal').addEventListener('click', (event) => {
-        (event.target === document.getElementById('eventDetailsModal')) ? closeDetailsModal() : null;
+      document.getElementById("eventDetailsModal").addEventListener("click", (event) => {
+        event.target === document.getElementById("eventDetailsModal") ? closeDetailsModal() : null;
       });
 
-      document.getElementById('confirmDeleteModal').addEventListener('click', (event) => {
-        (event.target === document.getElementById('confirmDeleteModal')) ? closeDeleteConfirmModal() : null;
+      document.getElementById("confirmDeleteModal").addEventListener("click", (event) => {
+        event.target === document.getElementById("confirmDeleteModal") ? closeDeleteConfirmModal() : null;
       });
 
-      const menuBtn = document.getElementById('menuBtn');
-      const closeBtn = document.getElementById('closeBtn');
-      const sidebar = document.getElementById('sidebar');
-      const sidebarOverlay = document.getElementById('sidebarOverlay');
+      const menuBtn = document.getElementById("menuBtn");
+      const closeBtn = document.getElementById("closeBtn");
+      const sidebar = document.getElementById("sidebar");
+      const sidebarOverlay = document.getElementById("sidebarOverlay");
 
-      menuBtn.addEventListener('click', () => {
-        sidebar.classList.add('open');
-        sidebarOverlay.classList.add('active');
+      menuBtn.addEventListener("click", () => {
+        sidebar.classList.add("open");
+        sidebarOverlay.classList.add("active");
       });
 
-      closeBtn.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-        sidebarOverlay.classList.remove('active');
+      closeBtn.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+        sidebarOverlay.classList.remove("active");
       });
 
-      sidebarOverlay.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-        sidebarOverlay.classList.remove('active');
+      sidebarOverlay.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+        sidebarOverlay.classList.remove("active");
       });
     </script>
     <div id="toast-container" class="toast-container"></div>
   </body>
-
 </html>

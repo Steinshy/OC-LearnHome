@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, ">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, " />
     <title>Learn@Home - Paramètres | Maquette Mobile</title>
     <style>
       * {
@@ -13,15 +12,21 @@
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: #F3F4F6;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: #f3f4f6;
         padding-bottom: 20px;
         overflow-x: hidden;
       }
 
       .mobile-header {
         background: white;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         padding: 8px 16px;
         display: flex;
         justify-content: space-between;
@@ -44,20 +49,20 @@
       }
 
       .menu-btn:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .mobile-logo {
         font-size: 18px;
         font-weight: 700;
-        color: #3B82F6;
+        color: #3b82f6;
       }
 
       .user-avatar-mobile {
         width: 36px;
         height: 36px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -72,13 +77,13 @@
       }
 
       .user-avatar-mobile.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .user-avatar-mobile.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
@@ -87,7 +92,7 @@
         position: absolute;
         bottom: -2px;
         right: -2px;
-        background: #EF4444;
+        background: #ef4444;
         color: white;
         width: 14px;
         height: 14px;
@@ -107,7 +112,7 @@
         width: 280px;
         height: 100vh;
         background: white;
-        border-right: 1px solid #E5E7EB;
+        border-right: 1px solid #e5e7eb;
         padding: 24px 0;
         overflow-y: auto;
         transition: left 0.3s ease;
@@ -138,7 +143,7 @@
       .sidebar-header {
         padding: 0 24px;
         margin-bottom: 32px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         padding-bottom: 24px;
         display: flex;
         justify-content: space-between;
@@ -148,7 +153,7 @@
       .sidebar-logo {
         font-size: 20px;
         font-weight: 700;
-        color: #3B82F6;
+        color: #3b82f6;
       }
 
       .close-btn {
@@ -172,14 +177,14 @@
       }
 
       .nav-section:not(:first-child) {
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid #e5e7eb;
         padding-top: 24px;
       }
 
       .nav-label {
         font-size: 12px;
         font-weight: 600;
-        color: #9CA3AF;
+        color: #9ca3af;
         text-transform: uppercase;
         padding: 0 24px;
         margin-bottom: 8px;
@@ -187,7 +192,7 @@
 
       .nav-item {
         padding: 14px 24px;
-        color: #6B7280;
+        color: #6b7280;
         text-decoration: none;
         display: flex;
         align-items: center;
@@ -201,19 +206,19 @@
 
       .nav-item:hover,
       .nav-item:active {
-        background: #F3F4F6;
-        color: #3B82F6;
+        background: #f3f4f6;
+        color: #3b82f6;
       }
 
       .nav-item:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: -2px;
       }
 
       .nav-item.active {
-        background: #E0F2FE;
-        color: #3B82F6;
-        border-right: 4px solid #3B82F6;
+        background: #e0f2fe;
+        color: #3b82f6;
+        border-right: 4px solid #3b82f6;
         font-weight: 600;
       }
 
@@ -232,7 +237,7 @@
       }
 
       .notification-badge {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
         width: 24px;
         height: 24px;
@@ -248,7 +253,7 @@
 
       .user-profile {
         padding: 24px;
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid #e5e7eb;
         margin-top: auto;
         display: flex;
         flex-direction: column;
@@ -259,7 +264,7 @@
       .user-avatar {
         width: 40px;
         height: 40px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -274,13 +279,13 @@
       }
 
       .user-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .user-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
@@ -293,7 +298,7 @@
 
       .user-role {
         font-size: 12px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .main {
@@ -313,7 +318,7 @@
 
       .header-subtitle {
         font-size: 14px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .card {
@@ -330,7 +335,7 @@
         color: #111827;
         margin-bottom: 20px;
         padding-bottom: 16px;
-        border-bottom: 1px solid #F3F4F6;
+        border-bottom: 1px solid #f3f4f6;
       }
 
       .form-group {
@@ -351,20 +356,26 @@
       input[type="tel"] {
         width: 100%;
         padding: 14px 16px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 16px;
         background: white;
         color: #111827;
         transition: all 0.3s ease;
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
       }
 
       input[type="text"]:hover,
       input[type="email"]:hover,
       input[type="password"]:hover,
       input[type="tel"]:hover {
-        border-color: #9CA3AF;
+        border-color: #9ca3af;
       }
 
       .custom-dropdown {
@@ -377,7 +388,7 @@
         width: 100%;
         padding: 14px 16px;
         padding-right: 40px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 16px;
         background: white;
@@ -394,17 +405,17 @@
       }
 
       .dropdown-toggle:hover {
-        border-color: #9CA3AF;
+        border-color: #9ca3af;
       }
 
       .dropdown-toggle:focus {
         outline: none;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
       .dropdown-toggle::after {
-        content: '';
+        content: "";
         width: 12px;
         height: 12px;
         background-image: url("../../assets/icons/chevron-down.svg");
@@ -425,9 +436,11 @@
         left: 0;
         right: 0;
         background: white;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
         z-index: 1000;
         overflow: hidden;
         max-height: 200px;
@@ -457,21 +470,21 @@
       }
 
       .dropdown-item:hover {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .dropdown-item:focus {
         outline: none;
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .dropdown-item.selected {
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
       }
 
       .dropdown-item.selected::before {
-        content: '✓ ';
+        content: "✓ ";
         font-weight: 700;
       }
 
@@ -485,7 +498,7 @@
       input[type="tel"]:focus,
       select:focus {
         outline: none;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
@@ -493,7 +506,7 @@
       input[type="email"]::placeholder,
       input[type="password"]::placeholder,
       input[type="tel"]::placeholder {
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       input[type="text"]::placeholder,
@@ -523,46 +536,46 @@
       }
 
       .button-primary {
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
       }
 
       .button-primary:active {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       .button-primary:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .button-secondary {
         background: white;
-        color: #3B82F6;
-        border: 1px solid #3B82F6;
+        color: #3b82f6;
+        border: 1px solid #3b82f6;
         margin-top: 12px;
       }
 
       .button-secondary:active {
-        background: #E0F2FE;
+        background: #e0f2fe;
       }
 
       .button-secondary:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .button-danger {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
       }
 
       .button-danger:active {
-        background: #DC2626;
+        background: #dc2626;
       }
 
       .button-danger:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -576,7 +589,7 @@
         display: flex;
         align-items: center;
         padding: 12px 0;
-        border-bottom: 1px solid #F3F4F6;
+        border-bottom: 1px solid #f3f4f6;
         min-height: 44px;
       }
 
@@ -599,14 +612,14 @@
 
       .toggle-label-desc {
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .checkbox {
         width: 20px;
         height: 20px;
         cursor: pointer;
-        accent-color: #3B82F6;
+        accent-color: #3b82f6;
         flex-shrink: 0;
       }
 
@@ -621,7 +634,7 @@
       .avatar-preview {
         width: 64px;
         height: 64px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -635,19 +648,19 @@
       }
 
       .avatar-preview.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .avatar-preview.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
 
       .student-picture {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         font-size: 0;
       }
 
@@ -661,11 +674,11 @@
       .file-input-label {
         padding: 12px 16px;
         background: white;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 14px;
         font-weight: 600;
-        color: #3B82F6;
+        color: #3b82f6;
         cursor: pointer;
         transition: all 0.3s;
         display: inline-block;
@@ -677,22 +690,22 @@
       }
 
       .file-input-label:active {
-        background: #E0F2FE;
+        background: #e0f2fe;
       }
 
       .file-input-label:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .file-input-hint {
         font-size: 12px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .danger-zone {
-        background: #FEF2F2;
-        border: 1px solid #FEE2E2;
+        background: #fef2f2;
+        border: 1px solid #fee2e2;
         border-radius: 6px;
         padding: 20px;
         margin-top: 24px;
@@ -700,14 +713,14 @@
 
       .danger-zone-title {
         font-weight: 700;
-        color: #7F1D1D;
+        color: #7f1d1d;
         margin-bottom: 8px;
         font-size: 14px;
       }
 
       .danger-zone-desc {
         font-size: 13px;
-        color: #991B1B;
+        color: #991b1b;
         margin-bottom: 16px;
       }
 
@@ -747,7 +760,7 @@
 
       .toast-message {
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       @keyframes slideIn {
@@ -775,15 +788,12 @@
       }
 
       .toast.danger {
-        border-left: 4px solid #EF4444;
+        border-left: 4px solid #ef4444;
       }
 
       .toast.danger .toast-title {
-        color: #DC2626;
+        color: #dc2626;
       }
-
-
-
 
       @media (min-width: 768px) {
         .mobile-header {
@@ -818,7 +828,6 @@
         }
       }
 
-
       @media (min-width: 1024px) {
         .mobile-header {
           padding: 24px 48px;
@@ -843,33 +852,31 @@
         }
       }
 
-
       button:disabled,
       button[disabled] {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: #9CA3AF;
+        background-color: #9ca3af;
       }
 
       .button-primary:disabled,
       .button-primary[disabled] {
-        background: #9CA3AF;
+        background: #9ca3af;
         color: white;
       }
 
       .button-secondary:disabled,
       .button-secondary[disabled] {
-        background: #F3F4F6;
-        color: #9CA3AF;
-        border-color: #D1D5DB;
+        background: #f3f4f6;
+        color: #9ca3af;
+        border-color: #d1d5db;
       }
 
       .button-danger:disabled,
       .button-danger[disabled] {
-        background: #FECACA;
-        color: #991B1B;
+        background: #fecaca;
+        color: #991b1b;
       }
-
 
       button.loading {
         cursor: not-allowed;
@@ -878,7 +885,7 @@
       }
 
       button.loading::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -893,17 +900,17 @@
       }
 
       .button-primary.loading {
-        background: #3B82F6;
+        background: #3b82f6;
         opacity: 0.8;
       }
 
       .button-secondary.loading {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .button-secondary.loading::after {
         border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3B82F6;
+        border-top-color: #3b82f6;
       }
 
       @keyframes spin {
@@ -925,8 +932,8 @@
       input:disabled,
       textarea:disabled,
       select:disabled {
-        background-color: #F3F4F6;
-        color: #9CA3AF;
+        background-color: #f3f4f6;
+        color: #9ca3af;
         cursor: not-allowed;
         opacity: 0.7;
       }
@@ -935,8 +942,8 @@
         text-align: center;
         margin-top: 32px;
         padding-top: 20px;
-        border-top: 1px solid #E5E7EB;
-        color: #94A3B8;
+        border-top: 1px solid #e5e7eb;
+        color: #94a3b8;
         font-size: 12px;
       }
 
@@ -962,7 +969,7 @@
       .settings-info {
         margin-bottom: 20px;
         font-size: 12px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .settings-submit-btn {
@@ -971,14 +978,14 @@
     </style>
     <script>
       function toggleAvatar() {
-        document.getElementById('avatarPreview').classList.toggle('student-picture');
-        document.getElementById('userAvatar').classList.toggle('student-picture');
+        document.getElementById("avatarPreview").classList.toggle("student-picture");
+        document.getElementById("userAvatar").classList.toggle("student-picture");
       }
 
-      document.addEventListener('DOMContentLoaded', function () {
-        const fileInputLabel = document.querySelector('.file-input-label');
+      document.addEventListener("DOMContentLoaded", function () {
+        const fileInputLabel = document.querySelector(".file-input-label");
         if (fileInputLabel) {
-          fileInputLabel.addEventListener('click', toggleAvatar);
+          fileInputLabel.addEventListener("click", toggleAvatar);
         }
       });
     </script>
@@ -987,14 +994,16 @@
   <body>
     <div class="mobile-header">
       <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-      <div class="mobile-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+      <div class="mobile-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
+      
       <div class="mobile-header-spacer"></div>
     </div>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+        <div class="sidebar-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
+        
         <button class="close-btn" id="closeBtn" aria-label="Fermer">✕</button>
       </div>
 
@@ -1002,11 +1011,11 @@
         <div class="nav-section">
           <div class="nav-label">Principal</div>
           <a href="dashboard.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span>
             Tableau de bord
           </a>
           <a href="chat.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
             Messages
             <div class="notification-badge">6</div>
           </a>
@@ -1015,11 +1024,11 @@
         <div class="nav-section">
           <div class="nav-label">Outils</div>
           <a href="calendar.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span>
             Calendrier
           </a>
           <a href="tasks.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span>
             Tâches
           </a>
         </div>
@@ -1027,11 +1036,11 @@
         <div class="nav-section">
           <div class="nav-label">Compte</div>
           <a href="settings.html" class="nav-item active" aria-current="page">
-            <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span>
             Paramètres
           </a>
           <a href="login.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span>
             Déconnexion
           </a>
         </div>
@@ -1066,26 +1075,29 @@
 
         <div class="form-group">
           <label for="firstname">Prénom</label>
-          <input type="text" id="firstname" value="Yann" placeholder="Votre prénom" required>
+          <input type="text" id="firstname" value="Yann" placeholder="Votre prénom" required />
         </div>
         <div class="form-group">
           <label for="lastname">Nom</label>
-          <input type="text" id="lastname" value="Uliong" placeholder="Votre nom" required>
+          <input type="text" id="lastname" value="Uliong" placeholder="Votre nom" required />
         </div>
 
         <div class="form-group">
           <label for="email">Adresse email</label>
-          <input type="email" id="email" value="yann.uliong@learnhome.com" placeholder="tutor@learnhome.com" required>
+          <input type="email" id="email" value="yann.uliong@learnhome.com" placeholder="tutor@learnhome.com" required />
         </div>
 
         <div class="form-group">
           <label for="phone">Téléphone</label>
-          <input type="tel" id="phone" value="+33 6 12 34 56 78" placeholder="+33 6 XX XX XX XX" required>
+          <input type="tel" id="phone" value="+33 6 12 34 56 78" placeholder="+33 6 XX XX XX XX" required />
         </div>
 
-        <button class="button button-primary"
-          onclick="showToast('👤', 'Informations personnelles', 'Vos informations ont été sauvegardées')">Enregistrer
-          les modifications</button>
+        <button
+          class="button button-primary"
+          onclick="showToast('👤', 'Informations personnelles', 'Vos informations ont été sauvegardées')"
+        >
+          Enregistrer les modifications
+        </button>
         <button class="button button-secondary">Annuler</button>
       </div>
 
@@ -1094,17 +1106,17 @@
 
         <div class="form-group">
           <label for="current-password">Mot de passe actuel</label>
-          <input type="password" id="current-password" required>
+          <input type="password" id="current-password" required />
         </div>
 
         <div class="form-group">
           <label for="new-password">Nouveau mot de passe</label>
-          <input type="password" id="new-password" required>
+          <input type="password" id="new-password" required />
         </div>
 
         <div class="form-group">
           <label for="confirm-password">Confirmer le mot de passe</label>
-          <input type="password" id="confirm-password" required>
+          <input type="password" id="confirm-password" required />
         </div>
 
         <div class="settings-info">
@@ -1113,9 +1125,12 @@
           <p>✓ Contient au moins un caractère spécial</p>
         </div>
 
-        <button class="button button-primary"
-          onclick="showToast('🔒', 'Sécurité du compte', 'Votre mot de passe est sécurisé')">Changer le mot de
-          passe</button>
+        <button
+          class="button button-primary"
+          onclick="showToast('🔒', 'Sécurité du compte', 'Votre mot de passe est sécurisé')"
+        >
+          Changer le mot de passe
+        </button>
         <button class="button button-secondary">Annuler</button>
       </div>
 
@@ -1127,7 +1142,7 @@
               <span class="toggle-label-text">Messages non lus</span>
               <span class="toggle-label-desc">Recevoir les notifications pour les nouveaux messages</span>
             </div>
-            <input type="checkbox" class="checkbox" checked>
+            <input type="checkbox" class="checkbox" checked />
           </div>
 
           <div class="toggle-item">
@@ -1135,7 +1150,7 @@
               <span class="toggle-label-text">Nouvelles tâches</span>
               <span class="toggle-label-desc">Recevoir les notifications pour les nouvelles tâches</span>
             </div>
-            <input type="checkbox" class="checkbox" checked>
+            <input type="checkbox" class="checkbox" checked />
           </div>
 
           <div class="toggle-item">
@@ -1143,7 +1158,7 @@
               <span class="toggle-label-text">Événements du calendrier</span>
               <span class="toggle-label-desc">Recevoir les rappels pour les prochains événements</span>
             </div>
-            <input type="checkbox" class="checkbox" checked>
+            <input type="checkbox" class="checkbox" checked />
           </div>
 
           <div class="toggle-item">
@@ -1151,7 +1166,7 @@
               <span class="toggle-label-text">Notifications par email</span>
               <span class="toggle-label-desc">Recevoir les notifications directement par email</span>
             </div>
-            <input type="checkbox" class="checkbox">
+            <input type="checkbox" class="checkbox" />
           </div>
 
           <div class="toggle-item">
@@ -1159,12 +1174,13 @@
               <span class="toggle-label-text">Notifications push</span>
               <span class="toggle-label-desc">Recevoir les notifications push (bureau)</span>
             </div>
-            <input type="checkbox" class="checkbox">
+            <input type="checkbox" class="checkbox" />
           </div>
         </div>
 
-        <button class="button button-primary settings-submit-btn" onclick="handleNotificationToast()">Enregistrer les
-          préférences</button>
+        <button class="button button-primary settings-submit-btn" onclick="handleNotificationToast()">
+          Enregistrer les préférences
+        </button>
       </div>
 
       <div class="card">
@@ -1172,9 +1188,7 @@
         <div class="form-group">
           <label for="language">Langue</label>
           <div class="custom-dropdown">
-            <button type="button" class="dropdown-toggle" tabindex="0">
-              Français
-            </button>
+            <button type="button" class="dropdown-toggle" tabindex="0">Français</button>
             <div class="dropdown-menu">
               <button type="button" class="dropdown-item selected" tabindex="0">Français</button>
               <button type="button" class="dropdown-item" tabindex="0">English</button>
@@ -1187,9 +1201,7 @@
         <div class="form-group">
           <label for="timezone">Fuseau horaire</label>
           <div class="custom-dropdown">
-            <button type="button" class="dropdown-toggle" tabindex="0">
-              Europe/Paris (GMT+1)
-            </button>
+            <button type="button" class="dropdown-toggle" tabindex="0">Europe/Paris (GMT+1)</button>
             <div class="dropdown-menu">
               <button type="button" class="dropdown-item selected" tabindex="0">Europe/Paris (GMT+1)</button>
               <button type="button" class="dropdown-item" tabindex="0">Europe/London (GMT+0)</button>
@@ -1204,9 +1216,7 @@
         <div class="form-group">
           <label for="theme">Thème</label>
           <div class="custom-dropdown">
-            <button type="button" class="dropdown-toggle" tabindex="0">
-              Clair
-            </button>
+            <button type="button" class="dropdown-toggle" tabindex="0">Clair</button>
             <div class="dropdown-menu">
               <button type="button" class="dropdown-item selected" tabindex="0">Clair</button>
               <button type="button" class="dropdown-item" tabindex="0">Sombre</button>
@@ -1215,9 +1225,12 @@
           </div>
         </div>
 
-        <button class="button button-primary"
-          onclick="showToast('🎨', 'Préférences d\'affichage', 'Thème mis à jour avec succès')">Enregistrer les
-          préférences</button>
+        <button
+          class="button button-primary"
+          onclick="showToast('🎨', 'Préférences d\'affichage', 'Thème mis à jour avec succès')"
+        >
+          Enregistrer les préférences
+        </button>
       </div>
 
       <div class="card">
@@ -1228,7 +1241,7 @@
               <span class="toggle-label-text">Profil visible</span>
               <span class="toggle-label-desc">Votre profil est visible aux tuteurs et autres élèves</span>
             </div>
-            <input type="checkbox" class="checkbox" checked>
+            <input type="checkbox" class="checkbox" checked />
           </div>
 
           <div class="toggle-item">
@@ -1236,7 +1249,7 @@
               <span class="toggle-label-text">Partage de données</span>
               <span class="toggle-label-desc">Autoriser le partage des données avec nos partenaires analytiques</span>
             </div>
-            <input type="checkbox" class="checkbox">
+            <input type="checkbox" class="checkbox" />
           </div>
 
           <div class="toggle-item">
@@ -1244,71 +1257,87 @@
               <span class="toggle-label-text">Communications marketing</span>
               <span class="toggle-label-desc">Recevoir les actualités et offres spéciales de Learn@Home</span>
             </div>
-            <input type="checkbox" class="checkbox" checked>
+            <input type="checkbox" class="checkbox" checked />
           </div>
         </div>
 
-        <button class="button button-secondary settings-submit-btn" onclick="handleDownloadDataToast()">Télécharger mes
-          données</button>
-        <button class="button button-secondary"
-          onclick="showToast('📊', 'Mon activité', 'Chargement de votre activité...')">Voir mon activité</button>
+        <button class="button button-secondary settings-submit-btn" onclick="handleDownloadDataToast()">
+          Télécharger mes données
+        </button>
+        <button
+          class="button button-secondary"
+          onclick="showToast('📊', 'Mon activité', 'Chargement de votre activité...')"
+        >
+          Voir mon activité
+        </button>
 
         <div class="danger-zone">
           <div class="danger-zone-title">⚠️ Zone dangereuse</div>
-          <div class="danger-zone-desc">Une fois supprimé, votre compte ne pourra pas être récupéré. Cette action est
-            irréversible.</div>
+          <div class="danger-zone-desc">
+            Une fois supprimé, votre compte ne pourra pas être récupéré. Cette action est irréversible.
+          </div>
           <button class="button button-danger" onclick="deleteAccountToast()">Supprimer le compte</button>
         </div>
       </div>
     </main>
 
     <script>
-      const menuBtn = document.getElementById('menuBtn');
-      const closeBtn = document.getElementById('closeBtn');
-      const sidebar = document.getElementById('sidebar');
-      const overlay = document.getElementById('sidebarOverlay');
+      const menuBtn = document.getElementById("menuBtn");
+      const closeBtn = document.getElementById("closeBtn");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("sidebarOverlay");
 
-      menuBtn.addEventListener('click', () => {
-        sidebar.classList.add('open');
-        overlay.classList.add('active');
+      menuBtn.addEventListener("click", () => {
+        sidebar.classList.add("open");
+        overlay.classList.add("active");
       });
 
-      closeBtn.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-        overlay.classList.remove('active');
+      closeBtn.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
       });
 
-      overlay.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-        overlay.classList.remove('active');
+      overlay.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
       });
 
       const showToast = (icon, title, message) => {
-        const container = document.getElementById('toast-container');
-        const toast = document.createElement('div');
-        toast.className = 'toast'; toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+        const container = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+        toast.className = "toast";
+        toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
         container.appendChild(toast);
-        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700)
+        setTimeout(() => {
+          toast.classList.add("dismissing");
+          setTimeout(() => toast.remove(), 500);
+        }, 2700);
       };
       const handleNotificationToast = () => {
-        const checkedCount = document.querySelectorAll('#notification-group .checkbox:checked').length;
-        showToast('🔔', 'Préférences de notification', `${checkedCount} notification${checkedCount > 1 ? 's' : ''} activée${checkedCount > 1 ? 's' : ''}`)
+        const checkedCount = document.querySelectorAll("#notification-group .checkbox:checked").length;
+        showToast(
+          "🔔",
+          "Préférences de notification",
+          `${checkedCount} notification${checkedCount > 1 ? "s" : ""} activée${checkedCount > 1 ? "s" : ""}`
+        );
       };
 
-      const handleDownloadDataToast = () => showToast('💾', 'Téléchargement des données', 'Votre demande a été envoyée. Vous recevrez vos données par email.');
+      const handleDownloadDataToast = () =>
+        showToast(
+          "💾",
+          "Téléchargement des données",
+          "Votre demande a été envoyée. Vous recevrez vos données par email."
+        );
       const deleteAccountToast = () => {
-        const container = document.getElementById('toast-container');
-        const toast = document.createElement('div'); toast.className = 'toast danger';
+        const container = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+        toast.className = "toast danger";
         toast.innerHTML = `<div class="toast-title">⚠️ Compte supprimé</div><div class="toast-message">Votre compte a été supprimé avec succès. Redirection en cours...</div>`;
         container.appendChild(toast);
-        setTimeout(() => window.location.href = 'login.html', 2000)
+        setTimeout(() => (window.location.href = "login.html"), 2000);
       };
-
     </script>
     <div id="toast-container" class="toast-container"></div>
-    <div class="copyright">
-      © 2026 Learn@Home. All rights reserved.
-    </div>
+    <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
   </body>
-
 </html>

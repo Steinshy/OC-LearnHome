@@ -1,6 +1,5 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,8 +13,14 @@
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
         min-height: 100vh;
         display: flex;
         justify-content: center;
@@ -40,13 +45,13 @@
       .logo {
         font-size: 28px;
         font-weight: 700;
-        color: #3B82F6;
+        color: #3b82f6;
         margin-bottom: 8px;
       }
 
       .logo-subtitle {
         font-size: 14px;
-        color: #6B7280;
+        color: #6b7280;
         margin-bottom: 24px;
       }
 
@@ -59,7 +64,7 @@
 
       .subtitle {
         font-size: 14px;
-        color: #6B7280;
+        color: #6b7280;
         margin-bottom: 20px;
       }
 
@@ -74,19 +79,19 @@
       input[type="email"] {
         width: 100%;
         padding: 10px 12px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 14px;
       }
 
       input[type="email"]:focus {
         outline: none;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
       .error-message {
-        color: #DC2626;
+        color: #dc2626;
         font-size: 12px;
         margin-top: 4px;
         display: none;
@@ -97,13 +102,13 @@
       }
 
       input:invalid:not(:placeholder-shown) {
-        border-color: #DC2626;
+        border-color: #dc2626;
       }
 
       .button-primary {
         width: 100%;
         padding: 12px;
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
         font-weight: 600;
         border: none;
@@ -114,7 +119,7 @@
       }
 
       .button-primary:hover {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       .button-primary:active {
@@ -125,11 +130,11 @@
         text-align: center;
         margin-top: 24px;
         font-size: 14px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .back-link a {
-        color: #3B82F6;
+        color: #3b82f6;
         font-weight: 600;
         text-decoration: none;
         display: inline-flex;
@@ -142,7 +147,7 @@
       }
 
       .back-link a:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -150,8 +155,8 @@
         text-align: center;
         margin-top: 24px;
         padding-top: 20px;
-        border-top: 1px solid #E2E8F0;
-        color: #94A3B8;
+        border-top: 1px solid #e2e8f0;
+        color: #94a3b8;
         font-size: 12px;
       }
 
@@ -189,7 +194,7 @@
 
       .toast-message {
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       @keyframes slideIn {
@@ -216,33 +221,31 @@
         }
       }
 
-
       button:disabled,
       button[disabled] {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: #9CA3AF;
+        background-color: #9ca3af;
       }
 
       .button-primary:disabled,
       .button-primary[disabled] {
-        background: #9CA3AF;
+        background: #9ca3af;
         color: white;
       }
 
       .button-secondary:disabled,
       .button-secondary[disabled] {
-        background: #F3F4F6;
-        color: #9CA3AF;
-        border-color: #D1D5DB;
+        background: #f3f4f6;
+        color: #9ca3af;
+        border-color: #d1d5db;
       }
 
       .button-danger:disabled,
       .button-danger[disabled] {
-        background: #FECACA;
-        color: #991B1B;
+        background: #fecaca;
+        color: #991b1b;
       }
-
 
       button.loading {
         cursor: not-allowed;
@@ -251,7 +254,7 @@
       }
 
       button.loading::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -266,17 +269,17 @@
       }
 
       .button-primary.loading {
-        background: #3B82F6;
+        background: #3b82f6;
         opacity: 0.8;
       }
 
       .button-secondary.loading {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .button-secondary.loading::after {
         border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3B82F6;
+        border-top-color: #3b82f6;
       }
 
       @keyframes spin {
@@ -298,8 +301,8 @@
       input:disabled,
       textarea:disabled,
       select:disabled {
-        background-color: #F3F4F6;
-        color: #9CA3AF;
+        background-color: #f3f4f6;
+        color: #9ca3af;
         cursor: not-allowed;
         opacity: 0.7;
       }
@@ -317,37 +320,44 @@
 
       <form id="recovery-form" onsubmit="validateRecovery(event)">
         <label for="email">Adresse email</label>
-        <input type="email" id="email" placeholder="eleve@learnhome.com" value="antoine.kreuder@learnhome.com"
-          required />
+        <input
+          type="email"
+          id="email"
+          placeholder="eleve@learnhome.com"
+          value="antoine.kreuder@learnhome.com"
+          required
+        />
         <div class="error-message" id="email-error">Veuillez entrer une adresse email valide</div>
         <button class="button-primary" type="submit">Envoyer le lien</button>
       </form>
 
       <p class="back-link">
-        Retour à la <a onclick=" window.location.href = 'login.html'" href="login.html">connexion</a>
+        Retour à la <a onclick="window.location.href = 'login.html'" href="login.html">connexion</a>
       </p>
 
-      <div class="copyright">
-        © 2026 Learn@Home. All rights reserved.
-      </div>
+      <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
     </div>
   </body>
   <div id="toast-container" class="toast-container"></div>
   <script>
     const showToast = (icon, title, message) => {
-      const container = document.getElementById('toast-container');
-      const toast = document.createElement('div');
-      toast.className = 'toast';
+      const container = document.getElementById("toast-container");
+      const toast = document.createElement("div");
+      toast.className = "toast";
       toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
       container.appendChild(toast);
-      setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
+      setTimeout(() => {
+        toast.classList.add("dismissing");
+        setTimeout(() => toast.remove(), 500);
+      }, 2700);
     };
 
     const validateRecovery = (event) => {
       event.preventDefault();
-      showToast('✉️', 'Récupération', 'Email de récupération envoyé avec succès');
-      setTimeout(() => { window.location.href = 'login.html'; }, 500);
+      showToast("✉️", "Récupération", "Email de récupération envoyé avec succès");
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 500);
     };
   </script>
-
 </html>

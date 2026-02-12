@@ -1,20 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn@Home - Gestion des Tâches (Tuteur) | Maquette Desktop</title>
     <style>
       :root {
-        --primary: #3B82F6;
-        --primary-dark: #1E40AF;
-        --danger: #EF4444;
-        --danger-dark: #DC2626;
-        --bg: #F3F4F6;
+        --primary: #3b82f6;
+        --primary-dark: #1e40af;
+        --danger: #ef4444;
+        --danger-dark: #dc2626;
+        --bg: #f3f4f6;
         --text: #111827;
-        --text-muted: #6B7280;
-        --border: #E5E7EB;
+        --text-muted: #6b7280;
+        --border: #e5e7eb;
       }
 
       * {
@@ -24,7 +23,13 @@
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
         background: var(--bg);
       }
 
@@ -35,7 +40,6 @@
         min-height: 100vh;
       }
 
-      
       .nav-sidebar {
         background: white;
         border-right: 1px solid var(--border);
@@ -76,7 +80,7 @@
       .nav-label {
         font-size: 12px;
         font-weight: 600;
-        color: #9CA3AF;
+        color: #9ca3af;
         text-transform: uppercase;
         padding: 0 24px;
         margin-bottom: 8px;
@@ -99,7 +103,7 @@
       }
 
       .nav-item.active {
-        background: #E0F2FE;
+        background: #e0f2fe;
         color: var(--primary);
         border-right: 4px solid var(--primary);
         font-weight: 600;
@@ -113,7 +117,7 @@
       }
 
       .notification-badge {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
         width: 24px;
         height: 24px;
@@ -162,7 +166,7 @@
       }
 
       .user-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         background-size: cover;
         background-position: center;
@@ -206,7 +210,6 @@
         color: var(--text-muted);
       }
 
-      
       .main {
         grid-column: 2;
         padding: 32px;
@@ -236,12 +239,12 @@
       }
 
       .button-primary {
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
       }
 
       .button-primary:hover {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       .controls {
@@ -265,37 +268,37 @@
 
       .filter-btn {
         padding: 8px 16px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         background: white;
         border-radius: 6px;
         cursor: pointer;
         font-size: 14px;
         transition: all 0.3s;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .filter-btn:hover,
       .filter-btn.active {
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
       }
 
       .filter-btn:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .search-box {
         padding: 10px 12px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 14px;
         min-width: 200px;
       }
 
       .search-box::placeholder {
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       .search-box::placeholder {
@@ -314,7 +317,7 @@
       .dropdown-toggle {
         padding: 10px 12px;
         padding-right: 32px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 14px;
         background: white;
@@ -331,7 +334,7 @@
       }
 
       .dropdown-toggle:hover {
-        border-color: #9CA3AF;
+        border-color: #9ca3af;
       }
 
       .dropdown-toggle:focus {
@@ -341,7 +344,7 @@
       }
 
       .dropdown-toggle::after {
-        content: '';
+        content: "";
         width: 12px;
         height: 12px;
         background-image: url("../../assets/icons/chevron-down.svg");
@@ -362,9 +365,11 @@
         left: 0;
         right: 0;
         background: white;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
         z-index: 1000;
         overflow: hidden;
         max-height: 200px;
@@ -411,7 +416,7 @@
 
       .dropdown-item.selected::before,
       input:checked + .dropdown-menu .dropdown-item.selected::before {
-        content: '✓ ';
+        content: "✓ ";
         font-weight: 700;
       }
 
@@ -431,7 +436,7 @@
         gap: 16px;
         align-items: center;
         transition: all 0.3s;
-        border-left: 4px solid #E5E7EB;
+        border-left: 4px solid #e5e7eb;
       }
 
       .task-card-right {
@@ -446,40 +451,40 @@
         display: none;
       }
 
-      .task-checkbox:checked+.checkbox {
-        background: #3B82F6;
-        border-color: #3B82F6;
+      .task-checkbox:checked + .checkbox {
+        background: #3b82f6;
+        border-color: #3b82f6;
         color: white;
       }
 
-      .task-checkbox:checked+.checkbox::after {
-        content: '';
+      .task-checkbox:checked + .checkbox::after {
+        content: "";
         width: 16px;
         height: 16px;
         background-color: white;
-        mask-image: url('../../assets/icons/check.svg');
+        mask-image: url("../../assets/icons/check.svg");
         mask-size: contain;
         mask-repeat: no-repeat;
         mask-position: center;
-        -webkit-mask-image: url('../../assets/icons/check.svg');
+        -webkit-mask-image: url("../../assets/icons/check.svg");
         -webkit-mask-size: contain;
         -webkit-mask-repeat: no-repeat;
         -webkit-mask-position: center;
         display: block;
       }
 
-      .task-checkbox:checked~.task-content .task-title {
+      .task-checkbox:checked ~ .task-content .task-title {
         text-decoration: line-through;
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       .task-checkbox:checked {
-        background: #10B981;
-        border-color: #10B981;
+        background: #10b981;
+        border-color: #10b981;
       }
 
       .task-card:has(.task-checkbox:checked) {
-        border-left-color: #10B981;
+        border-left-color: #10b981;
       }
 
       .task-card:hover {
@@ -488,21 +493,21 @@
       }
 
       .task-card.status-pending {
-        border-left-color: #9CA3AF;
+        border-left-color: #9ca3af;
       }
 
       .task-card.status-inprogress {
-        border-left-color: #3B82F6;
+        border-left-color: #3b82f6;
       }
 
       .task-card.status-done {
-        border-left-color: #10B981;
+        border-left-color: #10b981;
       }
 
       .checkbox {
         width: 24px;
         height: 24px;
-        border: 2px solid #D1D5DB;
+        border: 2px solid #d1d5db;
         border-radius: 4px;
         cursor: pointer;
         display: flex;
@@ -512,11 +517,11 @@
       }
 
       .checkbox:hover {
-        border-color: #3B82F6;
+        border-color: #3b82f6;
       }
 
       .checkbox:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -534,7 +539,7 @@
 
       .task-description {
         font-size: 14px;
-        color: #6B7280;
+        color: #6b7280;
         line-height: 1.4;
       }
 
@@ -542,7 +547,7 @@
         display: flex;
         gap: 16px;
         font-size: 13px;
-        color: #9CA3AF;
+        color: #9ca3af;
         flex-wrap: wrap;
       }
 
@@ -561,17 +566,17 @@
       }
 
       .priority-high {
-        background: #FEE2E2;
-        color: #991B1B;
+        background: #fee2e2;
+        color: #991b1b;
       }
 
       .priority-medium {
-        background: #FEF3C7;
-        color: #92400E;
+        background: #fef3c7;
+        color: #92400e;
       }
 
       .priority-low {
-        background: #DCFCE7;
+        background: #dcfce7;
         color: #166534;
       }
 
@@ -588,21 +593,21 @@
       }
 
       .status-pending {
-        background: #F3F4F6;
+        background: #f3f4f6;
         color: #374151;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
       }
 
       .status-inprogress {
-        background: #DBEAFE;
-        color: #1E40AF;
-        border: 1px solid #93C5FD;
+        background: #dbeafe;
+        color: #1e40af;
+        border: 1px solid #93c5fd;
       }
 
       .status-done {
-        background: #DCFCE7;
+        background: #dcfce7;
         color: #166534;
-        border: 1px solid #BBF7D0;
+        border: 1px solid #bbf7d0;
       }
 
       .task-actions {
@@ -613,7 +618,7 @@
       .action-btn {
         width: 36px;
         height: 36px;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
         background: white;
         border-radius: 6px;
         cursor: pointer;
@@ -643,19 +648,19 @@
       }
 
       .action-btn:hover {
-        background: #F3F4F6;
-        border-color: #D1D5DB;
+        background: #f3f4f6;
+        border-color: #d1d5db;
       }
 
       .action-btn:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .student-avatar {
         width: 32px;
         height: 32px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -685,12 +690,11 @@
         text-align: center;
         margin-top: 32px;
         padding-top: 20px;
-        border-top: 1px solid #E5E7EB;
-        color: #94A3B8;
+        border-top: 1px solid #e5e7eb;
+        color: #94a3b8;
         font-size: 12px;
       }
 
-      
       .modal-backdrop {
         display: none;
         position: fixed;
@@ -728,7 +732,7 @@
 
       .modal-header {
         padding: 24px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -745,7 +749,7 @@
         border: none;
         font-size: 24px;
         cursor: pointer;
-        color: #6B7280;
+        color: #6b7280;
         transition: color 0.3s;
       }
 
@@ -754,7 +758,7 @@
       }
 
       .modal-close:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -777,7 +781,7 @@
       .form-group input {
         width: 100%;
         padding: 10px 12px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 14px;
         font-family: inherit;
@@ -800,7 +804,7 @@
       .form-group textarea {
         width: 100%;
         padding: 10px 12px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 14px;
         font-family: inherit;
@@ -810,13 +814,13 @@
       .form-group input:focus,
       .form-group textarea:focus {
         outline: none;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
       .form-group input::placeholder,
       .form-group textarea::placeholder {
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       .form-group input::placeholder,
@@ -836,7 +840,7 @@
 
       .modal-footer {
         padding: 16px 24px;
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid #e5e7eb;
         display: flex;
         gap: 12px;
         justify-content: flex-end;
@@ -844,47 +848,45 @@
 
       .button-secondary {
         background: white;
-        color: #3B82F6;
-        border: 1px solid #3B82F6;
+        color: #3b82f6;
+        border: 1px solid #3b82f6;
       }
 
       .button-secondary:hover {
-        background: #E0F2FE;
+        background: #e0f2fe;
       }
 
       .button-secondary:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
-      
       button:disabled,
       button[disabled] {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: #9CA3AF;
+        background-color: #9ca3af;
       }
 
       .button-primary:disabled,
       .button-primary[disabled] {
-        background: #9CA3AF;
+        background: #9ca3af;
         color: white;
       }
 
       .button-secondary:disabled,
       .button-secondary[disabled] {
-        background: #F3F4F6;
-        color: #9CA3AF;
-        border-color: #D1D5DB;
+        background: #f3f4f6;
+        color: #9ca3af;
+        border-color: #d1d5db;
       }
 
       .button-danger:disabled,
       .button-danger[disabled] {
-        background: #FECACA;
-        color: #991B1B;
+        background: #fecaca;
+        color: #991b1b;
       }
 
-      
       button.loading {
         cursor: not-allowed;
         position: relative;
@@ -892,7 +894,7 @@
       }
 
       button.loading::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -907,17 +909,17 @@
       }
 
       .button-primary.loading {
-        background: #3B82F6;
+        background: #3b82f6;
         opacity: 0.8;
       }
 
       .button-secondary.loading {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .button-secondary.loading::after {
         border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3B82F6;
+        border-top-color: #3b82f6;
       }
 
       @keyframes spin {
@@ -939,8 +941,8 @@
       input:disabled,
       textarea:disabled,
       select:disabled {
-        background-color: #F3F4F6;
-        color: #9CA3AF;
+        background-color: #f3f4f6;
+        color: #9ca3af;
         cursor: not-allowed;
         opacity: 0.7;
       }
@@ -1006,7 +1008,7 @@
 
       .toast-message {
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       @keyframes slideIn {
@@ -1039,26 +1041,38 @@
     <div class="page-layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span> Tableau de bord</a>
-            <a href="chat.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span> Messages<span
-                class="notification-badge">6</span></a>
+            <a href="dashboard.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
+              de bord</a
+            >
+            <a href="chat.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
+              Messages<span class="notification-badge">6</span></a
+            >
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span> Calendrier</a>
-            <a href="tasks.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span>
-              Tâches</a>
+            <a href="calendar.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a
+            >
+            <a href="tasks.html" class="nav-item active" aria-current="page"
+              ><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a
+            >
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span> Paramètres</a>
-            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span> Déconnexion</a>
+            <a href="settings.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a
+            >
+            <a href="login.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span> Déconnexion</a
+            >
           </div>
         </nav>
 
@@ -1089,11 +1103,9 @@
           </div>
 
           <div class="tasks-toolbar">
-            <input type="text" class="search-box" placeholder="Rechercher une tâche...">
+            <input type="text" class="search-box" placeholder="Rechercher une tâche..." />
             <div class="custom-dropdown">
-              <button type="button" class="dropdown-toggle" tabindex="0">
-                Trier par: Date
-              </button>
+              <button type="button" class="dropdown-toggle" tabindex="0">Trier par: Date</button>
               <div class="dropdown-menu">
                 <button type="button" class="dropdown-item selected" tabindex="0">Trier par: Date</button>
                 <button type="button" class="dropdown-item" tabindex="0">Trier par: Priorité</button>
@@ -1105,14 +1117,16 @@
 
         <div class="tasks-container">
           <div class="task-card status-pending">
-            <input type="checkbox" class="task-checkbox" id="task1">
+            <input type="checkbox" class="task-checkbox" id="task1" />
             <label for="task1" class="checkbox"></label>
             <div class="task-content">
               <div class="task-title">Équations</div>
               <div class="task-description">Compléter les 10 exercices de la feuille distribuée</div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> Échéance: 10 janvier 2026</div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Assigné à: Antoine Kreuder</div>
+                <div class="meta-item">
+                  <img src="../../assets/icons/calendar.svg" alt="" /> Échéance: 10 janvier 2026
+                </div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Assigné à: Antoine Kreuder</div>
               </div>
             </div>
             <div class="task-card-right">
@@ -1120,25 +1134,26 @@
               <div class="status-badge status-pending">Pendante</div>
               <div class="task-actions">
                 <button class="action-btn" aria-label="Modifier la tâche">
-                  <img src="../../assets/icons/pencil.svg" alt="">
+                  <img src="../../assets/icons/pencil.svg" alt="" />
                 </button>
                 <button class="action-btn" aria-label="Supprimer la tâche">
-                  <img src="../../assets/icons/trash-2.svg" alt="">
+                  <img src="../../assets/icons/trash-2.svg" alt="" />
                 </button>
               </div>
             </div>
           </div>
 
           <div class="task-card status-inprogress">
-            <input type="checkbox" class="task-checkbox" id="task2">
+            <input type="checkbox" class="task-checkbox" id="task2" />
             <label for="task2" class="checkbox"></label>
             <div class="task-content">
               <div class="task-title">Lecture Ch.5</div>
-              <div class="task-description">Lire "Le Seigneur des Anneaux" chapitre 5 et faire un résumé de 2 pages
+              <div class="task-description">
+                Lire "Le Seigneur des Anneaux" chapitre 5 et faire un résumé de 2 pages
               </div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 12 janvier 2026</div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Sophie Martin</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 12 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Sophie Martin</div>
               </div>
             </div>
             <div class="task-card-right">
@@ -1146,25 +1161,26 @@
               <div class="status-badge status-inprogress">En cours</div>
               <div class="task-actions">
                 <button class="action-btn" aria-label="Modifier la tâche">
-                  <img src="../../assets/icons/pencil.svg" alt="">
+                  <img src="../../assets/icons/pencil.svg" alt="" />
                 </button>
                 <button class="action-btn" aria-label="Supprimer la tâche">
-                  <img src="../../assets/icons/trash-2.svg" alt="">
+                  <img src="../../assets/icons/trash-2.svg" alt="" />
                 </button>
               </div>
             </div>
           </div>
 
           <div class="task-card status-done">
-            <input type="checkbox" class="task-checkbox" id="task3" checked>
+            <input type="checkbox" class="task-checkbox" id="task3" checked />
             <label for="task3" class="checkbox"></label>
             <div class="task-content">
               <div class="task-title">Rapport</div>
-              <div class="task-description">Rédiger un rapport détaillé incluant hypothèse, procédure, résultats et
-                conclusions</div>
+              <div class="task-description">
+                Rédiger un rapport détaillé incluant hypothèse, procédure, résultats et conclusions
+              </div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 15 janvier 2026</div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Antoine Kreuder</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 15 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Antoine Kreuder</div>
               </div>
             </div>
             <div class="task-card-right">
@@ -1172,24 +1188,24 @@
               <div class="status-badge status-done">Complétée</div>
               <div class="task-actions">
                 <button class="action-btn" aria-label="Modifier la tâche">
-                  <img src="../../assets/icons/pencil.svg" alt="">
+                  <img src="../../assets/icons/pencil.svg" alt="" />
                 </button>
                 <button class="action-btn" aria-label="Supprimer la tâche">
-                  <img src="../../assets/icons/trash-2.svg" alt="">
+                  <img src="../../assets/icons/trash-2.svg" alt="" />
                 </button>
               </div>
             </div>
           </div>
 
           <div class="task-card status-pending">
-            <input type="checkbox" class="task-checkbox" id="task4">
+            <input type="checkbox" class="task-checkbox" id="task4" />
             <label for="task4" class="checkbox"></label>
             <div class="task-content">
               <div class="task-title">Exercices Math</div>
               <div class="task-description">Compléter les exercices de mathématiques</div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 18 janvier 2026</div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Jean Leclerc</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 18 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Jean Leclerc</div>
               </div>
             </div>
             <div class="task-card-right">
@@ -1197,24 +1213,24 @@
               <div class="status-badge status-pending">Pendante</div>
               <div class="task-actions">
                 <button class="action-btn" aria-label="Modifier la tâche">
-                  <img src="../../assets/icons/pencil.svg" alt="">
+                  <img src="../../assets/icons/pencil.svg" alt="" />
                 </button>
                 <button class="action-btn" aria-label="Supprimer la tâche">
-                  <img src="../../assets/icons/trash-2.svg" alt="">
+                  <img src="../../assets/icons/trash-2.svg" alt="" />
                 </button>
               </div>
             </div>
           </div>
 
           <div class="task-card status-inprogress">
-            <input type="checkbox" class="task-checkbox" id="task5">
+            <input type="checkbox" class="task-checkbox" id="task5" />
             <label for="task5" class="checkbox"></label>
             <div class="task-content">
               <div class="task-title">Rédaction</div>
               <div class="task-description">Rédiger un texte sur le sujet donné</div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 20 janvier 2026</div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Léa Bernard</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 20 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Léa Bernard</div>
               </div>
             </div>
             <div class="task-card-right">
@@ -1222,10 +1238,10 @@
               <div class="status-badge status-inprogress">En cours</div>
               <div class="task-actions">
                 <button class="action-btn" aria-label="Modifier la tâche">
-                  <img src="../../assets/icons/pencil.svg" alt="">
+                  <img src="../../assets/icons/pencil.svg" alt="" />
                 </button>
                 <button class="action-btn" aria-label="Supprimer la tâche">
-                  <img src="../../assets/icons/trash-2.svg" alt="">
+                  <img src="../../assets/icons/trash-2.svg" alt="" />
                 </button>
               </div>
             </div>
@@ -1233,7 +1249,6 @@
         </div>
       </main>
 
-      
       <div class="modal-backdrop" id="modalBackdrop"></div>
       <div class="modal" id="createTaskModal" data-mode="create">
         <div class="modal-header">
@@ -1245,7 +1260,7 @@
           <form id="taskForm">
             <div class="form-group">
               <label for="taskTitle">Titre de la tâche</label>
-              <input type="text" id="taskTitle" placeholder="Ex: Équations du second degré" required>
+              <input type="text" id="taskTitle" placeholder="Ex: Équations du second degré" required />
             </div>
 
             <div class="form-group">
@@ -1270,7 +1285,7 @@
 
             <div class="form-group">
               <label for="taskDeadline">Date limite</label>
-              <input type="date" id="taskDeadline" required>
+              <input type="date" id="taskDeadline" required />
             </div>
 
             <div class="form-group">
@@ -1293,176 +1308,201 @@
         </div>
       </div>
 
-      <div class="copyright">
-        © 2026 Learn@Home. All rights reserved.
-      </div>
+      <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
     </div>
     <div id="toast-container" class="toast-container"></div>
 
     <script>
       const showToast = (icon, title, message) => {
-        const container = document.getElementById('toast-container');
-        const toast = document.createElement('div');
-        toast.className = 'toast';
+        const container = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+        toast.className = "toast";
         toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
         container.appendChild(toast);
-        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
+        setTimeout(() => {
+          toast.classList.add("dismissing");
+          setTimeout(() => toast.remove(), 500);
+        }, 2700);
       };
 
-      const modalTaskForm = id => document.getElementById(id);
-      const modal = modalTaskForm('createTaskModal');
-      const backdrop = modalTaskForm('modalBackdrop');
-      const form = modalTaskForm('taskForm');
-      const modalTitle = modalTaskForm('modalTitle');
-      const submitBtn = modalTaskForm('submitTaskBtn');
+      const modalTaskForm = (id) => document.getElementById(id);
+      const modal = modalTaskForm("createTaskModal");
+      const backdrop = modalTaskForm("modalBackdrop");
+      const form = modalTaskForm("taskForm");
+      const modalTitle = modalTaskForm("modalTitle");
+      const submitBtn = modalTaskForm("submitTaskBtn");
       const closeModal = () => {
-        modal.classList.remove('active');
-        backdrop.classList.remove('active');
+        modal.classList.remove("active");
+        backdrop.classList.remove("active");
         form.reset();
-        modal.dataset.mode = 'create';
-        modalTitle.textContent = 'Créer une nouvelle tâche';
-        submitBtn.textContent = 'Créer la tâche';
-        submitBtn.dataset.action = 'create';
-        
+        modal.dataset.mode = "create";
+        modalTitle.textContent = "Créer une nouvelle tâche";
+        submitBtn.textContent = "Créer la tâche";
+        submitBtn.dataset.action = "create";
+
         // Réinitialiser les dropdowns
-        modal.querySelectorAll('.dropdown-item').forEach(item => item.classList.remove('selected'));
-        modal.querySelector('#taskStudentDropdown .dropdown-toggle').textContent = '-- Sélectionner un élève --';
-        modal.querySelector('#taskPriorityDropdown .dropdown-item.selected')?.classList.remove('selected');
-        modal.querySelector('#taskPriorityDropdown .dropdown-item:nth-child(2)').classList.add('selected');
-        modal.querySelector('#taskPriorityDropdown .dropdown-toggle').textContent = 'Normal';
+        modal.querySelectorAll(".dropdown-item").forEach((item) => item.classList.remove("selected"));
+        modal.querySelector("#taskStudentDropdown .dropdown-toggle").textContent = "-- Sélectionner un élève --";
+        modal.querySelector("#taskPriorityDropdown .dropdown-item.selected")?.classList.remove("selected");
+        modal.querySelector("#taskPriorityDropdown .dropdown-item:nth-child(2)").classList.add("selected");
+        modal.querySelector("#taskPriorityDropdown .dropdown-toggle").textContent = "Normal";
       };
 
       const openModalForCreate = () => {
-        modal.classList.add('active');
-        backdrop.classList.add('active');
-        modal.dataset.mode = 'create';
-        modalTitle.textContent = 'Créer une nouvelle tâche';
-        submitBtn.textContent = 'Créer la tâche';
-        submitBtn.dataset.action = 'create';
+        modal.classList.add("active");
+        backdrop.classList.add("active");
+        modal.dataset.mode = "create";
+        modalTitle.textContent = "Créer une nouvelle tâche";
+        submitBtn.textContent = "Créer la tâche";
+        submitBtn.dataset.action = "create";
       };
 
       const parseDeadlineDate = (dateString) => {
         const months = {
-          'janvier': '01', 'février': '02', 'mars': '03', 'avril': '04',
-          'mai': '05', 'juin': '06', 'juillet': '07', 'août': '08',
-          'septembre': '09', 'octobre': '10', 'novembre': '11', 'décembre': '12'
+          janvier: "01",
+          février: "02",
+          mars: "03",
+          avril: "04",
+          mai: "05",
+          juin: "06",
+          juillet: "07",
+          août: "08",
+          septembre: "09",
+          octobre: "10",
+          novembre: "11",
+          décembre: "12",
         };
-        const parts = dateString.trim().split(' ');
-        const day = parts[0].padStart(2, '0');
+        const parts = dateString.trim().split(" ");
+        const day = parts[0].padStart(2, "0");
         const month = months[parts[1].toLowerCase()];
         const year = parts[2];
         return `${year}-${month}-${day}`;
       };
 
       const openModalForEdit = (taskCard) => {
-        const taskTitle = taskCard.querySelector('.task-title').textContent;
-        const taskDescription = taskCard.querySelector('.task-description').textContent;
-        const deadlineText = taskCard.querySelector('.task-meta .meta-item:nth-child(1)').textContent.replace('📅 Échéance: ', '');
-        const priorityBadge = taskCard.querySelector('.priority-badge');
-        const priority = priorityBadge ? priorityBadge.className.replace('priority-badge priority-', '') : 'medium';
+        const taskTitle = taskCard.querySelector(".task-title").textContent;
+        const taskDescription = taskCard.querySelector(".task-description").textContent;
+        const deadlineText = taskCard
+          .querySelector(".task-meta .meta-item:nth-child(1)")
+          .textContent.replace("📅 Échéance: ", "");
+        const priorityBadge = taskCard.querySelector(".priority-badge");
+        const priority = priorityBadge ? priorityBadge.className.replace("priority-badge priority-", "") : "medium";
 
-        modalTaskForm('taskTitle').value = taskTitle;
-        modalTaskForm('taskDescription').value = taskDescription;
-        
+        modalTaskForm("taskTitle").value = taskTitle;
+        modalTaskForm("taskDescription").value = taskDescription;
+
         // Mettre à jour le dropdown étudiant
-        const studentDropdown = modal.querySelector('#taskStudentDropdown');
-        const studentName = taskCard.querySelector('.task-meta .meta-item:nth-child(2)').textContent.replace('Assigné à: ', '').trim();
+        const studentDropdown = modal.querySelector("#taskStudentDropdown");
+        const studentName = taskCard
+          .querySelector(".task-meta .meta-item:nth-child(2)")
+          .textContent.replace("Assigné à: ", "")
+          .trim();
         if (studentDropdown) {
-          const studentToggle = studentDropdown.querySelector('.dropdown-toggle');
-          const studentItems = studentDropdown.querySelectorAll('.dropdown-item');
-          studentItems.forEach(item => {
-            item.classList.remove('selected');
+          const studentToggle = studentDropdown.querySelector(".dropdown-toggle");
+          const studentItems = studentDropdown.querySelectorAll(".dropdown-item");
+          studentItems.forEach((item) => {
+            item.classList.remove("selected");
             if (item.textContent.trim() === studentName) {
-              item.classList.add('selected');
+              item.classList.add("selected");
             }
           });
           studentToggle.textContent = studentName;
         }
-        
-        modalTaskForm('taskDeadline').value = parseDeadlineDate(deadlineText);
-        
+
+        modalTaskForm("taskDeadline").value = parseDeadlineDate(deadlineText);
+
         // Mettre à jour le dropdown priorité
-        const priorityDropdown = modal.querySelector('#taskPriorityDropdown');
-        const priorityText = priority === 'low' ? 'Basse' : priority === 'high' ? 'Haute' : 'Normal';
+        const priorityDropdown = modal.querySelector("#taskPriorityDropdown");
+        const priorityText = priority === "low" ? "Basse" : priority === "high" ? "Haute" : "Normal";
         if (priorityDropdown) {
-          const priorityToggle = priorityDropdown.querySelector('.dropdown-toggle');
-          const priorityItems = priorityDropdown.querySelectorAll('.dropdown-item');
-          priorityItems.forEach(item => {
-            item.classList.remove('selected');
+          const priorityToggle = priorityDropdown.querySelector(".dropdown-toggle");
+          const priorityItems = priorityDropdown.querySelectorAll(".dropdown-item");
+          priorityItems.forEach((item) => {
+            item.classList.remove("selected");
             if (item.textContent.trim() === priorityText) {
-              item.classList.add('selected');
+              item.classList.add("selected");
             }
           });
           priorityToggle.textContent = priorityText;
         }
 
-        modal.classList.add('active');
-        backdrop.classList.add('active');
-        modal.dataset.mode = 'edit';
-        modalTitle.textContent = 'Modifier la tâche';
-        submitBtn.textContent = 'Enregistrer les modifications';
-        submitBtn.dataset.action = 'edit';
+        modal.classList.add("active");
+        backdrop.classList.add("active");
+        modal.dataset.mode = "edit";
+        modalTitle.textContent = "Modifier la tâche";
+        submitBtn.textContent = "Enregistrer les modifications";
+        submitBtn.dataset.action = "edit";
       };
 
-      modalTaskForm('createTaskBtn').addEventListener('click', openModalForCreate);
-      [modalTaskForm('closeModalBtn'), modalTaskForm('cancelTaskBtn')].forEach(element => element.addEventListener('click', closeModal));
-      backdrop.addEventListener('click', event => event.target === backdrop && closeModal());
+      modalTaskForm("createTaskBtn").addEventListener("click", openModalForCreate);
+      [modalTaskForm("closeModalBtn"), modalTaskForm("cancelTaskBtn")].forEach((element) =>
+        element.addEventListener("click", closeModal)
+      );
+      backdrop.addEventListener("click", (event) => event.target === backdrop && closeModal());
 
-      submitBtn.addEventListener('click', event => {
+      submitBtn.addEventListener("click", (event) => {
         event.preventDefault();
-        const taskTitle = modalTaskForm('taskTitle').value;
-        const taskDeadline = modalTaskForm('taskDeadline').value;
-        const selectedStudent = modal.querySelector('#taskStudentDropdown .dropdown-item.selected')?.textContent || modal.querySelector('#taskStudentDropdown .dropdown-toggle').textContent;
-        if (taskTitle && taskDeadline && selectedStudent !== '-- Sélectionner un élève --') {
-          if (modal.dataset.mode === 'edit') {
-            showToast('✏️', 'Tâche modifiée', 'Les modifications ont été enregistrées');
+        const taskTitle = modalTaskForm("taskTitle").value;
+        const taskDeadline = modalTaskForm("taskDeadline").value;
+        const selectedStudent =
+          modal.querySelector("#taskStudentDropdown .dropdown-item.selected")?.textContent ||
+          modal.querySelector("#taskStudentDropdown .dropdown-toggle").textContent;
+        if (taskTitle && taskDeadline && selectedStudent !== "-- Sélectionner un élève --") {
+          if (modal.dataset.mode === "edit") {
+            showToast("✏️", "Tâche modifiée", "Les modifications ont été enregistrées");
           } else {
-            showToast('✅', 'Tâche créée', 'Une nouvelle tâche a été créée');
+            showToast("✅", "Tâche créée", "Une nouvelle tâche a été créée");
           }
           closeModal();
         } else {
-          showToast('⚠️', 'Erreur', 'Veuillez remplir tous les champs obligatoires');
+          showToast("⚠️", "Erreur", "Veuillez remplir tous les champs obligatoires");
         }
       });
 
-      document.addEventListener('keydown', event => event.key === 'Escape' && modal.classList.contains('active') && closeModal());
+      document.addEventListener(
+        "keydown",
+        (event) => event.key === "Escape" && modal.classList.contains("active") && closeModal()
+      );
 
       // Gérer la sélection des dropdowns dans le modal
-      modal.querySelectorAll('.dropdown-item').forEach(item => {
-        item.addEventListener('click', function() {
-          const dropdown = this.closest('.custom-dropdown');
-          const toggle = dropdown.querySelector('.dropdown-toggle');
-          const allItems = dropdown.querySelectorAll('.dropdown-item');
-          
-          allItems.forEach(i => i.classList.remove('selected'));
-          this.classList.add('selected');
+      modal.querySelectorAll(".dropdown-item").forEach((item) => {
+        item.addEventListener("click", function () {
+          const dropdown = this.closest(".custom-dropdown");
+          const toggle = dropdown.querySelector(".dropdown-toggle");
+          const allItems = dropdown.querySelectorAll(".dropdown-item");
+
+          allItems.forEach((i) => i.classList.remove("selected"));
+          this.classList.add("selected");
           toggle.textContent = this.textContent.trim();
         });
       });
 
-      document.querySelectorAll('.task-card').forEach(card => {
-        const checkbox = card.querySelector('.task-checkbox');
-        const editBtn = card.querySelector('.task-actions .action-btn:first-child');
-        const deleteBtn = card.querySelector('.task-actions .action-btn:last-child');
-        const taskTitle = card.querySelector('.task-title').textContent;
+      document.querySelectorAll(".task-card").forEach((card) => {
+        const checkbox = card.querySelector(".task-checkbox");
+        const editBtn = card.querySelector(".task-actions .action-btn:first-child");
+        const deleteBtn = card.querySelector(".task-actions .action-btn:last-child");
+        const taskTitle = card.querySelector(".task-title").textContent;
 
         if (checkbox) {
-          checkbox.addEventListener('change', () => {
-            showToast('✅', 'Tâche mise à jour', checkbox.checked ? 'Tâche marquée comme complétée' : 'Tâche marquée comme incomplète');
+          checkbox.addEventListener("change", () => {
+            showToast(
+              "✅",
+              "Tâche mise à jour",
+              checkbox.checked ? "Tâche marquée comme complétée" : "Tâche marquée comme incomplète"
+            );
           });
         }
 
         if (editBtn) {
-          editBtn.addEventListener('click', () => openModalForEdit(card));
+          editBtn.addEventListener("click", () => openModalForEdit(card));
         }
 
         if (deleteBtn) {
-          deleteBtn.addEventListener('click', () => {
-            showToast('🗑️', 'Tâche supprimée', `"${taskTitle}" a été supprimée`);
+          deleteBtn.addEventListener("click", () => {
+            showToast("🗑️", "Tâche supprimée", `"${taskTitle}" a été supprimée`);
           });
         }
       });
     </script>
   </body>
-
 </html>

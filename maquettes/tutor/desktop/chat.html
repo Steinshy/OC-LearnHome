@@ -1,20 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn@Home - Messages | Maquette Desktop</title>
     <style>
       :root {
-        --primary: #3B82F6;
-        --primary-dark: #1E40AF;
-        --danger: #EF4444;
-        --danger-dark: #DC2626;
-        --bg: #F3F4F6;
+        --primary: #3b82f6;
+        --primary-dark: #1e40af;
+        --danger: #ef4444;
+        --danger-dark: #dc2626;
+        --bg: #f3f4f6;
         --text: #111827;
-        --text-muted: #6B7280;
-        --border: #E5E7EB;
+        --text-muted: #6b7280;
+        --border: #e5e7eb;
       }
 
       * {
@@ -24,7 +23,13 @@
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
         background: var(--bg);
         overflow: hidden;
       }
@@ -35,7 +40,6 @@
         grid-template-areas: "nav contacts chat";
         min-height: 100vh;
       }
-
 
       .nav-sidebar {
         grid-area: nav;
@@ -75,7 +79,7 @@
       .nav-label {
         font-size: 12px;
         font-weight: 600;
-        color: #9CA3AF;
+        color: #9ca3af;
         text-transform: uppercase;
         padding: 0 24px;
         margin-bottom: 8px;
@@ -98,7 +102,7 @@
       }
 
       .nav-item.active {
-        background: #E0F2FE;
+        background: #e0f2fe;
         color: var(--primary);
         border-right: 4px solid var(--primary);
         font-weight: 600;
@@ -167,7 +171,7 @@
       }
 
       .user-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         background-size: cover;
         background-position: center;
@@ -208,33 +212,32 @@
 
       .user-role {
         font-size: 12px;
-        color: #6B7280;
+        color: #6b7280;
       }
-
 
       .sidebar {
         grid-area: contacts;
         background: white;
-        border-right: 1px solid #E5E7EB;
+        border-right: 1px solid #e5e7eb;
         display: flex;
         flex-direction: column;
       }
 
       .sidebar-header {
         padding: 16px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
       }
 
       .search-box {
         width: 100%;
         padding: 10px 12px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 14px;
       }
 
       .search-box::placeholder {
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       .search-box::placeholder {
@@ -249,7 +252,7 @@
         width: 100%;
         margin-top: 12px;
         padding: 10px 12px;
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
         border: none;
         border-radius: 6px;
@@ -261,11 +264,11 @@
       }
 
       .add-contact-btn:hover {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       .add-contact-btn:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -280,7 +283,7 @@
 
       .contact-item {
         padding: 12px 16px;
-        border-bottom: 1px solid #F3F4F6;
+        border-bottom: 1px solid #f3f4f6;
         cursor: pointer;
         transition: all 0.3s;
         display: flex;
@@ -289,18 +292,18 @@
       }
 
       .contact-item:hover {
-        background: #F9FAFB;
+        background: #f9fafb;
       }
 
       .contact-item.active {
-        background: #E0F2FE;
-        border-right: 4px solid #3B82F6;
+        background: #e0f2fe;
+        border-right: 4px solid #3b82f6;
       }
 
       .contact-avatar {
         width: 40px;
         height: 40px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -314,31 +317,31 @@
       }
 
       .contact-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .contact-avatar.sophie {
-        background-image: url('../../assets/pictures/sophie.jpeg');
+        background-image: url("../../assets/pictures/sophie.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .contact-avatar.jean {
-        background-image: url('../../assets/pictures/jean.jpeg');
+        background-image: url("../../assets/pictures/jean.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .contact-avatar.lea {
-        background-image: url('../../assets/pictures/lea.jpeg');
+        background-image: url("../../assets/pictures/lea.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .contact-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
@@ -356,22 +359,22 @@
 
       .contact-status {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-top: 2px;
       }
 
       .contact-grade {
         font-size: 12px;
-        color: #6B7280;
+        color: #6b7280;
         margin-top: 2px;
       }
 
       .status-online {
-        color: #10B981;
+        color: #10b981;
       }
 
       .status-badge {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
         width: 24px;
         height: 24px;
@@ -384,7 +387,6 @@
         flex-shrink: 0;
       }
 
-
       .chat-container {
         grid-area: chat;
         display: flex;
@@ -394,7 +396,7 @@
 
       .chat-header {
         padding: 24px 16px 16px 16px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -417,22 +419,22 @@
 
       .chat-header-subtitle {
         font-size: 12px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .chat-header-status {
         font-size: 12px;
-        color: #10B981;
+        color: #10b981;
         display: flex;
         align-items: center;
         gap: 6px;
       }
 
       .chat-header-status::before {
-        content: '';
+        content: "";
         width: 8px;
         height: 8px;
-        background: #10B981;
+        background: #10b981;
         border-radius: 50%;
         display: inline-block;
       }
@@ -445,7 +447,7 @@
       .btn-icon {
         width: 36px;
         height: 36px;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
         background: white;
         border-radius: 6px;
         cursor: pointer;
@@ -459,8 +461,8 @@
       }
 
       .btn-icon:hover {
-        background: #F3F4F6;
-        border-color: #3B82F6;
+        background: #f3f4f6;
+        border-color: #3b82f6;
         box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
       }
 
@@ -471,7 +473,7 @@
       label.btn-icon {
         display: flex;
         padding: 0;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
       }
 
       .messages {
@@ -481,7 +483,7 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
-        background: #FAFAFA;
+        background: #fafafa;
       }
 
       .message-group {
@@ -494,7 +496,7 @@
       .message-avatar {
         width: 32px;
         height: 32px;
-        background: #10B981;
+        background: #10b981;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -510,7 +512,7 @@
       }
 
       .message-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         background-size: cover;
         background-position: center;
@@ -519,7 +521,7 @@
       }
 
       .message-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
@@ -539,7 +541,7 @@
       }
 
       .message-time {
-        color: #9CA3AF;
+        color: #9ca3af;
         font-size: 12px;
       }
 
@@ -559,7 +561,7 @@
         background: white;
         padding: 10px 14px;
         border-radius: 8px;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
         display: flex;
         align-items: center;
         gap: 8px;
@@ -593,7 +595,7 @@
       }
 
       .message-own .message-text {
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
         max-width: 400px;
       }
@@ -608,12 +610,12 @@
       }
 
       .message-status.status-read {
-        color: #3B82F6;
+        color: #3b82f6;
       }
 
       .message-status {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-top: 4px;
         display: flex;
         align-items: center;
@@ -644,7 +646,7 @@
 
       .message-status {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-top: 4px;
         display: flex;
         align-items: center;
@@ -652,24 +654,24 @@
       }
 
       .status-sent::after {
-        content: '✓';
-        color: #9CA3AF;
+        content: "✓";
+        color: #9ca3af;
         font-weight: 600;
       }
 
       .status-read::after {
-        content: '✓✓';
-        color: #3B82F6;
+        content: "✓✓";
+        color: #3b82f6;
         font-weight: 600;
       }
 
       .message-status.status-read {
-        color: #3B82F6;
+        color: #3b82f6;
       }
 
       .chat-input-area {
         padding: 20px 16px 16px 16px;
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid #e5e7eb;
         background: white;
       }
 
@@ -679,7 +681,6 @@
         align-items: flex-end;
       }
 
-
       [data-hover] {
         position: relative;
       }
@@ -687,7 +688,7 @@
       [data-hover]::after {
         content: attr(data-hover);
         position: absolute;
-        background: #1F2937;
+        background: #1f2937;
         color: white;
         padding: 6px 10px;
         border-radius: 6px;
@@ -696,7 +697,9 @@
         white-space: nowrap;
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.25s ease, visibility 0.25s ease;
+        transition:
+          opacity 0.25s ease,
+          visibility 0.25s ease;
         z-index: 99999;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         visibility: hidden;
@@ -730,7 +733,7 @@
       .message-input {
         flex: 1;
         padding: 10px 14px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 14px;
         font-family: inherit;
@@ -740,7 +743,7 @@
 
       .message-input:focus {
         outline: none;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
@@ -755,7 +758,7 @@
       .send-btn {
         width: 36px;
         height: 36px;
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
         border: none;
         border-radius: 6px;
@@ -769,7 +772,7 @@
       }
 
       .send-btn:hover {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       .send-btn:active {
@@ -785,10 +788,10 @@
         z-index: 10000;
       }
 
-      #contacts-modal-toggle:checked~#contacts-modal,
-      #info-modal-toggle:checked~#info-modal,
-      #phone-call-modal-toggle:checked~#phone-call-modal,
-      #video-call-modal-toggle:checked~#video-call-modal {
+      #contacts-modal-toggle:checked ~ #contacts-modal,
+      #info-modal-toggle:checked ~ #info-modal,
+      #phone-call-modal-toggle:checked ~ #phone-call-modal,
+      #video-call-modal-toggle:checked ~ #video-call-modal {
         display: flex;
       }
 
@@ -823,7 +826,6 @@
         margin-bottom: 20px;
       }
 
-
       #info-modal .modal-section {
         flex-direction: column;
         gap: 0;
@@ -845,7 +847,7 @@
 
       #info-modal .modal-status {
         font-size: 13px;
-        color: #10B981;
+        color: #10b981;
         text-align: center;
       }
 
@@ -870,7 +872,7 @@
 
       #phone-call-modal .modal-status {
         font-size: 13px;
-        color: #10B981;
+        color: #10b981;
       }
 
       #phone-call-modal .modal-action-container {
@@ -901,7 +903,7 @@
 
       #video-call-modal .modal-status {
         font-size: 13px;
-        color: #10B981;
+        color: #10b981;
       }
 
       #video-call-modal .modal-action-container {
@@ -933,7 +935,7 @@
 
       #contacts-modal .contact-row.no-contact-found p {
         margin: 0;
-        color: #9CA3AF;
+        color: #9ca3af;
         font-size: 14px;
       }
 
@@ -959,21 +961,21 @@
       #contacts-modal .modal-action-btn.add-contact {
         width: 100%;
         margin-top: 8px;
-        background: #3B82F6;
+        background: #3b82f6;
       }
 
       #contacts-modal .modal-action-btn.add-contact:disabled {
-        background: #9CA3AF;
+        background: #9ca3af;
         cursor: not-allowed;
         opacity: 0.8;
       }
 
       #contacts-modal .modal-action-btn.remove-contact {
-        background: #EF4444;
+        background: #ef4444;
       }
 
       #contacts-modal .modal-action-btn.remove-contact:hover {
-        background: #B91C1C;
+        background: #b91c1c;
       }
 
       .contacts-list-modal {
@@ -1000,7 +1002,7 @@
 
       .contact-row.no-contact-found p {
         margin: 0;
-        color: #9CA3AF;
+        color: #9ca3af;
         font-size: 14px;
       }
 
@@ -1010,7 +1012,7 @@
 
       .modal-action-btn {
         padding: 8px 12px;
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
         border: none;
         border-radius: 6px;
@@ -1020,25 +1022,25 @@
       }
 
       .modal-action-btn:hover {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       .modal-action-btn.remove-contact {
-        background: #EF4444;
+        background: #ef4444;
       }
 
       .modal-action-btn.remove-contact:hover {
-        background: #B91C1C;
+        background: #b91c1c;
       }
 
       .modal-action-btn.add-contact {
         width: 100%;
         margin-top: 8px;
-        background: #3B82F6;
+        background: #3b82f6;
       }
 
       .modal-action-btn.add-contact:disabled {
-        background: #9CA3AF;
+        background: #9ca3af;
         cursor: not-allowed;
         opacity: 0.8;
       }
@@ -1050,7 +1052,7 @@
       .modal-avatar {
         width: 48px;
         height: 48px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1064,37 +1066,37 @@
       }
 
       .modal-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .modal-avatar.marie {
-        background-image: url('../../assets/pictures/marie.jpeg');
+        background-image: url("../../assets/pictures/marie.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .modal-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
 
       .modal-avatar.jean {
-        background-image: url('../../assets/pictures/jean.jpeg');
+        background-image: url("../../assets/pictures/jean.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .modal-avatar.lea {
-        background-image: url('../../assets/pictures/lea.jpeg');
+        background-image: url("../../assets/pictures/lea.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .modal-avatar.sophie {
-        background-image: url('../../assets/pictures/sophie.jpeg');
+        background-image: url("../../assets/pictures/sophie.jpeg");
         background-color: transparent;
         font-size: 0;
       }
@@ -1107,14 +1109,14 @@
 
       .modal-status {
         font-size: 14px;
-        color: #10B981;
+        color: #10b981;
       }
 
       .modal-close {
         margin-top: 8px;
         width: 100%;
         padding: 10px 0;
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
         border: none;
         border-radius: 6px;
@@ -1123,7 +1125,7 @@
       }
 
       .modal-close:hover {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       label.modal-close {
@@ -1131,7 +1133,7 @@
         margin-top: 8px;
         width: 100%;
         padding: 10px 0;
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
         border: none;
         border-radius: 6px;
@@ -1141,15 +1143,15 @@
       }
 
       label.modal-close:hover {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       .copyright {
         text-align: center;
         margin-top: 32px;
         padding-top: 20px;
-        border-top: 1px solid #E5E7EB;
-        color: #94A3B8;
+        border-top: 1px solid #e5e7eb;
+        color: #94a3b8;
         font-size: 12px;
       }
 
@@ -1169,14 +1171,14 @@
         cursor: pointer;
         transition: all 0.2s;
         padding: 0;
-        color: #9CA3AF;
+        color: #9ca3af;
         z-index: 10;
         font-weight: 300;
         line-height: 1;
       }
 
       .modal-close-icon:hover {
-        background: #F3F4F6;
+        background: #f3f4f6;
         color: #111827;
       }
 
@@ -1214,7 +1216,7 @@
 
       .toast-message {
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       @keyframes slideIn {
@@ -1241,7 +1243,6 @@
         }
       }
 
-
       .info-content {
         margin-top: 16px;
       }
@@ -1253,7 +1254,7 @@
       .info-section-title {
         font-size: 14px;
         font-weight: 600;
-        color: #6B7280;
+        color: #6b7280;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-bottom: 12px;
@@ -1264,7 +1265,7 @@
         align-items: center;
         gap: 12px;
         padding: 12px 0;
-        border-bottom: 1px solid #F3F4F6;
+        border-bottom: 1px solid #f3f4f6;
       }
 
       .info-item:last-child {
@@ -1283,7 +1284,7 @@
 
       .info-label {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-bottom: 2px;
       }
 
@@ -1297,7 +1298,7 @@
         margin-top: 16px;
         width: 100%;
         padding: 10px 0;
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
         border: none;
         border-radius: 6px;
@@ -1308,9 +1309,8 @@
       }
 
       .modal-close:hover {
-        background: #1E40AF;
+        background: #1e40af;
       }
-
 
       .task-panel {
         position: fixed;
@@ -1327,7 +1327,7 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         opacity: 0;
         pointer-events: none;
-        transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .task-panel.open {
@@ -1338,7 +1338,7 @@
 
       .task-header {
         padding: 24px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -1378,7 +1378,7 @@
       .task-section {
         margin-bottom: 0;
         padding-bottom: 16px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
       }
 
       .task-section:last-child {
@@ -1388,7 +1388,7 @@
       .task-section-title {
         font-size: 14px;
         font-weight: 600;
-        color: #6B7280;
+        color: #6b7280;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-bottom: 12px;
@@ -1399,7 +1399,7 @@
         align-items: flex-start;
         gap: 12px;
         padding: 12px 0;
-        border-bottom: 1px solid #F3F4F6;
+        border-bottom: 1px solid #f3f4f6;
       }
 
       .task-item:last-child {
@@ -1419,7 +1419,7 @@
 
       .task-label {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-bottom: 2px;
       }
 
@@ -1437,29 +1437,29 @@
       }
 
       .task-mini-card {
-        background: #F9FAFB;
+        background: #f9fafb;
         border-radius: 8px;
         padding: 12px;
-        border-left: 3px solid #E5E7EB;
+        border-left: 3px solid #e5e7eb;
         transition: all 0.3s;
         cursor: pointer;
       }
 
       .task-mini-card:hover {
-        background: #F3F4F6;
+        background: #f3f4f6;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
 
       .task-mini-card.priority-high {
-        border-left-color: #EF4444;
+        border-left-color: #ef4444;
       }
 
       .task-mini-card.priority-medium {
-        border-left-color: #F59E0B;
+        border-left-color: #f59e0b;
       }
 
       .task-mini-card.priority-low {
-        border-left-color: #10B981;
+        border-left-color: #10b981;
       }
 
       .task-mini-title {
@@ -1479,7 +1479,7 @@
 
       .task-mini-due {
         font-size: 11px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .task-mini-status {
@@ -1491,17 +1491,17 @@
       }
 
       .task-mini-status.status-pending {
-        background: #FEF3C7;
-        color: #92400E;
+        background: #fef3c7;
+        color: #92400e;
       }
 
       .task-mini-status.status-inprogress {
-        background: #DBEAFE;
-        color: #0C4A6E;
+        background: #dbeafe;
+        color: #0c4a6e;
       }
 
       .task-mini-status.status-done {
-        background: #DCFCE7;
+        background: #dcfce7;
         color: #166534;
       }
 
@@ -1512,7 +1512,7 @@
         z-index: 999;
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .overlay.active {
@@ -1520,33 +1520,31 @@
         pointer-events: auto;
       }
 
-
       button:disabled,
       button[disabled] {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: #9CA3AF;
+        background-color: #9ca3af;
       }
 
       .button-primary:disabled,
       .button-primary[disabled] {
-        background: #9CA3AF;
+        background: #9ca3af;
         color: white;
       }
 
       .button-secondary:disabled,
       .button-secondary[disabled] {
-        background: #F3F4F6;
-        color: #9CA3AF;
-        border-color: #D1D5DB;
+        background: #f3f4f6;
+        color: #9ca3af;
+        border-color: #d1d5db;
       }
 
       .button-danger:disabled,
       .button-danger[disabled] {
-        background: #FECACA;
-        color: #991B1B;
+        background: #fecaca;
+        color: #991b1b;
       }
-
 
       button.loading {
         cursor: not-allowed;
@@ -1555,7 +1553,7 @@
       }
 
       button.loading::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -1570,17 +1568,17 @@
       }
 
       .button-primary.loading {
-        background: #3B82F6;
+        background: #3b82f6;
         opacity: 0.8;
       }
 
       .button-secondary.loading {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .button-secondary.loading::after {
         border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3B82F6;
+        border-top-color: #3b82f6;
       }
 
       @keyframes spin {
@@ -1602,8 +1600,8 @@
       input:disabled,
       textarea:disabled,
       select:disabled {
-        background-color: #F3F4F6;
-        color: #9CA3AF;
+        background-color: #f3f4f6;
+        color: #9ca3af;
         cursor: not-allowed;
         opacity: 0.7;
       }
@@ -1632,44 +1630,56 @@
       }
 
       .modal-action-btn--accept {
-        background: #10B981;
+        background: #10b981;
       }
 
       .modal-action-btn--decline {
-        background: #EF4444;
+        background: #ef4444;
         cursor: pointer;
       }
     </style>
   </head>
 
   <body>
-    <input type="checkbox" id="contacts-modal-toggle">
-    <input type="checkbox" id="info-modal-toggle">
-    <input type="checkbox" id="phone-call-modal-toggle">
-    <input type="checkbox" id="video-call-modal-toggle">
+    <input type="checkbox" id="contacts-modal-toggle" />
+    <input type="checkbox" id="info-modal-toggle" />
+    <input type="checkbox" id="phone-call-modal-toggle" />
+    <input type="checkbox" id="video-call-modal-toggle" />
     <div class="layout">
-
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span> Tableau de bord</a>
-            <a href="chat.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span>
-              Messages<div class="notification-badge">4</div></a>
+            <a href="dashboard.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
+              de bord</a
+            >
+            <a href="chat.html" class="nav-item active" aria-current="page"
+              ><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span> Messages
+              <div class="notification-badge">4</div></a
+            >
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span> Calendrier</a>
-            <a href="tasks.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span> Tâches</a>
+            <a href="calendar.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a
+            >
+            <a href="tasks.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a
+            >
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span> Paramètres</a>
-            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span> Déconnexion</a>
+            <a href="settings.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a
+            >
+            <a href="login.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span> Déconnexion</a
+            >
           </div>
         </nav>
 
@@ -1685,12 +1695,12 @@
         </div>
       </aside>
 
-
       <aside class="sidebar">
         <div class="sidebar-header">
-          <input type="text" class="search-box" placeholder="Rechercher un contact...">
-          <label for="contacts-modal-toggle" class="add-contact-btn hover-up" data-hover="Ajouter un contact">+ Ajouter
-            un contact</label>
+          <input type="text" class="search-box" placeholder="Rechercher un contact..." />
+          <label for="contacts-modal-toggle" class="add-contact-btn hover-up" data-hover="Ajouter un contact"
+            >+ Ajouter un contact</label
+          >
         </div>
 
         <div class="contacts-list">
@@ -1733,7 +1743,6 @@
           </div>
         </div>
       </aside>
-
 
       <main class="chat-container">
         <div class="chat-header">
@@ -1834,22 +1843,27 @@
           </div>
         </div>
 
-
         <div class="chat-input-area">
           <div class="input-wrapper">
-            <button class="btn-icon hover-up" id="attachment-btn" data-hover="Joindre un fichier"
-              onclick="handleAttachmentClick();">📎</button>
-            <input type="file" id="file-input" onchange="handleFileUpload(event)">
+            <button
+              class="btn-icon hover-up"
+              id="attachment-btn"
+              data-hover="Joindre un fichier"
+              onclick="handleAttachmentClick()"
+            >
+              📎
+            </button>
+            <input type="file" id="file-input" onchange="handleFileUpload(event)" />
             <textarea class="message-input" id="message-input" placeholder="Tapez votre message..." rows="1"></textarea>
-            <button class="send-btn hover-up" id="send-btn" data-hover="Envoyer"
-              onclick="handleMessageSend();">➤</button>
+            <button class="send-btn hover-up" id="send-btn" data-hover="Envoyer" onclick="handleMessageSend()">
+              ➤
+            </button>
           </div>
         </div>
       </main>
     </div>
 
     <div class="overlay" id="overlay"></div>
-
 
     <div class="task-panel" id="taskPanel">
       <div class="task-header">
@@ -1915,28 +1929,32 @@
           <div class="contact-row">
             <div class="modal-avatar sophie"></div>
             <div class="modal-name">Sophie Martin</div>
-            <button class="modal-action-btn remove-contact"
-              onclick="contactManager.removeContact(this)">Supprimer</button>
+            <button class="modal-action-btn remove-contact" onclick="contactManager.removeContact(this)">
+              Supprimer
+            </button>
           </div>
           <div class="contact-row">
             <div class="modal-avatar jean"></div>
             <div class="modal-name">Jean Leclerc</div>
-            <button class="modal-action-btn remove-contact"
-              onclick="contactManager.removeContact(this)">Supprimer</button>
+            <button class="modal-action-btn remove-contact" onclick="contactManager.removeContact(this)">
+              Supprimer
+            </button>
           </div>
           <div class="contact-row hidden">
             <div class="modal-avatar lea"></div>
             <div class="modal-name">Léa Bernard</div>
-            <button class="modal-action-btn remove-contact"
-              onclick="contactManager.removeContact(this)">Supprimer</button>
+            <button class="modal-action-btn remove-contact" onclick="contactManager.removeContact(this)">
+              Supprimer
+            </button>
           </div>
           <div class="contact-row no-contact-found hidden">
             <p>Aucun contact trouvé</p>
           </div>
         </div>
 
-        <button id="add-contact-confirm" class="modal-action-btn add-contact" onclick="contactManager.addContact()">+
-          Ajouter un contact</button>
+        <button id="add-contact-confirm" class="modal-action-btn add-contact" onclick="contactManager.addContact()">
+          + Ajouter un contact
+        </button>
       </div>
     </div>
     <div id="info-modal" class="modal">
@@ -2031,92 +2049,93 @@
     <div id="toast-container" class="toast-container"></div>
     <script>
       const showToast = (icon, title, message) => {
-        const toast = document.createElement('div');
-        toast.className = 'toast';
+        const toast = document.createElement("div");
+        toast.className = "toast";
         toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
-        document.getElementById('toast-container').appendChild(toast);
-        setTimeout(() => (toast.classList.add('dismissing'), setTimeout(() => toast.remove(), 500)), 2700);
+        document.getElementById("toast-container").appendChild(toast);
+        setTimeout(() => (toast.classList.add("dismissing"), setTimeout(() => toast.remove(), 500)), 2700);
       };
 
-      const handleAttachmentClick = () => document.getElementById('file-input').click();
-      const handleMessageSend = () => document.querySelector('.hidden-auto-message').classList.add('visible');
+      const handleAttachmentClick = () => document.getElementById("file-input").click();
+      const handleMessageSend = () => document.querySelector(".hidden-auto-message").classList.add("visible");
       const handleFileUpload = (event) => {
         const fileData = {
-          input: document.getElementById('file-input'),
-          fileMessage: document.querySelector('.hidden-file-message'),
-          fileNameSpan: document.querySelector('.message-file-name'),
-          messages: document.querySelector('.messages'),
-          get file() { return this.input.files[0]; },
-          get name() { return this.file?.name || ''; }
+          input: document.getElementById("file-input"),
+          fileMessage: document.querySelector(".hidden-file-message"),
+          fileNameSpan: document.querySelector(".message-file-name"),
+          messages: document.querySelector(".messages"),
+          get file() {
+            return this.input.files[0];
+          },
+          get name() {
+            return this.file?.name || "";
+          },
         };
 
         if (fileData.fileNameSpan && fileData.fileMessage) {
           fileData.fileNameSpan.textContent = fileData.name;
-          fileData.fileMessage.classList.add('visible');
+          fileData.fileMessage.classList.add("visible");
           fileData.messages.scrollTop = fileData.messages.scrollHeight;
         }
       };
 
       const contactManager = {
-        rows: () => [...document.querySelectorAll('.contacts-list-modal .contact-row:not(.no-contact-found)')],
-        hiddenRows: () => contactManager.rows().find(row => row.classList.contains('hidden')),
+        rows: () => [...document.querySelectorAll(".contacts-list-modal .contact-row:not(.no-contact-found)")],
+        hiddenRows: () => contactManager.rows().find((row) => row.classList.contains("hidden")),
         update: () => {
-          const addBtn = document.getElementById('add-contact-confirm');
+          const addBtn = document.getElementById("add-contact-confirm");
           if (addBtn) {
-            addBtn.disabled = !contactManager.rows().some(row => row.classList.contains('hidden'));
+            addBtn.disabled = !contactManager.rows().some((row) => row.classList.contains("hidden"));
           }
         },
         addContact() {
           const hiddenRow = contactManager.hiddenRows();
           if (hiddenRow) {
-            hiddenRow.classList.remove('hidden');
-            hiddenRow.style.display = 'flex';
+            hiddenRow.classList.remove("hidden");
+            hiddenRow.style.display = "flex";
             contactManager.update();
           }
         },
 
         removeContact(btn) {
-          const row = btn.closest('.contact-row');
+          const row = btn.closest(".contact-row");
           if (row) {
-            row.classList.add('hidden');
-            row.style.display = 'none';
+            row.classList.add("hidden");
+            row.style.display = "none";
             contactManager.update();
           }
-        }
+        },
       };
 
       contactManager.update();
 
-      const taskBtn = document.getElementById('taskBtn');
-      const closeTaskBtn = document.getElementById('closeTaskBtn');
-      const taskPanel = document.getElementById('taskPanel');
-      const overlay = document.getElementById('overlay');
+      const taskBtn = document.getElementById("taskBtn");
+      const closeTaskBtn = document.getElementById("closeTaskBtn");
+      const taskPanel = document.getElementById("taskPanel");
+      const overlay = document.getElementById("overlay");
 
       const openPanel = (panel) => {
-        panel.classList.add('open');
-        overlay.classList.add('active');
+        panel.classList.add("open");
+        overlay.classList.add("active");
       };
 
       const closePanel = (panel) => {
-        panel.classList.remove('open');
-        overlay.classList.remove('active');
+        panel.classList.remove("open");
+        overlay.classList.remove("active");
       };
 
-      taskBtn.addEventListener('click', () => {
+      taskBtn.addEventListener("click", () => {
         openPanel(taskPanel);
       });
 
-      closeTaskBtn.addEventListener('click', () => {
+      closeTaskBtn.addEventListener("click", () => {
         closePanel(taskPanel);
       });
 
-      overlay.addEventListener('click', () => {
+      overlay.addEventListener("click", () => {
         closePanel(taskPanel);
       });
     </script>
-    <div class="copyright">
-      © 2026 Learn@Home. All rights reserved.
-    </div>
+    <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
   </body>
-
 </html>

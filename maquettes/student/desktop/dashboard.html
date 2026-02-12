@@ -1,20 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn@Home - Tableau de Bord | Maquette Desktop</title>
     <style>
       :root {
-        --primary: #3B82F6;
-        --primary-dark: #1E40AF;
-        --danger: #EF4444;
-        --danger-dark: #DC2626;
-        --bg: #F3F4F6;
+        --primary: #3b82f6;
+        --primary-dark: #1e40af;
+        --danger: #ef4444;
+        --danger-dark: #dc2626;
+        --bg: #f3f4f6;
         --text: #111827;
-        --text-muted: #6B7280;
-        --border: #E5E7EB;
+        --text-muted: #6b7280;
+        --border: #e5e7eb;
       }
 
       * {
@@ -24,7 +23,13 @@
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
         background: var(--bg);
       }
 
@@ -75,7 +80,7 @@
       .nav-label {
         font-size: 12px;
         font-weight: 600;
-        color: #9CA3AF;
+        color: #9ca3af;
         text-transform: uppercase;
         padding: 0 24px;
         margin-bottom: 8px;
@@ -98,7 +103,7 @@
       }
 
       .nav-item.active {
-        background: #E0F2FE;
+        background: #e0f2fe;
         color: var(--primary);
         border-right: 4px solid var(--primary);
         font-weight: 600;
@@ -152,7 +157,7 @@
       }
 
       .user-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
@@ -242,7 +247,7 @@
       }
 
       .button-secondary:hover {
-        background: #E0F2FE;
+        background: #e0f2fe;
       }
 
       .grid {
@@ -273,8 +278,8 @@
       }
 
       .card-badge {
-        background: #E0F2FE;
-        color: #1E40AF;
+        background: #e0f2fe;
+        color: #1e40af;
         padding: 4px 12px;
         border-radius: 20px;
         font-size: 12px;
@@ -312,18 +317,18 @@
       }
 
       .status-pending {
-        background: #FEF3C7;
-        color: #92400E;
+        background: #fef3c7;
+        color: #92400e;
       }
 
       .status-done {
-        background: #D1FAE5;
-        color: #065F46;
+        background: #d1fae5;
+        color: #065f46;
       }
 
       .status-inprogress {
-        background: #E0E7FF;
-        color: #3730A3;
+        background: #e0e7ff;
+        color: #3730a3;
       }
 
       .event-item {
@@ -337,7 +342,7 @@
 
       .event-time {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       .event-title {
@@ -348,7 +353,7 @@
 
       .event-location {
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .card-full {
@@ -356,8 +361,8 @@
       }
 
       .message-box {
-        background: #DBEAFE;
-        border-left: 4px solid #3B82F6;
+        background: #dbeafe;
+        border-left: 4px solid #3b82f6;
         padding: 16px;
         border-radius: 6px;
         margin-bottom: 24px;
@@ -365,17 +370,17 @@
 
       .message-title {
         font-weight: 600;
-        color: #1E40AF;
+        color: #1e40af;
         margin-bottom: 4px;
       }
 
       .message-text {
         font-size: 14px;
-        color: #1E40AF;
+        color: #1e40af;
       }
 
       .notification-badge {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
         width: 24px;
         height: 24px;
@@ -394,12 +399,12 @@
         margin-top: 32px;
         padding-top: 20px;
         border-top: 1px solid var(--border);
-        color: #94A3B8;
+        color: #94a3b8;
         font-size: 12px;
       }
 
       .stat-item.clickable:hover {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .stat-status.clickable {
@@ -412,20 +417,19 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
 
-      
       .stat-status[data-status="pending"] {
-        background: #FEF3C7;
-        color: #92400E;
+        background: #fef3c7;
+        color: #92400e;
       }
 
       .stat-status[data-status="inprogress"] {
-        background: #E0E7FF;
-        color: #3730A3;
+        background: #e0e7ff;
+        color: #3730a3;
       }
 
       .stat-status[data-status="done"] {
-        background: #D1FAE5;
-        color: #065F46;
+        background: #d1fae5;
+        color: #065f46;
       }
 
       .toast-container {
@@ -462,7 +466,7 @@
 
       .toast-message {
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       @keyframes slideIn {
@@ -489,34 +493,32 @@
         }
       }
 
-      
       button:disabled,
       button[disabled] {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: #9CA3AF;
+        background-color: #9ca3af;
       }
 
       .button-primary:disabled,
       .button-primary[disabled] {
-        background: #9CA3AF;
+        background: #9ca3af;
         color: white;
       }
 
       .button-secondary:disabled,
       .button-secondary[disabled] {
-        background: #F3F4F6;
-        color: #9CA3AF;
-        border-color: #D1D5DB;
+        background: #f3f4f6;
+        color: #9ca3af;
+        border-color: #d1d5db;
       }
 
       .button-danger:disabled,
       .button-danger[disabled] {
-        background: #FECACA;
-        color: #991B1B;
+        background: #fecaca;
+        color: #991b1b;
       }
 
-      
       button.loading {
         cursor: not-allowed;
         position: relative;
@@ -524,7 +526,7 @@
       }
 
       button.loading::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -539,17 +541,17 @@
       }
 
       .button-primary.loading {
-        background: #3B82F6;
+        background: #3b82f6;
         opacity: 0.8;
       }
 
       .button-secondary.loading {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .button-secondary.loading::after {
         border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3B82F6;
+        border-top-color: #3b82f6;
       }
 
       @keyframes spin {
@@ -571,8 +573,8 @@
       input:disabled,
       textarea:disabled,
       select:disabled {
-        background-color: #F3F4F6;
-        color: #9CA3AF;
+        background-color: #f3f4f6;
+        color: #9ca3af;
         cursor: not-allowed;
         opacity: 0.7;
       }
@@ -594,31 +596,44 @@
     <div class="page-layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span>
-              Tableau de bord</a>
-            <a href="chat.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span> Messages<span
-                class="notification-badge">5</span></a>
+            <a href="dashboard.html" class="nav-item active" aria-current="page"
+              ><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
+              de bord</a
+            >
+            <a href="chat.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
+              Messages<span class="notification-badge">5</span></a
+            >
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span> Calendrier</a>
-            <a href="tasks.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span> Tâches</a>
+            <a href="calendar.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a
+            >
+            <a href="tasks.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a
+            >
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span> Paramètres</a>
-            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span> Déconnexion</a>
+            <a href="settings.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a
+            >
+            <a href="login.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span> Déconnexion</a
+            >
           </div>
         </nav>
 
         <div class="user-profile">
-          <div class="user-avatar antoine">AK
+          <div class="user-avatar antoine">
+            AK
             <span class="user-avatar-badge">5</span>
           </div>
           <div class="user-info">
@@ -657,18 +672,36 @@
             </div>
             <div class="stat-item">
               <span class="stat-label">Mathématiques - Équations</span>
-              <span class="stat-status clickable" id="task-status-pending" data-status="pending" data-next="inprogress"
-                onclick="cycleTaskStatus(event)">À faire</span>
+              <span
+                class="stat-status clickable"
+                id="task-status-pending"
+                data-status="pending"
+                data-next="inprogress"
+                onclick="cycleTaskStatus(event)"
+                >À faire</span
+              >
             </div>
             <div class="stat-item">
               <span class="stat-label">Français - Lecture</span>
-              <span class="stat-status clickable" id="task-status-inprogress" data-status="inprogress" data-next="done"
-                onclick="cycleTaskStatus(event)">En cours</span>
+              <span
+                class="stat-status clickable"
+                id="task-status-inprogress"
+                data-status="inprogress"
+                data-next="done"
+                onclick="cycleTaskStatus(event)"
+                >En cours</span
+              >
             </div>
             <div class="stat-item">
               <span class="stat-label">Sciences - Rapport</span>
-              <span class="stat-status clickable" id="task-status-done" data-status="done" data-next="pending"
-                onclick="cycleTaskStatus(event)">Complétée</span>
+              <span
+                class="stat-status clickable"
+                id="task-status-done"
+                data-status="done"
+                data-next="pending"
+                onclick="cycleTaskStatus(event)"
+                >Complétée</span
+              >
             </div>
           </div>
 
@@ -709,21 +742,22 @@
           </div>
         </div>
 
-        <div class="copyright">
-          © 2026 Learn@Home. All rights reserved.
-        </div>
+        <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
       </main>
     </div>
 
     <div id="toast-container" class="toast-container"></div>
     <script>
       const showToast = (icon, title, message) => {
-        const container = document.getElementById('toast-container');
-        const toast = document.createElement('div');
-        toast.className = 'toast';
+        const container = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+        toast.className = "toast";
         toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
         container.appendChild(toast);
-        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
+        setTimeout(() => {
+          toast.classList.add("dismissing");
+          setTimeout(() => toast.remove(), 500);
+        }, 2700);
       };
       const handleCycleTaskStatus = (event) => {
         event.stopPropagation();
@@ -732,9 +766,8 @@
         element.dataset.status = next;
         element.textContent = { pending: "À faire", inprogress: "En cours", done: "Complétée" }[next];
         element.dataset.next = { pending: "inprogress", inprogress: "done", done: "pending" }[next];
-        showToast('📝', 'Statut mis à jour', 'L\'état de la tâche a changé');
+        showToast("📝", "Statut mis à jour", "L'état de la tâche a changé");
       };
     </script>
   </body>
-
 </html>

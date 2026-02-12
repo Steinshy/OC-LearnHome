@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, ">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, " />
     <title>Learn@Home - Messages | Maquette Mobile</title>
     <style>
       * {
@@ -13,8 +12,14 @@
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: #F3F4F6;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: #f3f4f6;
         height: 100vh;
         display: flex;
         flex-direction: column;
@@ -23,7 +28,7 @@
 
       .mobile-header {
         background: white;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         padding: 8px 16px;
         display: flex;
         justify-content: space-between;
@@ -46,20 +51,20 @@
       }
 
       .menu-btn:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .mobile-logo {
         font-size: 18px;
         font-weight: 700;
-        color: #3B82F6;
+        color: #3b82f6;
       }
 
       .user-avatar-mobile {
         width: 36px;
         height: 36px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -74,13 +79,13 @@
       }
 
       .user-avatar-mobile.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .user-avatar-mobile.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
@@ -89,7 +94,7 @@
         position: absolute;
         bottom: -2px;
         right: -2px;
-        background: #EF4444;
+        background: #ef4444;
         color: white;
         width: 14px;
         height: 14px;
@@ -109,7 +114,7 @@
         width: 280px;
         height: 100vh;
         background: white;
-        border-right: 1px solid #E5E7EB;
+        border-right: 1px solid #e5e7eb;
         padding: 24px 0;
         overflow-y: auto;
         transition: left 0.3s ease;
@@ -140,7 +145,7 @@
       .sidebar-header {
         padding: 0 24px;
         margin-bottom: 32px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         padding-bottom: 24px;
         display: flex;
         justify-content: space-between;
@@ -150,7 +155,7 @@
       .sidebar-logo {
         font-size: 20px;
         font-weight: 700;
-        color: #3B82F6;
+        color: #3b82f6;
       }
 
       .close-btn {
@@ -174,14 +179,14 @@
       }
 
       .nav-section:not(:first-child) {
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid #e5e7eb;
         padding-top: 24px;
       }
 
       .nav-label {
         font-size: 12px;
         font-weight: 600;
-        color: #9CA3AF;
+        color: #9ca3af;
         text-transform: uppercase;
         padding: 0 24px;
         margin-bottom: 8px;
@@ -189,7 +194,7 @@
 
       .nav-item {
         padding: 14px 24px;
-        color: #6B7280;
+        color: #6b7280;
         text-decoration: none;
         display: flex;
         align-items: center;
@@ -203,19 +208,19 @@
 
       .nav-item:hover,
       .nav-item:active {
-        background: #F3F4F6;
-        color: #3B82F6;
+        background: #f3f4f6;
+        color: #3b82f6;
       }
 
       .nav-item:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: -2px;
       }
 
       .nav-item.active {
-        background: #E0F2FE;
-        color: #3B82F6;
-        border-right: 4px solid #3B82F6;
+        background: #e0f2fe;
+        color: #3b82f6;
+        border-right: 4px solid #3b82f6;
         font-weight: 600;
       }
 
@@ -246,7 +251,7 @@
       }
 
       .notification-badge {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
         width: 24px;
         height: 24px;
@@ -262,7 +267,7 @@
 
       .user-profile {
         padding: 24px;
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid #e5e7eb;
         margin-top: auto;
         display: flex;
         flex-direction: column;
@@ -273,7 +278,7 @@
       .user-avatar {
         width: 40px;
         height: 40px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -288,13 +293,13 @@
       }
 
       .user-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .user-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
@@ -307,7 +312,7 @@
 
       .user-role {
         font-size: 12px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .header-title {
@@ -331,13 +336,13 @@
       }
 
       .contacts-btn:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .chat-header {
         padding: 16px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -354,7 +359,7 @@
       .contact-avatar {
         width: 40px;
         height: 40px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -368,31 +373,31 @@
       }
 
       .contact-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .contact-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
 
       .contact-avatar.jean {
-        background-image: url('../../assets/pictures/jean.jpeg');
+        background-image: url("../../assets/pictures/jean.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .contact-avatar.sophie {
-        background-image: url('../../assets/pictures/sophie.jpeg');
+        background-image: url("../../assets/pictures/sophie.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .contact-avatar.marie {
-        background-image: url('../../assets/pictures/marie.jpeg');
+        background-image: url("../../assets/pictures/marie.jpeg");
         background-color: transparent;
         font-size: 0;
       }
@@ -405,17 +410,17 @@
 
       .chat-header-status {
         font-size: 12px;
-        color: #10B981;
+        color: #10b981;
         display: flex;
         align-items: center;
         gap: 6px;
       }
 
       .chat-header-status::before {
-        content: '';
+        content: "";
         width: 8px;
         height: 8px;
-        background: #10B981;
+        background: #10b981;
         border-radius: 50%;
         display: inline-block;
       }
@@ -428,7 +433,7 @@
       .btn-icon {
         width: 44px;
         height: 44px;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
         background: white;
         border-radius: 6px;
         cursor: pointer;
@@ -440,7 +445,7 @@
       }
 
       .btn-icon:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -451,7 +456,7 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
-        background: #FAFAFA;
+        background: #fafafa;
       }
 
       .message-group {
@@ -464,7 +469,7 @@
       .message-avatar {
         width: 32px;
         height: 32px;
-        background: #10B981;
+        background: #10b981;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -480,13 +485,13 @@
       }
 
       .message-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .message-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
@@ -512,7 +517,7 @@
       }
 
       .message-time {
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       .message-text {
@@ -533,7 +538,7 @@
         background: white;
         padding: 10px 14px;
         border-radius: 8px;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
         display: flex;
         align-items: center;
         gap: 8px;
@@ -558,13 +563,13 @@
       }
 
       .message-own .message-text {
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
       }
 
       .message-status {
         font-size: 11px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-top: 4px;
         text-align: left;
         align-self: flex-start;
@@ -580,16 +585,16 @@
       }
 
       .message-status.status-read {
-        color: #3B82F6;
+        color: #3b82f6;
       }
 
       .status-read::after {
-        content: ' ✓✓';
+        content: " ✓✓";
       }
 
       .chat-input-area {
         padding: 12px 16px;
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid #e5e7eb;
         background: white;
       }
 
@@ -602,7 +607,7 @@
       .message-input {
         flex: 1;
         padding: 12px 16px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 16px;
         font-family: inherit;
@@ -613,14 +618,14 @@
 
       .message-input:focus {
         outline: none;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
       .send-btn {
         width: 44px;
         height: 44px;
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
         border: none;
         border-radius: 6px;
@@ -635,11 +640,11 @@
 
       .send-btn:hover,
       .send-btn:active {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       .send-btn:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -654,7 +659,7 @@
         border-radius: 20px 20px 0 0;
         z-index: 1000;
         transform: translateY(100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         flex-direction: column;
         box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
@@ -667,7 +672,7 @@
       .contacts-header {
         padding: 16px;
         padding-top: 24px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -675,14 +680,14 @@
       }
 
       .contacts-header::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 8px;
         left: 50%;
         transform: translateX(-50%);
         width: 40px;
         height: 4px;
-        background: #D1D5DB;
+        background: #d1d5db;
         border-radius: 2px;
       }
 
@@ -704,7 +709,7 @@
       .search-box {
         width: 100%;
         padding: 12px 16px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 16px;
         margin: 16px;
@@ -718,7 +723,7 @@
 
       .contact-item {
         padding: 16px;
-        border-bottom: 1px solid #F3F4F6;
+        border-bottom: 1px solid #f3f4f6;
         cursor: pointer;
         transition: all 0.3s;
         display: flex;
@@ -728,11 +733,11 @@
       }
 
       .contact-item:active {
-        background: #F9FAFB;
+        background: #f9fafb;
       }
 
       .contact-item.active {
-        background: #E0F2FE;
+        background: #e0f2fe;
       }
 
       .contact-info {
@@ -748,16 +753,16 @@
 
       .contact-status {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-top: 2px;
       }
 
       .status-online {
-        color: #10B981;
+        color: #10b981;
       }
 
       .status-badge {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
         width: 24px;
         height: 24px;
@@ -796,7 +801,7 @@
         border-radius: 20px 20px 0 0;
         z-index: 1000;
         transform: translateY(100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         flex-direction: column;
         box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
@@ -810,7 +815,7 @@
       .info-header {
         padding: 16px;
         padding-top: 24px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -822,14 +827,14 @@
       }
 
       .info-header::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 8px;
         left: 50%;
         transform: translateX(-50%);
         width: 40px;
         height: 4px;
-        background: #D1D5DB;
+        background: #d1d5db;
         border-radius: 2px;
       }
 
@@ -862,13 +867,13 @@
         text-align: center;
         margin-bottom: 32px;
         padding-bottom: 24px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
       }
 
       .info-profile-avatar {
         width: 80px;
         height: 80px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -883,25 +888,25 @@
       }
 
       .info-profile-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .info-profile-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
 
       .info-profile-avatar.jean {
-        background-image: url('../../assets/pictures/jean.jpeg');
+        background-image: url("../../assets/pictures/jean.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .info-profile-avatar.sophie {
-        background-image: url('../../assets/pictures/sophie.jpeg');
+        background-image: url("../../assets/pictures/sophie.jpeg");
         background-color: transparent;
         font-size: 0;
       }
@@ -915,17 +920,17 @@
 
       .info-profile-status {
         font-size: 14px;
-        color: #10B981;
+        color: #10b981;
         display: flex;
         align-items: center;
         gap: 6px;
       }
 
       .info-profile-status::before {
-        content: '';
+        content: "";
         width: 8px;
         height: 8px;
-        background: #10B981;
+        background: #10b981;
         border-radius: 50%;
         display: inline-block;
       }
@@ -937,7 +942,7 @@
       .info-section-title {
         font-size: 14px;
         font-weight: 600;
-        color: #6B7280;
+        color: #6b7280;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-bottom: 12px;
@@ -948,7 +953,7 @@
         align-items: center;
         gap: 12px;
         padding: 12px 0;
-        border-bottom: 1px solid #F3F4F6;
+        border-bottom: 1px solid #f3f4f6;
       }
 
       .info-item:last-child {
@@ -967,7 +972,7 @@
 
       .info-label {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-bottom: 2px;
       }
 
@@ -1011,11 +1016,8 @@
       }
 
       .status-sent::after {
-        content: ' ✓';
+        content: " ✓";
       }
-
-
-
 
       @media (min-width: 768px) {
         .mobile-header {
@@ -1050,7 +1052,6 @@
         }
       }
 
-
       @media (min-width: 1024px) {
         .mobile-header {
           padding: 24px 48px;
@@ -1075,33 +1076,31 @@
         }
       }
 
-
       button:disabled,
       button[disabled] {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: #9CA3AF;
+        background-color: #9ca3af;
       }
 
       .button-primary:disabled,
       .button-primary[disabled] {
-        background: #9CA3AF;
+        background: #9ca3af;
         color: white;
       }
 
       .button-secondary:disabled,
       .button-secondary[disabled] {
-        background: #F3F4F6;
-        color: #9CA3AF;
-        border-color: #D1D5DB;
+        background: #f3f4f6;
+        color: #9ca3af;
+        border-color: #d1d5db;
       }
 
       .button-danger:disabled,
       .button-danger[disabled] {
-        background: #FECACA;
-        color: #991B1B;
+        background: #fecaca;
+        color: #991b1b;
       }
-
 
       button.loading {
         cursor: not-allowed;
@@ -1110,7 +1109,7 @@
       }
 
       button.loading::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -1125,17 +1124,17 @@
       }
 
       .button-primary.loading {
-        background: #3B82F6;
+        background: #3b82f6;
         opacity: 0.8;
       }
 
       .button-secondary.loading {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .button-secondary.loading::after {
         border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3B82F6;
+        border-top-color: #3b82f6;
       }
 
       @keyframes spin {
@@ -1157,8 +1156,8 @@
       input:disabled,
       textarea:disabled,
       select:disabled {
-        background-color: #F3F4F6;
-        color: #9CA3AF;
+        background-color: #f3f4f6;
+        color: #9ca3af;
         cursor: not-allowed;
         opacity: 0.7;
       }
@@ -1167,8 +1166,8 @@
         text-align: center;
         margin-top: 32px;
         padding-top: 20px;
-        border-top: 1px solid #E5E7EB;
-        color: #94A3B8;
+        border-top: 1px solid #e5e7eb;
+        color: #94a3b8;
         font-size: 12px;
       }
 
@@ -1200,14 +1199,14 @@
   <body>
     <div class="mobile-header">
       <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-      <div class="mobile-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+      <div class="mobile-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
       <div class="mobile-header-spacer"></div>
     </div>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+        <div class="sidebar-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
         <button class="close-btn" id="closeBtn" aria-label="Fermer">✕</button>
       </div>
 
@@ -1215,11 +1214,11 @@
         <div class="nav-section">
           <div class="nav-label">Principal</div>
           <a href="dashboard.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span>
             Tableau de bord
           </a>
           <a href="chat.html" class="nav-item active" aria-current="page">
-            <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
             Messages
             <span class="notification-badge">3</span>
           </a>
@@ -1228,11 +1227,11 @@
         <div class="nav-section">
           <div class="nav-label">Outils</div>
           <a href="calendar.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span>
             Calendrier
           </a>
           <a href="tasks.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span>
             Tâches
           </a>
         </div>
@@ -1240,11 +1239,11 @@
         <div class="nav-section">
           <div class="nav-label">Compte</div>
           <a href="settings.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span>
             Paramètres
           </a>
           <a href="login.html" class="nav-item">
-            <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span>
+            <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span>
             Déconnexion
           </a>
         </div>
@@ -1357,15 +1356,14 @@
 
     <div class="chat-input-area">
       <div class="input-wrapper">
-        <button class="btn-icon" id="attachment-btn" onclick="handleAttachmentClick();">📎</button>
-        <input type="file" id="file-input" onchange="handleFileUpload(event)">
+        <button class="btn-icon" id="attachment-btn" onclick="handleAttachmentClick()">📎</button>
+        <input type="file" id="file-input" onchange="handleFileUpload(event)" />
         <textarea class="message-input" id="message-input" placeholder="Tapez votre message..." rows="1"></textarea>
-        <button class="send-btn" id="send-btn" onclick="handleMessageSend();">➤</button>
+        <button class="send-btn" id="send-btn" onclick="handleMessageSend()">➤</button>
       </div>
     </div>
 
     <div class="overlay" id="overlay"></div>
-
 
     <div class="info-panel" id="infoPanel">
       <div class="info-header">
@@ -1420,7 +1418,7 @@
         <div class="contacts-title">👥 Mes Contacts</div>
         <button class="close-contacts-btn" id="closeContactsBtn">✕</button>
       </div>
-      <input type="text" class="search-box" placeholder="Rechercher un contact...">
+      <input type="text" class="search-box" placeholder="Rechercher un contact..." />
       <div class="contacts-list">
         <div class="contact-item active">
           <div class="contact-avatar yann">YU</div>
@@ -1459,94 +1457,95 @@
     </div>
 
     <script>
-      const menuBtn = document.getElementById('menuBtn');
-      const closeBtn = document.getElementById('closeBtn');
-      const sidebar = document.getElementById('sidebar');
-      const sidebarOverlay = document.getElementById('sidebarOverlay');
+      const menuBtn = document.getElementById("menuBtn");
+      const closeBtn = document.getElementById("closeBtn");
+      const sidebar = document.getElementById("sidebar");
+      const sidebarOverlay = document.getElementById("sidebarOverlay");
 
-      menuBtn.addEventListener('click', () => {
-        sidebar.classList.add('open');
-        sidebarOverlay.classList.add('active');
+      menuBtn.addEventListener("click", () => {
+        sidebar.classList.add("open");
+        sidebarOverlay.classList.add("active");
       });
 
-      closeBtn.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-        sidebarOverlay.classList.remove('active');
+      closeBtn.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+        sidebarOverlay.classList.remove("active");
       });
 
-      sidebarOverlay.addEventListener('click', () => {
-        sidebar.classList.remove('open');
-        sidebarOverlay.classList.remove('active');
+      sidebarOverlay.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+        sidebarOverlay.classList.remove("active");
       });
 
-      const contactsBtn = document.getElementById('contactsBtn');
-      const closeContactsBtn = document.getElementById('closeContactsBtn');
-      const contactsPanel = document.getElementById('contactsPanel');
-      const infoBtn = document.getElementById('infoBtn');
-      const closeInfoBtn = document.getElementById('closeInfoBtn');
-      const infoPanel = document.getElementById('infoPanel');
-      const overlay = document.getElementById('overlay');
+      const contactsBtn = document.getElementById("contactsBtn");
+      const closeContactsBtn = document.getElementById("closeContactsBtn");
+      const contactsPanel = document.getElementById("contactsPanel");
+      const infoBtn = document.getElementById("infoBtn");
+      const closeInfoBtn = document.getElementById("closeInfoBtn");
+      const infoPanel = document.getElementById("infoPanel");
+      const overlay = document.getElementById("overlay");
 
       const openPanel = (panel) => {
-        panel.classList.add('open');
-        overlay.classList.add('active');
+        panel.classList.add("open");
+        overlay.classList.add("active");
       };
 
       const closePanel = (panel) => {
-        panel.classList.remove('open');
-        overlay.classList.remove('active');
+        panel.classList.remove("open");
+        overlay.classList.remove("active");
       };
 
-      contactsBtn.addEventListener('click', () => {
+      contactsBtn.addEventListener("click", () => {
         closePanel(infoPanel);
         openPanel(contactsPanel);
       });
 
-      closeContactsBtn.addEventListener('click', () => {
+      closeContactsBtn.addEventListener("click", () => {
         closePanel(contactsPanel);
       });
 
-      infoBtn.addEventListener('click', () => {
+      infoBtn.addEventListener("click", () => {
         closePanel(contactsPanel);
         openPanel(infoPanel);
       });
 
-      closeInfoBtn.addEventListener('click', () => {
+      closeInfoBtn.addEventListener("click", () => {
         closePanel(infoPanel);
       });
 
-      overlay.addEventListener('click', () => {
+      overlay.addEventListener("click", () => {
         closePanel(contactsPanel);
         closePanel(infoPanel);
       });
 
-      const handleAttachmentClick = () => document.getElementById('file-input').click();
+      const handleAttachmentClick = () => document.getElementById("file-input").click();
 
       const handleMessageSend = () => {
-        document.querySelector('.hidden-auto-message').classList.add('visible');
-        document.querySelector('.messages').scrollTop = document.querySelector('.messages').scrollHeight;
+        document.querySelector(".hidden-auto-message").classList.add("visible");
+        document.querySelector(".messages").scrollTop = document.querySelector(".messages").scrollHeight;
       };
 
       const handleFileUpload = (event) => {
         const fileData = {
-          input: document.getElementById('file-input'),
-          fileMessage: document.querySelector('.hidden-file-message'),
-          fileNameSpan: document.querySelector('.message-file-name'),
-          messages: document.querySelector('.messages'),
-          get file() { return this.input.files[0]; },
-          get name() { return this.file?.name || ''; }
+          input: document.getElementById("file-input"),
+          fileMessage: document.querySelector(".hidden-file-message"),
+          fileNameSpan: document.querySelector(".message-file-name"),
+          messages: document.querySelector(".messages"),
+          get file() {
+            return this.input.files[0];
+          },
+          get name() {
+            return this.file?.name || "";
+          },
         };
 
         if (fileData.fileNameSpan && fileData.fileMessage) {
           fileData.fileNameSpan.textContent = fileData.name;
-          fileData.fileMessage.classList.add('visible');
+          fileData.fileMessage.classList.add("visible");
           fileData.messages.scrollTop = fileData.messages.scrollHeight;
         }
       };
     </script>
-    <div class="copyright">
-      © 2026 Learn@Home. All rights reserved.
-    </div>
+    <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
   </body>
-
 </html>

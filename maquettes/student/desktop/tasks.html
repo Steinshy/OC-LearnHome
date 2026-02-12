@@ -1,20 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn@Home - Gestion des Tâches | Maquette Desktop</title>
     <style>
       :root {
-        --primary: #3B82F6;
-        --primary-dark: #1E40AF;
-        --danger: #EF4444;
-        --danger-dark: #DC2626;
-        --bg: #F3F4F6;
+        --primary: #3b82f6;
+        --primary-dark: #1e40af;
+        --danger: #ef4444;
+        --danger-dark: #dc2626;
+        --bg: #f3f4f6;
         --text: #111827;
-        --text-muted: #6B7280;
-        --border: #E5E7EB;
+        --text-muted: #6b7280;
+        --border: #e5e7eb;
       }
 
       * {
@@ -24,7 +23,13 @@
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
         background: var(--bg);
       }
 
@@ -33,7 +38,6 @@
         grid-template-columns: 250px 1fr;
         min-height: 100vh;
       }
-
 
       .nav-sidebar {
         background: white;
@@ -75,7 +79,7 @@
       .nav-label {
         font-size: 12px;
         font-weight: 600;
-        color: #9CA3AF;
+        color: #9ca3af;
         text-transform: uppercase;
         padding: 0 24px;
         margin-bottom: 8px;
@@ -98,7 +102,7 @@
       }
 
       .nav-item.active {
-        background: #E0F2FE;
+        background: #e0f2fe;
         color: var(--primary);
         border-right: 4px solid var(--primary);
         font-weight: 600;
@@ -118,7 +122,7 @@
       }
 
       .notification-badge {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
         width: 24px;
         height: 24px;
@@ -167,7 +171,7 @@
       }
 
       .user-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
@@ -208,7 +212,6 @@
         color: var(--text-muted);
       }
 
-
       .main {
         grid-column: 2;
         padding: 32px;
@@ -239,12 +242,12 @@
       }
 
       .button-primary {
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
       }
 
       .button-primary:hover {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       .controls {
@@ -268,32 +271,32 @@
 
       .filter-btn {
         padding: 8px 16px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         background: white;
         border-radius: 6px;
         cursor: pointer;
         font-size: 14px;
         transition: all 0.3s;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .filter-btn:hover,
       .filter-btn.active {
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
       }
 
       .search-box {
         padding: 10px 12px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 14px;
         min-width: 200px;
       }
 
       .search-box::placeholder {
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       .search-box::placeholder {
@@ -312,7 +315,7 @@
       .dropdown-toggle {
         padding: 10px 12px;
         padding-right: 32px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 14px;
         background: white;
@@ -328,7 +331,7 @@
       }
 
       .dropdown-toggle:hover {
-        border-color: #9CA3AF;
+        border-color: #9ca3af;
       }
 
       .dropdown-toggle:focus {
@@ -338,7 +341,7 @@
       }
 
       .dropdown-toggle::after {
-        content: '';
+        content: "";
         width: 12px;
         height: 12px;
         background-image: url("../../assets/icons/chevron-down.svg");
@@ -359,9 +362,11 @@
         left: 0;
         right: 0;
         background: white;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
         z-index: 1000;
         overflow: hidden;
         max-height: 200px;
@@ -403,7 +408,7 @@
       }
 
       .dropdown-item.selected::before {
-        content: '✓';
+        content: "✓";
         font-weight: 700;
       }
 
@@ -423,38 +428,38 @@
         gap: 16px;
         align-items: center;
         transition: all 0.3s;
-        border-left: 4px solid #E5E7EB;
+        border-left: 4px solid #e5e7eb;
       }
 
       .task-checkbox {
         display: none;
       }
 
-      .task-checkbox:checked+.checkbox {
-        background: #3B82F6;
-        border-color: #3B82F6;
+      .task-checkbox:checked + .checkbox {
+        background: #3b82f6;
+        border-color: #3b82f6;
         color: white;
       }
 
-      .task-checkbox:checked+.checkbox::after {
-        content: '';
+      .task-checkbox:checked + .checkbox::after {
+        content: "";
         width: 16px;
         height: 16px;
         background-color: white;
-        mask-image: url('../../assets/icons/check.svg');
+        mask-image: url("../../assets/icons/check.svg");
         mask-size: contain;
         mask-repeat: no-repeat;
         mask-position: center;
-        -webkit-mask-image: url('../../assets/icons/check.svg');
+        -webkit-mask-image: url("../../assets/icons/check.svg");
         -webkit-mask-size: contain;
         -webkit-mask-repeat: no-repeat;
         -webkit-mask-position: center;
         display: block;
       }
 
-      .task-checkbox:checked~.task-content .task-title {
+      .task-checkbox:checked ~ .task-content .task-title {
         text-decoration: line-through;
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       .task-card:hover {
@@ -463,21 +468,21 @@
       }
 
       .task-card.status-pending {
-        border-left-color: #9CA3AF;
+        border-left-color: #9ca3af;
       }
 
       .task-card.status-inprogress {
-        border-left-color: #3B82F6;
+        border-left-color: #3b82f6;
       }
 
       .task-card.status-done {
-        border-left-color: #10B981;
+        border-left-color: #10b981;
       }
 
       .checkbox {
         width: 24px;
         height: 24px;
-        border: 2px solid #D1D5DB;
+        border: 2px solid #d1d5db;
         border-radius: 4px;
         cursor: pointer;
         display: flex;
@@ -487,7 +492,7 @@
       }
 
       .checkbox:hover {
-        border-color: #3B82F6;
+        border-color: #3b82f6;
       }
 
       .task-content {
@@ -504,7 +509,7 @@
 
       .task-description {
         font-size: 14px;
-        color: #6B7280;
+        color: #6b7280;
         line-height: 1.4;
       }
 
@@ -512,7 +517,7 @@
         display: flex;
         gap: 16px;
         font-size: 13px;
-        color: #9CA3AF;
+        color: #9ca3af;
         flex-wrap: wrap;
       }
 
@@ -531,17 +536,17 @@
       }
 
       .priority-high {
-        background: #FEE2E2;
-        color: #991B1B;
+        background: #fee2e2;
+        color: #991b1b;
       }
 
       .priority-medium {
-        background: #FEF3C7;
-        color: #92400E;
+        background: #fef3c7;
+        color: #92400e;
       }
 
       .priority-low {
-        background: #DCFCE7;
+        background: #dcfce7;
         color: #166534;
       }
 
@@ -558,21 +563,21 @@
       }
 
       .status-pending {
-        background: #F3F4F6;
+        background: #f3f4f6;
         color: #374151;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
       }
 
       .status-inprogress {
-        background: #DBEAFE;
-        color: #1E40AF;
-        border: 1px solid #93C5FD;
+        background: #dbeafe;
+        color: #1e40af;
+        border: 1px solid #93c5fd;
       }
 
       .status-done {
-        background: #DCFCE7;
+        background: #dcfce7;
         color: #166534;
-        border: 1px solid #BBF7D0;
+        border: 1px solid #bbf7d0;
       }
 
       .task-actions {
@@ -583,7 +588,7 @@
       .action-btn {
         width: 36px;
         height: 36px;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
         background: white;
         border-radius: 6px;
         cursor: pointer;
@@ -614,8 +619,8 @@
       }
 
       .action-btn:hover {
-        background: #F3F4F6;
-        border-color: #D1D5DB;
+        background: #f3f4f6;
+        border-color: #d1d5db;
       }
 
       @media (max-width: 1024px) {
@@ -634,8 +639,8 @@
         text-align: center;
         margin-top: 32px;
         padding-top: 20px;
-        border-top: 1px solid #E5E7EB;
-        color: #94A3B8;
+        border-top: 1px solid #e5e7eb;
+        color: #94a3b8;
         font-size: 12px;
       }
 
@@ -673,7 +678,7 @@
 
       .toast-message {
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       @keyframes slideIn {
@@ -700,33 +705,31 @@
         }
       }
 
-
       button:disabled,
       button[disabled] {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: #9CA3AF;
+        background-color: #9ca3af;
       }
 
       .button-primary:disabled,
       .button-primary[disabled] {
-        background: #9CA3AF;
+        background: #9ca3af;
         color: white;
       }
 
       .button-secondary:disabled,
       .button-secondary[disabled] {
-        background: #F3F4F6;
-        color: #9CA3AF;
-        border-color: #D1D5DB;
+        background: #f3f4f6;
+        color: #9ca3af;
+        border-color: #d1d5db;
       }
 
       .button-danger:disabled,
       .button-danger[disabled] {
-        background: #FECACA;
-        color: #991B1B;
+        background: #fecaca;
+        color: #991b1b;
       }
-
 
       button.loading {
         cursor: not-allowed;
@@ -735,7 +738,7 @@
       }
 
       button.loading::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -750,17 +753,17 @@
       }
 
       .button-primary.loading {
-        background: #3B82F6;
+        background: #3b82f6;
         opacity: 0.8;
       }
 
       .button-secondary.loading {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .button-secondary.loading::after {
         border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3B82F6;
+        border-top-color: #3b82f6;
       }
 
       @keyframes spin {
@@ -782,8 +785,8 @@
       input:disabled,
       textarea:disabled,
       select:disabled {
-        background-color: #F3F4F6;
-        color: #9CA3AF;
+        background-color: #f3f4f6;
+        color: #9ca3af;
         cursor: not-allowed;
         opacity: 0.7;
       }
@@ -856,7 +859,7 @@
         border: none;
         font-size: 24px;
         cursor: pointer;
-        color: #6B7280;
+        color: #6b7280;
         padding: 0;
         width: 32px;
         height: 32px;
@@ -868,7 +871,7 @@
       }
 
       .modal-close:hover {
-        background: #F3F4F6;
+        background: #f3f4f6;
         color: #111827;
       }
 
@@ -885,15 +888,15 @@
       }
 
       .form-label.required::after {
-        content: ' *';
-        color: #EF4444;
+        content: " *";
+        color: #ef4444;
       }
 
       .form-input,
       .form-textarea {
         width: 100%;
         padding: 10px 12px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 14px;
         font-family: inherit;
@@ -903,13 +906,13 @@
       .form-input:focus,
       .form-textarea:focus {
         outline: none;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
       .form-input.error,
       .form-textarea.error {
-        border-color: #EF4444;
+        border-color: #ef4444;
       }
 
       .form-input.error:focus,
@@ -924,29 +927,29 @@
 
       .form-error {
         font-size: 13px;
-        color: #EF4444;
+        color: #ef4444;
         margin-top: 6px;
         display: none;
       }
 
-      .form-input.error~.form-error,
-      .form-textarea.error~.form-error {
+      .form-input.error ~ .form-error,
+      .form-textarea.error ~ .form-error {
         display: block;
       }
 
       .char-counter {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-top: 6px;
         text-align: right;
       }
 
       .char-counter.warning {
-        color: #F59E0B;
+        color: #f59e0b;
       }
 
       .char-counter.error {
-        color: #EF4444;
+        color: #ef4444;
       }
 
       .modal-footer {
@@ -958,23 +961,23 @@
 
       .button-secondary {
         padding: 10px 16px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         background: white;
         border-radius: 6px;
         cursor: pointer;
         font-weight: 600;
         font-size: 14px;
         transition: all 0.3s;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .button-secondary:hover {
-        background: #F3F4F6;
-        border-color: #9CA3AF;
+        background: #f3f4f6;
+        border-color: #9ca3af;
       }
 
       .button-secondary:active {
-        background: #E5E7EB;
+        background: #e5e7eb;
       }
 
       .nav-sidebar-logo img {
@@ -1005,31 +1008,44 @@
     <div class="page-layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span> Tableau de bord</a>
-            <a href="chat.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span> Messages<span
-                class="notification-badge">5</span></a>
+            <a href="dashboard.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
+              de bord</a
+            >
+            <a href="chat.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
+              Messages<span class="notification-badge">5</span></a
+            >
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span> Calendrier</a>
-            <a href="tasks.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span>
-              Tâches</a>
+            <a href="calendar.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a
+            >
+            <a href="tasks.html" class="nav-item active" aria-current="page"
+              ><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a
+            >
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span> Paramètres</a>
-            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span> Déconnexion</a>
+            <a href="settings.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a
+            >
+            <a href="login.html" class="nav-item"
+              ><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span> Déconnexion</a
+            >
           </div>
         </nav>
 
         <div class="user-profile">
-          <div class="user-avatar antoine">AK
+          <div class="user-avatar antoine">
+            AK
             <span class="user-avatar-badge">5</span>
           </div>
           <div class="user-info">
@@ -1054,11 +1070,9 @@
           </div>
 
           <div class="tasks-toolbar">
-            <input type="text" class="search-box" placeholder="Rechercher une tâche...">
+            <input type="text" class="search-box" placeholder="Rechercher une tâche..." />
             <div class="custom-dropdown">
-              <button type="button" class="dropdown-toggle" tabindex="0">
-                Trier par: Date
-              </button>
+              <button type="button" class="dropdown-toggle" tabindex="0">Trier par: Date</button>
               <div class="dropdown-menu">
                 <button type="button" class="dropdown-item selected" tabindex="0">Trier par: Date</button>
                 <button type="button" class="dropdown-item" tabindex="0">Trier par: Priorité</button>
@@ -1070,37 +1084,40 @@
 
         <div class="tasks-container">
           <div class="task-card status-pending">
-            <input type="checkbox" class="task-checkbox" id="task1">
+            <input type="checkbox" class="task-checkbox" id="task1" />
             <label for="task1" class="checkbox"></label>
             <div class="task-content">
               <div class="task-title">Équations du second degré - Exercices</div>
               <div class="task-description">Compléter les 10 exercices de la feuille distribuée par Yann</div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> Échéance: 10 janvier 2026</div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Créé par: Yann Uliong</div>
+                <div class="meta-item">
+                  <img src="../../assets/icons/calendar.svg" alt="" /> Échéance: 10 janvier 2026
+                </div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Créé par: Yann Uliong</div>
               </div>
             </div>
             <div class="priority-badge priority-high">Haute</div>
             <div class="status-badge status-pending">À faire</div>
             <div class="task-actions">
               <button class="action-btn" aria-label="Modifier la tâche">
-                <img src="../../assets/icons/pencil.svg" alt="">
+                <img src="../../assets/icons/pencil.svg" alt="" />
               </button>
               <button class="action-btn" aria-label="Supprimer la tâche">
-                <img src="../../assets/icons/trash-2.svg" alt="">
+                <img src="../../assets/icons/trash-2.svg" alt="" />
               </button>
             </div>
           </div>
 
           <div class="task-card status-inprogress">
-            <input type="checkbox" class="task-checkbox" id="task2">
+            <input type="checkbox" class="task-checkbox" id="task2" />
             <label for="task2" class="checkbox"></label>
             <div class="task-content">
               <div class="task-title">Lecture du chapitre 5 - Français</div>
-              <div class="task-description">Lire "Le Seigneur des Anneaux" chapitre 5 et faire un résumé de 2 pages
+              <div class="task-description">
+                Lire "Le Seigneur des Anneaux" chapitre 5 et faire un résumé de 2 pages
               </div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 12 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 12 janvier 2026</div>
                 <div class="meta-item">👤 Auto-créée</div>
               </div>
             </div>
@@ -1108,22 +1125,22 @@
             <div class="status-badge status-inprogress">En cours</div>
             <div class="task-actions">
               <button class="action-btn" aria-label="Modifier la tâche">
-                <img src="../../assets/icons/pencil.svg" alt="">
+                <img src="../../assets/icons/pencil.svg" alt="" />
               </button>
               <button class="action-btn" aria-label="Supprimer la tâche">
-                <img src="../../assets/icons/trash-2.svg" alt="">
+                <img src="../../assets/icons/trash-2.svg" alt="" />
               </button>
             </div>
           </div>
 
           <div class="task-card status-done">
-            <input type="checkbox" class="task-checkbox" id="task3" checked>
+            <input type="checkbox" class="task-checkbox" id="task3" checked />
             <label for="task3" class="checkbox"></label>
             <div class="task-content">
               <div class="task-title">Révision vocabulaire anglais</div>
               <div class="task-description">Apprendre 50 nouveaux mots de vocabulaire pour le test</div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 5 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 5 janvier 2026</div>
                 <div class="meta-item">👤 Auto-créée</div>
               </div>
             </div>
@@ -1131,47 +1148,49 @@
             <div class="status-badge status-done">Complétée</div>
             <div class="task-actions">
               <button class="action-btn" aria-label="Modifier la tâche">
-                <img src="../../assets/icons/pencil.svg" alt="">
+                <img src="../../assets/icons/pencil.svg" alt="" />
               </button>
               <button class="action-btn" aria-label="Supprimer la tâche">
-                <img src="../../assets/icons/trash-2.svg" alt="">
+                <img src="../../assets/icons/trash-2.svg" alt="" />
               </button>
             </div>
           </div>
 
           <div class="task-card status-pending">
-            <input type="checkbox" class="task-checkbox" id="task4">
+            <input type="checkbox" class="task-checkbox" id="task4" />
             <label for="task4" class="checkbox"></label>
             <div class="task-content">
               <div class="task-title">Rapport de Sciences - Expérience sur la photosynthèse</div>
-              <div class="task-description">Rédiger un rapport détaillé incluant hypothèse, procédure, résultats et
-                conclusions</div>
+              <div class="task-description">
+                Rédiger un rapport détaillé incluant hypothèse, procédure, résultats et conclusions
+              </div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 15 janvier 2026</div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Yann Uliong</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 15 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Yann Uliong</div>
               </div>
             </div>
             <div class="priority-badge priority-high">Haute</div>
             <div class="status-badge status-pending">À faire</div>
             <div class="task-actions">
               <button class="action-btn" aria-label="Modifier la tâche">
-                <img src="../../assets/icons/pencil.svg" alt="">
+                <img src="../../assets/icons/pencil.svg" alt="" />
               </button>
               <button class="action-btn" aria-label="Supprimer la tâche">
-                <img src="../../assets/icons/trash-2.svg" alt="">
+                <img src="../../assets/icons/trash-2.svg" alt="" />
               </button>
             </div>
           </div>
 
           <div class="task-card status-pending">
-            <input type="checkbox" class="task-checkbox" id="task5">
+            <input type="checkbox" class="task-checkbox" id="task5" />
             <label for="task5" class="checkbox"></label>
             <div class="task-content">
               <div class="task-title">Projet: Présentation Histoire - Révolution française</div>
-              <div class="task-description">Créer une présentation PowerPoint de 15-20 diapositives sur la Révolution
-                française</div>
+              <div class="task-description">
+                Créer une présentation PowerPoint de 15-20 diapositives sur la Révolution française
+              </div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 20 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 20 janvier 2026</div>
                 <div class="meta-item">👤 Auto-créée</div>
               </div>
             </div>
@@ -1179,42 +1198,41 @@
             <div class="status-badge status-pending">À faire</div>
             <div class="task-actions">
               <button class="action-btn" aria-label="Modifier la tâche">
-                <img src="../../assets/icons/pencil.svg" alt="">
+                <img src="../../assets/icons/pencil.svg" alt="" />
               </button>
               <button class="action-btn" aria-label="Supprimer la tâche">
-                <img src="../../assets/icons/trash-2.svg" alt="">
+                <img src="../../assets/icons/trash-2.svg" alt="" />
               </button>
             </div>
           </div>
 
           <div class="task-card status-done">
-            <input type="checkbox" class="task-checkbox" id="task6" checked>
+            <input type="checkbox" class="task-checkbox" id="task6" checked />
             <label for="task6" class="checkbox"></label>
             <div class="task-content">
               <div class="task-title">Quiz - Géométrie (Chapitre 3)</div>
-              <div class="task-description">Répondre aux 20 questions du quiz en ligne sur les triangles et leur
-                propriétés</div>
+              <div class="task-description">
+                Répondre aux 20 questions du quiz en ligne sur les triangles et leur propriétés
+              </div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 8 janvier 2026</div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Système</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 8 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Système</div>
               </div>
             </div>
             <div class="priority-badge priority-medium">Normal</div>
             <div class="status-badge status-done">Complétée</div>
             <div class="task-actions">
               <button class="action-btn" aria-label="Modifier la tâche">
-                <img src="../../assets/icons/pencil.svg" alt="">
+                <img src="../../assets/icons/pencil.svg" alt="" />
               </button>
               <button class="action-btn" aria-label="Supprimer la tâche">
-                <img src="../../assets/icons/trash-2.svg" alt="">
+                <img src="../../assets/icons/trash-2.svg" alt="" />
               </button>
             </div>
           </div>
         </div>
 
-        <div class="copyright">
-          © 2026 Learn@Home. All rights reserved.
-        </div>
+        <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
       </main>
     </div>
 
@@ -1228,28 +1246,40 @@
         <form id="taskForm">
           <div class="form-group">
             <label for="taskTitle" class="form-label required">Titre</label>
-            <input type="text" id="taskTitle" class="form-input" placeholder="Ex: Équations du second degré"
-              maxlength="100" required>
+            <input
+              type="text"
+              id="taskTitle"
+              class="form-input"
+              placeholder="Ex: Équations du second degré"
+              maxlength="100"
+              required
+            />
             <div class="char-counter"><span id="titleCounter">0</span>/100</div>
             <div class="form-error" id="titleError"></div>
           </div>
 
           <div class="form-group">
             <label for="taskDescription" class="form-label">Description</label>
-            <textarea id="taskDescription" class="form-textarea"
-              placeholder="Ex: Compléter les 10 exercices de la feuille distribuée..." maxlength="500"></textarea>
+            <textarea
+              id="taskDescription"
+              class="form-textarea"
+              placeholder="Ex: Compléter les 10 exercices de la feuille distribuée..."
+              maxlength="500"
+            ></textarea>
             <div class="char-counter"><span id="descCounter">0</span>/500</div>
             <div class="form-error" id="descError"></div>
           </div>
 
           <div class="form-group">
             <label for="taskDate" class="form-label required">Date d'échéance</label>
-            <input type="date" id="taskDate" class="form-input" required>
+            <input type="date" id="taskDate" class="form-input" required />
             <div class="form-error" id="dateError"></div>
           </div>
 
           <div class="modal-footer">
-            <button type="submit" class="button button-primary" id="submitTaskBtn" data-action="create">Créer la tâche</button>
+            <button type="submit" class="button button-primary" id="submitTaskBtn" data-action="create">
+              Créer la tâche
+            </button>
             <button type="button" class="button-secondary" id="cancelTaskBtn">Annuler</button>
           </div>
         </form>
@@ -1259,42 +1289,54 @@
     <div id="toast-container" class="toast-container"></div>
     <script>
       const showToast = (icon, title, message) => {
-        const container = document.getElementById('toast-container');
-        const toast = document.createElement('div');
-        toast.className = 'toast';
+        const container = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+        toast.className = "toast";
         toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
         container.appendChild(toast);
-        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
+        setTimeout(() => {
+          toast.classList.add("dismissing");
+          setTimeout(() => toast.remove(), 500);
+        }, 2700);
       };
 
       // Task modal logic
-      const taskModal = document.getElementById('taskModal');
-      const taskForm = document.getElementById('taskForm');
-      const addTaskBtn = document.getElementById('addTaskBtn');
-      const closeTaskModal = document.getElementById('closeTaskModal');
-      const cancelTaskBtn = document.getElementById('cancelTaskBtn');
-      const submitTaskBtn = document.getElementById('submitTaskBtn');
-      const modalTitle = document.getElementById('modalTitle');
-      const taskTitle = document.getElementById('taskTitle');
-      const taskDescription = document.getElementById('taskDescription');
-      const taskDate = document.getElementById('taskDate');
-      const titleCounter = document.getElementById('titleCounter');
-      const descCounter = document.getElementById('descCounter');
+      const taskModal = document.getElementById("taskModal");
+      const taskForm = document.getElementById("taskForm");
+      const addTaskBtn = document.getElementById("addTaskBtn");
+      const closeTaskModal = document.getElementById("closeTaskModal");
+      const cancelTaskBtn = document.getElementById("cancelTaskBtn");
+      const submitTaskBtn = document.getElementById("submitTaskBtn");
+      const modalTitle = document.getElementById("modalTitle");
+      const taskTitle = document.getElementById("taskTitle");
+      const taskDescription = document.getElementById("taskDescription");
+      const taskDate = document.getElementById("taskDate");
+      const titleCounter = document.getElementById("titleCounter");
+      const descCounter = document.getElementById("descCounter");
 
       // Set minimum date to today
       const today = new Date();
-      const todayStr = today.toISOString().split('T')[0];
+      const todayStr = today.toISOString().split("T")[0];
       taskDate.min = todayStr;
 
       // Parse deadline date from French format to ISO format
       const parseDeadlineDate = (dateString) => {
         const months = {
-          'janvier': '01', 'février': '02', 'mars': '03', 'avril': '04',
-          'mai': '05', 'juin': '06', 'juillet': '07', 'août': '08',
-          'septembre': '09', 'octobre': '10', 'novembre': '11', 'décembre': '12'
+          janvier: "01",
+          février: "02",
+          mars: "03",
+          avril: "04",
+          mai: "05",
+          juin: "06",
+          juillet: "07",
+          août: "08",
+          septembre: "09",
+          octobre: "10",
+          novembre: "11",
+          décembre: "12",
         };
-        const parts = dateString.trim().split(' ');
-        const day = parts[0].padStart(2, '0');
+        const parts = dateString.trim().split(" ");
+        const day = parts[0].padStart(2, "0");
         const month = months[parts[1].toLowerCase()];
         const year = parts[2];
         return `${year}-${month}-${day}`;
@@ -1302,46 +1344,46 @@
 
       // Open modal for create
       const openTaskModal = () => {
-        taskModal.dataset.mode = 'create';
-        modalTitle.textContent = 'Ajouter une tâche';
-        submitTaskBtn.textContent = 'Créer la tâche';
-        submitTaskBtn.dataset.action = 'create';
-        taskModal.classList.add('active');
+        taskModal.dataset.mode = "create";
+        modalTitle.textContent = "Ajouter une tâche";
+        submitTaskBtn.textContent = "Créer la tâche";
+        submitTaskBtn.dataset.action = "create";
+        taskModal.classList.add("active");
         taskTitle.focus();
       };
 
       // Open modal for edit
       const openModalForEdit = (taskCard) => {
-        const cardTitle = taskCard.querySelector('.task-title').textContent;
-        const cardDescription = taskCard.querySelector('.task-description').textContent;
-        const deadlineMetaItem = taskCard.querySelector('.task-meta .meta-item:first-child').textContent;
-        const deadlineText = deadlineMetaItem.replace(/Échéance:\s*/i, '').trim();
-        
+        const cardTitle = taskCard.querySelector(".task-title").textContent;
+        const cardDescription = taskCard.querySelector(".task-description").textContent;
+        const deadlineMetaItem = taskCard.querySelector(".task-meta .meta-item:first-child").textContent;
+        const deadlineText = deadlineMetaItem.replace(/Échéance:\s*/i, "").trim();
+
         taskTitle.value = cardTitle;
         taskDescription.value = cardDescription;
         taskDate.value = parseDeadlineDate(deadlineText);
-        
+
         titleCounter.textContent = cardTitle.length;
         descCounter.textContent = cardDescription.length;
-        
-        taskModal.dataset.mode = 'edit';
-        modalTitle.textContent = 'Modifier la tâche';
-        submitTaskBtn.textContent = 'Enregistrer les modifications';
-        submitTaskBtn.dataset.action = 'edit';
-        
-        taskModal.classList.add('active');
+
+        taskModal.dataset.mode = "edit";
+        modalTitle.textContent = "Modifier la tâche";
+        submitTaskBtn.textContent = "Enregistrer les modifications";
+        submitTaskBtn.dataset.action = "edit";
+
+        taskModal.classList.add("active");
         taskTitle.focus();
       };
 
       // Close modal
       const closeModal = () => {
         if (taskForm.hasUnsavedChanges()) {
-          if (confirm('Vous avez des modifications non enregistrées. Continuer ?')) {
-            taskModal.classList.remove('active');
+          if (confirm("Vous avez des modifications non enregistrées. Continuer ?")) {
+            taskModal.classList.remove("active");
             resetForm();
           }
         } else {
-          taskModal.classList.remove('active');
+          taskModal.classList.remove("active");
           resetForm();
         }
       };
@@ -1349,60 +1391,58 @@
       // Reset form
       const resetForm = () => {
         taskForm.reset();
-        document.querySelectorAll('.form-input, .form-textarea').forEach(input => {
-          input.classList.remove('error');
+        document.querySelectorAll(".form-input, .form-textarea").forEach((input) => {
+          input.classList.remove("error");
         });
-        document.querySelectorAll('.form-error').forEach(error => {
-          error.textContent = '';
+        document.querySelectorAll(".form-error").forEach((error) => {
+          error.textContent = "";
         });
-        titleCounter.textContent = '0';
-        descCounter.textContent = '0';
-        taskModal.dataset.mode = 'create';
-        modalTitle.textContent = 'Ajouter une tâche';
-        submitTaskBtn.textContent = 'Créer la tâche';
-        submitTaskBtn.dataset.action = 'create';
+        titleCounter.textContent = "0";
+        descCounter.textContent = "0";
+        taskModal.dataset.mode = "create";
+        modalTitle.textContent = "Ajouter une tâche";
+        submitTaskBtn.textContent = "Créer la tâche";
+        submitTaskBtn.dataset.action = "create";
       };
 
       // Track unsaved changes
       const markFormDirty = () => {
         taskForm.hasUnsavedChanges = () => {
-          return taskTitle.value.trim() !== '' ||
-            taskDescription.value.trim() !== '' ||
-            taskDate.value !== '';
+          return taskTitle.value.trim() !== "" || taskDescription.value.trim() !== "" || taskDate.value !== "";
         };
       };
 
-      taskTitle.addEventListener('input', () => {
+      taskTitle.addEventListener("input", () => {
         titleCounter.textContent = taskTitle.value.length;
         markFormDirty();
         if (taskTitle.value.length >= 100) {
-          showFieldError('title', 'Le titre ne doit pas dépasser 100 caractères');
+          showFieldError("title", "Le titre ne doit pas dépasser 100 caractères");
         } else {
-          clearError('title');
+          clearError("title");
         }
       });
 
-      taskDescription.addEventListener('input', () => {
+      taskDescription.addEventListener("input", () => {
         descCounter.textContent = taskDescription.value.length;
         markFormDirty();
         if (taskDescription.value.length >= 500) {
-          showFieldError('description', 'La description ne doit pas dépasser 500 caractères');
+          showFieldError("description", "La description ne doit pas dépasser 500 caractères");
         } else {
-          clearError('description');
+          clearError("description");
         }
       });
 
-      taskDate.addEventListener('change', () => {
+      taskDate.addEventListener("change", () => {
         markFormDirty();
-        clearError('date');
+        clearError("date");
       });
 
       // Clear error message
       const clearError = (fieldName) => {
         const field = document.getElementById(`task${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}`);
         const errorEl = document.getElementById(`${fieldName}Error`);
-        field.classList.remove('error');
-        errorEl.textContent = '';
+        field.classList.remove("error");
+        errorEl.textContent = "";
       };
 
       // Validate form
@@ -1411,30 +1451,30 @@
 
         // Title validation
         const trimmedTitle = taskTitle.value.trim();
-        if (trimmedTitle === '') {
-          showFieldError('title', 'Le titre de la tâche est obligatoire');
+        if (trimmedTitle === "") {
+          showFieldError("title", "Le titre de la tâche est obligatoire");
           isValid = false;
         } else if (taskTitle.value.length > 100) {
-          showFieldError('title', 'Le titre ne doit pas dépasser 100 caractères');
+          showFieldError("title", "Le titre ne doit pas dépasser 100 caractères");
           isValid = false;
         }
 
         // Description validation
         if (taskDescription.value.length > 500) {
-          showFieldError('description', 'La description ne doit pas dépasser 500 caractères');
+          showFieldError("description", "La description ne doit pas dépasser 500 caractères");
           isValid = false;
         }
 
         // Date validation
-        if (taskDate.value === '') {
-          showFieldError('date', 'Une date d\'échéance est obligatoire');
+        if (taskDate.value === "") {
+          showFieldError("date", "Une date d'échéance est obligatoire");
           isValid = false;
         } else {
           const selectedDate = new Date(taskDate.value);
           const today = new Date();
           today.setHours(0, 0, 0, 0);
           if (selectedDate < today) {
-            showFieldError('date', 'La date d\'échéance ne peut pas être dans le passé');
+            showFieldError("date", "La date d'échéance ne peut pas être dans le passé");
             isValid = false;
           }
         }
@@ -1446,12 +1486,12 @@
       const showFieldError = (fieldName, message) => {
         const field = document.getElementById(`task${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}`);
         const errorEl = document.getElementById(`${fieldName}Error`);
-        field.classList.add('error');
+        field.classList.add("error");
         errorEl.textContent = message;
       };
 
       // Submit form
-      taskForm.addEventListener('submit', (e) => {
+      taskForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
         if (!validateForm()) {
@@ -1459,24 +1499,24 @@
         }
 
         // Show success notification
-        if (taskModal.dataset.mode === 'edit') {
-          showToast('✏️', 'Tâche modifiée', 'Les modifications ont été enregistrées');
+        if (taskModal.dataset.mode === "edit") {
+          showToast("✏️", "Tâche modifiée", "Les modifications ont été enregistrées");
         } else {
-          showToast('✅', 'Tâche créée', 'Votre nouvelle tâche a été ajoutée avec succès');
+          showToast("✅", "Tâche créée", "Votre nouvelle tâche a été ajoutée avec succès");
         }
 
         // Close modal and reset form
-        taskModal.classList.remove('active');
+        taskModal.classList.remove("active");
         resetForm();
       });
 
       // Event listeners
-      addTaskBtn.addEventListener('click', openTaskModal);
-      closeTaskModal.addEventListener('click', closeModal);
-      cancelTaskBtn.addEventListener('click', closeModal);
+      addTaskBtn.addEventListener("click", openTaskModal);
+      closeTaskModal.addEventListener("click", closeModal);
+      cancelTaskBtn.addEventListener("click", closeModal);
 
       // Close modal when clicking outside
-      taskModal.addEventListener('click', (e) => {
+      taskModal.addEventListener("click", (e) => {
         if (e.target === taskModal) {
           closeModal();
         }
@@ -1486,29 +1526,32 @@
       taskForm.hasUnsavedChanges = () => false;
 
       // Gérer les boutons edit/delete
-      document.querySelectorAll('.task-card').forEach(card => {
-        const checkbox = card.querySelector('.task-checkbox');
-        const editBtn = card.querySelector('.task-actions .action-btn:first-child');
-        const deleteBtn = card.querySelector('.task-actions .action-btn:last-child');
-        const taskTitle = card.querySelector('.task-title').textContent;
+      document.querySelectorAll(".task-card").forEach((card) => {
+        const checkbox = card.querySelector(".task-checkbox");
+        const editBtn = card.querySelector(".task-actions .action-btn:first-child");
+        const deleteBtn = card.querySelector(".task-actions .action-btn:last-child");
+        const taskTitle = card.querySelector(".task-title").textContent;
 
         if (checkbox) {
-          checkbox.addEventListener('change', () => {
-            showToast('✅', 'Tâche mise à jour', checkbox.checked ? 'Tâche marquée comme complétée' : 'Tâche marquée comme incomplète');
+          checkbox.addEventListener("change", () => {
+            showToast(
+              "✅",
+              "Tâche mise à jour",
+              checkbox.checked ? "Tâche marquée comme complétée" : "Tâche marquée comme incomplète"
+            );
           });
         }
 
         if (editBtn) {
-          editBtn.addEventListener('click', () => openModalForEdit(card));
+          editBtn.addEventListener("click", () => openModalForEdit(card));
         }
 
         if (deleteBtn) {
-          deleteBtn.addEventListener('click', () => {
-            showToast('🗑️', 'Tâche supprimée', `"${taskTitle}" a été supprimée`);
+          deleteBtn.addEventListener("click", () => {
+            showToast("🗑️", "Tâche supprimée", `"${taskTitle}" a été supprimée`);
           });
         }
       });
     </script>
   </body>
-
 </html>

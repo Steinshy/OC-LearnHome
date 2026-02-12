@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, ">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, " />
     <title>Learn@Home - Messages | Maquette Mobile</title>
     <style>
       * {
@@ -13,8 +12,14 @@
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: #F3F4F6;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: #f3f4f6;
         height: 100vh;
         display: flex;
         flex-direction: column;
@@ -23,7 +28,7 @@
 
       .mobile-header {
         background: white;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         padding: 8px 16px;
         display: flex;
         justify-content: space-between;
@@ -46,7 +51,7 @@
       }
 
       .back-btn:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -71,13 +76,13 @@
       }
 
       .contacts-btn:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .chat-header {
         padding: 16px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -94,7 +99,7 @@
       .contact-avatar {
         width: 40px;
         height: 40px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -108,31 +113,31 @@
       }
 
       .contact-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .contact-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
 
       .contact-avatar.jean {
-        background-image: url('../../assets/pictures/jean.jpeg');
+        background-image: url("../../assets/pictures/jean.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .contact-avatar.lea {
-        background-image: url('../../assets/pictures/lea.jpeg');
+        background-image: url("../../assets/pictures/lea.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .contact-avatar.sophie {
-        background-image: url('../../assets/pictures/sophie.jpeg');
+        background-image: url("../../assets/pictures/sophie.jpeg");
         background-color: transparent;
         font-size: 0;
       }
@@ -145,22 +150,22 @@
 
       .chat-header-subtitle {
         font-size: 12px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .chat-header-status {
         font-size: 12px;
-        color: #10B981;
+        color: #10b981;
         display: flex;
         align-items: center;
         gap: 6px;
       }
 
       .chat-header-status::before {
-        content: '';
+        content: "";
         width: 8px;
         height: 8px;
-        background: #10B981;
+        background: #10b981;
         border-radius: 50%;
         display: inline-block;
       }
@@ -173,7 +178,7 @@
       .btn-icon {
         width: 44px;
         height: 44px;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
         background: white;
         border-radius: 6px;
         cursor: pointer;
@@ -185,7 +190,7 @@
       }
 
       .btn-icon:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -196,7 +201,7 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
-        background: #FAFAFA;
+        background: #fafafa;
       }
 
       .message-group {
@@ -209,7 +214,7 @@
       .message-avatar {
         width: 32px;
         height: 32px;
-        background: #10B981;
+        background: #10b981;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -225,13 +230,13 @@
       }
 
       .message-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .message-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
@@ -257,7 +262,7 @@
       }
 
       .message-time {
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       .message-text {
@@ -278,7 +283,7 @@
         background: white;
         padding: 10px 14px;
         border-radius: 8px;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #e5e7eb;
         display: flex;
         align-items: center;
         gap: 8px;
@@ -303,7 +308,7 @@
       }
 
       .message-own .message-text {
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
         max-width: 400px;
         width: auto;
@@ -316,7 +321,7 @@
 
       .message-status {
         font-size: 11px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-top: 4px;
         text-align: left;
         align-self: flex-start;
@@ -332,7 +337,7 @@
       }
 
       .message-status.status-read {
-        color: #3B82F6;
+        color: #3b82f6;
       }
 
       .hidden-auto-message {
@@ -369,12 +374,12 @@
       }
 
       .status-read::after {
-        content: ' ✓✓';
+        content: " ✓✓";
       }
 
       .chat-input-area {
         padding: 12px 16px;
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid #e5e7eb;
         background: white;
       }
 
@@ -387,7 +392,7 @@
       .message-input {
         flex: 1;
         padding: 12px 16px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 16px;
         font-family: inherit;
@@ -398,14 +403,14 @@
 
       .message-input:focus {
         outline: none;
-        border-color: #3B82F6;
+        border-color: #3b82f6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
       .send-btn {
         width: 44px;
         height: 44px;
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
         border: none;
         border-radius: 6px;
@@ -420,11 +425,11 @@
 
       .send-btn:hover,
       .send-btn:active {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       .send-btn:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
@@ -439,7 +444,7 @@
         border-radius: 20px 20px 0 0;
         z-index: 1000;
         transform: translateY(100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         flex-direction: column;
         box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
@@ -451,7 +456,7 @@
 
       .contacts-header {
         padding: 16px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -460,14 +465,14 @@
       }
 
       .contacts-header::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 8px;
         left: 50%;
         transform: translateX(-50%);
         width: 40px;
         height: 4px;
-        background: #D1D5DB;
+        background: #d1d5db;
         border-radius: 2px;
       }
 
@@ -489,7 +494,7 @@
       .search-box {
         width: 100%;
         padding: 12px 16px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 6px;
         font-size: 16px;
         margin: 16px;
@@ -497,7 +502,7 @@
       }
 
       .search-box::placeholder {
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       .search-box::placeholder {
@@ -515,7 +520,7 @@
 
       .contact-item {
         padding: 16px;
-        border-bottom: 1px solid #F3F4F6;
+        border-bottom: 1px solid #f3f4f6;
         cursor: pointer;
         transition: all 0.3s;
         display: flex;
@@ -525,11 +530,11 @@
       }
 
       .contact-item:active {
-        background: #F9FAFB;
+        background: #f9fafb;
       }
 
       .contact-item.active {
-        background: #E0F2FE;
+        background: #e0f2fe;
       }
 
       .contact-info {
@@ -545,22 +550,22 @@
 
       .contact-status {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-top: 2px;
       }
 
       .contact-grade {
         font-size: 12px;
-        color: #6B7280;
+        color: #6b7280;
         margin-top: 2px;
       }
 
       .status-online {
-        color: #10B981;
+        color: #10b981;
       }
 
       .status-badge {
-        background: #EF4444;
+        background: #ef4444;
         color: white;
         width: 24px;
         height: 24px;
@@ -599,7 +604,7 @@
         border-radius: 20px 20px 0 0;
         z-index: 1000;
         transform: translateY(100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         flex-direction: column;
         box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
@@ -613,7 +618,7 @@
       .info-header {
         padding: 16px;
         padding-top: 24px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -625,14 +630,14 @@
       }
 
       .info-header::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 8px;
         left: 50%;
         transform: translateX(-50%);
         width: 40px;
         height: 4px;
-        background: #D1D5DB;
+        background: #d1d5db;
         border-radius: 2px;
       }
 
@@ -665,13 +670,13 @@
         text-align: center;
         margin-bottom: 32px;
         padding-bottom: 24px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
       }
 
       .info-profile-avatar {
         width: 80px;
         height: 80px;
-        background: #3B82F6;
+        background: #3b82f6;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -686,31 +691,31 @@
       }
 
       .info-profile-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .info-profile-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         font-size: 0;
       }
 
       .info-profile-avatar.jean {
-        background-image: url('../../assets/pictures/jean.jpeg');
+        background-image: url("../../assets/pictures/jean.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .info-profile-avatar.lea {
-        background-image: url('../../assets/pictures/lea.jpeg');
+        background-image: url("../../assets/pictures/lea.jpeg");
         background-color: transparent;
         font-size: 0;
       }
 
       .info-profile-avatar.sophie {
-        background-image: url('../../assets/pictures/sophie.jpeg');
+        background-image: url("../../assets/pictures/sophie.jpeg");
         background-color: transparent;
         font-size: 0;
       }
@@ -724,17 +729,17 @@
 
       .info-profile-status {
         font-size: 14px;
-        color: #10B981;
+        color: #10b981;
         display: flex;
         align-items: center;
         gap: 6px;
       }
 
       .info-profile-status::before {
-        content: '';
+        content: "";
         width: 8px;
         height: 8px;
-        background: #10B981;
+        background: #10b981;
         border-radius: 50%;
         display: inline-block;
       }
@@ -746,7 +751,7 @@
       .info-section-title {
         font-size: 14px;
         font-weight: 600;
-        color: #6B7280;
+        color: #6b7280;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-bottom: 12px;
@@ -757,7 +762,7 @@
         align-items: center;
         gap: 12px;
         padding: 12px 0;
-        border-bottom: 1px solid #F3F4F6;
+        border-bottom: 1px solid #f3f4f6;
       }
 
       .info-item:last-child {
@@ -776,7 +781,7 @@
 
       .info-label {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-bottom: 2px;
       }
 
@@ -796,17 +801,17 @@
       }
 
       .badge-count.status-pending {
-        background: #FEF3C7;
-        color: #92400E;
+        background: #fef3c7;
+        color: #92400e;
       }
 
       .badge-count.status-inprogress {
-        background: #DBEAFE;
-        color: #0C4A6E;
+        background: #dbeafe;
+        color: #0c4a6e;
       }
 
       .badge-count.status-done {
-        background: #DCFCE7;
+        background: #dcfce7;
         color: #166534;
       }
 
@@ -821,7 +826,7 @@
         border-radius: 20px 20px 0 0;
         z-index: 1000;
         transform: translateY(100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         flex-direction: column;
         box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
@@ -834,7 +839,7 @@
       .task-header {
         padding: 16px;
         padding-top: 24px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -846,14 +851,14 @@
       }
 
       .task-header::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 8px;
         left: 50%;
         transform: translateX(-50%);
         width: 40px;
         height: 4px;
-        background: #D1D5DB;
+        background: #d1d5db;
         border-radius: 2px;
       }
 
@@ -887,7 +892,7 @@
       .task-section {
         margin-bottom: 0;
         padding-bottom: 16px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid #e5e7eb;
       }
 
       .task-section:last-child {
@@ -897,7 +902,7 @@
       .task-section-title {
         font-size: 14px;
         font-weight: 600;
-        color: #6B7280;
+        color: #6b7280;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-bottom: 12px;
@@ -908,7 +913,7 @@
         align-items: flex-start;
         gap: 12px;
         padding: 12px 0;
-        border-bottom: 1px solid #F3F4F6;
+        border-bottom: 1px solid #f3f4f6;
       }
 
       .task-item:last-child {
@@ -928,7 +933,7 @@
 
       .task-label {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
         margin-bottom: 2px;
       }
 
@@ -946,29 +951,29 @@
       }
 
       .task-mini-card {
-        background: #F9FAFB;
+        background: #f9fafb;
         border-radius: 8px;
         padding: 12px;
-        border-left: 3px solid #E5E7EB;
+        border-left: 3px solid #e5e7eb;
         transition: all 0.3s;
         cursor: pointer;
       }
 
       .task-mini-card:hover {
-        background: #F3F4F6;
+        background: #f3f4f6;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
 
       .task-mini-card.priority-high {
-        border-left-color: #EF4444;
+        border-left-color: #ef4444;
       }
 
       .task-mini-card.priority-medium {
-        border-left-color: #F59E0B;
+        border-left-color: #f59e0b;
       }
 
       .task-mini-card.priority-low {
-        border-left-color: #10B981;
+        border-left-color: #10b981;
       }
 
       .task-mini-title {
@@ -988,7 +993,7 @@
 
       .task-mini-due {
         font-size: 11px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .task-mini-status {
@@ -1000,22 +1005,19 @@
       }
 
       .task-mini-status.status-pending {
-        background: #FEF3C7;
-        color: #92400E;
+        background: #fef3c7;
+        color: #92400e;
       }
 
       .task-mini-status.status-inprogress {
-        background: #DBEAFE;
-        color: #0C4A6E;
+        background: #dbeafe;
+        color: #0c4a6e;
       }
 
       .task-mini-status.status-done {
-        background: #DCFCE7;
+        background: #dcfce7;
         color: #166534;
       }
-
-
-
 
       @media (min-width: 768px) {
         .mobile-header {
@@ -1050,7 +1052,6 @@
         }
       }
 
-
       @media (min-width: 1024px) {
         .mobile-header {
           padding: 24px 48px;
@@ -1075,33 +1076,31 @@
         }
       }
 
-
       button:disabled,
       button[disabled] {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: #9CA3AF;
+        background-color: #9ca3af;
       }
 
       .button-primary:disabled,
       .button-primary[disabled] {
-        background: #9CA3AF;
+        background: #9ca3af;
         color: white;
       }
 
       .button-secondary:disabled,
       .button-secondary[disabled] {
-        background: #F3F4F6;
-        color: #9CA3AF;
-        border-color: #D1D5DB;
+        background: #f3f4f6;
+        color: #9ca3af;
+        border-color: #d1d5db;
       }
 
       .button-danger:disabled,
       .button-danger[disabled] {
-        background: #FECACA;
-        color: #991B1B;
+        background: #fecaca;
+        color: #991b1b;
       }
-
 
       button.loading {
         cursor: not-allowed;
@@ -1110,7 +1109,7 @@
       }
 
       button.loading::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -1125,17 +1124,17 @@
       }
 
       .button-primary.loading {
-        background: #3B82F6;
+        background: #3b82f6;
         opacity: 0.8;
       }
 
       .button-secondary.loading {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .button-secondary.loading::after {
         border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3B82F6;
+        border-top-color: #3b82f6;
       }
 
       @keyframes spin {
@@ -1157,8 +1156,8 @@
       input:disabled,
       textarea:disabled,
       select:disabled {
-        background-color: #F3F4F6;
-        color: #9CA3AF;
+        background-color: #f3f4f6;
+        color: #9ca3af;
         cursor: not-allowed;
         opacity: 0.7;
       }
@@ -1167,8 +1166,8 @@
         text-align: center;
         margin-top: 32px;
         padding-top: 20px;
-        border-top: 1px solid #E5E7EB;
-        color: #94A3B8;
+        border-top: 1px solid #e5e7eb;
+        color: #94a3b8;
         font-size: 12px;
       }
 
@@ -1299,7 +1298,6 @@
 
     <div class="overlay" id="overlay"></div>
 
-
     <div class="info-panel" id="infoPanel">
       <div class="info-header">
         <div class="info-title">Informations</div>
@@ -1354,7 +1352,6 @@
         </div>
       </div>
     </div>
-
 
     <div class="task-panel" id="taskPanel">
       <div class="task-header">
@@ -1415,7 +1412,7 @@
         <div class="contacts-title">👥 Mes Élèves</div>
         <button class="close-contacts-btn" id="closeContactsBtn">✕</button>
       </div>
-      <input type="text" class="search-box" placeholder="Rechercher un élève...">
+      <input type="text" class="search-box" placeholder="Rechercher un élève..." />
       <div class="contacts-list">
         <div class="contact-item active">
           <div class="contact-avatar antoine">AK</div>
@@ -1458,25 +1455,25 @@
     </div>
 
     <script>
-      const contactsBtn = document.getElementById('contactsBtn');
-      const closeContactsBtn = document.getElementById('closeContactsBtn');
-      const contactsPanel = document.getElementById('contactsPanel');
-      const taskBtn = document.getElementById('taskBtn');
-      const closeTaskBtn = document.getElementById('closeTaskBtn');
-      const taskPanel = document.getElementById('taskPanel');
-      const infoBtn = document.getElementById('infoBtn');
-      const closeInfoBtn = document.getElementById('closeInfoBtn');
-      const infoPanel = document.getElementById('infoPanel');
-      const overlay = document.getElementById('overlay');
+      const contactsBtn = document.getElementById("contactsBtn");
+      const closeContactsBtn = document.getElementById("closeContactsBtn");
+      const contactsPanel = document.getElementById("contactsPanel");
+      const taskBtn = document.getElementById("taskBtn");
+      const closeTaskBtn = document.getElementById("closeTaskBtn");
+      const taskPanel = document.getElementById("taskPanel");
+      const infoBtn = document.getElementById("infoBtn");
+      const closeInfoBtn = document.getElementById("closeInfoBtn");
+      const infoPanel = document.getElementById("infoPanel");
+      const overlay = document.getElementById("overlay");
 
       const openPanel = (panel) => {
-        panel.classList.add('open');
-        overlay.classList.add('active');
+        panel.classList.add("open");
+        overlay.classList.add("active");
       };
 
       const closePanel = (panel) => {
-        panel.classList.remove('open');
-        overlay.classList.remove('active');
+        panel.classList.remove("open");
+        overlay.classList.remove("active");
       };
 
       const closeAllPanels = () => {
@@ -1485,40 +1482,37 @@
         closePanel(infoPanel);
       };
 
-      contactsBtn.addEventListener('click', () => {
+      contactsBtn.addEventListener("click", () => {
         closeAllPanels();
         openPanel(contactsPanel);
       });
 
-      closeContactsBtn.addEventListener('click', () => {
+      closeContactsBtn.addEventListener("click", () => {
         closePanel(contactsPanel);
       });
 
-      taskBtn.addEventListener('click', () => {
+      taskBtn.addEventListener("click", () => {
         closeAllPanels();
         openPanel(taskPanel);
       });
 
-      closeTaskBtn.addEventListener('click', () => {
+      closeTaskBtn.addEventListener("click", () => {
         closePanel(taskPanel);
       });
 
-      infoBtn.addEventListener('click', () => {
+      infoBtn.addEventListener("click", () => {
         closeAllPanels();
         openPanel(infoPanel);
       });
 
-      closeInfoBtn.addEventListener('click', () => {
+      closeInfoBtn.addEventListener("click", () => {
         closePanel(infoPanel);
       });
 
-      overlay.addEventListener('click', () => {
+      overlay.addEventListener("click", () => {
         closeAllPanels();
       });
     </script>
-    <div class="copyright">
-      © 2026 Learn@Home. All rights reserved.
-    </div>
+    <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
   </body>
-
 </html>

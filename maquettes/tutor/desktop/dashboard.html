@@ -1,20 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn@Home - Tableau de Bord (Tuteur) | Maquette Desktop</title>
     <style>
       :root {
-        --primary: #3B82F6;
-        --primary-dark: #1E40AF;
-        --danger: #EF4444;
-        --danger-dark: #DC2626;
-        --bg: #F3F4F6;
+        --primary: #3b82f6;
+        --primary-dark: #1e40af;
+        --danger: #ef4444;
+        --danger-dark: #dc2626;
+        --bg: #f3f4f6;
         --text: #111827;
-        --text-muted: #6B7280;
-        --border: #E5E7EB;
+        --text-muted: #6b7280;
+        --border: #e5e7eb;
       }
 
       * {
@@ -24,7 +23,13 @@
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
         background: var(--bg);
       }
 
@@ -75,7 +80,7 @@
       .nav-label {
         font-size: 12px;
         font-weight: 600;
-        color: #9CA3AF;
+        color: #9ca3af;
         text-transform: uppercase;
         padding: 0 24px;
         margin-bottom: 8px;
@@ -98,7 +103,7 @@
       }
 
       .nav-item.active {
-        background: #E0F2FE;
+        background: #e0f2fe;
         color: var(--primary);
         border-right: 4px solid var(--primary);
         font-weight: 600;
@@ -152,7 +157,7 @@
       }
 
       .user-avatar.yann {
-        background-image: url('../../assets/pictures/yann.jpg');
+        background-image: url("../../assets/pictures/yann.jpg");
         background-color: transparent;
         background-size: cover;
         background-position: center;
@@ -196,7 +201,6 @@
         color: var(--text-muted);
       }
 
-      
       .main {
         grid-area: main;
         padding: 32px;
@@ -235,27 +239,27 @@
       }
 
       .button:focus {
-        outline: 2px solid #3B82F6;
+        outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
 
       .button-primary {
-        background: #3B82F6;
+        background: #3b82f6;
         color: white;
       }
 
       .button-primary:hover {
-        background: #1E40AF;
+        background: #1e40af;
       }
 
       .button-secondary {
         background: white;
-        color: #3B82F6;
-        border: 1px solid #3B82F6;
+        color: #3b82f6;
+        border: 1px solid #3b82f6;
       }
 
       .button-secondary:hover {
-        background: #E0F2FE;
+        background: #e0f2fe;
       }
 
       .grid {
@@ -286,8 +290,8 @@
       }
 
       .card-badge {
-        background: #E0F2FE;
-        color: #1E40AF;
+        background: #e0f2fe;
+        color: #1e40af;
         padding: 4px 12px;
         border-radius: 20px;
         font-size: 12px;
@@ -299,7 +303,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 12px 0;
-        border-bottom: 1px solid #F3F4F6;
+        border-bottom: 1px solid #f3f4f6;
       }
 
       .stat-item:last-child {
@@ -307,7 +311,7 @@
       }
 
       .stat-label {
-        color: #6B7280;
+        color: #6b7280;
         font-size: 14px;
       }
 
@@ -325,23 +329,23 @@
       }
 
       .status-pending {
-        background: #FEF3C7;
-        color: #92400E;
+        background: #fef3c7;
+        color: #92400e;
       }
 
       .status-done {
-        background: #D1FAE5;
-        color: #065F46;
+        background: #d1fae5;
+        color: #065f46;
       }
 
       .status-inprogress {
-        background: #E0E7FF;
-        color: #3730A3;
+        background: #e0e7ff;
+        color: #3730a3;
       }
 
       .event-item {
         padding: 12px 0;
-        border-bottom: 1px solid #F3F4F6;
+        border-bottom: 1px solid #f3f4f6;
       }
 
       .event-item:last-child {
@@ -350,7 +354,7 @@
 
       .event-time {
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
       }
 
       .event-title {
@@ -361,7 +365,7 @@
 
       .event-location {
         font-size: 13px;
-        color: #6B7280;
+        color: #6b7280;
       }
 
       .card-full {
@@ -369,8 +373,8 @@
       }
 
       .message-box {
-        background: #DBEAFE;
-        border-left: 4px solid #3B82F6;
+        background: #dbeafe;
+        border-left: 4px solid #3b82f6;
         padding: 16px;
         border-radius: 6px;
         margin-bottom: 24px;
@@ -378,13 +382,13 @@
 
       .message-title {
         font-weight: 600;
-        color: #1E40AF;
+        color: #1e40af;
         margin-bottom: 4px;
       }
 
       .message-text {
         font-size: 14px;
-        color: #1E40AF;
+        color: #1e40af;
       }
 
       .notification-badge {
@@ -406,39 +410,37 @@
         text-align: center;
         margin-top: 32px;
         padding-top: 20px;
-        border-top: 1px solid #E5E7EB;
-        color: #94A3B8;
+        border-top: 1px solid #e5e7eb;
+        color: #94a3b8;
         font-size: 12px;
       }
 
-      
       button:disabled,
       button[disabled] {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: #9CA3AF;
+        background-color: #9ca3af;
       }
 
       .button-primary:disabled,
       .button-primary[disabled] {
-        background: #9CA3AF;
+        background: #9ca3af;
         color: white;
       }
 
       .button-secondary:disabled,
       .button-secondary[disabled] {
-        background: #F3F4F6;
-        color: #9CA3AF;
-        border-color: #D1D5DB;
+        background: #f3f4f6;
+        color: #9ca3af;
+        border-color: #d1d5db;
       }
 
       .button-danger:disabled,
       .button-danger[disabled] {
-        background: #FECACA;
-        color: #991B1B;
+        background: #fecaca;
+        color: #991b1b;
       }
 
-      
       button.loading {
         cursor: not-allowed;
         position: relative;
@@ -446,7 +448,7 @@
       }
 
       button.loading::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -461,17 +463,17 @@
       }
 
       .button-primary.loading {
-        background: #3B82F6;
+        background: #3b82f6;
         opacity: 0.8;
       }
 
       .button-secondary.loading {
-        background: #F3F4F6;
+        background: #f3f4f6;
       }
 
       .button-secondary.loading::after {
         border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3B82F6;
+        border-top-color: #3b82f6;
       }
 
       @keyframes spin {
@@ -493,8 +495,8 @@
       input:disabled,
       textarea:disabled,
       select:disabled {
-        background-color: #F3F4F6;
-        color: #9CA3AF;
+        background-color: #f3f4f6;
+        color: #9ca3af;
         cursor: not-allowed;
         opacity: 0.7;
       }
@@ -517,18 +519,18 @@
     <div class="page-layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
             <a href="dashboard.html" class="nav-item active" aria-current="page">
-              <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span>
+              <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span>
               Tableau de bord
             </a>
             <a href="chat.html" class="nav-item">
-              <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span>
+              <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
               Messages
               <span class="notification-badge">6</span>
             </a>
@@ -537,11 +539,11 @@
           <div class="nav-section">
             <div class="nav-label">Outils</div>
             <a href="calendar.html" class="nav-item">
-              <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span>
+              <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span>
               Calendrier
             </a>
             <a href="tasks.html" class="nav-item">
-              <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span>
+              <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span>
               Tâches
             </a>
           </div>
@@ -549,11 +551,11 @@
           <div class="nav-section">
             <div class="nav-label">Compte</div>
             <a href="settings.html" class="nav-item">
-              <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span>
+              <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span>
               Paramètres
             </a>
             <a href="login.html" class="nav-item">
-              <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span>
+              <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span>
               Déconnexion
             </a>
           </div>
@@ -661,11 +663,8 @@
           </div>
         </div>
 
-        <div class="copyright">
-          © 2026 Learn@Home. All rights reserved.
-        </div>
+        <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
       </main>
     </div>
   </body>
-
 </html>
