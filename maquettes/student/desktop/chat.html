@@ -1248,9 +1248,9 @@
             </div>
           </div>
           <div class="chat-actions">
-            <button class="btn-icon hover-down" data-hover="Appel audio">📞</button>
-            <button class="btn-icon hover-down" data-hover="Appel vidéo">📹</button>
-            <label for="info-modal-toggle" class="btn-icon hover-down" data-hover="Informations">ℹ️</label>
+            <button class="btn-icon hover-down" data-hover="Appel audio" aria-label="Appel audio">📞</button>
+            <button class="btn-icon hover-down" data-hover="Appel vidéo" aria-label="Appel vidéo">📹</button>
+            <label for="info-modal-toggle" class="btn-icon hover-down" data-hover="Informations" aria-label="Informations">ℹ️</label>
           </div>
         </div>
 
@@ -1339,13 +1339,14 @@
               class="btn-icon hover-up"
               id="attachment-btn"
               data-hover="Joindre un fichier"
+              aria-label="Joindre un fichier"
               onclick="handleAttachmentClick()"
             >
               📎
             </button>
             <input type="file" id="file-input" onchange="handleFileUpload(event)" />
             <textarea class="message-input" id="message-input" placeholder="Tapez votre message..." rows="1"></textarea>
-            <button class="send-btn hover-up" id="send-btn" data-hover="Envoyer" onclick="handleMessageSend()">
+            <button class="send-btn hover-up" id="send-btn" data-hover="Envoyer" aria-label="Envoyer le message" onclick="handleMessageSend()">
               ➤
             </button>
           </div>

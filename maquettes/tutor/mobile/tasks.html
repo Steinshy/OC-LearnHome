@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="fr">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, " />
@@ -595,7 +596,7 @@
         line-height: 1.4;
       }
 
-      .task-checkbox:checked ~ .task-content .task-title {
+      .task-checkbox:checked~.task-content .task-title {
         text-decoration: line-through;
         color: #9ca3af;
       }
@@ -1156,6 +1157,7 @@
           max-width: 100%;
         }
       }
+
       .mobile-logo img,
       .sidebar-logo img {
         width: 20px;
@@ -1527,7 +1529,6 @@
         submitBtn.textContent = "Créer la tâche";
         submitBtn.dataset.action = "create";
 
-        // Réinitialiser les dropdowns
         modal.querySelectorAll(".dropdown-item").forEach((item) => item.classList.remove("selected"));
         modal.querySelector("#taskStudentDropdown .dropdown-toggle").textContent = "-- Sélectionner un élève --";
         modal.querySelector("#taskPriorityDropdown .dropdown-item.selected")?.classList.remove("selected");
@@ -1577,7 +1578,6 @@
         modalTaskForm("taskTitle").value = taskTitle;
         modalTaskForm("taskDescription").value = taskDescription;
 
-        // Mettre à jour le dropdown étudiant
         const studentDropdown = modal.querySelector("#taskStudentDropdown");
         const studentName = taskCard
           .querySelector(".task-meta .meta-item:nth-child(2)")
@@ -1597,7 +1597,6 @@
 
         modalTaskForm("taskDeadline").value = parseDeadlineDate(deadlineText);
 
-        // Mettre à jour le dropdown priorité
         const priorityDropdown = modal.querySelector("#taskPriorityDropdown");
         const priorityText = priority === "low" ? "Basse" : priority === "high" ? "Haute" : "Normal";
         if (priorityDropdown) {
@@ -1620,7 +1619,6 @@
         submitBtn.dataset.action = "edit";
       };
 
-      // Gérer la sélection des dropdowns dans le modal
       modal.querySelectorAll(".dropdown-item").forEach((item) => {
         item.addEventListener("click", function () {
           const dropdown = this.closest(".custom-dropdown");
@@ -1711,4 +1709,5 @@
     </script>
     <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
   </body>
+
 </html>

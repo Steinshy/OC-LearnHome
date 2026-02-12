@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="fr">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -419,22 +420,6 @@
         display: flex;
         flex-direction: column;
         gap: 6px;
-      }
-
-      .event-dot {
-        display: none;
-      }
-
-      .event-dot-blue {
-        background: #3b82f6;
-      }
-
-      .event-dot-green {
-        background: #10b981;
-      }
-
-      .event-dot-orange {
-        background: #f59e0b;
       }
 
       .event-pill {
@@ -1221,32 +1206,26 @@
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
-              de bord</a
-            >
-            <a href="chat.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
-              Messages<span class="notification-badge">6</span></a
-            >
+            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img
+                  src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
+              de bord</a>
+            <a href="chat.html" class="nav-item"><span class="nav-item-icon"><img
+                  src="../../assets/icons/message-square.svg" alt="" /></span>
+              Messages<span class="notification-badge">6</span></a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item active" aria-current="page"
-              ><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a
-            >
-            <a href="tasks.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a
-            >
+            <a href="calendar.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img
+                  src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a>
+            <a href="tasks.html" class="nav-item"><span class="nav-item-icon"><img
+                  src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a
-            >
-            <a href="login.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span> Déconnexion</a
-            >
+            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img
+                  src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a>
+            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg"
+                  alt="" /></span> Déconnexion</a>
           </div>
         </nav>
 
@@ -1490,26 +1469,21 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
-              <label class="form-label">Titre <span class="required">*</span></label>
-              <input
-                type="text"
-                class="form-input"
-                placeholder="Ex: Session avec élève"
-                value="Session avec Antoine Kreuder - Mathématiques"
-              />
+              <label for="event-titre" class="form-label">Titre <span class="required">*</span></label>
+              <input id="event-titre" type="text" class="form-input" placeholder="Ex: Session avec élève"
+                value="Session avec Antoine Kreuder - Mathématiques" />
             </div>
 
             <div class="form-group">
-              <label class="form-label">Description</label>
-              <textarea class="form-textarea" placeholder="Ajouter une description (optionnel)">
-Révision des équations et exercices du devoir.</textarea
-              >
+              <label for="event-description" class="form-label">Description</label>
+              <textarea id="event-description" class="form-textarea" placeholder="Ajouter une description (optionnel)">
+Révision des équations et exercices du devoir.</textarea>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Date <span class="required">*</span></label>
-                <input type="date" class="form-input" value="2026-01-15" />
+                <label for="event-date" class="form-label">Date <span class="required">*</span></label>
+                <input id="event-date" type="date" class="form-input" value="2026-01-15" />
               </div>
               <div class="form-group">
                 <label class="form-label">Catégorie <span class="required">*</span></label>
@@ -1527,18 +1501,19 @@ Révision des équations et exercices du devoir.</textarea
 
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Heure début <span class="required">*</span></label>
-                <input type="time" class="form-input" value="14:00" />
+                <label for="event-start-time" class="form-label">Heure début <span class="required">*</span></label>
+                <input id="event-start-time" type="time" class="form-input" value="14:00" />
               </div>
               <div class="form-group">
-                <label class="form-label">Heure fin <span class="required">*</span></label>
-                <input type="time" class="form-input" value="15:00" />
+                <label for="event-end-time" class="form-label">Heure fin <span class="required">*</span></label>
+                <input id="event-end-time" type="time" class="form-input" value="15:00" />
               </div>
             </div>
 
             <div class="form-group">
-              <label class="form-label">Lieu</label>
-              <input type="text" class="form-input" placeholder="Ex: En ligne (Zoom)" value="En ligne (Zoom)" />
+              <label for="event-location" class="form-label">Lieu</label>
+              <input id="event-location" type="text" class="form-input" placeholder="Ex: En ligne (Zoom)"
+                value="En ligne (Zoom)" />
             </div>
 
             <div class="form-group">
@@ -1683,7 +1658,6 @@ Révision des équations et exercices du devoir.</textarea
         }, 2700);
       };
 
-      // Gérer la sélection des dropdowns dans le modal
       const eventModal = document.getElementById("addEventModalFilled");
       if (eventModal) {
         eventModal.querySelectorAll(".dropdown-item").forEach((item) => {
@@ -1722,4 +1696,5 @@ Révision des équations et exercices du devoir.</textarea
 
     <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
   </body>
+
 </html>

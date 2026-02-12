@@ -331,27 +331,28 @@
 
       <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
     </div>
-  </body>
-  <div id="toast-container" class="toast-container"></div>
-  <script>
-    const showToast = (icon, title, message) => {
-      const container = document.getElementById("toast-container");
-      const toast = document.createElement("div");
-      toast.className = "toast";
-      toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
-      container.appendChild(toast);
-      setTimeout(() => {
-        toast.classList.add("dismissing");
-        setTimeout(() => toast.remove(), 500);
-      }, 2700);
-    };
 
-    const validateRecovery = (event) => {
-      event.preventDefault();
-      showToast("✉️", "Récupération", "Email de récupération envoyé avec succès");
-      setTimeout(() => {
-        window.location.href = "login.html";
-      }, 500);
-    };
-  </script>
+    <div id="toast-container" class="toast-container"></div>
+    <script>
+      const showToast = (icon, title, message) => {
+        const container = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+        toast.className = "toast";
+        toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+        container.appendChild(toast);
+        setTimeout(() => {
+          toast.classList.add("dismissing");
+          setTimeout(() => toast.remove(), 500);
+        }, 2700);
+      };
+
+      const validateRecovery = (event) => {
+        event.preventDefault();
+        showToast("✉️", "Récupération", "Email de récupération envoyé avec succès");
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 500);
+      };
+    </script>
+  </body>
 </html>

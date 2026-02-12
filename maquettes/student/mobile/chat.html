@@ -1268,9 +1268,9 @@
         </div>
       </div>
       <div class="chat-actions">
-        <button class="btn-icon" id="contactsBtn">👥</button>
-        <button class="btn-icon">📞</button>
-        <button class="btn-icon" id="infoBtn">ℹ️</button>
+        <button class="btn-icon" id="contactsBtn" aria-label="Gérer les contacts">👥</button>
+        <button class="btn-icon" aria-label="Appel audio">📞</button>
+        <button class="btn-icon" id="infoBtn" aria-label="Informations">ℹ️</button>
       </div>
     </div>
 
@@ -1356,10 +1356,10 @@
 
     <div class="chat-input-area">
       <div class="input-wrapper">
-        <button class="btn-icon" id="attachment-btn" onclick="handleAttachmentClick()">📎</button>
+        <button class="btn-icon" id="attachment-btn" aria-label="Joindre un fichier" onclick="handleAttachmentClick()">📎</button>
         <input type="file" id="file-input" onchange="handleFileUpload(event)" />
         <textarea class="message-input" id="message-input" placeholder="Tapez votre message..." rows="1"></textarea>
-        <button class="send-btn" id="send-btn" onclick="handleMessageSend()">➤</button>
+        <button class="send-btn" id="send-btn" aria-label="Envoyer le message" onclick="handleMessageSend()">➤</button>
       </div>
     </div>
 

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="fr">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -435,13 +436,13 @@
         display: none;
       }
 
-      .task-checkbox:checked + .checkbox {
+      .task-checkbox:checked+.checkbox {
         background: #3b82f6;
         border-color: #3b82f6;
         color: white;
       }
 
-      .task-checkbox:checked + .checkbox::after {
+      .task-checkbox:checked+.checkbox::after {
         content: "";
         width: 16px;
         height: 16px;
@@ -457,7 +458,7 @@
         display: block;
       }
 
-      .task-checkbox:checked ~ .task-content .task-title {
+      .task-checkbox:checked~.task-content .task-title {
         text-decoration: line-through;
         color: #9ca3af;
       }
@@ -932,8 +933,8 @@
         display: none;
       }
 
-      .form-input.error ~ .form-error,
-      .form-textarea.error ~ .form-error {
+      .form-input.error~.form-error,
+      .form-textarea.error~.form-error {
         display: block;
       }
 
@@ -1014,32 +1015,26 @@
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
-              de bord</a
-            >
-            <a href="chat.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
-              Messages<span class="notification-badge">5</span></a
-            >
+            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img
+                  src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
+              de bord</a>
+            <a href="chat.html" class="nav-item"><span class="nav-item-icon"><img
+                  src="../../assets/icons/message-square.svg" alt="" /></span>
+              Messages<span class="notification-badge">5</span></a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a
-            >
-            <a href="tasks.html" class="nav-item active" aria-current="page"
-              ><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a
-            >
+            <a href="calendar.html" class="nav-item"><span class="nav-item-icon"><img
+                  src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a>
+            <a href="tasks.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img
+                  src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a
-            >
-            <a href="login.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span> Déconnexion</a
-            >
+            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img
+                  src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a>
+            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg"
+                  alt="" /></span> Déconnexion</a>
           </div>
         </nav>
 
@@ -1246,28 +1241,18 @@
         <form id="taskForm">
           <div class="form-group">
             <label for="taskTitle" class="form-label required">Titre</label>
-            <input
-              type="text"
-              id="taskTitle"
-              class="form-input"
-              placeholder="Ex: Équations du second degré"
-              maxlength="100"
-              required
-            />
+            <input type="text" id="taskTitle" class="form-input" placeholder="Ex: Équations du second degré"
+              maxlength="100" required />
             <div class="char-counter"><span id="titleCounter">0</span>/100</div>
             <div class="form-error" id="titleError"></div>
           </div>
 
           <div class="form-group">
             <label for="taskDescription" class="form-label">Description</label>
-            <textarea
-              id="taskDescription"
-              class="form-textarea"
-              placeholder="Ex: Compléter les 10 exercices de la feuille distribuée..."
-              maxlength="500"
-            ></textarea>
+            <textarea id="taskDescription" class="form-textarea"
+              placeholder="Ex: Compléter les 10 exercices de la feuille distribuée..." maxlength="500"></textarea>
             <div class="char-counter"><span id="descCounter">0</span>/500</div>
-            <div class="form-error" id="descError"></div>
+            <div class="form-error" id="descriptionError"></div>
           </div>
 
           <div class="form-group">
@@ -1300,7 +1285,6 @@
         }, 2700);
       };
 
-      // Task modal logic
       const taskModal = document.getElementById("taskModal");
       const taskForm = document.getElementById("taskForm");
       const addTaskBtn = document.getElementById("addTaskBtn");
@@ -1314,12 +1298,11 @@
       const titleCounter = document.getElementById("titleCounter");
       const descCounter = document.getElementById("descCounter");
 
-      // Set minimum date to today
+
       const today = new Date();
       const todayStr = today.toISOString().split("T")[0];
       taskDate.min = todayStr;
 
-      // Parse deadline date from French format to ISO format
       const parseDeadlineDate = (dateString) => {
         const months = {
           janvier: "01",
@@ -1342,7 +1325,6 @@
         return `${year}-${month}-${day}`;
       };
 
-      // Open modal for create
       const openTaskModal = () => {
         taskModal.dataset.mode = "create";
         modalTitle.textContent = "Ajouter une tâche";
@@ -1352,7 +1334,6 @@
         taskTitle.focus();
       };
 
-      // Open modal for edit
       const openModalForEdit = (taskCard) => {
         const cardTitle = taskCard.querySelector(".task-title").textContent;
         const cardDescription = taskCard.querySelector(".task-description").textContent;
@@ -1375,7 +1356,6 @@
         taskTitle.focus();
       };
 
-      // Close modal
       const closeModal = () => {
         if (taskForm.hasUnsavedChanges()) {
           if (confirm("Vous avez des modifications non enregistrées. Continuer ?")) {
@@ -1388,7 +1368,6 @@
         }
       };
 
-      // Reset form
       const resetForm = () => {
         taskForm.reset();
         document.querySelectorAll(".form-input, .form-textarea").forEach((input) => {
@@ -1405,7 +1384,6 @@
         submitTaskBtn.dataset.action = "create";
       };
 
-      // Track unsaved changes
       const markFormDirty = () => {
         taskForm.hasUnsavedChanges = () => {
           return taskTitle.value.trim() !== "" || taskDescription.value.trim() !== "" || taskDate.value !== "";
@@ -1437,7 +1415,6 @@
         clearError("date");
       });
 
-      // Clear error message
       const clearError = (fieldName) => {
         const field = document.getElementById(`task${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}`);
         const errorEl = document.getElementById(`${fieldName}Error`);
@@ -1445,11 +1422,9 @@
         errorEl.textContent = "";
       };
 
-      // Validate form
       const validateForm = () => {
         let isValid = true;
 
-        // Title validation
         const trimmedTitle = taskTitle.value.trim();
         if (trimmedTitle === "") {
           showFieldError("title", "Le titre de la tâche est obligatoire");
@@ -1459,13 +1434,11 @@
           isValid = false;
         }
 
-        // Description validation
         if (taskDescription.value.length > 500) {
           showFieldError("description", "La description ne doit pas dépasser 500 caractères");
           isValid = false;
         }
 
-        // Date validation
         if (taskDate.value === "") {
           showFieldError("date", "Une date d'échéance est obligatoire");
           isValid = false;
@@ -1482,7 +1455,6 @@
         return isValid;
       };
 
-      // Show field error
       const showFieldError = (fieldName, message) => {
         const field = document.getElementById(`task${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}`);
         const errorEl = document.getElementById(`${fieldName}Error`);
@@ -1490,7 +1462,6 @@
         errorEl.textContent = message;
       };
 
-      // Submit form
       taskForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -1498,34 +1469,28 @@
           return;
         }
 
-        // Show success notification
         if (taskModal.dataset.mode === "edit") {
           showToast("✏️", "Tâche modifiée", "Les modifications ont été enregistrées");
         } else {
           showToast("✅", "Tâche créée", "Votre nouvelle tâche a été ajoutée avec succès");
         }
 
-        // Close modal and reset form
         taskModal.classList.remove("active");
         resetForm();
       });
 
-      // Event listeners
       addTaskBtn.addEventListener("click", openTaskModal);
       closeTaskModal.addEventListener("click", closeModal);
       cancelTaskBtn.addEventListener("click", closeModal);
 
-      // Close modal when clicking outside
       taskModal.addEventListener("click", (e) => {
         if (e.target === taskModal) {
           closeModal();
         }
       });
 
-      // Initialize hasUnsavedChanges function
       taskForm.hasUnsavedChanges = () => false;
 
-      // Gérer les boutons edit/delete
       document.querySelectorAll(".task-card").forEach((card) => {
         const checkbox = card.querySelector(".task-checkbox");
         const editBtn = card.querySelector(".task-actions .action-btn:first-child");
@@ -1554,4 +1519,5 @@
       });
     </script>
   </body>
+
 </html>

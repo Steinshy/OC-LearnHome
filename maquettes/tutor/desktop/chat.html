@@ -405,12 +405,6 @@
         position: relative;
       }
 
-      .chat-header-info {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
       .chat-header-title {
         font-weight: 600;
         color: #111827;
@@ -644,15 +638,6 @@
         opacity: 1;
       }
 
-      .message-status {
-        font-size: 12px;
-        color: #9ca3af;
-        margin-top: 4px;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-
       .status-sent::after {
         content: "✓";
         color: #9ca3af;
@@ -663,10 +648,6 @@
         content: "✓✓";
         color: #3b82f6;
         font-weight: 600;
-      }
-
-      .message-status.status-read {
-        color: #3b82f6;
       }
 
       .chat-input-area {
@@ -1110,22 +1091,6 @@
       .modal-status {
         font-size: 14px;
         color: #10b981;
-      }
-
-      .modal-close {
-        margin-top: 8px;
-        width: 100%;
-        padding: 10px 0;
-        background: #3b82f6;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        font-weight: 600;
-      }
-
-      .modal-close:hover {
-        background: #1e40af;
       }
 
       label.modal-close {
@@ -1757,10 +1722,10 @@
             </div>
           </div>
           <div class="chat-actions">
-            <button class="btn-icon" id="taskBtn">📋</button>
-            <button class="btn-icon">📞</button>
-            <button class="btn-icon">📹</button>
-            <label for="info-modal-toggle" class="btn-icon" id="infoBtn">ℹ️</label>
+            <button class="btn-icon" id="taskBtn" aria-label="Tâches assignées">📋</button>
+            <label for="phone-call-modal-toggle" class="btn-icon" aria-label="Appel audio">📞</label>
+            <label for="video-call-modal-toggle" class="btn-icon" aria-label="Appel vidéo">📹</label>
+            <label for="info-modal-toggle" class="btn-icon" id="infoBtn" aria-label="Informations">ℹ️</label>
           </div>
         </div>
 
@@ -1849,13 +1814,14 @@
               class="btn-icon hover-up"
               id="attachment-btn"
               data-hover="Joindre un fichier"
+              aria-label="Joindre un fichier"
               onclick="handleAttachmentClick()"
             >
               📎
             </button>
             <input type="file" id="file-input" onchange="handleFileUpload(event)" />
             <textarea class="message-input" id="message-input" placeholder="Tapez votre message..." rows="1"></textarea>
-            <button class="send-btn hover-up" id="send-btn" data-hover="Envoyer" onclick="handleMessageSend()">
+            <button class="send-btn hover-up" id="send-btn" data-hover="Envoyer" aria-label="Envoyer le message" onclick="handleMessageSend()">
               ➤
             </button>
           </div>

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="fr">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -407,15 +408,15 @@
       }
 
       .dropdown-item.selected,
-      input:checked + .dropdown-menu .dropdown-item[for*="sort-date"],
-      input:checked + .dropdown-menu .dropdown-item[for*="sort-priority"],
-      input:checked + .dropdown-menu .dropdown-item[for*="sort-title"] {
+      input:checked+.dropdown-menu .dropdown-item[for*="sort-date"],
+      input:checked+.dropdown-menu .dropdown-item[for*="sort-priority"],
+      input:checked+.dropdown-menu .dropdown-item[for*="sort-title"] {
         background: var(--primary);
         color: white;
       }
 
       .dropdown-item.selected::before,
-      input:checked + .dropdown-menu .dropdown-item.selected::before {
+      input:checked+.dropdown-menu .dropdown-item.selected::before {
         content: "✓ ";
         font-weight: 700;
       }
@@ -451,13 +452,13 @@
         display: none;
       }
 
-      .task-checkbox:checked + .checkbox {
+      .task-checkbox:checked+.checkbox {
         background: #3b82f6;
         border-color: #3b82f6;
         color: white;
       }
 
-      .task-checkbox:checked + .checkbox::after {
+      .task-checkbox:checked+.checkbox::after {
         content: "";
         width: 16px;
         height: 16px;
@@ -473,7 +474,7 @@
         display: block;
       }
 
-      .task-checkbox:checked ~ .task-content .task-title {
+      .task-checkbox:checked~.task-content .task-title {
         text-decoration: line-through;
         color: #9ca3af;
       }
@@ -1047,32 +1048,26 @@
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
-              de bord</a
-            >
-            <a href="chat.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
-              Messages<span class="notification-badge">6</span></a
-            >
+            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img
+                  src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
+              de bord</a>
+            <a href="chat.html" class="nav-item"><span class="nav-item-icon"><img
+                  src="../../assets/icons/message-square.svg" alt="" /></span>
+              Messages<span class="notification-badge">6</span></a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a
-            >
-            <a href="tasks.html" class="nav-item active" aria-current="page"
-              ><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a
-            >
+            <a href="calendar.html" class="nav-item"><span class="nav-item-icon"><img
+                  src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a>
+            <a href="tasks.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img
+                  src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a
-            >
-            <a href="login.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span> Déconnexion</a
-            >
+            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img
+                  src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a>
+            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg"
+                  alt="" /></span> Déconnexion</a>
           </div>
         </nav>
 
@@ -1340,7 +1335,6 @@
         submitBtn.textContent = "Créer la tâche";
         submitBtn.dataset.action = "create";
 
-        // Réinitialiser les dropdowns
         modal.querySelectorAll(".dropdown-item").forEach((item) => item.classList.remove("selected"));
         modal.querySelector("#taskStudentDropdown .dropdown-toggle").textContent = "-- Sélectionner un élève --";
         modal.querySelector("#taskPriorityDropdown .dropdown-item.selected")?.classList.remove("selected");
@@ -1384,14 +1378,15 @@
         const taskDescription = taskCard.querySelector(".task-description").textContent;
         const deadlineText = taskCard
           .querySelector(".task-meta .meta-item:nth-child(1)")
-          .textContent.replace("📅 Échéance: ", "");
+          .textContent.trim()
+          .replace("Échéance: ", "")
+          .trim();
         const priorityBadge = taskCard.querySelector(".priority-badge");
         const priority = priorityBadge ? priorityBadge.className.replace("priority-badge priority-", "") : "medium";
 
         modalTaskForm("taskTitle").value = taskTitle;
         modalTaskForm("taskDescription").value = taskDescription;
 
-        // Mettre à jour le dropdown étudiant
         const studentDropdown = modal.querySelector("#taskStudentDropdown");
         const studentName = taskCard
           .querySelector(".task-meta .meta-item:nth-child(2)")
@@ -1411,7 +1406,6 @@
 
         modalTaskForm("taskDeadline").value = parseDeadlineDate(deadlineText);
 
-        // Mettre à jour le dropdown priorité
         const priorityDropdown = modal.querySelector("#taskPriorityDropdown");
         const priorityText = priority === "low" ? "Basse" : priority === "high" ? "Haute" : "Normal";
         if (priorityDropdown) {
@@ -1464,7 +1458,6 @@
         (event) => event.key === "Escape" && modal.classList.contains("active") && closeModal()
       );
 
-      // Gérer la sélection des dropdowns dans le modal
       modal.querySelectorAll(".dropdown-item").forEach((item) => {
         item.addEventListener("click", function () {
           const dropdown = this.closest(".custom-dropdown");
@@ -1505,4 +1498,5 @@
       });
     </script>
   </body>
+
 </html>

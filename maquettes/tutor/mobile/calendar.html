@@ -2012,8 +2012,9 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
-              <label class="form-label">Titre <span class="required">*</span></label>
+              <label for="event-titre" class="form-label">Titre <span class="required">*</span></label>
               <input
+                id="event-titre"
                 type="text"
                 class="form-input"
                 placeholder="Ex: Session avec élève"
@@ -2022,20 +2023,20 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label">Description</label>
-              <textarea class="form-textarea" placeholder="Ajouter une description (optionnel)">
+              <label for="event-description" class="form-label">Description</label>
+              <textarea id="event-description" class="form-textarea" placeholder="Ajouter une description (optionnel)">
 Révision des équations et exercices du devoir.</textarea
               >
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Date <span class="required">*</span></label>
-                <input type="date" class="form-input" value="2026-01-15" />
+                <label for="event-date" class="form-label">Date <span class="required">*</span></label>
+                <input id="event-date" type="date" class="form-input" value="2026-01-15" />
               </div>
               <div class="form-group">
-                <label class="form-label">Catégorie <span class="required">*</span></label>
-                <select class="form-select">
+                <label for="event-category" class="form-label">Catégorie <span class="required">*</span></label>
+                <select id="event-category" class="form-select">
                   <option value="">-- Sélectionner --</option>
                   <option value="lesson" selected>Session/Préparation</option>
                   <option value="deadline">Réunion/Coordination</option>
@@ -2046,18 +2047,18 @@ Révision des équations et exercices du devoir.</textarea
 
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Heure début <span class="required">*</span></label>
-                <input type="time" class="form-input" value="14:00" />
+                <label for="event-start-time" class="form-label">Heure début <span class="required">*</span></label>
+                <input id="event-start-time" type="time" class="form-input" value="14:00" />
               </div>
               <div class="form-group">
-                <label class="form-label">Heure fin <span class="required">*</span></label>
-                <input type="time" class="form-input" value="15:00" />
+                <label for="event-end-time" class="form-label">Heure fin <span class="required">*</span></label>
+                <input id="event-end-time" type="time" class="form-input" value="15:00" />
               </div>
             </div>
 
             <div class="form-group">
-              <label class="form-label">Lieu</label>
-              <input type="text" class="form-input" placeholder="Ex: En ligne (Zoom)" value="En ligne (Zoom)" />
+              <label for="event-location" class="form-label">Lieu</label>
+              <input id="event-location" type="text" class="form-input" placeholder="Ex: En ligne (Zoom)" value="En ligne (Zoom)" />
             </div>
           </form>
         </div>
@@ -2168,6 +2169,8 @@ Révision des équations et exercices du devoir.</textarea
       </div>
     </div>
 
+    <div id="toast-container" class="toast-container"></div>
+
     <script>
       function openCreateModal() {
         document.getElementById("createModal").classList.add("active");
@@ -2249,6 +2252,5 @@ Révision des équations et exercices du devoir.</textarea
     </script>
 
     <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
-    <div id="toast-container" class="toast-container"></div>
   </body>
 </html>

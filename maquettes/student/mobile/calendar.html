@@ -1438,27 +1438,6 @@
         font-weight: 500;
       }
 
-      .category-badge {
-        display: inline-block;
-        padding: 4px 12px;
-        border-radius: 12px;
-        font-size: 12px;
-        font-weight: 600;
-        color: white;
-      }
-
-      .category-badge.lesson {
-        background: #3b82f6;
-      }
-
-      .category-badge.deadline {
-        background: #10b981;
-      }
-
-      .category-badge.appointment {
-        background: #f59e0b;
-      }
-
       .confirmation-content {
         display: flex;
         flex-direction: column;
@@ -1961,13 +1940,13 @@
       </div>
     </div>
 
-    <div class="modal-overlay" id="eventDetailsModal">
+    <div class="modal-overlay" id="eventFormModal">
       <div class="modal">
         <div class="modal-header">
           <div>
             <h2 class="modal-title">Détails de l'événement</h2>
           </div>
-          <button class="modal-close" onclick="closeDetailsModal()">✕</button>
+          <button class="modal-close" onclick="closeFormModal()">✕</button>
         </div>
         <div class="modal-body">
           <div class="event-details-content">
@@ -2036,7 +2015,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button class="button button-secondary" onclick="closeDetailsModal()">Fermer</button>
+          <button class="button button-secondary" onclick="closeFormModal()">Fermer</button>
           <button class="button button-danger" onclick="openDeleteConfirmModal()">Supprimer</button>
         </div>
       </div>
@@ -2060,6 +2039,8 @@
       </div>
     </div>
 
+    <div id="toast-container" class="toast-container"></div>
+
     <script>
       const showToast = (icon, title, message) => {
         const container = document.getElementById("toast-container");
@@ -2079,6 +2060,10 @@
 
       const closeDetailsModal = () => {
         document.getElementById("eventDetailsModal").classList.remove("active");
+      };
+
+      const closeFormModal = () => {
+        document.getElementById("eventFormModal").classList.remove("active");
       };
 
       const openDeleteConfirmModal = () => {
@@ -2122,6 +2107,5 @@
         sidebarOverlay.classList.remove("active");
       });
     </script>
-    <div id="toast-container" class="toast-container"></div>
   </body>
 </html>
