@@ -16,6 +16,7 @@
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         background: #F3F4F6;
         padding-bottom: 20px;
+        overflow-x: hidden;
       }
 
       .mobile-header {
@@ -218,7 +219,16 @@
 
       .nav-item-icon {
         margin-right: 12px;
-        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: block;
       }
 
       .notification-badge {
@@ -338,16 +348,135 @@
       input[type="text"],
       input[type="email"],
       input[type="password"],
-      input[type="tel"],
-      select {
+      input[type="tel"] {
         width: 100%;
         padding: 14px 16px;
         border: 1px solid #D1D5DB;
         border-radius: 6px;
         font-size: 16px;
+        background: white;
+        color: #111827;
         transition: all 0.3s ease;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        -webkit-appearance: none;
+      }
+
+      input[type="text"]:hover,
+      input[type="email"]:hover,
+      input[type="password"]:hover,
+      input[type="tel"]:hover {
+        border-color: #9CA3AF;
+      }
+
+      .custom-dropdown {
+        position: relative;
+        display: block;
+        width: 100%;
+      }
+
+      .dropdown-toggle {
+        width: 100%;
+        padding: 14px 16px;
+        padding-right: 40px;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        font-size: 16px;
+        background: white;
+        color: #111827;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.2s;
+        font-family: inherit;
+        margin: 0;
+        text-align: left;
+        min-height: 44px;
+      }
+
+      .dropdown-toggle:hover {
+        border-color: #9CA3AF;
+      }
+
+      .dropdown-toggle:focus {
+        outline: none;
+        border-color: #3B82F6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .dropdown-toggle::after {
+        content: '';
+        width: 12px;
+        height: 12px;
+        background-image: url("../../assets/icons/chevron-down.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: transform 0.2s;
+        flex-shrink: 0;
+      }
+
+      .custom-dropdown:focus-within .dropdown-toggle::after {
+        transform: rotate(180deg);
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        z-index: 1000;
+        overflow: hidden;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      .custom-dropdown:focus-within .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-item {
+        padding: 14px 16px;
+        font-size: 16px;
+        color: #111827;
+        cursor: pointer;
+        transition: background-color 0.15s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: none;
+        background: white;
+        width: 100%;
+        text-align: left;
+        font-family: inherit;
+        margin: 0;
+        min-height: 44px;
+      }
+
+      .dropdown-item:hover {
+        background: #F3F4F6;
+      }
+
+      .dropdown-item:focus {
+        outline: none;
+        background: #F3F4F6;
+      }
+
+      .dropdown-item.selected {
+        background: #3B82F6;
+        color: white;
+      }
+
+      .dropdown-item.selected::before {
+        content: '✓ ';
+        font-weight: 700;
+      }
+
+      select {
+        display: none;
       }
 
       input[type="text"]:focus,
@@ -801,6 +930,44 @@
         cursor: not-allowed;
         opacity: 0.7;
       }
+
+      .copyright {
+        text-align: center;
+        margin-top: 32px;
+        padding-top: 20px;
+        border-top: 1px solid #E5E7EB;
+        color: #94A3B8;
+        font-size: 12px;
+      }
+
+      @media (max-width: 480px) {
+        .sidebar {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+      .mobile-logo img,
+      .sidebar-logo img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      .mobile-header-spacer {
+        width: 44px;
+      }
+
+      .settings-info {
+        margin-bottom: 20px;
+        font-size: 12px;
+        color: #6B7280;
+      }
+
+      .settings-submit-btn {
+        margin-top: 24px;
+      }
     </style>
     <script>
       function toggleAvatar() {
@@ -820,14 +987,14 @@
   <body>
     <div class="mobile-header">
       <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-      <div class="mobile-logo">📚 Learn@Home</div>
-      <div style="width: 44px;"></div>
+      <div class="mobile-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+      <div class="mobile-header-spacer"></div>
     </div>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-logo">📚 Learn@Home</div>
+        <div class="sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
         <button class="close-btn" id="closeBtn" aria-label="Fermer">✕</button>
       </div>
 
@@ -835,11 +1002,11 @@
         <div class="nav-section">
           <div class="nav-label">Principal</div>
           <a href="dashboard.html" class="nav-item">
-            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span>
             Tableau de bord
           </a>
           <a href="chat.html" class="nav-item">
-            <span class="nav-item-icon">💬</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span>
             Messages
             <div class="notification-badge">6</div>
           </a>
@@ -848,11 +1015,11 @@
         <div class="nav-section">
           <div class="nav-label">Outils</div>
           <a href="calendar.html" class="nav-item">
-            <span class="nav-item-icon">📅</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span>
             Calendrier
           </a>
           <a href="tasks.html" class="nav-item">
-            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span>
             Tâches
           </a>
         </div>
@@ -860,11 +1027,11 @@
         <div class="nav-section">
           <div class="nav-label">Compte</div>
           <a href="settings.html" class="nav-item active" aria-current="page">
-            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span>
             Paramètres
           </a>
           <a href="login.html" class="nav-item">
-            <span class="nav-item-icon">🚪</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span>
             Déconnexion
           </a>
         </div>
@@ -940,7 +1107,7 @@
           <input type="password" id="confirm-password" required>
         </div>
 
-        <div style="margin-bottom: 20px; font-size: 12px; color: #6B7280;">
+        <div class="settings-info">
           <p>✓ Au moins 8 caractères</p>
           <p>✓ Contient des chiffres et des lettres</p>
           <p>✓ Contient au moins un caractère spécial</p>
@@ -996,7 +1163,7 @@
           </div>
         </div>
 
-        <button class="button button-primary" style="margin-top: 24px;" onclick="notificationToast()">Enregistrer les
+        <button class="button button-primary settings-submit-btn" onclick="notificationToast()">Enregistrer les
           préférences</button>
       </div>
 
@@ -1004,33 +1171,48 @@
         <div class="card-title">🎨 Préférences d'affichage</div>
         <div class="form-group">
           <label for="language">Langue</label>
-          <select id="language">
-            <option value="fr" selected>Français</option>
-            <option value="en">English</option>
-            <option value="de">Deutsch</option>
-            <option value="es">Español</option>
-          </select>
+          <div class="custom-dropdown">
+            <button type="button" class="dropdown-toggle" tabindex="0">
+              Français
+            </button>
+            <div class="dropdown-menu">
+              <button type="button" class="dropdown-item selected" tabindex="0">Français</button>
+              <button type="button" class="dropdown-item" tabindex="0">English</button>
+              <button type="button" class="dropdown-item" tabindex="0">Deutsch</button>
+              <button type="button" class="dropdown-item" tabindex="0">Español</button>
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="timezone">Fuseau horaire</label>
-          <select id="timezone">
-            <option value="europe/paris" selected>Europe/Paris (GMT+1)</option>
-            <option value="europe/london">Europe/London (GMT+0)</option>
-            <option value="europe/berlin">Europe/Berlin (GMT+1)</option>
-            <option value="america/newyork">America/New_York (GMT-5)</option>
-            <option value="america/chicago">America/Chicago (GMT-6)</option>
-            <option value="asia/tokyo">Asia/Tokyo (GMT+9)</option>
-          </select>
+          <div class="custom-dropdown">
+            <button type="button" class="dropdown-toggle" tabindex="0">
+              Europe/Paris (GMT+1)
+            </button>
+            <div class="dropdown-menu">
+              <button type="button" class="dropdown-item selected" tabindex="0">Europe/Paris (GMT+1)</button>
+              <button type="button" class="dropdown-item" tabindex="0">Europe/London (GMT+0)</button>
+              <button type="button" class="dropdown-item" tabindex="0">Europe/Berlin (GMT+1)</button>
+              <button type="button" class="dropdown-item" tabindex="0">America/New_York (GMT-5)</button>
+              <button type="button" class="dropdown-item" tabindex="0">America/Chicago (GMT-6)</button>
+              <button type="button" class="dropdown-item" tabindex="0">Asia/Tokyo (GMT+9)</button>
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="theme">Thème</label>
-          <select id="theme">
-            <option value="light" selected>Clair</option>
-            <option value="dark">Sombre</option>
-            <option value="auto">Automatique</option>
-          </select>
+          <div class="custom-dropdown">
+            <button type="button" class="dropdown-toggle" tabindex="0">
+              Clair
+            </button>
+            <div class="dropdown-menu">
+              <button type="button" class="dropdown-item selected" tabindex="0">Clair</button>
+              <button type="button" class="dropdown-item" tabindex="0">Sombre</button>
+              <button type="button" class="dropdown-item" tabindex="0">Automatique</button>
+            </div>
+          </div>
         </div>
 
         <button class="button button-primary"
@@ -1066,7 +1248,7 @@
           </div>
         </div>
 
-        <button class="button button-secondary" style="margin-top: 24px;" onclick="downloadDataToast()">Télécharger mes
+        <button class="button button-secondary settings-submit-btn" onclick="downloadDataToast()">Télécharger mes
           données</button>
         <button class="button button-secondary"
           onclick="showToast('📊', 'Mon activité', 'Chargement de votre activité...')">Voir mon activité</button>
@@ -1124,6 +1306,9 @@
 
     </script>
     <div id="toast-container" class="toast-container"></div>
+    <div class="copyright">
+      © 2026 Learn@Home. All rights reserved.
+    </div>
   </body>
 
 </html>

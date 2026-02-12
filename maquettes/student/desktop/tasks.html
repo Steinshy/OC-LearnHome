@@ -105,7 +105,16 @@
       }
 
       .nav-item-icon {
-        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: block;
       }
 
       .notification-badge {
@@ -295,11 +304,107 @@
         opacity: 0;
       }
 
-      .sort-select {
+      .custom-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-toggle {
         padding: 10px 12px;
+        padding-right: 32px;
         border: 1px solid #D1D5DB;
         border-radius: 6px;
         font-size: 14px;
+        background: white;
+        color: var(--text);
+        cursor: pointer;
+        min-width: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.2s;
+        font-family: inherit;
+        text-align: left;
+      }
+
+      .dropdown-toggle:hover {
+        border-color: #9CA3AF;
+      }
+
+      .dropdown-toggle:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .dropdown-toggle::after {
+        content: '';
+        width: 12px;
+        height: 12px;
+        background-image: url("../../assets/icons/chevron-down.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: transform 0.2s;
+        flex-shrink: 0;
+      }
+
+      .custom-dropdown:focus-within .dropdown-toggle::after {
+        transform: rotate(180deg);
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        z-index: 1000;
+        overflow: hidden;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      .custom-dropdown:focus-within .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-item {
+        padding: 10px 12px;
+        font-size: 14px;
+        color: var(--text);
+        cursor: pointer;
+        transition: background-color 0.15s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        font-family: inherit;
+      }
+
+      .dropdown-item:hover {
+        background: var(--bg);
+      }
+
+      .dropdown-item:focus {
+        outline: none;
+        background: var(--bg);
+      }
+
+      .dropdown-item.selected {
+        background: var(--primary);
+        color: white;
+      }
+
+      .dropdown-item.selected::before {
+        content: '✓';
+        font-weight: 700;
       }
 
       .tasks-container {
@@ -332,7 +437,19 @@
       }
 
       .task-checkbox:checked+.checkbox::after {
-        content: '✓';
+        content: '';
+        width: 16px;
+        height: 16px;
+        background-color: white;
+        mask-image: url('../../assets/icons/check.svg');
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-image: url('../../assets/icons/check.svg');
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        display: block;
       }
 
       .task-checkbox:checked~.task-content .task-title {
@@ -475,6 +592,25 @@
         justify-content: center;
         font-size: 16px;
         transition: all 0.3s;
+        padding: 0;
+      }
+
+      .action-btn img {
+        width: 16px;
+        height: 16px;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+      }
+
+      .action-btn:hover img {
+        opacity: 1;
+      }
+
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+        vertical-align: middle;
       }
 
       .action-btn:hover {
@@ -840,6 +976,28 @@
       .button-secondary:active {
         background: #E5E7EB;
       }
+
+      .nav-sidebar-logo img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      .meta-item img {
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 4px;
+      }
+
+      .tasks-toolbar {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
     </style>
   </head>
 
@@ -847,26 +1005,26 @@
     <div class="page-layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo">📚 Learn@Home</div>
+          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
-            <a href="chat.html" class="nav-item"><span class="nav-item-icon">💬</span> Messages<span
+            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span> Tableau de bord</a>
+            <a href="chat.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span> Messages<span
                 class="notification-badge">5</span></a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item"><span class="nav-item-icon">📅</span> Calendrier</a>
-            <a href="tasks.html" class="nav-item active" aria-current="page"><span class="nav-item-icon">✅</span>
+            <a href="calendar.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span> Calendrier</a>
+            <a href="tasks.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span>
               Tâches</a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"><span class="nav-item-icon">⚙️</span> Paramètres</a>
-            <a href="login.html" class="nav-item"><span class="nav-item-icon">🚪</span> Déconnexion</a>
+            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span> Paramètres</a>
+            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span> Déconnexion</a>
           </div>
         </nav>
 
@@ -895,13 +1053,18 @@
             <button class="filter-btn">Complétées</button>
           </div>
 
-          <div style="display: flex; gap: 12px; align-items: center;">
+          <div class="tasks-toolbar">
             <input type="text" class="search-box" placeholder="Rechercher une tâche...">
-            <select class="sort-select">
-              <option>Trier par: Date</option>
-              <option>Trier par: Priorité</option>
-              <option>Trier par: Titre</option>
-            </select>
+            <div class="custom-dropdown">
+              <button type="button" class="dropdown-toggle" tabindex="0">
+                Trier par: Date
+              </button>
+              <div class="dropdown-menu">
+                <button type="button" class="dropdown-item selected" tabindex="0">Trier par: Date</button>
+                <button type="button" class="dropdown-item" tabindex="0">Trier par: Priorité</button>
+                <button type="button" class="dropdown-item" tabindex="0">Trier par: Titre</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -913,15 +1076,19 @@
               <div class="task-title">Équations du second degré - Exercices</div>
               <div class="task-description">Compléter les 10 exercices de la feuille distribuée par Yann</div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 10 janvier 2026</div>
-                <div class="meta-item">👤 Créé par: Yann Uliong</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> Échéance: 10 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Créé par: Yann Uliong</div>
               </div>
             </div>
             <div class="priority-badge priority-high">Haute</div>
             <div class="status-badge status-pending">À faire</div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
 
@@ -933,15 +1100,19 @@
               <div class="task-description">Lire "Le Seigneur des Anneaux" chapitre 5 et faire un résumé de 2 pages
               </div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 12 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 12 janvier 2026</div>
                 <div class="meta-item">👤 Auto-créée</div>
               </div>
             </div>
             <div class="priority-badge priority-medium">Normal</div>
             <div class="status-badge status-inprogress">En cours</div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
 
@@ -952,15 +1123,19 @@
               <div class="task-title">Révision vocabulaire anglais</div>
               <div class="task-description">Apprendre 50 nouveaux mots de vocabulaire pour le test</div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 5 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 5 janvier 2026</div>
                 <div class="meta-item">👤 Auto-créée</div>
               </div>
             </div>
             <div class="priority-badge priority-low">Basse</div>
             <div class="status-badge status-done">Complétée</div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
 
@@ -972,15 +1147,19 @@
               <div class="task-description">Rédiger un rapport détaillé incluant hypothèse, procédure, résultats et
                 conclusions</div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 15 janvier 2026</div>
-                <div class="meta-item">👤 Créé par: Yann Uliong</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 15 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Yann Uliong</div>
               </div>
             </div>
             <div class="priority-badge priority-high">Haute</div>
             <div class="status-badge status-pending">À faire</div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
 
@@ -992,15 +1171,19 @@
               <div class="task-description">Créer une présentation PowerPoint de 15-20 diapositives sur la Révolution
                 française</div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 20 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 20 janvier 2026</div>
                 <div class="meta-item">👤 Auto-créée</div>
               </div>
             </div>
             <div class="priority-badge priority-low">Basse</div>
             <div class="status-badge status-pending">À faire</div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
 
@@ -1012,15 +1195,19 @@
               <div class="task-description">Répondre aux 20 questions du quiz en ligne sur les triangles et leur
                 propriétés</div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 8 janvier 2026</div>
-                <div class="meta-item">👤 Créé par: Système</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 8 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Système</div>
               </div>
             </div>
             <div class="priority-badge priority-medium">Normal</div>
             <div class="status-badge status-done">Complétée</div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
         </div>
@@ -1032,10 +1219,10 @@
     </div>
 
     <!-- Modal: Ajouter une tâche -->
-    <div class="modal" id="taskModal">
+    <div class="modal" id="taskModal" data-mode="create">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title">Ajouter une tâche</h2>
+          <h2 class="modal-title" id="modalTitle">Ajouter une tâche</h2>
           <button class="modal-close" id="closeTaskModal" aria-label="Fermer le formulaire">×</button>
         </div>
         <form id="taskForm">
@@ -1062,8 +1249,8 @@
           </div>
 
           <div class="modal-footer">
+            <button type="submit" class="button button-primary" id="submitTaskBtn" data-action="create">Créer la tâche</button>
             <button type="button" class="button-secondary" id="cancelTaskBtn">Annuler</button>
-            <button type="submit" class="button button-primary">Créer la tâche</button>
           </div>
         </form>
       </div>
@@ -1080,27 +1267,70 @@
         setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
       };
 
-      document.querySelectorAll('.task-checkbox').forEach(cb => cb.addEventListener('change', () => showToast('✅', 'Tâche mise à jour', cb.checked ? 'Tâche marquée comme complétée' : 'Tâche marquée comme incomplète')));
-
       // Task modal logic
       const taskModal = document.getElementById('taskModal');
       const taskForm = document.getElementById('taskForm');
       const addTaskBtn = document.getElementById('addTaskBtn');
       const closeTaskModal = document.getElementById('closeTaskModal');
       const cancelTaskBtn = document.getElementById('cancelTaskBtn');
+      const submitTaskBtn = document.getElementById('submitTaskBtn');
+      const modalTitle = document.getElementById('modalTitle');
       const taskTitle = document.getElementById('taskTitle');
       const taskDescription = document.getElementById('taskDescription');
       const taskDate = document.getElementById('taskDate');
       const titleCounter = document.getElementById('titleCounter');
       const descCounter = document.getElementById('descCounter');
+      let currentEditCard = null;
 
       // Set minimum date to today
       const today = new Date();
       const todayStr = today.toISOString().split('T')[0];
       taskDate.min = todayStr;
 
-      // Open modal
+      // Parse deadline date from French format to ISO format
+      const parseDeadlineDate = (dateString) => {
+        const months = {
+          'janvier': '01', 'février': '02', 'mars': '03', 'avril': '04',
+          'mai': '05', 'juin': '06', 'juillet': '07', 'août': '08',
+          'septembre': '09', 'octobre': '10', 'novembre': '11', 'décembre': '12'
+        };
+        const parts = dateString.trim().split(' ');
+        const day = parts[0].padStart(2, '0');
+        const month = months[parts[1].toLowerCase()];
+        const year = parts[2];
+        return `${year}-${month}-${day}`;
+      };
+
+      // Open modal for create
       const openTaskModal = () => {
+        taskModal.dataset.mode = 'create';
+        modalTitle.textContent = 'Ajouter une tâche';
+        submitTaskBtn.textContent = 'Créer la tâche';
+        submitTaskBtn.dataset.action = 'create';
+        taskModal.classList.add('active');
+        taskTitle.focus();
+      };
+
+      // Open modal for edit
+      const openModalForEdit = (taskCard) => {
+        const cardTitle = taskCard.querySelector('.task-title').textContent;
+        const cardDescription = taskCard.querySelector('.task-description').textContent;
+        const deadlineMetaItem = taskCard.querySelector('.task-meta .meta-item:first-child').textContent;
+        const deadlineText = deadlineMetaItem.replace(/Échéance:\s*/i, '').trim();
+        
+        taskTitle.value = cardTitle;
+        taskDescription.value = cardDescription;
+        taskDate.value = parseDeadlineDate(deadlineText);
+        
+        titleCounter.textContent = cardTitle.length;
+        descCounter.textContent = cardDescription.length;
+        
+        taskModal.dataset.mode = 'edit';
+        modalTitle.textContent = 'Modifier la tâche';
+        submitTaskBtn.textContent = 'Enregistrer les modifications';
+        submitTaskBtn.dataset.action = 'edit';
+        currentEditCard = taskCard;
+        
         taskModal.classList.add('active');
         taskTitle.focus();
       };
@@ -1129,6 +1359,11 @@
         });
         titleCounter.textContent = '0';
         descCounter.textContent = '0';
+        taskModal.dataset.mode = 'create';
+        modalTitle.textContent = 'Ajouter une tâche';
+        submitTaskBtn.textContent = 'Créer la tâche';
+        submitTaskBtn.dataset.action = 'create';
+        currentEditCard = null;
       };
 
       // Track unsaved changes
@@ -1227,7 +1462,11 @@
         }
 
         // Show success notification
-        showToast('✅', 'Tâche créée', 'Votre nouvelle tâche a été ajoutée avec succès');
+        if (taskModal.dataset.mode === 'edit') {
+          showToast('✏️', 'Tâche modifiée', 'Les modifications ont été enregistrées');
+        } else {
+          showToast('✅', 'Tâche créée', 'Votre nouvelle tâche a été ajoutée avec succès');
+        }
 
         // Close modal and reset form
         taskModal.classList.remove('active');
@@ -1248,6 +1487,30 @@
 
       // Initialize hasUnsavedChanges function
       taskForm.hasUnsavedChanges = () => false;
+
+      // Gérer les boutons edit/delete
+      document.querySelectorAll('.task-card').forEach(card => {
+        const checkbox = card.querySelector('.task-checkbox');
+        const editBtn = card.querySelector('.task-actions .action-btn:first-child');
+        const deleteBtn = card.querySelector('.task-actions .action-btn:last-child');
+        const taskTitle = card.querySelector('.task-title').textContent;
+
+        if (checkbox) {
+          checkbox.addEventListener('change', () => {
+            showToast('✅', 'Tâche mise à jour', checkbox.checked ? 'Tâche marquée comme complétée' : 'Tâche marquée comme incomplète');
+          });
+        }
+
+        if (editBtn) {
+          editBtn.addEventListener('click', () => openModalForEdit(card));
+        }
+
+        if (deleteBtn) {
+          deleteBtn.addEventListener('click', () => {
+            showToast('🗑️', 'Tâche supprimée', `"${taskTitle}" a été supprimée`);
+          });
+        }
+      });
     </script>
   </body>
 

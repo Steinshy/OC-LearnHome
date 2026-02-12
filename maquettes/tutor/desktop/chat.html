@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn@Home - Messages | Maquette Desktop</title>
     <style>
+      :root {
+        --primary: #3B82F6;
+        --primary-dark: #1E40AF;
+        --danger: #EF4444;
+        --danger-dark: #DC2626;
+        --bg: #F3F4F6;
+        --text: #111827;
+        --text-muted: #6B7280;
+        --border: #E5E7EB;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -14,7 +25,7 @@
 
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: #F3F4F6;
+        background: var(--bg);
         overflow: hidden;
       }
 
@@ -29,7 +40,7 @@
       .nav-sidebar {
         grid-area: nav;
         background: white;
-        border-right: 1px solid #E5E7EB;
+        border-right: 1px solid var(--border);
         padding: 24px 0;
         overflow-y: auto;
         display: flex;
@@ -39,13 +50,13 @@
       .nav-sidebar-header {
         padding: 0 24px 24px;
         margin-bottom: 32px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid var(--border);
       }
 
       .nav-sidebar-logo {
         font-size: 20px;
         font-weight: 700;
-        color: #3B82F6;
+        color: var(--primary);
       }
 
       nav {
@@ -57,7 +68,7 @@
       }
 
       .nav-section:not(:first-child) {
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid var(--border);
         padding-top: 24px;
       }
 
@@ -72,7 +83,7 @@
 
       .nav-item {
         padding: 12px 24px;
-        color: #6B7280;
+        color: var(--text-muted);
         text-decoration: none;
         display: flex;
         align-items: center;
@@ -82,23 +93,32 @@
       }
 
       .nav-item:hover {
-        background: #F3F4F6;
-        color: #3B82F6;
+        background: var(--bg);
+        color: var(--primary);
       }
 
       .nav-item.active {
         background: #E0F2FE;
-        color: #3B82F6;
-        border-right: 4px solid #3B82F6;
+        color: var(--primary);
+        border-right: 4px solid var(--primary);
         font-weight: 600;
       }
 
       .nav-item-icon {
-        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: block;
       }
 
       .notification-badge {
-        background: #EF4444;
+        background: var(--danger);
         color: white;
         width: 24px;
         height: 24px;
@@ -115,7 +135,7 @@
       .user-profile {
         padding: 12px 16px;
         margin: 0 12px;
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid var(--border);
         margin-top: auto;
         display: flex;
         align-items: center;
@@ -126,13 +146,13 @@
       }
 
       .user-profile:hover {
-        background: #F3F4F6;
+        background: var(--bg);
       }
 
       .user-avatar {
         width: 40px;
         height: 40px;
-        background: #3B82F6;
+        background: var(--primary);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -161,8 +181,8 @@
         right: -2px;
         background: var(--danger);
         color: white;
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1587,37 +1607,69 @@
         cursor: not-allowed;
         opacity: 0.7;
       }
+
+      .nav-sidebar-logo img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      #contacts-modal-toggle,
+      #info-modal-toggle,
+      #phone-call-modal-toggle,
+      #video-call-modal-toggle,
+      #file-input {
+        display: none;
+      }
+
+      .chat-header-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .modal-action-btn--accept {
+        background: #10B981;
+      }
+
+      .modal-action-btn--decline {
+        background: #EF4444;
+        cursor: pointer;
+      }
     </style>
   </head>
 
   <body>
-    <input type="checkbox" id="contacts-modal-toggle" style="display: none;">
-    <input type="checkbox" id="info-modal-toggle" style="display: none;">
-    <input type="checkbox" id="phone-call-modal-toggle" style="display: none;">
-    <input type="checkbox" id="video-call-modal-toggle" style="display: none;">
+    <input type="checkbox" id="contacts-modal-toggle">
+    <input type="checkbox" id="info-modal-toggle">
+    <input type="checkbox" id="phone-call-modal-toggle">
+    <input type="checkbox" id="video-call-modal-toggle">
     <div class="layout">
 
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo">📚 Learn@Home</div>
+          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
-            <a href="chat.html" class="nav-item active" aria-current="page"><span class="nav-item-icon">💬</span>
+            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span> Tableau de bord</a>
+            <a href="chat.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span>
               Messages<div class="notification-badge">4</div></a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item"><span class="nav-item-icon">📅</span> Calendrier</a>
-            <a href="tasks.html" class="nav-item"><span class="nav-item-icon">✅</span> Tâches</a>
+            <a href="calendar.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span> Calendrier</a>
+            <a href="tasks.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span> Tâches</a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"><span class="nav-item-icon">⚙️</span> Paramètres</a>
-            <a href="login.html" class="nav-item"><span class="nav-item-icon">🚪</span> Déconnexion</a>
+            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span> Paramètres</a>
+            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span> Déconnexion</a>
           </div>
         </nav>
 
@@ -1688,7 +1740,7 @@
           <div class="chat-header-info">
             <div class="contact-avatar antoine">AK</div>
             <div>
-              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <div class="chat-header-info">
                 <span class="chat-header-title">Antoine Kreuder</span>
                 <span class="chat-header-subtitle">3ème • Mathématiques, Sciences</span>
               </div>
@@ -1787,7 +1839,7 @@
           <div class="input-wrapper">
             <button class="btn-icon hover-up" id="attachment-btn" data-hover="Joindre un fichier"
               onclick="handleAttachmentClick();">📎</button>
-            <input type="file" id="file-input" style="display: none;" onchange="handleFileUpload(event)">
+            <input type="file" id="file-input" onchange="handleFileUpload(event)">
             <textarea class="message-input" id="message-input" placeholder="Tapez votre message..." rows="1"></textarea>
             <button class="send-btn hover-up" id="send-btn" data-hover="Envoyer"
               onclick="handleMessageSend();">➤</button>
@@ -1872,13 +1924,13 @@
             <button class="modal-action-btn remove-contact"
               onclick="contactManager.removeContact(this)">Supprimer</button>
           </div>
-          <div class="contact-row hidden" style="display: none;">
+          <div class="contact-row hidden">
             <div class="modal-avatar lea"></div>
             <div class="modal-name">Léa Bernard</div>
             <button class="modal-action-btn remove-contact"
               onclick="contactManager.removeContact(this)">Supprimer</button>
           </div>
-          <div class="contact-row no-contact-found hidden" style="display: none;">
+          <div class="contact-row no-contact-found hidden">
             <p>Aucun contact trouvé</p>
           </div>
         </div>
@@ -1955,9 +2007,8 @@
           <div class="modal-status">● En ligne</div>
         </div>
         <div class="modal-action-container">
-          <button class="modal-action-btn" style="background: #10B981;">📞 Appeler</button>
-          <label for="phone-call-modal-toggle" class="modal-action-btn"
-            style="background: #EF4444; cursor: pointer;">Refuser</label>
+          <button class="modal-action-btn modal-action-btn--accept">📞 Appeler</button>
+          <label for="phone-call-modal-toggle" class="modal-action-btn modal-action-btn--decline">Refuser</label>
         </div>
       </div>
     </div>
@@ -1972,9 +2023,8 @@
           <div class="modal-status">● En ligne</div>
         </div>
         <div class="modal-action-container">
-          <button class="modal-action-btn" style="background: #10B981;">📹 Appeler</button>
-          <label for="video-call-modal-toggle" class="modal-action-btn"
-            style="background: #EF4444; cursor: pointer;">Refuser</label>
+          <button class="modal-action-btn modal-action-btn--accept">📹 Appeler</button>
+          <label for="video-call-modal-toggle" class="modal-action-btn modal-action-btn--decline">Refuser</label>
         </div>
       </div>
     </div>
@@ -2064,6 +2114,9 @@
         closePanel(taskPanel);
       });
     </script>
+    <div class="copyright">
+      © 2026 Learn@Home. All rights reserved.
+    </div>
   </body>
 
 </html>

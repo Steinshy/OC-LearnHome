@@ -16,6 +16,7 @@
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         background: #F3F4F6;
         padding-bottom: 20px;
+        overflow-x: hidden;
       }
 
       .mobile-header {
@@ -218,7 +219,16 @@
 
       .nav-item-icon {
         margin-right: 12px;
-        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: block;
       }
 
       .notification-badge {
@@ -306,6 +316,9 @@
         font-size: 14px;
         transition: all 0.3s;
         min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .button-primary {
@@ -723,13 +736,25 @@
       .form-select {
         width: 100%;
         padding: 12px;
+        padding-right: 32px;
         border: 1px solid #D1D5DB;
         border-radius: 6px;
         font-family: inherit;
         font-size: 14px;
-        transition: all 0.2s;
         background: white;
+        color: #111827;
+        cursor: pointer;
+        transition: all 0.2s;
+        appearance: none;
         -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url("../../assets/icons/chevron-down.svg");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+      }
+
+      .form-select:hover {
+        border-color: #9CA3AF;
       }
 
       .form-input:focus,
@@ -843,10 +868,74 @@
         font-size: 12px;
       }
 
+      .toast-container {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+        pointer-events: none;
+      }
+
+      .toast {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        min-width: 300px;
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        pointer-events: auto;
+      }
+
+      .toast.dismissing {
+        animation: fadeOut 0.3s ease-out forwards;
+      }
+
+      .toast-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 4px;
+      }
+
+      .toast-message {
+        font-size: 13px;
+        color: #6B7280;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(400px);
+          opacity: 0;
+        }
+
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+
+        to {
+          opacity: 0;
+        }
+      }
+
 
 
 
       @media (max-width: 360px) {
+        .sidebar {
+          width: 100%;
+          max-width: 100%;
+        }
+
         .container {
           padding: 12px;
         }
@@ -965,6 +1054,11 @@
       }
 
       @media (min-width: 361px) and (max-width: 480px) {
+        .sidebar {
+          width: 100%;
+          max-width: 100%;
+        }
+
         .container {
           padding: 14px;
         }
@@ -1462,6 +1556,7 @@
         font-size: 18px;
         font-weight: 700;
         color: #111827;
+        margin: 0;
       }
 
       .event-detail-row {
@@ -1617,20 +1712,49 @@
           margin: 16px;
         }
       }
+      .mobile-logo img,
+      .sidebar-logo img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      .mobile-header-spacer {
+        width: 44px;
+      }
+
+      .event-detail-icon img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .event-detail-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+
+      .modal-body--compact {
+        padding: 32px 24px 24px;
+      }
     </style>
   </head>
 
   <body>
     <div class="mobile-header">
       <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-      <div class="mobile-logo">📚 Learn@Home</div>
-      <div style="width: 44px;"></div>
+      <div class="mobile-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+      <div class="mobile-header-spacer"></div>
     </div>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-logo">📚 Learn@Home</div>
+        <div class="sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
         <button class="close-btn" id="closeBtn" aria-label="Fermer">✕</button>
       </div>
 
@@ -1638,11 +1762,11 @@
         <div class="nav-section">
           <div class="nav-label">Principal</div>
           <a href="dashboard.html" class="nav-item">
-            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span>
             Tableau de bord
           </a>
           <a href="chat.html" class="nav-item">
-            <span class="nav-item-icon">💬</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span>
             Messages
             <span class="notification-badge">6</span>
           </a>
@@ -1651,11 +1775,11 @@
         <div class="nav-section">
           <div class="nav-label">Outils</div>
           <a href="calendar.html" class="nav-item active" aria-current="page">
-            <span class="nav-item-icon">📅</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span>
             Calendrier
           </a>
           <a href="tasks.html" class="nav-item">
-            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span>
             Tâches
           </a>
         </div>
@@ -1663,11 +1787,11 @@
         <div class="nav-section">
           <div class="nav-label">Compte</div>
           <a href="settings.html" class="nav-item">
-            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span>
             Paramètres
           </a>
           <a href="login.html" class="nav-item">
-            <span class="nav-item-icon">🚪</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span>
             Déconnexion
           </a>
         </div>
@@ -1936,6 +2060,105 @@
       </div>
     </div>
 
+    <div class="modal-overlay" id="eventDetailsModal">
+      <div class="modal">
+        <div class="modal-header">
+          <div>
+            <h2 class="modal-title">Détails de l'événement</h2>
+          </div>
+          <button class="modal-close" onclick="closeDetailsModal()">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="event-details-content">
+            <div class="event-detail-header">
+              <h3 class="event-details-title">Session avec Antoine Kreuder - Mathématiques</h3>
+              <span class="category-badge lesson">Session/Préparation</span>
+            </div>
+
+            <div class="event-detail-row">
+              <div class="event-detail-icon"><img src="../../assets/icons/calendar.svg" alt=""></div>
+              <div class="event-detail-info">
+                <div class="event-detail-label">Date</div>
+                <div class="event-detail-value">Jeudi 15 janvier 2026</div>
+              </div>
+            </div>
+
+            <div class="event-detail-row">
+              <div class="event-detail-icon">🕐</div>
+              <div class="event-detail-info">
+                <div class="event-detail-label">Horaires</div>
+                <div class="event-detail-value">14:00 - 15:00</div>
+              </div>
+            </div>
+
+            <div class="event-detail-row">
+              <div class="event-detail-icon">📍</div>
+              <div class="event-detail-info">
+                <div class="event-detail-label">Lieu</div>
+                <div class="event-detail-value">En ligne (Zoom)</div>
+              </div>
+            </div>
+
+            <div class="event-detail-row">
+              <div class="event-detail-icon"><img src="../../assets/icons/user.svg" alt=""></div>
+              <div class="event-detail-info">
+                <div class="event-detail-label">Élève</div>
+                <div class="event-detail-value">Antoine Kreuder</div>
+              </div>
+            </div>
+
+            <div class="event-detail-row">
+              <div class="event-detail-icon"><img src="../../assets/icons/file-edit.svg" alt=""></div>
+              <div class="event-detail-info">
+                <div class="event-detail-label">Description</div>
+                <div class="event-detail-value">Révision des équations et exercices du devoir. Focus sur les erreurs
+                  courantes.</div>
+              </div>
+            </div>
+
+            <div class="event-detail-row">
+              <div class="event-detail-icon">🔄</div>
+              <div class="event-detail-info">
+                <div class="event-detail-label">Récurrence</div>
+                <div class="event-detail-value">Hebdomadaire (chaque jeudi)</div>
+              </div>
+            </div>
+
+            <div class="event-detail-row">
+              <div class="event-detail-icon"><img src="../../assets/icons/bell.svg" alt=""></div>
+              <div class="event-detail-info">
+                <div class="event-detail-label">Notification</div>
+                <div class="event-detail-value">15 minutes avant l'événement</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="button button-secondary" onclick="closeDetailsModal()">Modifier</button>
+          <button class="button button-danger" onclick="openDeleteConfirmModal()">Supprimer</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="confirmDeleteModal">
+      <div class="modal">
+        <div class="modal-body modal-body--compact">
+          <div class="confirmation-content">
+            <h2 class="confirmation-title">Supprimer cet événement ?</h2>
+            <p class="confirmation-message">
+              Cette action est <strong>irréversible</strong>. L'événement <strong>"Session avec Antoine Kreuder -
+                Mathématiques"</strong> sera
+              définitivement supprimé de votre calendrier.
+            </p>
+            <div class="confirmation-buttons">
+              <button class="button button-danger" onclick="handleDeleteEvent()">Supprimer définitivement</button>
+              <button class="button button-secondary" onclick="closeDeleteConfirmModal()">Annuler</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
       function openCreateModal() {
         document.getElementById('createModal').classList.add('active');
@@ -1961,8 +2184,17 @@
         document.getElementById('confirmDeleteModal').classList.remove('active');
       }
 
+      const showToast = (icon, title, message) => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+        container.appendChild(toast);
+        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
+      };
+
       function handleDeleteEvent() {
-        alert('Événement supprimé avec succès!');
+        showToast('🗑️', 'Événement supprimé', 'L\'événement a été supprimé avec succès');
         closeDeleteConfirmModal();
       }
 
@@ -2004,108 +2236,10 @@
       });
     </script>
 
-    <div class="modal-overlay" id="eventDetailsModal">
-      <div class="modal">
-        <div class="modal-header">
-          <div>
-            <h2 class="modal-title">Détails de l'événement</h2>
-          </div>
-          <button class="modal-close" onclick="closeDetailsModal()">✕</button>
-        </div>
-        <div class="modal-body">
-          <div class="event-details-content">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-              <h3 class="event-details-title" style="margin: 0;">Session avec Antoine Kreuder - Mathématiques</h3>
-              <span class="category-badge lesson">Session/Préparation</span>
-            </div>
-
-            <div class="event-detail-row">
-              <div class="event-detail-icon">📅</div>
-              <div class="event-detail-info">
-                <div class="event-detail-label">Date</div>
-                <div class="event-detail-value">Jeudi 15 janvier 2026</div>
-              </div>
-            </div>
-
-            <div class="event-detail-row">
-              <div class="event-detail-icon">🕐</div>
-              <div class="event-detail-info">
-                <div class="event-detail-label">Horaires</div>
-                <div class="event-detail-value">14:00 - 15:00</div>
-              </div>
-            </div>
-
-            <div class="event-detail-row">
-              <div class="event-detail-icon">📍</div>
-              <div class="event-detail-info">
-                <div class="event-detail-label">Lieu</div>
-                <div class="event-detail-value">En ligne (Zoom)</div>
-              </div>
-            </div>
-
-            <div class="event-detail-row">
-              <div class="event-detail-icon">👤</div>
-              <div class="event-detail-info">
-                <div class="event-detail-label">Élève</div>
-                <div class="event-detail-value">Antoine Kreuder</div>
-              </div>
-            </div>
-
-            <div class="event-detail-row">
-              <div class="event-detail-icon">📝</div>
-              <div class="event-detail-info">
-                <div class="event-detail-label">Description</div>
-                <div class="event-detail-value">Révision des équations et exercices du devoir. Focus sur les erreurs
-                  courantes.</div>
-              </div>
-            </div>
-
-            <div class="event-detail-row">
-              <div class="event-detail-icon">🔄</div>
-              <div class="event-detail-info">
-                <div class="event-detail-label">Récurrence</div>
-                <div class="event-detail-value">Hebdomadaire (chaque jeudi)</div>
-              </div>
-            </div>
-
-            <div class="event-detail-row">
-              <div class="event-detail-icon">🔔</div>
-              <div class="event-detail-info">
-                <div class="event-detail-label">Notification</div>
-                <div class="event-detail-value">15 minutes avant l'événement</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button class="button button-secondary" onclick="closeDetailsModal()">Modifier</button>
-          <button class="button button-danger" onclick="openDeleteConfirmModal()">Supprimer</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal-overlay" id="confirmDeleteModal">
-      <div class="modal">
-        <div class="modal-body" style="padding: 32px 24px 24px;">
-          <div class="confirmation-content">
-            <h2 class="confirmation-title">Supprimer cet événement ?</h2>
-            <p class="confirmation-message">
-              Cette action est <strong>irréversible</strong>. L'événement <strong>"Session avec Antoine Kreuder -
-                Mathématiques"</strong> sera
-              définitivement supprimé de votre calendrier.
-            </p>
-            <div class="confirmation-buttons">
-              <button class="button button-secondary" onclick="closeDeleteConfirmModal()">Annuler</button>
-              <button class="button button-danger" onclick="handleDeleteEvent()">Supprimer définitivement</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="copyright">
       © 2026 Learn@Home. All rights reserved.
     </div>
+    <div id="toast-container" class="toast-container"></div>
   </body>
 
 </html>

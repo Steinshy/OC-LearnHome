@@ -16,6 +16,7 @@
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         background: #F3F4F6;
         padding-bottom: 20px;
+        overflow-x: hidden;
       }
 
       .mobile-header {
@@ -218,7 +219,28 @@
 
       .nav-item-icon {
         margin-right: 12px;
-        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: block;
+        opacity: 0.7;
+      }
+
+      .nav-item.active .nav-item-icon img,
+      .nav-item:hover .nav-item-icon img,
+      .nav-item:active .nav-item-icon img {
+        opacity: 1;
+      }
+
+      .sidebar-logo img,
+      .mobile-logo img {
+        opacity: 1;
       }
 
       .notification-badge {
@@ -417,9 +439,19 @@
       }
 
       .task-checkbox:checked::after {
-        content: '✓';
-        font-size: 14px;
-        font-weight: 700;
+        content: '';
+        width: 16px;
+        height: 16px;
+        background-color: white;
+        mask-image: url('../../assets/icons/check.svg');
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-image: url('../../assets/icons/check.svg');
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        display: block;
       }
 
       .task-content {
@@ -546,6 +578,19 @@
         transition: all 0.3s;
         min-height: 44px;
         min-width: 44px;
+        padding: 0;
+      }
+
+      .action-btn img {
+        width: 16px;
+        height: 16px;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+      }
+
+      .action-btn:hover img,
+      .action-btn:active img {
+        opacity: 1;
       }
 
       .action-btn:active {
@@ -705,6 +750,13 @@
         color: #9CA3AF;
         cursor: not-allowed;
         opacity: 0.7;
+      }
+
+      @media (max-width: 480px) {
+        .sidebar {
+          width: 100%;
+          max-width: 100%;
+        }
       }
 
       .modal {
@@ -876,9 +928,66 @@
 
       .modal-footer {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         gap: 12px;
         margin-top: 24px;
+      }
+
+      .toast-container {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+        pointer-events: none;
+      }
+
+      .toast {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        min-width: 300px;
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        pointer-events: auto;
+      }
+
+      .toast.dismissing {
+        animation: fadeOut 0.3s ease-out forwards;
+      }
+
+      .toast-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 4px;
+      }
+
+      .toast-message {
+        font-size: 13px;
+        color: #6B7280;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
       }
 
       .button-secondary {
@@ -921,20 +1030,70 @@
         background: #1E40AF;
       }
 
+      .copyright {
+        text-align: center;
+        margin-top: 32px;
+        padding-top: 20px;
+        border-top: 1px solid #E5E7EB;
+        color: #94A3B8;
+        font-size: 12px;
+      }
+      .mobile-logo img,
+      .sidebar-logo img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      .mobile-header-spacer {
+        width: 44px;
+      }
+
+      .meta-item img {
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 4px;
+      }
+
+      .action-btn img {
+        width: 16px;
+        height: 16px;
+      }
+
+      .tasks-mobile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .tasks-create-btn {
+        white-space: nowrap;
+      }
+
+      .task-actions-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
     </style>
   </head>
 
   <body>
     <div class="mobile-header">
       <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-      <div class="mobile-logo">📚 Learn@Home</div>
-      <div style="width: 44px;"></div>
+      <div class="mobile-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+      <div class="mobile-header-spacer"></div>
     </div>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-logo">📚 Learn@Home</div>
+        <div class="sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
         <button class="close-btn" id="closeBtn" aria-label="Fermer">✕</button>
       </div>
 
@@ -942,11 +1101,11 @@
         <div class="nav-section">
           <div class="nav-label">Principal</div>
           <a href="dashboard.html" class="nav-item">
-            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span>
             Tableau de bord
           </a>
           <a href="chat.html" class="nav-item">
-            <span class="nav-item-icon">💬</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span>
             Messages
             <span class="notification-badge">5</span>
           </a>
@@ -955,11 +1114,11 @@
         <div class="nav-section">
           <div class="nav-label">Outils</div>
           <a href="calendar.html" class="nav-item">
-            <span class="nav-item-icon">📅</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span>
             Calendrier
           </a>
           <a href="tasks.html" class="nav-item active" aria-current="page">
-            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span>
             Tâches
           </a>
         </div>
@@ -967,11 +1126,11 @@
         <div class="nav-section">
           <div class="nav-label">Compte</div>
           <a href="settings.html" class="nav-item">
-            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span>
             Paramètres
           </a>
           <a href="login.html" class="nav-item">
-            <span class="nav-item-icon">🚪</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span>
             Déconnexion
           </a>
         </div>
@@ -988,9 +1147,9 @@
     </aside>
 
     <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <div class="tasks-mobile-header">
         <h1>Gestion des Tâches</h1>
-        <button class="button button-primary" id="addTaskBtn" style="white-space: nowrap;">+ Créer</button>
+        <button class="button button-primary tasks-create-btn" id="addTaskBtn">+ Créer</button>
       </div>
 
       <div class="controls">
@@ -1012,19 +1171,23 @@
               <div class="task-title">Équations du second degré - Exercices</div>
               <div class="task-description">Compléter les 10 exercices de la feuille distribuée par Yann Uliong</div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 10 janvier 2026</div>
-                <div class="meta-item">👤 Créé par: Yann Uliong</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 10 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Yann Uliong</div>
               </div>
             </div>
           </div>
           <div class="task-footer">
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div class="task-actions-row">
               <div class="priority-badge priority-high">Haute</div>
               <div class="status-badge status-pending">À faire</div>
             </div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
         </div>
@@ -1037,19 +1200,23 @@
               <div class="task-description">Lire "Le Seigneur des Anneaux" chapitre 5 et faire un résumé de 2 pages
               </div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 12 janvier 2026</div>
-                <div class="meta-item">👤 Créé par: Yann Uliong</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 12 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Yann Uliong</div>
               </div>
             </div>
           </div>
           <div class="task-footer">
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div class="task-actions-row">
               <div class="priority-badge priority-medium">Normal</div>
               <div class="status-badge status-inprogress">En cours</div>
             </div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
         </div>
@@ -1061,19 +1228,23 @@
               <div class="task-title">Révision vocabulaire anglais</div>
               <div class="task-description">Apprendre 50 nouveaux mots de vocabulaire pour le test</div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 5 janvier 2026</div>
-                <div class="meta-item">👤 Créé par: Yann Uliong</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 5 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Yann Uliong</div>
               </div>
             </div>
           </div>
           <div class="task-footer">
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div class="task-actions-row">
               <div class="priority-badge priority-low">Basse</div>
               <div class="status-badge status-done">Complétée</div>
             </div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
         </div>
@@ -1086,19 +1257,23 @@
               <div class="task-description">Rédiger un rapport détaillé incluant hypothèse, procédure, résultats et
                 conclusions</div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 15 janvier 2026</div>
-                <div class="meta-item">👤 Créé par: Yann Uliong</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 15 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Yann Uliong</div>
               </div>
             </div>
           </div>
           <div class="task-footer">
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div class="task-actions-row">
               <div class="priority-badge priority-high">Haute</div>
               <div class="status-badge status-pending">À faire</div>
             </div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
         </div>
@@ -1111,19 +1286,23 @@
               <div class="task-description">Créer une présentation PowerPoint de 15-20 diapositives sur la Révolution
                 française</div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 20 janvier 2026</div>
-                <div class="meta-item">👤 Créé par: Yann Uliong</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 20 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Yann Uliong</div>
               </div>
             </div>
           </div>
           <div class="task-footer">
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div class="task-actions-row">
               <div class="priority-badge priority-low">Basse</div>
               <div class="status-badge status-pending">À faire</div>
             </div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
         </div>
@@ -1132,10 +1311,10 @@
     </div>
 
     <!-- Modal: Ajouter une tâche -->
-    <div class="modal" id="taskModal">
+    <div class="modal" id="taskModal" data-mode="create">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title">Ajouter une tâche</h2>
+          <h2 class="modal-title" id="modalTitle">Ajouter une tâche</h2>
           <button class="modal-close" id="closeTaskModal" aria-label="Fermer le formulaire">×</button>
         </div>
         <form id="taskForm">
@@ -1162,7 +1341,7 @@
           </div>
 
           <div class="modal-footer">
-            <button type="submit" class="button button-primary">Créer la tâche</button>
+            <button type="submit" class="button button-primary" id="submitTaskBtn" data-action="create">Créer la tâche</button>
             <button type="button" class="button-secondary" id="cancelTaskBtn">Annuler</button>
           </div>
         </form>
@@ -1170,6 +1349,15 @@
     </div>
 
     <script>
+      const showToast = (icon, title, message) => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+        container.appendChild(toast);
+        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
+      };
+
       const menuBtn = document.getElementById('menuBtn');
       const closeBtn = document.getElementById('closeBtn');
       const sidebar = document.getElementById('sidebar');
@@ -1196,19 +1384,64 @@
       const addTaskBtn = document.getElementById('addTaskBtn');
       const closeTaskModal = document.getElementById('closeTaskModal');
       const cancelTaskBtn = document.getElementById('cancelTaskBtn');
+      const submitTaskBtn = document.getElementById('submitTaskBtn');
+      const modalTitle = document.getElementById('modalTitle');
       const taskTitle = document.getElementById('taskTitle');
       const taskDescription = document.getElementById('taskDescription');
       const taskDate = document.getElementById('taskDate');
       const titleCounter = document.getElementById('titleCounter');
       const descCounter = document.getElementById('descCounter');
+      let currentEditCard = null;
 
       // Set minimum date to today
       const today = new Date();
       const todayStr = today.toISOString().split('T')[0];
       taskDate.min = todayStr;
 
-      // Open modal
+      // Parse deadline date from French format to ISO format
+      const parseDeadlineDate = (dateString) => {
+        const months = {
+          'janvier': '01', 'février': '02', 'mars': '03', 'avril': '04',
+          'mai': '05', 'juin': '06', 'juillet': '07', 'août': '08',
+          'septembre': '09', 'octobre': '10', 'novembre': '11', 'décembre': '12'
+        };
+        const parts = dateString.trim().split(' ');
+        const day = parts[0].padStart(2, '0');
+        const month = months[parts[1].toLowerCase()];
+        const year = parts[2];
+        return `${year}-${month}-${day}`;
+      };
+
+      // Open modal for create
       const openTaskModal = () => {
+        taskModal.dataset.mode = 'create';
+        modalTitle.textContent = 'Ajouter une tâche';
+        submitTaskBtn.textContent = 'Créer la tâche';
+        submitTaskBtn.dataset.action = 'create';
+        taskModal.classList.add('active');
+        taskTitle.focus();
+      };
+
+      // Open modal for edit
+      const openModalForEdit = (taskCard) => {
+        const cardTitle = taskCard.querySelector('.task-title').textContent;
+        const cardDescription = taskCard.querySelector('.task-description').textContent;
+        const deadlineMetaItem = taskCard.querySelector('.task-meta .meta-item:first-child').textContent;
+        const deadlineText = deadlineMetaItem.replace(/Échéance:\s*/i, '').trim();
+        
+        taskTitle.value = cardTitle;
+        taskDescription.value = cardDescription;
+        taskDate.value = parseDeadlineDate(deadlineText);
+        
+        titleCounter.textContent = cardTitle.length;
+        descCounter.textContent = cardDescription.length;
+        
+        taskModal.dataset.mode = 'edit';
+        modalTitle.textContent = 'Modifier la tâche';
+        submitTaskBtn.textContent = 'Enregistrer les modifications';
+        submitTaskBtn.dataset.action = 'edit';
+        currentEditCard = taskCard;
+        
         taskModal.classList.add('active');
         taskTitle.focus();
       };
@@ -1237,6 +1470,11 @@
         });
         titleCounter.textContent = '0';
         descCounter.textContent = '0';
+        taskModal.dataset.mode = 'create';
+        modalTitle.textContent = 'Ajouter une tâche';
+        submitTaskBtn.textContent = 'Créer la tâche';
+        submitTaskBtn.dataset.action = 'create';
+        currentEditCard = null;
       };
 
       // Track unsaved changes
@@ -1335,7 +1573,11 @@
         }
 
         // Show success notification
-        alert('✅ Tâche créée avec succès');
+        if (taskModal.dataset.mode === 'edit') {
+          showToast('✏️', 'Tâche modifiée', 'Les modifications ont été enregistrées');
+        } else {
+          showToast('✅', 'Tâche créée', 'Votre nouvelle tâche a été ajoutée avec succès');
+        }
 
         // Close modal and reset form
         taskModal.classList.remove('active');
@@ -1356,7 +1598,35 @@
 
       // Initialize hasUnsavedChanges function
       taskForm.hasUnsavedChanges = () => false;
+
+      // Gérer les boutons edit/delete
+      document.querySelectorAll('.task-card').forEach(card => {
+        const checkbox = card.querySelector('.task-checkbox');
+        const editBtn = card.querySelector('.task-actions .action-btn:first-child');
+        const deleteBtn = card.querySelector('.task-actions .action-btn:last-child');
+        const taskTitle = card.querySelector('.task-title').textContent;
+
+        if (checkbox) {
+          checkbox.addEventListener('change', () => {
+            showToast('✅', 'Tâche mise à jour', checkbox.checked ? 'Tâche marquée comme complétée' : 'Tâche marquée comme incomplète');
+          });
+        }
+
+        if (editBtn) {
+          editBtn.addEventListener('click', () => openModalForEdit(card));
+        }
+
+        if (deleteBtn) {
+          deleteBtn.addEventListener('click', () => {
+            showToast('🗑️', 'Tâche supprimée', `"${taskTitle}" a été supprimée`);
+          });
+        }
+      });
     </script>
+    <div id="toast-container" class="toast-container"></div>
+    <div class="copyright">
+      © 2026 Learn@Home. All rights reserved.
+    </div>
   </body>
 
 </html>

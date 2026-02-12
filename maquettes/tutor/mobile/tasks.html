@@ -16,6 +16,7 @@
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         background: #F3F4F6;
         padding-bottom: 20px;
+        overflow-x: hidden;
       }
 
       .mobile-header {
@@ -218,7 +219,16 @@
 
       .nav-item-icon {
         margin-right: 12px;
-        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: block;
       }
 
       .notification-badge {
@@ -385,19 +395,110 @@
         opacity: 0;
       }
 
-      .sort-select {
+      .custom-dropdown {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+      }
+
+      .dropdown-toggle {
         width: 100%;
         padding: 12px 16px;
+        padding-right: 40px;
         border: 1px solid #D1D5DB;
         border-radius: 6px;
         font-size: 14px;
-        -webkit-appearance: none;
+        background: white;
+        color: #111827;
+        cursor: pointer;
+        min-width: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.2s;
+        font-family: inherit;
+        text-align: left;
       }
 
-      .sort-select:focus {
+      .dropdown-toggle:hover {
+        border-color: #9CA3AF;
+      }
+
+      .dropdown-toggle:focus {
         outline: none;
         border-color: #3B82F6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .dropdown-toggle::after {
+        content: '';
+        width: 12px;
+        height: 12px;
+        background-image: url("../../assets/icons/chevron-down.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: transform 0.2s;
+        flex-shrink: 0;
+      }
+
+      .custom-dropdown:focus-within .dropdown-toggle::after {
+        transform: rotate(180deg);
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        z-index: 1000;
+        overflow: hidden;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      .custom-dropdown:focus-within .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-item {
+        padding: 12px 16px;
+        font-size: 14px;
+        color: #111827;
+        cursor: pointer;
+        transition: background-color 0.15s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: none;
+        background: white;
+        width: 100%;
+        text-align: left;
+        font-family: inherit;
+        margin: 0;
+      }
+
+      .dropdown-item:hover {
+        background: #F3F4F6;
+      }
+
+      .dropdown-item:focus {
+        outline: none;
+        background: #F3F4F6;
+      }
+
+      .dropdown-item.selected {
+        background: #3B82F6;
+        color: white;
+      }
+
+      .dropdown-item.selected::before {
+        content: '✓ ';
+        font-weight: 700;
       }
 
       .tasks-container {
@@ -459,9 +560,19 @@
       }
 
       .task-checkbox:checked::after {
-        content: '✓';
-        font-size: 14px;
-        font-weight: 700;
+        content: '';
+        width: 16px;
+        height: 16px;
+        background-color: white;
+        mask-image: url('../../assets/icons/check.svg');
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-image: url('../../assets/icons/check.svg');
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        display: block;
       }
 
       .task-content {
@@ -595,6 +706,19 @@
         transition: all 0.3s;
         min-height: 44px;
         min-width: 44px;
+        padding: 0;
+      }
+
+      .action-btn img {
+        width: 16px;
+        height: 16px;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+      }
+
+      .action-btn:hover img,
+      .action-btn:active img {
+        opacity: 1;
       }
 
       .action-btn:active {
@@ -708,8 +832,24 @@
         margin-bottom: 8px;
       }
 
-      .form-group input,
-      .form-group select,
+      .form-group input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        font-size: 16px;
+        font-family: inherit;
+        background: white;
+        color: #111827;
+        transition: all 0.3s;
+      }
+
+      .form-group .custom-dropdown {
+        position: relative;
+        display: block;
+        width: 100%;
+      }
+
       .form-group textarea {
         width: 100%;
         padding: 12px 16px;
@@ -718,11 +858,9 @@
         font-size: 16px;
         font-family: inherit;
         transition: all 0.3s;
-        -webkit-appearance: none;
       }
 
       .form-group input:focus,
-      .form-group select:focus,
       .form-group textarea:focus {
         outline: none;
         border-color: #3B82F6;
@@ -1002,20 +1140,78 @@
         cursor: not-allowed;
         opacity: 0.7;
       }
+
+      .copyright {
+        text-align: center;
+        margin-top: 32px;
+        padding-top: 20px;
+        border-top: 1px solid #E5E7EB;
+        color: #94A3B8;
+        font-size: 12px;
+      }
+
+      @media (max-width: 480px) {
+        .sidebar {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+      .mobile-logo img,
+      .sidebar-logo img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      .mobile-header-spacer {
+        width: 44px;
+      }
+
+      .meta-item img {
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 4px;
+      }
+
+      .action-btn img {
+        width: 16px;
+        height: 16px;
+      }
+
+      .tasks-mobile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .tasks-create-btn {
+        white-space: nowrap;
+      }
+
+      .task-actions-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
     </style>
   </head>
 
   <body>
     <div class="mobile-header">
       <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-      <div class="mobile-logo">📚 Learn@Home</div>
-      <div style="width: 44px;"></div>
+      <div class="mobile-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+      <div class="mobile-header-spacer"></div>
     </div>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-logo">📚 Learn@Home</div>
+        <div class="sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
         <button class="close-btn" id="closeBtn" aria-label="Fermer">✕</button>
       </div>
 
@@ -1023,11 +1219,11 @@
         <div class="nav-section">
           <div class="nav-label">Principal</div>
           <a href="dashboard.html" class="nav-item">
-            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span>
             Tableau de bord
           </a>
           <a href="chat.html" class="nav-item">
-            <span class="nav-item-icon">💬</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span>
             Messages
             <span class="notification-badge">6</span>
           </a>
@@ -1036,11 +1232,11 @@
         <div class="nav-section">
           <div class="nav-label">Outils</div>
           <a href="calendar.html" class="nav-item">
-            <span class="nav-item-icon">📅</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span>
             Calendrier
           </a>
           <a href="tasks.html" class="nav-item active" aria-current="page">
-            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span>
             Tâches
           </a>
         </div>
@@ -1048,11 +1244,11 @@
         <div class="nav-section">
           <div class="nav-label">Compte</div>
           <a href="settings.html" class="nav-item">
-            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span>
             Paramètres
           </a>
           <a href="login.html" class="nav-item">
-            <span class="nav-item-icon">🚪</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span>
             Déconnexion
           </a>
         </div>
@@ -1069,9 +1265,9 @@
     </aside>
 
     <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <div class="tasks-mobile-header">
         <h1>Gestion des Tâches</h1>
-        <button class="button button-primary" id="createTaskBtn" style="white-space: nowrap;">+ Créer</button>
+        <button class="button button-primary tasks-create-btn" id="createTaskBtn">+ Créer</button>
       </div>
 
       <div class="controls">
@@ -1083,11 +1279,16 @@
         </div>
 
         <input type="text" class="search-box" placeholder="Rechercher une tâche...">
-        <select class="sort-select">
-          <option>Trier par: Date</option>
-          <option>Trier par: Priorité</option>
-          <option>Trier par: Titre</option>
-        </select>
+        <div class="custom-dropdown">
+          <button type="button" class="dropdown-toggle" tabindex="0">
+            Trier par: Date
+          </button>
+          <div class="dropdown-menu">
+            <button type="button" class="dropdown-item selected" tabindex="0">Trier par: Date</button>
+            <button type="button" class="dropdown-item" tabindex="0">Trier par: Priorité</button>
+            <button type="button" class="dropdown-item" tabindex="0">Trier par: Titre</button>
+          </div>
+        </div>
       </div>
 
       <div class="tasks-container">
@@ -1098,19 +1299,23 @@
               <div class="task-title">Équations</div>
               <div class="task-description">Compléter les 10 exercices de la feuille distribuée</div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 10 janvier 2026</div>
-                <div class="meta-item">👤 Assigné à: Antoine Kreuder</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 10 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Antoine Kreuder</div>
               </div>
             </div>
           </div>
           <div class="task-footer">
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div class="task-actions-row">
               <div class="priority-badge priority-high">Haute</div>
               <div class="status-badge status-pending">Pendante</div>
             </div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
         </div>
@@ -1123,19 +1328,23 @@
               <div class="task-description">Lire "Le Seigneur des Anneaux" chapitre 5 et faire un résumé de 2 pages
               </div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 12 janvier 2026</div>
-                <div class="meta-item">👤 Assigné à: Sophie Martin</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 12 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Sophie Martin</div>
               </div>
             </div>
           </div>
           <div class="task-footer">
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div class="task-actions-row">
               <div class="priority-badge priority-medium">Normal</div>
               <div class="status-badge status-inprogress">En cours</div>
             </div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
         </div>
@@ -1148,19 +1357,23 @@
               <div class="task-description">Rédiger un rapport détaillé incluant hypothèse, procédure, résultats et
                 conclusions</div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 15 janvier 2026</div>
-                <div class="meta-item">👤 Assigné à: Antoine Kreuder</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 15 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Antoine Kreuder</div>
               </div>
             </div>
           </div>
           <div class="task-footer">
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div class="task-actions-row">
               <div class="priority-badge priority-high">Haute</div>
               <div class="status-badge status-done">Complétée</div>
             </div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
         </div>
@@ -1172,19 +1385,23 @@
               <div class="task-title">Exercices Math</div>
               <div class="task-description">Compléter les exercices de mathématiques</div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 18 janvier 2026</div>
-                <div class="meta-item">👤 Assigné à: Jean Leclerc</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 18 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Jean Leclerc</div>
               </div>
             </div>
           </div>
           <div class="task-footer">
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div class="task-actions-row">
               <div class="priority-badge priority-high">Haute</div>
               <div class="status-badge status-pending">Pendante</div>
             </div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
         </div>
@@ -1196,19 +1413,23 @@
               <div class="task-title">Rédaction</div>
               <div class="task-description">Rédiger un texte sur le sujet donné</div>
               <div class="task-meta">
-                <div class="meta-item">📅 Échéance: 20 janvier 2026</div>
-                <div class="meta-item">👤 Assigné à: Léa Bernard</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt=""> 20 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt=""> Léa Bernard</div>
               </div>
             </div>
           </div>
           <div class="task-footer">
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div class="task-actions-row">
               <div class="priority-badge priority-medium">Normal</div>
               <div class="status-badge status-inprogress">En cours</div>
             </div>
             <div class="task-actions">
-              <button class="action-btn" aria-label="Modifier la tâche">✎</button>
-              <button class="action-btn" aria-label="Supprimer la tâche">🗑️</button>
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="">
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="">
+              </button>
             </div>
           </div>
         </div>
@@ -1237,14 +1458,17 @@
 
           <div class="form-group">
             <label for="taskStudent">Assigné à</label>
-            <select id="taskStudent" required>
-              <option value="">-- Sélectionner un élève --</option>
-              <option value="antoine">Antoine Kreuder</option>
-              <option value="sophie">Sophie Martin</option>
-              <option value="jean">Jean Leclerc</option>
-              <option value="léa">Léa Bernard</option>
-              <option value="other">Autre élève</option>
-            </select>
+            <div class="custom-dropdown" id="taskStudentDropdown">
+              <button type="button" class="dropdown-toggle" tabindex="0">-- Sélectionner un élève --</button>
+              <div class="dropdown-menu">
+                <button type="button" class="dropdown-item" tabindex="0">-- Sélectionner un élève --</button>
+                <button type="button" class="dropdown-item" tabindex="0">Antoine Kreuder</button>
+                <button type="button" class="dropdown-item" tabindex="0">Sophie Martin</button>
+                <button type="button" class="dropdown-item" tabindex="0">Jean Leclerc</button>
+                <button type="button" class="dropdown-item" tabindex="0">Léa Bernard</button>
+                <button type="button" class="dropdown-item" tabindex="0">Autre élève</button>
+              </div>
+            </div>
           </div>
 
           <div class="form-group">
@@ -1254,18 +1478,21 @@
 
           <div class="form-group">
             <label for="taskPriority">Priorité</label>
-            <select id="taskPriority" required>
-              <option value="low">Basse</option>
-              <option value="medium" selected>Normal</option>
-              <option value="high">Haute</option>
-            </select>
+            <div class="custom-dropdown" id="taskPriorityDropdown">
+              <button type="button" class="dropdown-toggle" tabindex="0">Normal</button>
+              <div class="dropdown-menu">
+                <button type="button" class="dropdown-item" tabindex="0">Basse</button>
+                <button type="button" class="dropdown-item selected" tabindex="0">Normal</button>
+                <button type="button" class="dropdown-item" tabindex="0">Haute</button>
+              </div>
+            </div>
           </div>
         </form>
       </div>
 
       <div class="modal-footer">
-        <button class="button button-secondary" id="cancelTaskBtn">Annuler</button>
         <button class="button button-primary" id="submitTaskBtn" data-action="create">Créer la tâche</button>
+        <button class="button button-secondary" id="cancelTaskBtn">Annuler</button>
       </div>
     </div>
 
@@ -1298,6 +1525,13 @@
         modalTitle.textContent = 'Créer une nouvelle tâche';
         submitBtn.textContent = 'Créer la tâche';
         submitBtn.dataset.action = 'create';
+        
+        // Réinitialiser les dropdowns
+        modal.querySelectorAll('.dropdown-item').forEach(item => item.classList.remove('selected'));
+        modal.querySelector('#taskStudentDropdown .dropdown-toggle').textContent = '-- Sélectionner un élève --';
+        modal.querySelector('#taskPriorityDropdown .dropdown-item.selected')?.classList.remove('selected');
+        modal.querySelector('#taskPriorityDropdown .dropdown-item:nth-child(2)').classList.add('selected');
+        modal.querySelector('#taskPriorityDropdown .dropdown-toggle').textContent = 'Normal';
       };
 
       const openModalForCreate = () => {
@@ -1334,9 +1568,38 @@
 
         modalTaskForm('taskTitle').value = taskTitle;
         modalTaskForm('taskDescription').value = taskDescription;
-        modalTaskForm('taskStudent').value = assignedTo;
+        
+        // Mettre à jour le dropdown étudiant
+        const studentDropdown = modal.querySelector('#taskStudentDropdown');
+        const studentName = taskCard.querySelector('.task-meta .meta-item:nth-child(2)').textContent.replace('Assigné à: ', '').trim();
+        if (studentDropdown) {
+          const studentToggle = studentDropdown.querySelector('.dropdown-toggle');
+          const studentItems = studentDropdown.querySelectorAll('.dropdown-item');
+          studentItems.forEach(item => {
+            item.classList.remove('selected');
+            if (item.textContent.trim() === studentName) {
+              item.classList.add('selected');
+            }
+          });
+          studentToggle.textContent = studentName;
+        }
+        
         modalTaskForm('taskDeadline').value = parseDeadlineDate(deadlineText);
-        modalTaskForm('taskPriority').value = priority;
+        
+        // Mettre à jour le dropdown priorité
+        const priorityDropdown = modal.querySelector('#taskPriorityDropdown');
+        const priorityText = priority === 'low' ? 'Basse' : priority === 'high' ? 'Haute' : 'Normal';
+        if (priorityDropdown) {
+          const priorityToggle = priorityDropdown.querySelector('.dropdown-toggle');
+          const priorityItems = priorityDropdown.querySelectorAll('.dropdown-item');
+          priorityItems.forEach(item => {
+            item.classList.remove('selected');
+            if (item.textContent.trim() === priorityText) {
+              item.classList.add('selected');
+            }
+          });
+          priorityToggle.textContent = priorityText;
+        }
 
         modal.classList.add('active');
         backdrop.classList.add('active');
@@ -1347,10 +1610,26 @@
         currentEditCard = taskCard;
       };
 
+      // Gérer la sélection des dropdowns dans le modal
+      modal.querySelectorAll('.dropdown-item').forEach(item => {
+        item.addEventListener('click', function() {
+          const dropdown = this.closest('.custom-dropdown');
+          const toggle = dropdown.querySelector('.dropdown-toggle');
+          const allItems = dropdown.querySelectorAll('.dropdown-item');
+          
+          allItems.forEach(i => i.classList.remove('selected'));
+          this.classList.add('selected');
+          toggle.textContent = this.textContent.trim();
+        });
+      });
+
       modalTaskForm('submitTaskBtn').addEventListener('click', event => {
         event.preventDefault();
-        const taskElements = [modalTaskForm('taskTitle'), modalTaskForm('taskStudent'), modalTaskForm('taskDeadline')];
-        if (taskElements.every(element => element.value !== '')) {
+        const taskTitle = modalTaskForm('taskTitle').value;
+        const taskDeadline = modalTaskForm('taskDeadline').value;
+        const selectedStudent = modal.querySelector('#taskStudentDropdown .dropdown-item.selected')?.textContent || modal.querySelector('#taskStudentDropdown .dropdown-toggle').textContent;
+        const selectedPriority = modal.querySelector('#taskPriorityDropdown .dropdown-item.selected')?.textContent || modal.querySelector('#taskPriorityDropdown .dropdown-toggle').textContent;
+        if (taskTitle && taskDeadline && selectedStudent !== '-- Sélectionner un élève --') {
           if (modal.dataset.mode === 'edit') {
             showToast('✏️', 'Tâche modifiée', 'Les modifications ont été enregistrées');
           } else {
@@ -1410,6 +1689,9 @@
         sidebarOverlay.classList.remove('active');
       });
     </script>
+    <div class="copyright">
+      © 2026 Learn@Home. All rights reserved.
+    </div>
   </body>
 
 </html>

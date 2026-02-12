@@ -18,6 +18,7 @@
         height: 100vh;
         display: flex;
         flex-direction: column;
+        overflow-x: hidden;
       }
 
       .mobile-header {
@@ -220,7 +221,28 @@
 
       .nav-item-icon {
         margin-right: 12px;
-        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: block;
+        opacity: 0.7;
+      }
+
+      .nav-item.active .nav-item-icon img,
+      .nav-item:hover .nav-item-icon img,
+      .nav-item:active .nav-item-icon img {
+        opacity: 1;
+      }
+
+      .sidebar-logo img,
+      .mobile-logo img {
+        opacity: 1;
       }
 
       .notification-badge {
@@ -1140,20 +1162,52 @@
         cursor: not-allowed;
         opacity: 0.7;
       }
+
+      .copyright {
+        text-align: center;
+        margin-top: 32px;
+        padding-top: 20px;
+        border-top: 1px solid #E5E7EB;
+        color: #94A3B8;
+        font-size: 12px;
+      }
+
+      @media (max-width: 480px) {
+        .sidebar {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+      .mobile-logo img,
+      .sidebar-logo img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      .mobile-header-spacer {
+        width: 44px;
+      }
+
+      #file-input {
+        display: none;
+      }
     </style>
   </head>
 
   <body>
     <div class="mobile-header">
       <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-      <div class="mobile-logo">📚 Learn@Home</div>
-      <div style="width: 44px;"></div>
+      <div class="mobile-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
+      <div class="mobile-header-spacer"></div>
     </div>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-logo">📚 Learn@Home</div>
+        <div class="sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
         <button class="close-btn" id="closeBtn" aria-label="Fermer">✕</button>
       </div>
 
@@ -1161,11 +1215,11 @@
         <div class="nav-section">
           <div class="nav-label">Principal</div>
           <a href="dashboard.html" class="nav-item">
-            <span class="nav-item-icon">📊</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span>
             Tableau de bord
           </a>
           <a href="chat.html" class="nav-item active" aria-current="page">
-            <span class="nav-item-icon">💬</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span>
             Messages
             <span class="notification-badge">3</span>
           </a>
@@ -1174,11 +1228,11 @@
         <div class="nav-section">
           <div class="nav-label">Outils</div>
           <a href="calendar.html" class="nav-item">
-            <span class="nav-item-icon">📅</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span>
             Calendrier
           </a>
           <a href="tasks.html" class="nav-item">
-            <span class="nav-item-icon">✅</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span>
             Tâches
           </a>
         </div>
@@ -1186,11 +1240,11 @@
         <div class="nav-section">
           <div class="nav-label">Compte</div>
           <a href="settings.html" class="nav-item">
-            <span class="nav-item-icon">⚙️</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span>
             Paramètres
           </a>
           <a href="login.html" class="nav-item">
-            <span class="nav-item-icon">🚪</span>
+            <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span>
             Déconnexion
           </a>
         </div>
@@ -1304,7 +1358,7 @@
     <div class="chat-input-area">
       <div class="input-wrapper">
         <button class="btn-icon" id="attachment-btn" onclick="handleAttachmentClick();">📎</button>
-        <input type="file" id="file-input" style="display: none;" onchange="handleFileUpload(event)">
+        <input type="file" id="file-input" onchange="handleFileUpload(event)">
         <textarea class="message-input" id="message-input" placeholder="Tapez votre message..." rows="1"></textarea>
         <button class="send-btn" id="send-btn" onclick="handleMessageSend();">➤</button>
       </div>
@@ -1490,6 +1544,9 @@
         }
       };
     </script>
+    <div class="copyright">
+      © 2026 Learn@Home. All rights reserved.
+    </div>
   </body>
 
 </html>

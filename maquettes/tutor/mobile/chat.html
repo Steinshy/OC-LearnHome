@@ -18,6 +18,7 @@
         height: 100vh;
         display: flex;
         flex-direction: column;
+        overflow-x: hidden;
       }
 
       .mobile-header {
@@ -1161,6 +1162,32 @@
         cursor: not-allowed;
         opacity: 0.7;
       }
+
+      .copyright {
+        text-align: center;
+        margin-top: 32px;
+        padding-top: 20px;
+        border-top: 1px solid #E5E7EB;
+        color: #94A3B8;
+        font-size: 12px;
+      }
+
+      @media (max-width: 480px) {
+        .sidebar {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+      .mobile-header-spacer {
+        width: 44px;
+      }
+
+      .chat-header-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
     </style>
   </head>
 
@@ -1168,14 +1195,14 @@
     <div class="mobile-header">
       <a href="dashboard.html" class="back-btn">←</a>
       <div class="header-title">Messages</div>
-      <div style="width: 44px;"></div>
+      <div class="mobile-header-spacer"></div>
     </div>
 
     <div class="chat-header">
       <div class="chat-header-info">
         <div class="contact-avatar antoine">AK</div>
         <div>
-          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <div class="chat-header-info">
             <span class="chat-header-title">Antoine Kreuder</span>
             <span class="chat-header-subtitle">3ème • Mathématiques, Sciences</span>
           </div>
@@ -1489,6 +1516,9 @@
         closeAllPanels();
       });
     </script>
+    <div class="copyright">
+      © 2026 Learn@Home. All rights reserved.
+    </div>
   </body>
 
 </html>

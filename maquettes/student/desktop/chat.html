@@ -94,7 +94,16 @@
       }
 
       .nav-item-icon {
-        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: block;
       }
 
       .user-profile {
@@ -1117,36 +1126,49 @@
         cursor: not-allowed;
         opacity: 0.7;
       }
+      .nav-sidebar-logo img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      #contacts-modal-toggle,
+      #info-modal-toggle,
+      #file-input {
+        display: none;
+      }
     </style>
   </head>
 
   <body>
-    <input type="checkbox" id="contacts-modal-toggle" style="display: none;">
-    <input type="checkbox" id="info-modal-toggle" style="display: none;">
+    <input type="checkbox" id="contacts-modal-toggle">
+    <input type="checkbox" id="info-modal-toggle">
     <div class="layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo">📚 Learn@Home</div>
+          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
-            <a href="chat.html" class="nav-item active" aria-current="page"><span class="nav-item-icon">💬</span>
+            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span> Tableau de bord</a>
+            <a href="chat.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span>
               Messages
               <div class="notification-badge">3</div>
             </a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item"><span class="nav-item-icon">📅</span> Calendrier</a>
-            <a href="tasks.html" class="nav-item"><span class="nav-item-icon">✅</span> Tâches</a>
+            <a href="calendar.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span> Calendrier</a>
+            <a href="tasks.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span> Tâches</a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"><span class="nav-item-icon">⚙️</span> Paramètres</a>
-            <a href="login.html" class="nav-item"><span class="nav-item-icon">🚪</span> Déconnexion</a>
+            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span> Paramètres</a>
+            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span> Déconnexion</a>
           </div>
         </nav>
 
@@ -1304,7 +1326,7 @@
           <div class="input-wrapper">
             <button class="btn-icon hover-up" id="attachment-btn" data-hover="Joindre un fichier"
               onclick="handleAttachmentClick();">📎</button>
-            <input type="file" id="file-input" style="display: none;" onchange="handleFileUpload(event)">
+            <input type="file" id="file-input" onchange="handleFileUpload(event)">
             <textarea class="message-input" id="message-input" placeholder="Tapez votre message..." rows="1"></textarea>
             <button class="send-btn hover-up" id="send-btn" data-hover="Envoyer"
               onclick="handleMessageSend();">➤</button>

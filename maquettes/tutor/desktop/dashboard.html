@@ -105,7 +105,16 @@
       }
 
       .nav-item-icon {
-        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: block;
       }
 
       .user-profile {
@@ -142,9 +151,12 @@
         flex-shrink: 0;
       }
 
-      .user-avatar.antoine {
-        background-image: url('../../assets/pictures/antoine.jpeg');
+      .user-avatar.yann {
+        background-image: url('../../assets/pictures/yann.jpg');
         background-color: transparent;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         font-size: 0;
       }
 
@@ -486,6 +498,18 @@
         cursor: not-allowed;
         opacity: 0.7;
       }
+
+      .nav-sidebar-logo img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      .overview-content {
+        margin-top: 16px;
+      }
     </style>
   </head>
 
@@ -493,18 +517,18 @@
     <div class="page-layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo">📚 Learn@Home</div>
+          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
             <a href="dashboard.html" class="nav-item active" aria-current="page">
-              <span class="nav-item-icon">📊</span>
+              <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span>
               Tableau de bord
             </a>
             <a href="chat.html" class="nav-item">
-              <span class="nav-item-icon">💬</span>
+              <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span>
               Messages
               <span class="notification-badge">6</span>
             </a>
@@ -513,11 +537,11 @@
           <div class="nav-section">
             <div class="nav-label">Outils</div>
             <a href="calendar.html" class="nav-item">
-              <span class="nav-item-icon">📅</span>
+              <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span>
               Calendrier
             </a>
             <a href="tasks.html" class="nav-item">
-              <span class="nav-item-icon">✅</span>
+              <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span>
               Tâches
             </a>
           </div>
@@ -525,11 +549,11 @@
           <div class="nav-section">
             <div class="nav-label">Compte</div>
             <a href="settings.html" class="nav-item">
-              <span class="nav-item-icon">⚙️</span>
+              <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span>
               Paramètres
             </a>
             <a href="login.html" class="nav-item">
-              <span class="nav-item-icon">🚪</span>
+              <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span>
               Déconnexion
             </a>
           </div>
@@ -620,7 +644,7 @@
         <div class="grid">
           <div class="card card-full">
             <div class="card-title">📈 Vue d'ensemble</div>
-            <div style="margin-top: 16px;">
+            <div class="overview-content">
               <div class="stat-item">
                 <span class="stat-label">Tâches assignées cette semaine</span>
                 <span class="stat-value">5</span>

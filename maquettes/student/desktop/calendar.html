@@ -106,7 +106,16 @@
       }
 
       .nav-item-icon {
-        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: block;
       }
 
       .notification-badge {
@@ -234,6 +243,9 @@
         font-size: 14px;
         transition: all 0.3s;
         text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .button-primary {
@@ -655,12 +667,25 @@
       .form-select {
         width: 100%;
         padding: 12px;
+        padding-right: 32px;
         border: 1px solid #D1D5DB;
         border-radius: 6px;
         font-family: inherit;
         font-size: 14px;
-        transition: all 0.2s;
         background: white;
+        color: var(--text);
+        cursor: pointer;
+        transition: all 0.2s;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url("../../assets/icons/chevron-down.svg");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+      }
+
+      .form-select:hover {
+        border-color: #9CA3AF;
       }
 
       .form-input:focus,
@@ -810,7 +835,7 @@
         font-size: 24px;
         font-weight: 700;
         color: #111827;
-        margin-bottom: 12px;
+        margin: 0;
       }
 
       .confirmation-content {
@@ -998,6 +1023,36 @@
         cursor: not-allowed;
         opacity: 0.7;
       }
+      .nav-sidebar-logo img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      .event-detail-icon img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .event-detail-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+
+      .calendar-view-toggle {
+        display: flex;
+        gap: 8px;
+      }
+
+      .view-toggle-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+      }
     </style>
   </head>
 
@@ -1005,26 +1060,26 @@
     <div class="page-layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo">📚 Learn@Home</div>
+          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
-            <a href="chat.html" class="nav-item"><span class="nav-item-icon">💬</span> Messages<span
+            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span> Tableau de bord</a>
+            <a href="chat.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span> Messages<span
                 class="notification-badge">5</span></a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item active" aria-current="page"><span class="nav-item-icon">📅</span>
+            <a href="calendar.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span>
               Calendrier</a>
-            <a href="tasks.html" class="nav-item"><span class="nav-item-icon">✅</span> Tâches</a>
+            <a href="tasks.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span> Tâches</a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"><span class="nav-item-icon">⚙️</span> Paramètres</a>
-            <a href="login.html" class="nav-item"><span class="nav-item-icon">🚪</span> Déconnexion</a>
+            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span> Paramètres</a>
+            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span> Déconnexion</a>
           </div>
         </nav>
 
@@ -1056,10 +1111,10 @@
                 <div class="month-year" id="monthYearDisplay">Janvier 2026</div>
                 <button class="nav-btn" aria-label="Mois suivant">▶</button>
               </div>
-              <div style="display: flex; gap: 8px;">
-                <button class="button button-secondary" style="padding: 6px 12px; font-size: 13px;">Mois</button>
-                <button class="button button-secondary" style="padding: 6px 12px; font-size: 13px;">Semaine</button>
-                <button class="button button-secondary" style="padding: 6px 12px; font-size: 13px;">Jour</button>
+              <div class="calendar-view-toggle">
+                <button class="button button-secondary view-toggle-btn">Mois</button>
+                <button class="button button-secondary view-toggle-btn">Semaine</button>
+                <button class="button button-secondary view-toggle-btn">Jour</button>
               </div>
             </div>
 
@@ -1338,13 +1393,13 @@
         </div>
         <div class="modal-body">
           <div class="event-details-content">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-              <h3 class="event-details-title" style="margin: 0;">Réunion avec Tuteur</h3>
+            <div class="event-detail-header">
+              <h3 class="event-details-title">Réunion avec Tuteur</h3>
               <span class="category-badge appointment">Réunion/Examen</span>
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon">📅</div>
+              <div class="event-detail-icon"><img src="../../assets/icons/calendar.svg" alt=""></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Date</div>
                 <div class="event-detail-value">Jeudi 8 janvier 2026</div>
@@ -1368,7 +1423,7 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon">📝</div>
+              <div class="event-detail-icon"><img src="../../assets/icons/file-edit.svg" alt=""></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Description</div>
                 <div class="event-detail-value">Suivi des progrès en mathématiques et revue des devoirs précédents.
@@ -1385,7 +1440,7 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon">🔔</div>
+              <div class="event-detail-icon"><img src="../../assets/icons/bell.svg" alt=""></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Notification</div>
                 <div class="event-detail-value">15 minutes avant l'événement</div>
@@ -1406,7 +1461,7 @@
       }
 
       const handleDeleteEvent = () => {
-        alert('Événement supprimé avec succès!');
+        showToast('🗑️', 'Événement supprimé', 'L\'événement a été supprimé avec succès');
         location.hash = '';
       }
 
@@ -1419,7 +1474,17 @@
       document.addEventListener('keydown', e => {
         if (e.key === 'Escape') location.hash = '';
       });
+
+      const showToast = (icon, title, message) => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+        container.appendChild(toast);
+        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
+      };
     </script>
+    <div id="toast-container" class="toast-container"></div>
   </body>
 
 </html>

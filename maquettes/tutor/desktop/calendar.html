@@ -106,7 +106,22 @@
       }
 
       .nav-item-icon {
-        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: block;
+      }
+
+      .nav-item-icon img,
+      .nav-sidebar-logo img {
+        stroke: currentColor;
+        color: inherit;
       }
 
       .notification-badge {
@@ -161,6 +176,9 @@
       .user-avatar.yann {
         background-image: url('../../assets/pictures/yann.jpg');
         background-color: transparent;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         font-size: 0;
       }
 
@@ -234,6 +252,9 @@
         font-size: 14px;
         transition: all 0.3s;
         text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .button-primary {
@@ -677,21 +698,126 @@
       }
 
       .form-input,
-      .form-textarea,
-      .form-select {
+      .form-textarea {
         width: 100%;
         padding: 12px;
         border: 1px solid #D1D5DB;
         border-radius: 6px;
         font-family: inherit;
         font-size: 14px;
-        transition: all 0.2s;
         background: white;
+        color: var(--text);
+        transition: all 0.2s;
+      }
+
+      .custom-dropdown {
+        position: relative;
+        display: block;
+        width: 100%;
+      }
+
+      .dropdown-toggle {
+        width: 100%;
+        padding: 12px;
+        padding-right: 32px;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        font-size: 14px;
+        background: white;
+        color: var(--text);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.2s;
+        font-family: inherit;
+        margin: 0;
+        text-align: left;
+      }
+
+      .dropdown-toggle:hover {
+        border-color: #9CA3AF;
+      }
+
+      .dropdown-toggle:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .dropdown-toggle::after {
+        content: '';
+        width: 12px;
+        height: 12px;
+        background-image: url("../../assets/icons/chevron-down.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: transform 0.2s;
+        flex-shrink: 0;
+      }
+
+      .custom-dropdown:focus-within .dropdown-toggle::after {
+        transform: rotate(180deg);
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        z-index: 1000;
+        overflow: hidden;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      .custom-dropdown:focus-within .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-item {
+        padding: 10px 12px;
+        font-size: 14px;
+        color: var(--text);
+        cursor: pointer;
+        transition: background-color 0.15s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        font-family: inherit;
+        margin: 0;
+      }
+
+      .dropdown-item:hover {
+        background: var(--bg);
+      }
+
+      .dropdown-item:focus {
+        outline: none;
+        background: var(--bg);
+      }
+
+      .dropdown-item.selected {
+        background: var(--primary);
+        color: white;
+      }
+
+      .dropdown-item.selected::before {
+        content: '✓';
+        font-weight: 700;
       }
 
       .form-input:focus,
-      .form-textarea:focus,
-      .form-select:focus {
+      .form-textarea:focus {
         outline: none;
         border-color: #3B82F6;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
@@ -787,7 +913,7 @@
 
       .modal-with-error .form-input,
       .modal-with-error .form-textarea,
-      .modal-with-error .form-select {
+      .modal-with-error .dropdown-toggle {
         border-color: #EF4444;
       }
 
@@ -836,7 +962,7 @@
         font-size: 24px;
         font-weight: 700;
         color: #111827;
-        margin-bottom: 12px;
+        margin: 0;
       }
 
       .confirmation-content {
@@ -865,6 +991,65 @@
 
       .confirmation-buttons .button {
         width: 100%;
+      }
+
+      .toast-container {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+        pointer-events: none;
+      }
+
+      .toast {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        min-width: 300px;
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        pointer-events: auto;
+      }
+
+      .toast.dismissing {
+        animation: fadeOut 0.3s ease-out forwards;
+      }
+
+      .toast-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 4px;
+      }
+
+      .toast-message {
+        font-size: 13px;
+        color: #6B7280;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(400px);
+          opacity: 0;
+        }
+
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+
+        to {
+          opacity: 0;
+        }
       }
 
       .student-avatar {
@@ -981,6 +1166,45 @@
         cursor: not-allowed;
         opacity: 0.7;
       }
+
+      .nav-sidebar-logo img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      .event-detail-icon img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .event-detail-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+
+      .calendar-view-toggle {
+        display: flex;
+        gap: 8px;
+      }
+
+      .view-toggle-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+      }
+
+      .modal--sm {
+        max-width: 400px;
+      }
+
+      .modal-body--compact {
+        padding: 40px 24px 24px;
+      }
     </style>
   </head>
 
@@ -988,26 +1212,26 @@
     <div class="page-layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo">📚 Learn@Home</div>
+          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
-            <a href="chat.html" class="nav-item"><span class="nav-item-icon">💬</span> Messages<span
+            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span> Tableau de bord</a>
+            <a href="chat.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span> Messages<span
                 class="notification-badge">6</span></a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item active" aria-current="page"><span class="nav-item-icon">📅</span>
+            <a href="calendar.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span>
               Calendrier</a>
-            <a href="tasks.html" class="nav-item"><span class="nav-item-icon">✅</span> Tâches</a>
+            <a href="tasks.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span> Tâches</a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"><span class="nav-item-icon">⚙️</span> Paramètres</a>
-            <a href="login.html" class="nav-item"><span class="nav-item-icon">🚪</span> Déconnexion</a>
+            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span> Paramètres</a>
+            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span> Déconnexion</a>
           </div>
         </nav>
 
@@ -1040,10 +1264,10 @@
                 <div class="month-year">Janvier 2026</div>
                 <button class="nav-btn" aria-label="Mois suivant">▶</button>
               </div>
-              <div style="display: flex; gap: 8px;">
-                <button class="button button-secondary" style="padding: 6px 12px; font-size: 13px;">Mois</button>
-                <button class="button button-secondary" style="padding: 6px 12px; font-size: 13px;">Semaine</button>
-                <button class="button button-secondary" style="padding: 6px 12px; font-size: 13px;">Jour</button>
+              <div class="calendar-view-toggle">
+                <button class="button button-secondary view-toggle-btn">Mois</button>
+                <button class="button button-secondary view-toggle-btn">Semaine</button>
+                <button class="button button-secondary view-toggle-btn">Jour</button>
               </div>
             </div>
 
@@ -1276,12 +1500,15 @@
               </div>
               <div class="form-group">
                 <label class="form-label">Catégorie <span class="required">*</span></label>
-                <select class="form-select">
-                  <option value="">-- Sélectionner --</option>
-                  <option value="lesson" selected>Session/Préparation</option>
-                  <option value="deadline">Réunion/Coordination</option>
-                  <option value="appointment">Administratif</option>
-                </select>
+                <div class="custom-dropdown" id="eventCategoryDropdown">
+                  <button type="button" class="dropdown-toggle" tabindex="0">Session/Préparation</button>
+                  <div class="dropdown-menu">
+                    <button type="button" class="dropdown-item" tabindex="0">-- Sélectionner --</button>
+                    <button type="button" class="dropdown-item selected" tabindex="0">Session/Préparation</button>
+                    <button type="button" class="dropdown-item" tabindex="0">Réunion/Coordination</button>
+                    <button type="button" class="dropdown-item" tabindex="0">Administratif</button>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1303,12 +1530,15 @@
 
             <div class="form-group">
               <label class="form-label">Récurrence</label>
-              <select class="form-select">
-                <option value="none" selected>Aucune</option>
-                <option value="daily">Quotidien</option>
-                <option value="weekly">Hebdomadaire</option>
-                <option value="monthly">Mensuel</option>
-              </select>
+              <div class="custom-dropdown" id="eventRecurrenceDropdown">
+                <button type="button" class="dropdown-toggle" tabindex="0">Aucune</button>
+                <div class="dropdown-menu">
+                  <button type="button" class="dropdown-item selected" tabindex="0">Aucune</button>
+                  <button type="button" class="dropdown-item" tabindex="0">Quotidien</button>
+                  <button type="button" class="dropdown-item" tabindex="0">Hebdomadaire</button>
+                  <button type="button" class="dropdown-item" tabindex="0">Mensuel</button>
+                </div>
+              </div>
             </div>
 
             <div class="form-group">
@@ -1337,13 +1567,13 @@
         </div>
         <div class="modal-body">
           <div class="event-details-content">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-              <h3 class="event-details-title" style="margin: 0;">Session avec Antoine Kreuder - Mathématiques</h3>
+            <div class="event-detail-header">
+              <h3 class="event-details-title">Session avec Antoine Kreuder - Mathématiques</h3>
               <span class="category-badge lesson">Session/Préparation</span>
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon">📅</div>
+              <div class="event-detail-icon"><img src="../../assets/icons/calendar.svg" alt=""></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Date</div>
                 <div class="event-detail-value">Jeudi 15 janvier 2026</div>
@@ -1367,7 +1597,7 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon">👤</div>
+              <div class="event-detail-icon"><img src="../../assets/icons/user.svg" alt=""></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Élève</div>
                 <div class="event-detail-value">Antoine Kreuder</div>
@@ -1375,7 +1605,7 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon">📝</div>
+              <div class="event-detail-icon"><img src="../../assets/icons/file-edit.svg" alt=""></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Description</div>
                 <div class="event-detail-value">Révision des équations et exercices du devoir. Focus sur les erreurs
@@ -1393,7 +1623,7 @@
             </div>
 
             <div class="event-detail-row">
-              <div class="event-detail-icon">🔔</div>
+              <div class="event-detail-icon"><img src="../../assets/icons/bell.svg" alt=""></div>
               <div class="event-detail-info">
                 <div class="event-detail-label">Notification</div>
                 <div class="event-detail-value">15 minutes avant l'événement</div>
@@ -1410,8 +1640,8 @@
 
 
     <div class="modal-overlay" id="confirmDeleteModal">
-      <div class="modal" style="max-width: 400px;">
-        <div class="modal-body" style="padding: 40px 24px 24px;">
+      <div class="modal modal--sm">
+        <div class="modal-body modal-body--compact">
           <div class="confirmation-content">
             <h2 class="confirmation-title">Supprimer cet événement ?</h2>
             <p class="confirmation-message">
@@ -1420,22 +1650,48 @@
               définitivement supprimé de votre calendrier.
             </p>
             <div class="confirmation-buttons">
-              <a href="#" class="button button-secondary">Annuler</a>
               <button id="delete-event-btn" class="button button-danger">Supprimer définitivement</button>
+              <a href="#" class="button button-secondary">Annuler</a>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div id="toast-container" class="toast-container"></div>
 
     <script>
+      const showToast = (icon, title, message) => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+        container.appendChild(toast);
+        setTimeout(() => { toast.classList.add('dismissing'); setTimeout(() => toast.remove(), 500) }, 2700);
+      };
+
+      // Gérer la sélection des dropdowns dans le modal
+      const eventModal = document.getElementById('addEventModalFilled');
+      if (eventModal) {
+        eventModal.querySelectorAll('.dropdown-item').forEach(item => {
+          item.addEventListener('click', function() {
+            const dropdown = this.closest('.custom-dropdown');
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            const allItems = dropdown.querySelectorAll('.dropdown-item');
+            
+            allItems.forEach(i => i.classList.remove('selected'));
+            this.classList.add('selected');
+            toggle.textContent = this.textContent.trim();
+          });
+        });
+      }
+
       const handleCreateEvent = () => {
-        alert('Évement créé avec succès!');
+        showToast('✅', 'Événement créé', 'L\'événement a été créé avec succès');
         location.hash = '';
       }
 
       const handleDeleteEvent = () => {
-        alert('Évènement supprimé avec succès!');
+        showToast('🗑️', 'Événement supprimé', 'L\'événement a été supprimé avec succès');
         location.hash = '';
       }
 

@@ -105,7 +105,16 @@
       }
 
       .nav-item-icon {
-        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: block;
       }
 
       .notification-badge {
@@ -179,8 +188,8 @@
         right: -2px;
         background: var(--danger);
         color: white;
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -269,15 +278,133 @@
       input[type="text"],
       input[type="email"],
       input[type="password"],
-      input[type="tel"],
-      select {
+      input[type="tel"] {
         width: 100%;
         padding: 10px 12px;
         border: 1px solid #D1D5DB;
         border-radius: 6px;
         font-size: 14px;
+        background: white;
+        color: var(--text);
         transition: all 0.3s;
         font-family: inherit;
+      }
+
+      input[type="text"]:hover,
+      input[type="email"]:hover,
+      input[type="password"]:hover,
+      input[type="tel"]:hover {
+        border-color: #9CA3AF;
+      }
+
+      .custom-dropdown {
+        position: relative;
+        display: block;
+        width: 100%;
+      }
+
+      .dropdown-toggle {
+        width: 100%;
+        padding: 10px 12px;
+        padding-right: 32px;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        font-size: 14px;
+        background: white;
+        color: var(--text);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.2s;
+        font-family: inherit;
+        margin: 0;
+        text-align: left;
+      }
+
+      .dropdown-toggle:hover {
+        border-color: #9CA3AF;
+      }
+
+      .dropdown-toggle:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .dropdown-toggle::after {
+        content: '';
+        width: 12px;
+        height: 12px;
+        background-image: url("../../assets/icons/chevron-down.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: transform 0.2s;
+        flex-shrink: 0;
+      }
+
+      .custom-dropdown:focus-within .dropdown-toggle::after {
+        transform: rotate(180deg);
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        z-index: 1000;
+        overflow: hidden;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      .custom-dropdown:focus-within .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-item {
+        padding: 10px 12px;
+        font-size: 14px;
+        color: var(--text);
+        cursor: pointer;
+        transition: background-color 0.15s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: none;
+        background: white;
+        width: 100%;
+        text-align: left;
+        font-family: inherit;
+        margin: 0;
+      }
+
+      .dropdown-item:hover {
+        background: var(--bg);
+      }
+
+      .dropdown-item:focus {
+        outline: none;
+        background: var(--bg);
+      }
+
+      .dropdown-item.selected {
+        background: var(--primary);
+        color: white;
+      }
+
+      .dropdown-item.selected::before {
+        content: '✓ ';
+        font-weight: 700;
+      }
+
+      select {
+        display: none;
       }
 
       input:focus,
@@ -670,6 +797,18 @@
         cursor: not-allowed;
         opacity: 0.7;
       }
+
+      .nav-sidebar-logo img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      .settings-actions {
+        margin-top: 24px;
+      }
     </style>
   </head>
 
@@ -677,25 +816,25 @@
     <div class="layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo">📚 Learn@Home</div>
+          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt=""> Learn@Home</div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon">📊</span> Tableau de bord</a>
-            <a href="chat.html" class="nav-item"><span class="nav-item-icon">💬</span> Messages<div class="notification-badge">6</div></a>
+            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt=""></span> Tableau de bord</a>
+            <a href="chat.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt=""></span> Messages<div class="notification-badge">6</div></a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item"><span class="nav-item-icon">📅</span> Calendrier</a>
-            <a href="tasks.html" class="nav-item"><span class="nav-item-icon">✅</span> Tâches</a>
+            <a href="calendar.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt=""></span> Calendrier</a>
+            <a href="tasks.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt=""></span> Tâches</a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item active" aria-current="page"><span class="nav-item-icon">⚙️</span>
+            <a href="settings.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt=""></span>
               Paramètres</a>
-            <a href="login.html" class="nav-item"><span class="nav-item-icon">🚪</span> Déconnexion</a>
+            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt=""></span> Déconnexion</a>
           </div>
         </nav>
 
@@ -844,33 +983,48 @@
 
           <div class="form-group">
             <label for="language">Langue</label>
-            <select id="language">
-              <option value="fr" selected>Français</option>
-              <option value="en">English</option>
-              <option value="de">Deutsch</option>
-              <option value="es">Español</option>
-            </select>
+            <div class="custom-dropdown">
+              <button type="button" class="dropdown-toggle" tabindex="0">
+                Français
+              </button>
+              <div class="dropdown-menu">
+                <button type="button" class="dropdown-item selected" tabindex="0">Français</button>
+                <button type="button" class="dropdown-item" tabindex="0">English</button>
+                <button type="button" class="dropdown-item" tabindex="0">Deutsch</button>
+                <button type="button" class="dropdown-item" tabindex="0">Español</button>
+              </div>
+            </div>
           </div>
 
           <div class="form-group">
             <label for="timezone">Fuseau horaire</label>
-            <select id="timezone">
-              <option value="europe/paris" selected>Europe/Paris (GMT+1)</option>
-              <option value="europe/london">Europe/London (GMT+0)</option>
-              <option value="europe/berlin">Europe/Berlin (GMT+1)</option>
-              <option value="america/newyork">America/New_York (GMT-5)</option>
-              <option value="america/chicago">America/Chicago (GMT-6)</option>
-              <option value="asia/tokyo">Asia/Tokyo (GMT+9)</option>
-            </select>
+            <div class="custom-dropdown">
+              <button type="button" class="dropdown-toggle" tabindex="0">
+                Europe/Paris (GMT+1)
+              </button>
+              <div class="dropdown-menu">
+                <button type="button" class="dropdown-item selected" tabindex="0">Europe/Paris (GMT+1)</button>
+                <button type="button" class="dropdown-item" tabindex="0">Europe/London (GMT+0)</button>
+                <button type="button" class="dropdown-item" tabindex="0">Europe/Berlin (GMT+1)</button>
+                <button type="button" class="dropdown-item" tabindex="0">America/New_York (GMT-5)</button>
+                <button type="button" class="dropdown-item" tabindex="0">America/Chicago (GMT-6)</button>
+                <button type="button" class="dropdown-item" tabindex="0">Asia/Tokyo (GMT+9)</button>
+              </div>
+            </div>
           </div>
 
           <div class="form-group">
             <label for="theme">Thème</label>
-            <select id="theme">
-              <option value="light" selected>Clair</option>
-              <option value="dark">Sombre</option>
-              <option value="auto">Automatique</option>
-            </select>
+            <div class="custom-dropdown">
+              <button type="button" class="dropdown-toggle" tabindex="0">
+                Clair
+              </button>
+              <div class="dropdown-menu">
+                <button type="button" class="dropdown-item selected" tabindex="0">Clair</button>
+                <button type="button" class="dropdown-item" tabindex="0">Sombre</button>
+                <button type="button" class="dropdown-item" tabindex="0">Automatique</button>
+              </div>
+            </div>
           </div>
 
           <div class="button-group">
@@ -909,7 +1063,7 @@
             </div>
           </div>
 
-          <div class="button-group" style="margin-top: 24px;">
+          <div class="button-group settings-actions">
             <button class="button button-secondary" onclick="downloadDataToast()">Télécharger mes données</button>
             <button class="button button-secondary"
               onclick="showToast('📊', 'Mon activité', 'Chargement de votre activité...')">Voir mon activité</button>
