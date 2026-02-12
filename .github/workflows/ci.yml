@@ -16,22 +16,22 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '22'
+          cache: 'npm'
 
-      - name: Install CI dependencies
-        working-directory: .github
+      - name: Install dependencies
         run: npm ci
 
       - name: Run ESLint (HTML/JS)
-        run: .github/node_modules/.bin/eslint . --config .github/eslint.config.js
+        run: npx eslint .
 
       - name: Check Prettier formatting
-        run: .github/node_modules/.bin/prettier --check "**/*.{html,css,js,mjs,cjs,json}" --ignore-path .gitignore
+        run: npx prettier --check "**/*.{html,css,js,mjs,cjs,json}" --ignore-path .gitignore
 
       - name: Verify HTML files exist
         run: |
