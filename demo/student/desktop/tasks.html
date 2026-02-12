@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Learn@Home - Gestion des Tâches (Tuteur) | Maquette Desktop</title>
+    <title>Learn@Home - Gestion des Tâches | Maquette Desktop</title>
     <style>
       :root {
         --primary: #3b82f6;
@@ -37,7 +37,6 @@
       .page-layout {
         display: grid;
         grid-template-columns: 250px 1fr;
-        grid-template-areas: "nav main";
         min-height: 100vh;
       }
 
@@ -117,6 +116,12 @@
         flex-shrink: 0;
       }
 
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: block;
+      }
+
       .notification-badge {
         background: #ef4444;
         color: white;
@@ -166,12 +171,9 @@
         flex-shrink: 0;
       }
 
-      .user-avatar.yann {
-        background-image: url("../../assets/pictures/yann.jpg");
+      .user-avatar.antoine {
+        background-image: url("../../assets/pictures/antoine.jpeg");
         background-color: transparent;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
         font-size: 0;
       }
 
@@ -214,6 +216,7 @@
       .main {
         grid-column: 2;
         padding: 32px;
+        margin-left: 0;
       }
 
       .header {
@@ -285,11 +288,6 @@
         border-color: #3b82f6;
       }
 
-      .filter-btn:focus {
-        outline: 2px solid #3b82f6;
-        outline-offset: 2px;
-      }
-
       .search-box {
         padding: 10px 12px;
         border: 1px solid #d1d5db;
@@ -330,7 +328,6 @@
         justify-content: space-between;
         transition: all 0.2s;
         font-family: inherit;
-        margin: 0;
         text-align: left;
       }
 
@@ -395,7 +392,6 @@
         width: 100%;
         text-align: left;
         font-family: inherit;
-        margin: 0;
       }
 
       .dropdown-item:hover {
@@ -407,17 +403,13 @@
         background: var(--bg);
       }
 
-      .dropdown-item.selected,
-      input:checked+.dropdown-menu .dropdown-item[for*="sort-date"],
-      input:checked+.dropdown-menu .dropdown-item[for*="sort-priority"],
-      input:checked+.dropdown-menu .dropdown-item[for*="sort-title"] {
+      .dropdown-item.selected {
         background: var(--primary);
         color: white;
       }
 
-      .dropdown-item.selected::before,
-      input:checked+.dropdown-menu .dropdown-item.selected::before {
-        content: "✓ ";
+      .dropdown-item.selected::before {
+        content: "✓";
         font-weight: 700;
       }
 
@@ -433,19 +425,11 @@
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         padding: 20px;
         display: grid;
-        grid-template-columns: 40px 1fr auto;
+        grid-template-columns: 40px 1fr auto auto auto;
         gap: 16px;
         align-items: center;
         transition: all 0.3s;
         border-left: 4px solid #e5e7eb;
-      }
-
-      .task-card-right {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: flex-end;
       }
 
       .task-checkbox {
@@ -479,15 +463,6 @@
         color: #9ca3af;
       }
 
-      .task-checkbox:checked {
-        background: #10b981;
-        border-color: #10b981;
-      }
-
-      .task-card:has(.task-checkbox:checked) {
-        border-left-color: #10b981;
-      }
-
       .task-card:hover {
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         transform: translateY(-2px);
@@ -519,11 +494,6 @@
 
       .checkbox:hover {
         border-color: #3b82f6;
-      }
-
-      .checkbox:focus {
-        outline: 2px solid #3b82f6;
-        outline-offset: 2px;
       }
 
       .task-content {
@@ -645,34 +615,13 @@
       .nav-item-icon img {
         width: 18px;
         height: 18px;
-        display: block;
+        display: inline-block;
+        vertical-align: middle;
       }
 
       .action-btn:hover {
         background: #f3f4f6;
         border-color: #d1d5db;
-      }
-
-      .action-btn:focus {
-        outline: 2px solid #3b82f6;
-        outline-offset: 2px;
-      }
-
-      .student-avatar {
-        width: 32px;
-        height: 32px;
-        background: #3b82f6;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 700;
-        font-size: 12px;
-        flex-shrink: 0;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
       }
 
       @media (max-width: 1024px) {
@@ -696,170 +645,65 @@
         font-size: 12px;
       }
 
-      .modal-backdrop {
-        display: none;
+      .toast-container {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 999;
-      }
-
-      .modal-backdrop.active {
-        display: block;
-      }
-
-      .modal {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        max-width: 500px;
-        width: 90%;
-        max-height: 90vh;
-        overflow-y: auto;
-      }
-
-      .modal.active {
-        display: block;
-      }
-
-      .modal-header {
-        padding: 24px;
-        border-bottom: 1px solid #e5e7eb;
+        top: 24px;
+        right: 24px;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .modal-title {
-        font-size: 20px;
-        font-weight: 700;
-        color: #111827;
-      }
-
-      .modal-close {
-        background: none;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        color: #6b7280;
-        transition: color 0.3s;
-      }
-
-      .modal-close:hover {
-        color: #111827;
-      }
-
-      .modal-close:focus {
-        outline: 2px solid #3b82f6;
-        outline-offset: 2px;
-      }
-
-      .modal-content {
-        padding: 24px;
-      }
-
-      .form-group {
-        margin-bottom: 20px;
-      }
-
-      .form-group label {
-        display: block;
-        font-size: 14px;
-        font-weight: 500;
-        color: #374151;
-        margin-bottom: 8px;
-      }
-
-      .form-group input {
-        width: 100%;
-        padding: 10px 12px;
-        border: 1px solid #d1d5db;
-        border-radius: 6px;
-        font-size: 14px;
-        font-family: inherit;
-        background: white;
-        color: var(--text);
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-
-      .form-group .custom-dropdown {
-        position: relative;
-        display: block;
-        width: 100%;
-      }
-
-      .form-group .custom-dropdown .dropdown-toggle {
-        width: 100%;
-      }
-
-      .form-group textarea {
-        width: 100%;
-        padding: 10px 12px;
-        border: 1px solid #d1d5db;
-        border-radius: 6px;
-        font-size: 14px;
-        font-family: inherit;
-        transition: all 0.3s;
-      }
-
-      .form-group input:focus,
-      .form-group textarea:focus {
-        outline: none;
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-      }
-
-      .form-group input::placeholder,
-      .form-group textarea::placeholder {
-        color: #9ca3af;
-      }
-
-      .form-group input::placeholder,
-      .form-group textarea::placeholder {
-        transition: opacity 0.2s ease;
-      }
-
-      .form-group input:focus::placeholder,
-      .form-group textarea:focus::placeholder {
-        opacity: 0;
-      }
-
-      .form-group textarea {
-        resize: vertical;
-        min-height: 100px;
-      }
-
-      .modal-footer {
-        padding: 16px 24px;
-        border-top: 1px solid #e5e7eb;
-        display: flex;
+        flex-direction: column;
         gap: 12px;
-        justify-content: flex-end;
+        z-index: 9999;
+        pointer-events: none;
       }
 
-      .button-secondary {
+      .toast {
         background: white;
-        color: #3b82f6;
-        border: 1px solid #3b82f6;
+        border-radius: 8px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        min-width: 300px;
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        pointer-events: auto;
       }
 
-      .button-secondary:hover {
-        background: #e0f2fe;
+      .toast.dismissing {
+        animation: fadeOut 0.3s ease-out forwards;
       }
 
-      .button-secondary:focus {
-        outline: 2px solid #3b82f6;
-        outline-offset: 2px;
+      .toast-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 4px;
+      }
+
+      .toast-message {
+        font-size: 13px;
+        color: #6b7280;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(400px);
+          opacity: 0;
+        }
+
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        to {
+          opacity: 0;
+          transform: translateX(100px);
+        }
       }
 
       button:disabled,
@@ -948,6 +792,195 @@
         opacity: 0.7;
       }
 
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.2s ease-out;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        max-width: 500px;
+        width: 90%;
+        padding: 32px;
+        animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+
+      .modal-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #6b7280;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        transition: all 0.2s;
+      }
+
+      .modal-close:hover {
+        background: #f3f4f6;
+        color: #111827;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 8px;
+      }
+
+      .form-label.required::after {
+        content: " *";
+        color: #ef4444;
+      }
+
+      .form-input,
+      .form-textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 14px;
+        font-family: inherit;
+        transition: all 0.2s;
+      }
+
+      .form-input:focus,
+      .form-textarea:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .form-input.error,
+      .form-textarea.error {
+        border-color: #ef4444;
+      }
+
+      .form-input.error:focus,
+      .form-textarea.error:focus {
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+      }
+
+      .form-textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .form-error {
+        font-size: 13px;
+        color: #ef4444;
+        margin-top: 6px;
+        display: none;
+      }
+
+      .form-input.error~.form-error,
+      .form-textarea.error~.form-error {
+        display: block;
+      }
+
+      .char-counter {
+        font-size: 12px;
+        color: #9ca3af;
+        margin-top: 6px;
+        text-align: right;
+      }
+
+      .char-counter.warning {
+        color: #f59e0b;
+      }
+
+      .char-counter.error {
+        color: #ef4444;
+      }
+
+      .modal-footer {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        margin-top: 32px;
+      }
+
+      .button-secondary {
+        padding: 10px 16px;
+        border: 1px solid #d1d5db;
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s;
+        color: #6b7280;
+      }
+
+      .button-secondary:hover {
+        background: #f3f4f6;
+        border-color: #9ca3af;
+      }
+
+      .button-secondary:active {
+        background: #e5e7eb;
+      }
+
       .nav-sidebar-logo img {
         width: 20px;
         height: 20px;
@@ -964,76 +997,10 @@
         margin-right: 4px;
       }
 
-      .action-btn img {
-        width: 16px;
-        height: 16px;
-      }
-
       .tasks-toolbar {
         display: flex;
         gap: 12px;
         align-items: center;
-      }
-
-      .toast-container {
-        position: fixed;
-        top: 24px;
-        right: 24px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        z-index: 9999;
-        pointer-events: none;
-      }
-
-      .toast {
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        padding: 16px;
-        min-width: 300px;
-        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        pointer-events: auto;
-      }
-
-      .toast.dismissing {
-        animation: fadeOut 0.3s ease-out forwards;
-      }
-
-      .toast-title {
-        font-size: 14px;
-        font-weight: 600;
-        color: #111827;
-        margin-bottom: 4px;
-      }
-
-      .toast-message {
-        font-size: 13px;
-        color: #6b7280;
-      }
-
-      @keyframes slideIn {
-        from {
-          transform: translateX(400px);
-          opacity: 0;
-        }
-
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-
-      @keyframes fadeOut {
-        from {
-          opacity: 1;
-          transform: translateX(0);
-        }
-
-        to {
-          opacity: 0;
-          transform: translateX(100px);
-        }
       }
     </style>
   </head>
@@ -1053,7 +1020,7 @@
               de bord</a>
             <a href="chat.html" class="nav-item"><span class="nav-item-icon"><img
                   src="../../assets/icons/message-square.svg" alt="" /></span>
-              Messages<span class="notification-badge">6</span></a>
+              Messages<span class="notification-badge">5</span></a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
@@ -1072,13 +1039,13 @@
         </nav>
 
         <div class="user-profile">
-          <div class="user-avatar yann">
-            YU
-            <span class="user-avatar-badge">6</span>
+          <div class="user-avatar antoine">
+            AK
+            <span class="user-avatar-badge">5</span>
           </div>
           <div class="user-info">
-            <div class="user-name">Yann Uliong</div>
-            <div class="user-role">Tuteur</div>
+            <div class="user-name">Antoine Kreuder</div>
+            <div class="user-role">Élève</div>
           </div>
         </div>
       </aside>
@@ -1086,13 +1053,13 @@
       <main class="main">
         <div class="header">
           <h1>Gestion des Tâches</h1>
-          <button class="button button-primary" id="createTaskBtn">+ Créer une tâche</button>
+          <button class="button button-primary" id="addTaskBtn">+ Ajouter une tâche</button>
         </div>
 
         <div class="controls">
           <div class="filters">
             <button class="filter-btn active">Toutes</button>
-            <button class="filter-btn">Pendantes</button>
+            <button class="filter-btn">À faire</button>
             <button class="filter-btn">En cours</button>
             <button class="filter-btn">Complétées</button>
           </div>
@@ -1115,26 +1082,24 @@
             <input type="checkbox" class="task-checkbox" id="task1" />
             <label for="task1" class="checkbox"></label>
             <div class="task-content">
-              <div class="task-title">Équations</div>
-              <div class="task-description">Compléter les 10 exercices de la feuille distribuée</div>
+              <div class="task-title">Équations du second degré - Exercices</div>
+              <div class="task-description">Compléter les 10 exercices de la feuille distribuée par Yann</div>
               <div class="task-meta">
                 <div class="meta-item">
                   <img src="../../assets/icons/calendar.svg" alt="" /> Échéance: 10 janvier 2026
                 </div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Assigné à: Antoine Kreuder</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Créé par: Yann Uliong</div>
               </div>
             </div>
-            <div class="task-card-right">
-              <div class="priority-badge priority-high">Haute</div>
-              <div class="status-badge status-pending">Pendante</div>
-              <div class="task-actions">
-                <button class="action-btn" aria-label="Modifier la tâche">
-                  <img src="../../assets/icons/pencil.svg" alt="" />
-                </button>
-                <button class="action-btn" aria-label="Supprimer la tâche">
-                  <img src="../../assets/icons/trash-2.svg" alt="" />
-                </button>
-              </div>
+            <div class="priority-badge priority-high">Haute</div>
+            <div class="status-badge status-pending">À faire</div>
+            <div class="task-actions">
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="" />
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="" />
+              </button>
             </div>
           </div>
 
@@ -1142,26 +1107,24 @@
             <input type="checkbox" class="task-checkbox" id="task2" />
             <label for="task2" class="checkbox"></label>
             <div class="task-content">
-              <div class="task-title">Lecture Ch.5</div>
+              <div class="task-title">Lecture du chapitre 5 - Français</div>
               <div class="task-description">
                 Lire "Le Seigneur des Anneaux" chapitre 5 et faire un résumé de 2 pages
               </div>
               <div class="task-meta">
                 <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 12 janvier 2026</div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Sophie Martin</div>
+                <div class="meta-item">👤 Auto-créée</div>
               </div>
             </div>
-            <div class="task-card-right">
-              <div class="priority-badge priority-medium">Normal</div>
-              <div class="status-badge status-inprogress">En cours</div>
-              <div class="task-actions">
-                <button class="action-btn" aria-label="Modifier la tâche">
-                  <img src="../../assets/icons/pencil.svg" alt="" />
-                </button>
-                <button class="action-btn" aria-label="Supprimer la tâche">
-                  <img src="../../assets/icons/trash-2.svg" alt="" />
-                </button>
-              </div>
+            <div class="priority-badge priority-medium">Normal</div>
+            <div class="status-badge status-inprogress">En cours</div>
+            <div class="task-actions">
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="" />
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="" />
+              </button>
             </div>
           </div>
 
@@ -1169,26 +1132,22 @@
             <input type="checkbox" class="task-checkbox" id="task3" checked />
             <label for="task3" class="checkbox"></label>
             <div class="task-content">
-              <div class="task-title">Rapport</div>
-              <div class="task-description">
-                Rédiger un rapport détaillé incluant hypothèse, procédure, résultats et conclusions
-              </div>
+              <div class="task-title">Révision vocabulaire anglais</div>
+              <div class="task-description">Apprendre 50 nouveaux mots de vocabulaire pour le test</div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 15 janvier 2026</div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Antoine Kreuder</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 5 janvier 2026</div>
+                <div class="meta-item">👤 Auto-créée</div>
               </div>
             </div>
-            <div class="task-card-right">
-              <div class="priority-badge priority-high">Haute</div>
-              <div class="status-badge status-done">Complétée</div>
-              <div class="task-actions">
-                <button class="action-btn" aria-label="Modifier la tâche">
-                  <img src="../../assets/icons/pencil.svg" alt="" />
-                </button>
-                <button class="action-btn" aria-label="Supprimer la tâche">
-                  <img src="../../assets/icons/trash-2.svg" alt="" />
-                </button>
-              </div>
+            <div class="priority-badge priority-low">Basse</div>
+            <div class="status-badge status-done">Complétée</div>
+            <div class="task-actions">
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="" />
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="" />
+              </button>
             </div>
           </div>
 
@@ -1196,117 +1155,123 @@
             <input type="checkbox" class="task-checkbox" id="task4" />
             <label for="task4" class="checkbox"></label>
             <div class="task-content">
-              <div class="task-title">Exercices Math</div>
-              <div class="task-description">Compléter les exercices de mathématiques</div>
+              <div class="task-title">Rapport de Sciences - Expérience sur la photosynthèse</div>
+              <div class="task-description">
+                Rédiger un rapport détaillé incluant hypothèse, procédure, résultats et conclusions
+              </div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 18 janvier 2026</div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Jean Leclerc</div>
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 15 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Yann Uliong</div>
               </div>
             </div>
-            <div class="task-card-right">
-              <div class="priority-badge priority-high">Haute</div>
-              <div class="status-badge status-pending">Pendante</div>
-              <div class="task-actions">
-                <button class="action-btn" aria-label="Modifier la tâche">
-                  <img src="../../assets/icons/pencil.svg" alt="" />
-                </button>
-                <button class="action-btn" aria-label="Supprimer la tâche">
-                  <img src="../../assets/icons/trash-2.svg" alt="" />
-                </button>
-              </div>
+            <div class="priority-badge priority-high">Haute</div>
+            <div class="status-badge status-pending">À faire</div>
+            <div class="task-actions">
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="" />
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="" />
+              </button>
             </div>
           </div>
 
-          <div class="task-card status-inprogress">
+          <div class="task-card status-pending">
             <input type="checkbox" class="task-checkbox" id="task5" />
             <label for="task5" class="checkbox"></label>
             <div class="task-content">
-              <div class="task-title">Rédaction</div>
-              <div class="task-description">Rédiger un texte sur le sujet donné</div>
+              <div class="task-title">Projet: Présentation Histoire - Révolution française</div>
+              <div class="task-description">
+                Créer une présentation PowerPoint de 15-20 diapositives sur la Révolution française
+              </div>
               <div class="task-meta">
                 <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 20 janvier 2026</div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Léa Bernard</div>
+                <div class="meta-item">👤 Auto-créée</div>
               </div>
             </div>
-            <div class="task-card-right">
-              <div class="priority-badge priority-medium">Normal</div>
-              <div class="status-badge status-inprogress">En cours</div>
-              <div class="task-actions">
-                <button class="action-btn" aria-label="Modifier la tâche">
-                  <img src="../../assets/icons/pencil.svg" alt="" />
-                </button>
-                <button class="action-btn" aria-label="Supprimer la tâche">
-                  <img src="../../assets/icons/trash-2.svg" alt="" />
-                </button>
+            <div class="priority-badge priority-low">Basse</div>
+            <div class="status-badge status-pending">À faire</div>
+            <div class="task-actions">
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="" />
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="" />
+              </button>
+            </div>
+          </div>
+
+          <div class="task-card status-done">
+            <input type="checkbox" class="task-checkbox" id="task6" checked />
+            <label for="task6" class="checkbox"></label>
+            <div class="task-content">
+              <div class="task-title">Quiz - Géométrie (Chapitre 3)</div>
+              <div class="task-description">
+                Répondre aux 20 questions du quiz en ligne sur les triangles et leurs propriétés
               </div>
+              <div class="task-meta">
+                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 8 janvier 2026</div>
+                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Système</div>
+              </div>
+            </div>
+            <div class="priority-badge priority-medium">Normal</div>
+            <div class="status-badge status-done">Complétée</div>
+            <div class="task-actions">
+              <button class="action-btn" aria-label="Modifier la tâche">
+                <img src="../../assets/icons/pencil.svg" alt="" />
+              </button>
+              <button class="action-btn" aria-label="Supprimer la tâche">
+                <img src="../../assets/icons/trash-2.svg" alt="" />
+              </button>
             </div>
           </div>
         </div>
+
+        <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
       </main>
-
-      <div class="modal-backdrop" id="modalBackdrop"></div>
-      <div class="modal" id="createTaskModal" data-mode="create">
-        <div class="modal-header">
-          <h2 class="modal-title" id="modalTitle">Créer une nouvelle tâche</h2>
-          <button class="modal-close" id="closeModalBtn" aria-label="Fermer le modal">&times;</button>
-        </div>
-
-        <div class="modal-content">
-          <form id="taskForm">
-            <div class="form-group">
-              <label for="taskTitle">Titre de la tâche</label>
-              <input type="text" id="taskTitle" placeholder="Ex: Équations du second degré" required />
-            </div>
-
-            <div class="form-group">
-              <label for="taskDescription">Description</label>
-              <textarea id="taskDescription" placeholder="Décrivez la tâche en détail..." required></textarea>
-            </div>
-
-            <div class="form-group">
-              <label for="taskStudent">Assigné à</label>
-              <div class="custom-dropdown" id="taskStudentDropdown">
-                <button type="button" class="dropdown-toggle" tabindex="0">-- Sélectionner un élève --</button>
-                <div class="dropdown-menu">
-                  <button type="button" class="dropdown-item" tabindex="0">-- Sélectionner un élève --</button>
-                  <button type="button" class="dropdown-item" tabindex="0">Antoine Kreuder</button>
-                  <button type="button" class="dropdown-item" tabindex="0">Sophie Martin</button>
-                  <button type="button" class="dropdown-item" tabindex="0">Jean Leclerc</button>
-                  <button type="button" class="dropdown-item" tabindex="0">Léa Bernard</button>
-                  <button type="button" class="dropdown-item" tabindex="0">Autre élève</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="taskDeadline">Date limite</label>
-              <input type="date" id="taskDeadline" required />
-            </div>
-
-            <div class="form-group">
-              <label for="taskPriority">Priorité</label>
-              <div class="custom-dropdown" id="taskPriorityDropdown">
-                <button type="button" class="dropdown-toggle" tabindex="0">Normal</button>
-                <div class="dropdown-menu">
-                  <button type="button" class="dropdown-item" tabindex="0">Basse</button>
-                  <button type="button" class="dropdown-item selected" tabindex="0">Normal</button>
-                  <button type="button" class="dropdown-item" tabindex="0">Haute</button>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-
-        <div class="modal-footer">
-          <button class="button button-primary" id="submitTaskBtn" data-action="create">Créer la tâche</button>
-          <button class="button button-secondary" id="cancelTaskBtn">Annuler</button>
-        </div>
-      </div>
-
-      <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
     </div>
-    <div id="toast-container" class="toast-container"></div>
 
+    <!-- Modal: Ajouter une tâche -->
+    <div class="modal" id="taskModal" data-mode="create">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modalTitle">Ajouter une tâche</h2>
+          <button class="modal-close" id="closeTaskModal" aria-label="Fermer le formulaire">×</button>
+        </div>
+        <form id="taskForm">
+          <div class="form-group">
+            <label for="taskTitle" class="form-label required">Titre</label>
+            <input type="text" id="taskTitle" class="form-input" placeholder="Ex: Équations du second degré"
+              maxlength="100" required />
+            <div class="char-counter"><span id="titleCounter">0</span>/100</div>
+            <div class="form-error" id="titleError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="taskDescription" class="form-label">Description</label>
+            <textarea id="taskDescription" class="form-textarea"
+              placeholder="Ex: Compléter les 10 exercices de la feuille distribuée..." maxlength="500"></textarea>
+            <div class="char-counter"><span id="descCounter">0</span>/500</div>
+            <div class="form-error" id="descriptionError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="taskDate" class="form-label required">Date d'échéance</label>
+            <input type="date" id="taskDate" class="form-input" required />
+            <div class="form-error" id="dateError"></div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="button button-primary" id="submitTaskBtn" data-action="create">
+              Créer la tâche
+            </button>
+            <button type="button" class="button-secondary" id="cancelTaskBtn">Annuler</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
     <script>
       const showToast = (icon, title, message) => {
         const container = document.getElementById("toast-container");
@@ -1320,36 +1285,23 @@
         }, 2700);
       };
 
-      const modalTaskForm = (id) => document.getElementById(id);
-      const modal = modalTaskForm("createTaskModal");
-      const backdrop = modalTaskForm("modalBackdrop");
-      const form = modalTaskForm("taskForm");
-      const modalTitle = modalTaskForm("modalTitle");
-      const submitBtn = modalTaskForm("submitTaskBtn");
-      const closeModal = () => {
-        modal.classList.remove("active");
-        backdrop.classList.remove("active");
-        form.reset();
-        modal.dataset.mode = "create";
-        modalTitle.textContent = "Créer une nouvelle tâche";
-        submitBtn.textContent = "Créer la tâche";
-        submitBtn.dataset.action = "create";
+      const taskModal = document.getElementById("taskModal");
+      const taskForm = document.getElementById("taskForm");
+      const addTaskBtn = document.getElementById("addTaskBtn");
+      const closeTaskModal = document.getElementById("closeTaskModal");
+      const cancelTaskBtn = document.getElementById("cancelTaskBtn");
+      const submitTaskBtn = document.getElementById("submitTaskBtn");
+      const modalTitle = document.getElementById("modalTitle");
+      const taskTitle = document.getElementById("taskTitle");
+      const taskDescription = document.getElementById("taskDescription");
+      const taskDate = document.getElementById("taskDate");
+      const titleCounter = document.getElementById("titleCounter");
+      const descCounter = document.getElementById("descCounter");
 
-        modal.querySelectorAll(".dropdown-item").forEach((item) => item.classList.remove("selected"));
-        modal.querySelector("#taskStudentDropdown .dropdown-toggle").textContent = "-- Sélectionner un élève --";
-        modal.querySelector("#taskPriorityDropdown .dropdown-item.selected")?.classList.remove("selected");
-        modal.querySelector("#taskPriorityDropdown .dropdown-item:nth-child(2)").classList.add("selected");
-        modal.querySelector("#taskPriorityDropdown .dropdown-toggle").textContent = "Normal";
-      };
 
-      const openModalForCreate = () => {
-        modal.classList.add("active");
-        backdrop.classList.add("active");
-        modal.dataset.mode = "create";
-        modalTitle.textContent = "Créer une nouvelle tâche";
-        submitBtn.textContent = "Créer la tâche";
-        submitBtn.dataset.action = "create";
-      };
+      const today = new Date();
+      const todayStr = today.toISOString().split("T")[0];
+      taskDate.min = todayStr;
 
       const parseDeadlineDate = (dateString) => {
         const months = {
@@ -1373,102 +1325,171 @@
         return `${year}-${month}-${day}`;
       };
 
-      const openModalForEdit = (taskCard) => {
-        const taskTitle = taskCard.querySelector(".task-title").textContent;
-        const taskDescription = taskCard.querySelector(".task-description").textContent;
-        const deadlineText = taskCard
-          .querySelector(".task-meta .meta-item:nth-child(1)")
-          .textContent.trim()
-          .replace("Échéance: ", "")
-          .trim();
-        const priorityBadge = taskCard.querySelector(".priority-badge");
-        const priority = priorityBadge ? priorityBadge.className.replace("priority-badge priority-", "") : "medium";
-
-        modalTaskForm("taskTitle").value = taskTitle;
-        modalTaskForm("taskDescription").value = taskDescription;
-
-        const studentDropdown = modal.querySelector("#taskStudentDropdown");
-        const studentName = taskCard
-          .querySelector(".task-meta .meta-item:nth-child(2)")
-          .textContent.replace("Assigné à: ", "")
-          .trim();
-        if (studentDropdown) {
-          const studentToggle = studentDropdown.querySelector(".dropdown-toggle");
-          const studentItems = studentDropdown.querySelectorAll(".dropdown-item");
-          studentItems.forEach((item) => {
-            item.classList.remove("selected");
-            if (item.textContent.trim() === studentName) {
-              item.classList.add("selected");
-            }
-          });
-          studentToggle.textContent = studentName;
-        }
-
-        modalTaskForm("taskDeadline").value = parseDeadlineDate(deadlineText);
-
-        const priorityDropdown = modal.querySelector("#taskPriorityDropdown");
-        const priorityText = priority === "low" ? "Basse" : priority === "high" ? "Haute" : "Normal";
-        if (priorityDropdown) {
-          const priorityToggle = priorityDropdown.querySelector(".dropdown-toggle");
-          const priorityItems = priorityDropdown.querySelectorAll(".dropdown-item");
-          priorityItems.forEach((item) => {
-            item.classList.remove("selected");
-            if (item.textContent.trim() === priorityText) {
-              item.classList.add("selected");
-            }
-          });
-          priorityToggle.textContent = priorityText;
-        }
-
-        modal.classList.add("active");
-        backdrop.classList.add("active");
-        modal.dataset.mode = "edit";
-        modalTitle.textContent = "Modifier la tâche";
-        submitBtn.textContent = "Enregistrer les modifications";
-        submitBtn.dataset.action = "edit";
+      const openTaskModal = () => {
+        taskModal.dataset.mode = "create";
+        modalTitle.textContent = "Ajouter une tâche";
+        submitTaskBtn.textContent = "Créer la tâche";
+        submitTaskBtn.dataset.action = "create";
+        taskModal.classList.add("active");
+        taskTitle.focus();
       };
 
-      modalTaskForm("createTaskBtn").addEventListener("click", openModalForCreate);
-      [modalTaskForm("closeModalBtn"), modalTaskForm("cancelTaskBtn")].forEach((element) =>
-        element.addEventListener("click", closeModal)
-      );
-      backdrop.addEventListener("click", (event) => event.target === backdrop && closeModal());
+      const openModalForEdit = (taskCard) => {
+        const cardTitle = taskCard.querySelector(".task-title").textContent;
+        const cardDescription = taskCard.querySelector(".task-description").textContent;
+        const deadlineMetaItem = taskCard.querySelector(".task-meta .meta-item:first-child").textContent;
+        const deadlineText = deadlineMetaItem.replace(/Échéance:\s*/i, "").trim();
 
-      submitBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        const taskTitle = modalTaskForm("taskTitle").value;
-        const taskDeadline = modalTaskForm("taskDeadline").value;
-        const selectedStudent =
-          modal.querySelector("#taskStudentDropdown .dropdown-item.selected")?.textContent ||
-          modal.querySelector("#taskStudentDropdown .dropdown-toggle").textContent;
-        if (taskTitle && taskDeadline && selectedStudent !== "-- Sélectionner un élève --") {
-          if (modal.dataset.mode === "edit") {
-            showToast("✏️", "Tâche modifiée", "Les modifications ont été enregistrées");
-          } else {
-            showToast("✅", "Tâche créée", "Une nouvelle tâche a été créée");
+        taskTitle.value = cardTitle;
+        taskDescription.value = cardDescription;
+        taskDate.value = parseDeadlineDate(deadlineText);
+
+        titleCounter.textContent = cardTitle.length;
+        descCounter.textContent = cardDescription.length;
+
+        taskModal.dataset.mode = "edit";
+        modalTitle.textContent = "Modifier la tâche";
+        submitTaskBtn.textContent = "Enregistrer les modifications";
+        submitTaskBtn.dataset.action = "edit";
+
+        taskModal.classList.add("active");
+        taskTitle.focus();
+      };
+
+      const closeModal = () => {
+        if (taskForm.hasUnsavedChanges()) {
+          if (confirm("Vous avez des modifications non enregistrées. Continuer ?")) {
+            taskModal.classList.remove("active");
+            resetForm();
           }
-          closeModal();
         } else {
-          showToast("⚠️", "Erreur", "Veuillez remplir tous les champs obligatoires");
+          taskModal.classList.remove("active");
+          resetForm();
+        }
+      };
+
+      const resetForm = () => {
+        taskForm.reset();
+        document.querySelectorAll(".form-input, .form-textarea").forEach((input) => {
+          input.classList.remove("error");
+        });
+        document.querySelectorAll(".form-error").forEach((error) => {
+          error.textContent = "";
+        });
+        titleCounter.textContent = "0";
+        descCounter.textContent = "0";
+        taskModal.dataset.mode = "create";
+        modalTitle.textContent = "Ajouter une tâche";
+        submitTaskBtn.textContent = "Créer la tâche";
+        submitTaskBtn.dataset.action = "create";
+      };
+
+      const markFormDirty = () => {
+        taskForm.hasUnsavedChanges = () => {
+          return taskTitle.value.trim() !== "" || taskDescription.value.trim() !== "" || taskDate.value !== "";
+        };
+      };
+
+      taskTitle.addEventListener("input", () => {
+        titleCounter.textContent = taskTitle.value.length;
+        markFormDirty();
+        if (taskTitle.value.length >= 100) {
+          showFieldError("title", "Le titre ne doit pas dépasser 100 caractères");
+        } else {
+          clearError("title");
         }
       });
 
-      document.addEventListener(
-        "keydown",
-        (event) => event.key === "Escape" && modal.classList.contains("active") && closeModal()
-      );
-
-      modal.querySelectorAll(".dropdown-item").forEach((item) => {
-        item.addEventListener("click", function () {
-          const dropdown = this.closest(".custom-dropdown");
-          const toggle = dropdown.querySelector(".dropdown-toggle");
-          const allItems = dropdown.querySelectorAll(".dropdown-item");
-
-          allItems.forEach((i) => i.classList.remove("selected"));
-          this.classList.add("selected");
-          toggle.textContent = this.textContent.trim();
-        });
+      taskDescription.addEventListener("input", () => {
+        descCounter.textContent = taskDescription.value.length;
+        markFormDirty();
+        if (taskDescription.value.length >= 500) {
+          showFieldError("description", "La description ne doit pas dépasser 500 caractères");
+        } else {
+          clearError("description");
+        }
       });
+
+      taskDate.addEventListener("change", () => {
+        markFormDirty();
+        clearError("date");
+      });
+
+      const clearError = (fieldName) => {
+        const field = document.getElementById(`task${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}`);
+        const errorEl = document.getElementById(`${fieldName}Error`);
+        field.classList.remove("error");
+        errorEl.textContent = "";
+      };
+
+      const validateForm = () => {
+        let isValid = true;
+
+        const trimmedTitle = taskTitle.value.trim();
+        if (trimmedTitle === "") {
+          showFieldError("title", "Le titre de la tâche est obligatoire");
+          isValid = false;
+        } else if (taskTitle.value.length > 100) {
+          showFieldError("title", "Le titre ne doit pas dépasser 100 caractères");
+          isValid = false;
+        }
+
+        if (taskDescription.value.length > 500) {
+          showFieldError("description", "La description ne doit pas dépasser 500 caractères");
+          isValid = false;
+        }
+
+        if (taskDate.value === "") {
+          showFieldError("date", "Une date d'échéance est obligatoire");
+          isValid = false;
+        } else {
+          const selectedDate = new Date(taskDate.value);
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+          if (selectedDate < today) {
+            showFieldError("date", "La date d'échéance ne peut pas être dans le passé");
+            isValid = false;
+          }
+        }
+
+        return isValid;
+      };
+
+      const showFieldError = (fieldName, message) => {
+        const field = document.getElementById(`task${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}`);
+        const errorEl = document.getElementById(`${fieldName}Error`);
+        field.classList.add("error");
+        errorEl.textContent = message;
+      };
+
+      taskForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        if (!validateForm()) {
+          return;
+        }
+
+        if (taskModal.dataset.mode === "edit") {
+          showToast("✏️", "Tâche modifiée", "Les modifications ont été enregistrées");
+        } else {
+          showToast("✅", "Tâche créée", "Votre nouvelle tâche a été ajoutée avec succès");
+        }
+
+        taskModal.classList.remove("active");
+        resetForm();
+      });
+
+      addTaskBtn.addEventListener("click", openTaskModal);
+      closeTaskModal.addEventListener("click", closeModal);
+      cancelTaskBtn.addEventListener("click", closeModal);
+
+      taskModal.addEventListener("click", (e) => {
+        if (e.target === taskModal) {
+          closeModal();
+        }
+      });
+
+      taskForm.hasUnsavedChanges = () => false;
 
       document.querySelectorAll(".task-card").forEach((card) => {
         const checkbox = card.querySelector(".task-checkbox");

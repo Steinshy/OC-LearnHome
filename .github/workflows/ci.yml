@@ -36,8 +36,8 @@ jobs:
       - name: Verify HTML files exist
         run: |
           echo "Checking HTML files structure..."
-          test -f maquettes/index.html && echo "✓ index.html found" || exit 1
-          test -d maquettes/student/desktop && echo "✓ Student desktop pages found" || exit 1
-          test -d maquettes/student/mobile && echo "✓ Student mobile pages found" || exit 1
-          test -d maquettes/tutor/desktop && echo "✓ Tutor desktop pages found" || exit 1
-          test -d maquettes/tutor/mobile && echo "✓ Tutor mobile pages found" || exit 1
+          test -f demo/index.html && echo "✓ index.html found" || exit 1
+          test -d demo/student/desktop && echo "✓ Student desktop pages found" || exit 1
+          test -d demo/student/mobile && echo "✓ Student mobile pages found" || exit 1
+          test -d demo/tutor/desktop && echo "✓ Tutor desktop pages found" || exit 1
+          test -d demo/tutor/mobile && echo "✓ Tutor mobile pages found" || exit 1

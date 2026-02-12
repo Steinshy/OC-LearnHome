@@ -20,7 +20,7 @@
 ##### T001.2-Inscription réussie
 **En tant que** nouvel utilisateur
 **Je souhaite** saisir l'ensemble des informations requises et valider l'inscription
-**Afin de** afficher une notification de succès et être redirigé vers la page de tableau de bord.
+**Afin d'**afficher une notification de succès et être redirigé vers la page de tableau de bord.
 
 ##### T001.3-Cas d'erreur
 **En tant que** nouvel utilisateur
@@ -37,12 +37,12 @@
 ##### T002.2-Connexion réussie
 **En tant que** utilisateur ayant saisi des identifiants valides
 **Je souhaite** saisir mes identifiants et valider la connexion
-**Afin de** afficher une notification de succès et être redirigé vers la page de tableau de bord.
+**Afin d'**afficher une notification de succès et être redirigé vers la page de tableau de bord.
 
 ##### T002.3-Cas d'erreur
 **En tant que** utilisateur non connecté
 **Je souhaite** saisir des identifiants invalides
-**Afin de** afficher un message d'erreur m'indiquant les erreurs de saisie.
+**Afin d'**afficher un message d'erreur m'indiquant les erreurs de saisie.
 
 #### T003 — Mot de passe oublié
 
@@ -59,7 +59,7 @@
 ##### T003.3-Cas d'erreur de la demande de réinitialisation de mot de passe
 **En tant que** utilisateur non connecté
 **Je souhaite** renseigner une adresse e-mail invalide
-**Afin de** afficher un message d'erreur m'indiquant que l'adresse e-mail est invalide
+**Afin d'**afficher un message d'erreur m'indiquant que l'adresse e-mail est invalide
 
 #### T004 — Tableau de bord
 
@@ -215,161 +215,3 @@
 **En tant que** utilisateur connecté
 **Je souhaite** cliquer sur "Supprimer mon compte" puis une notification me confirmant la demande.
 **Afin de** supprimer mon compte et être redirigé vers la page de connexion.
-
-
-## Conclusion
-
----
-
-## Diagramme de Flux Utilisateur
-
-### Flux Élève
-
-```
-                          ┌─────────────────────────┐
-                          │     Non Connecté        │
-                          └──────────┬──────────────┘
-                                     │
-                     ┌───────────────┴────────────────┐
-                     │                                │
-                     ▼                                ▼
-                ┌──────────────┐           ┌──────────────────┐
-                │  Connexion   │           │  Inscription     │
-                └────┬─────────┘           └────────┬─────────┘
-                     │                              │
-                     └──────────────┬───────────────┘
-                                    │ Validation ok
-                    ┌───────────────┴───────────────┐
-                    │                               │
-                    ▼                               ▼
-            ┌──────────────────┐         ┌──────────────────┐
-            │  Récupération    │         │  Élève Connecté  │
-            │  mot de passe    │         └────────┬─────────┘
-            └──────────────────┘                  │
-                                        ┌─────────┼───────────────┬────────────────┬─────────────────┐
-                                        │         │               │                │                 │
-                                        ▼         ▼               ▼                ▼                 ▼
-                            ┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐
-                            │ Tableau Bord ││    Chat      ││ Calendrier   ││   Tâches     ││ Paramètres   │
-                            └──────┬───────┘└──────┬───────┘└──────┬───────┘└──────┬───────┘└──────┬───────┘
-                                   │               │               │               │               │
-                                   ▼               ▼               ▼               ▼               ▼
-                            ┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐
-                            │ Msg non lus  ││ Messages     ││ Consulter    ││ Consulter    ││ Infos        │
-                            │ Tâches       ││ Envoyer      ││              ││              ││ Sécurité     │
-                            │ Événements   ││ Fichiers     ││              ││              ││ Notifications│
-                            │              ││ Contacts     ││              ││              ││ Affichage    │
-                            │              ││ Confidentiel ││              ││              ││ Supprimer    │
-                            └──────────────┘└──────────────┘└──────────────┘└──────────────┘└──────────────┘
-```
-
-### Flux Tuteur
-
-```
-                          ┌─────────────────────────┐
-                          │     Non Connecté        │
-                          └──────────┬──────────────┘
-                                     │
-                     ┌───────────────┴────────────────┐
-                     │                                │
-                     ▼                                ▼
-                ┌──────────────┐           ┌──────────────────┐
-                │  Connexion   │           │  Inscription     │
-                └────┬─────────┘           └────────┬─────────┘
-                     │                              │
-                     └──────────────┬───────────────┘
-                                    │
-                    ┌───────────────┴───────────────┐
-                    │                               │
-                    ▼                               ▼
-            ┌──────────────────┐         ┌──────────────────┐
-            │  Récupération    │         │  Tuteur Connecté │
-            │  mot de passe    │         └────────┬─────────┘
-            └──────────────────┘                  │
-                                        ┌─────────┼───────────────┬────────────────┬─────────────────┐
-                                        │         │               │                │                 │
-                                        ▼         ▼               ▼                ▼                 ▼
-                            ┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐
-                            │ Tableau Bord ││    Chat      ││ Calendrier   ││    Tâches    ││ Paramètres   │
-                            └──────┬───────┘└──────┬───────┘└──────┬───────┘└──────┬───────┘└──────┬───────┘
-                                   │               │               │               │               │
-                                   ▼               ▼               ▼               ▼               ▼
-                            ┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐┌──────────────┐
-                            │ Msg non lus  ││ Messages     ││ Consulter    ││ Consulter    ││ Infos        │
-                            │ Tâches       ││ Envoyer      ││ Création     ││ Création     ││ Sécurité     │
-                            │ Calendrier   ││ Fichiers     ││ Modifier     ││ Modifier     ││ Notifications│
-                            │ Chat         ││ Contacts     ││ Supprimer    ││ Supprimer    ││ Affichage    │
-                            │ Paramètres   ││ Informations ││              ││              ││ Supprimer    │
-                            └──────────────┘└──────────────┘└──────────────┘└──────────────┘└──────────────┘
-```
-
-<h2 align="center">Flux de Redirection</h2>
-
-### Redirection Post-Connexion
-
-```
-            ┌──────────────────────┐
-            │   Page Connexion     │
-            │  (Identifiants OK)   │
-            └──────────┬───────────┘
-                       │
-                       │ Validation
-                       ▼
-            ┌──────────────────────┐
-            │  Session Utilisateur │
-            │     Créée            │
-            └──────────┬───────────┘
-                       │
-                       │ Redirection Automatique
-                       ▼
-            ┌──────────────────────┐
-            │  Tableau de Bord     │
-            │ Utilisateur Connecté │
-            └──────────────────────┘
-```
-
-### Redirection Post-Inscription
-
-```
-            ┌──────────────────────┐
-            │  Page Inscription    │
-            │  (Données Valides)   │
-            └──────────┬───────────┘
-                       │
-                       │ Validation
-                       ▼
-            ┌──────────────────────┐
-            │  Compte Créé         │
-            │  Session Initiée     │
-            └──────────┬───────────┘
-                       │
-                       │ Redirection Automatique
-                       ▼
-            ┌──────────────────────┐
-            │  Tableau de Bord     │
-            │  (Nouveau Compte)    │
-            └──────────────────────┘
-```
-
-### Redirection Post-Récupération Mot de Passe
-
-```
-            ┌──────────────────────┐
-            │  Page Récupération   │
-            │  (Nouveau MdP OK)    │
-            └──────────┬───────────┘
-                       │
-                       │ Validation
-                       ▼
-            ┌──────────────────────┐
-            │  Mot de Passe Changé │
-            └──────────┬───────────┘
-                       │
-                       │ Redirection Automatique
-                       ▼
-            ┌──────────────────────┐
-            │  Page Connexion      │
-            │  (Accès avec Nouveau │
-            │   Mot de Passe)      │
-            └──────────────────────┘
-```
