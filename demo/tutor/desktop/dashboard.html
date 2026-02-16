@@ -14,6 +14,13 @@
         --text: #111827;
         --text-muted: #6b7280;
         --border: #e5e7eb;
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+        --radius-sm: 6px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       * {
@@ -31,6 +38,8 @@
           Roboto,
           sans-serif;
         background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.5;
       }
 
       nav {
@@ -54,6 +63,7 @@
         overflow-y: auto;
         display: flex;
         flex-direction: column;
+        box-shadow: var(--shadow-sm);
       }
 
       .nav-sidebar-header {
@@ -93,13 +103,19 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        transition: all 0.3s;
+        transition: var(--transition);
         font-size: 14px;
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       }
 
       .nav-item:hover {
         background: var(--bg);
         color: var(--primary);
+      }
+
+      .nav-item:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
       }
 
       .nav-item.active {
@@ -271,9 +287,15 @@
 
       .card {
         background: white;
-        border-radius: 8px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
         padding: 24px;
+        transition: var(--transition);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+      }
+
+      .card:hover {
+        box-shadow: var(--shadow-lg);
       }
 
       .card-header {
@@ -512,6 +534,14 @@
       .overview-content {
         margin-top: 16px;
       }
+
+      .card-title-icon {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 6px;
+      }
     </style>
   </head>
 
@@ -519,7 +549,10 @@
     <div class="page-layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
+          <div class="nav-sidebar-logo">
+            <img src="../../assets/icons/book.svg" alt="" />
+            Learn@Home
+          </div>
         </div>
 
         <nav>
@@ -582,7 +615,7 @@
         <div class="grid">
           <div class="card">
             <div class="card-header">
-              <div class="card-title">💬 Messages</div>
+              <div class="card-title"><img class="card-title-icon" src="../../assets/icons/message-square.svg" alt="" /> Messages</div>
               <div class="card-badge">6 non lus</div>
             </div>
             <div class="stat-item">
@@ -601,12 +634,12 @@
 
           <div class="card">
             <div class="card-header">
-              <div class="card-title">✅ Tâches créées</div>
+              <div class="card-title"><img class="card-title-icon" src="../../assets/icons/circle-check-big.svg" alt="" /> Tâches créées</div>
               <div class="card-badge">5 actives</div>
             </div>
             <div class="stat-item">
               <span class="stat-label">Équations - Assigné à Antoine Kreuder</span>
-              <span class="stat-status status-pending">Pendante</span>
+              <span class="stat-status status-pending">En cours</span>
             </div>
             <div class="stat-item">
               <span class="stat-label">Lecture Ch.5 - Assigné à Sophie Martin</span>
@@ -618,7 +651,7 @@
             </div>
             <div class="stat-item">
               <span class="stat-label">Exercices Math - Assigné à Jean Leclerc</span>
-              <span class="stat-status status-pending">Pendante</span>
+              <span class="stat-status status-pending">En cours</span>
             </div>
             <div class="stat-item">
               <span class="stat-label">Rédaction - Assigné à Léa Bernard</span>
@@ -628,7 +661,7 @@
 
           <div class="card">
             <div class="card-header">
-              <div class="card-title">📅 Sessions à venir</div>
+              <div class="card-title"><img class="card-title-icon" src="../../assets/icons/calendar-days.svg" alt="" /> Sessions à venir</div>
             </div>
             <div class="event-item">
               <div class="event-time">Aujourd'hui à 18:00</div>
@@ -645,7 +678,7 @@
 
         <div class="grid">
           <div class="card card-full">
-            <div class="card-title">📈 Vue d'ensemble</div>
+            <div class="card-title"><img class="card-title-icon" src="../../assets/icons/trending-up.svg" alt="" /> Vue d'ensemble</div>
             <div class="overview-content">
               <div class="stat-item">
                 <span class="stat-label">Tâches assignées cette semaine</span>

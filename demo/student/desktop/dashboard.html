@@ -14,6 +14,13 @@
         --text: #111827;
         --text-muted: #6b7280;
         --border: #e5e7eb;
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+        --radius-sm: 6px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       * {
@@ -31,6 +38,8 @@
           Roboto,
           sans-serif;
         background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.5;
       }
 
       nav {
@@ -54,6 +63,7 @@
         overflow-y: auto;
         display: flex;
         flex-direction: column;
+        box-shadow: var(--shadow-sm);
       }
 
       .nav-sidebar-header {
@@ -93,13 +103,19 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        transition: all 0.3s;
+        transition: var(--transition);
         font-size: 14px;
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       }
 
       .nav-item:hover {
         background: var(--bg);
         color: var(--primary);
+      }
+
+      .nav-item:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
       }
 
       .nav-item.active {
@@ -137,6 +153,11 @@
 
       .user-profile:hover {
         background: var(--bg);
+      }
+
+      .user-profile:focus-within {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
       }
 
       .user-avatar {
@@ -224,20 +245,31 @@
       .button {
         padding: 10px 16px;
         border: none;
-        border-radius: 6px;
+        border-radius: var(--radius-sm);
         cursor: pointer;
         font-weight: 600;
         font-size: 14px;
-        transition: all 0.3s;
+        transition: var(--transition);
+      }
+
+      .button:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+      }
+
+      .button:active {
+        transform: scale(0.98);
       }
 
       .button-primary {
         background: var(--primary);
         color: white;
+        box-shadow: var(--shadow-sm);
       }
 
       .button-primary:hover {
         background: var(--primary-dark);
+        box-shadow: var(--shadow-md);
       }
 
       .button-secondary {
@@ -259,9 +291,15 @@
 
       .card {
         background: white;
-        border-radius: 8px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
         padding: 24px;
+        transition: var(--transition);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+      }
+
+      .card:hover {
+        box-shadow: var(--shadow-lg);
       }
 
       .card-header {
@@ -361,11 +399,12 @@
       }
 
       .message-box {
-        background: #dbeafe;
-        border-left: 4px solid #3b82f6;
+        background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+        border-left: 4px solid var(--primary);
         padding: 16px;
-        border-radius: 6px;
+        border-radius: var(--radius-md);
         margin-bottom: 24px;
+        box-shadow: var(--shadow-sm);
       }
 
       .message-title {
@@ -444,29 +483,145 @@
       }
 
       .toast {
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        padding: 16px;
-        min-width: 300px;
-        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        position: relative;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.12),
+          0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 16px 20px;
+        min-width: 320px;
+        max-width: 400px;
+        animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         pointer-events: auto;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .toast:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 12px 40px rgba(0, 0, 0, 0.15),
+          0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
       .toast.dismissing {
-        animation: fadeOut 0.3s ease-out forwards;
+        animation: fadeOut 0.3s cubic-bezier(0.4, 0, 1, 1) forwards;
+      }
+
+      .toast-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .toast-icon {
+        font-size: 20px;
+        line-height: 1;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .toast-content {
+        flex: 1;
+        min-width: 0;
       }
 
       .toast-title {
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 600;
         color: #111827;
         margin-bottom: 4px;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
       }
 
       .toast-message {
         font-size: 13px;
         color: #6b7280;
+        line-height: 1.5;
+      }
+
+      .toast-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: transparent;
+        border: none;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 6px;
+        color: #9ca3af;
+        transition: all 0.2s ease;
+        padding: 0;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      .toast-close:hover {
+        background: rgba(0, 0, 0, 0.05);
+        color: #374151;
+      }
+
+      .toast-close:active {
+        transform: scale(0.9);
+      }
+
+      .toast-progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        width: 100%;
+        transform-origin: left;
+        animation: progressBar 2.7s linear forwards;
+      }
+
+      .toast.paused .toast-progress {
+        animation-play-state: paused;
+      }
+
+      .toast.success {
+        border-left: 4px solid #10b981;
+      }
+
+      .toast.success .toast-progress {
+        background: linear-gradient(90deg, #10b981, #059669);
+      }
+
+      .toast.error,
+      .toast.danger {
+        border-left: 4px solid #ef4444;
+      }
+
+      .toast.error .toast-progress,
+      .toast.danger .toast-progress {
+        background: linear-gradient(90deg, #ef4444, #dc2626);
+      }
+
+      .toast.warning {
+        border-left: 4px solid #f59e0b;
+      }
+
+      .toast.warning .toast-progress {
+        background: linear-gradient(90deg, #f59e0b, #d97706);
+      }
+
+      .toast.info {
+        border-left: 4px solid #3b82f6;
+      }
+
+      .toast.info .toast-progress {
+        background: linear-gradient(90deg, #3b82f6, #2563eb);
       }
 
       @keyframes slideIn {
@@ -484,12 +639,22 @@
       @keyframes fadeOut {
         from {
           opacity: 1;
-          transform: translateX(0);
+          transform: translateX(0) scale(1);
         }
 
         to {
           opacity: 0;
-          transform: translateX(100px);
+          transform: translateX(100px) scale(0.95);
+        }
+      }
+
+      @keyframes progressBar {
+        from {
+          transform: scaleX(1);
+        }
+
+        to {
+          transform: scaleX(0);
         }
       }
 
@@ -578,6 +743,7 @@
         cursor: not-allowed;
         opacity: 0.7;
       }
+
       .nav-sidebar-logo img {
         width: 20px;
         height: 20px;
@@ -589,6 +755,22 @@
       .overview-content {
         margin-top: 16px;
       }
+
+      .card-title-icon {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 6px;
+      }
+
+      .message-title-icon {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 4px;
+      }
     </style>
   </head>
 
@@ -596,38 +778,46 @@
     <div class="page-layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
+          <div class="nav-sidebar-logo">
+            <img src="../../assets/icons/book.svg" alt="" />
+            Learn@Home
+          </div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item active" aria-current="page"
-              ><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
-              de bord</a
-            >
-            <a href="chat.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
-              Messages<span class="notification-badge">5</span></a
-            >
+            <a href="dashboard.html" class="nav-item active" aria-current="page">
+              <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span>
+              Tableau de bord
+            </a>
+            <a href="chat.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
+              Messages
+              <span class="notification-badge">5</span>
+            </a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a
-            >
-            <a href="tasks.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a
-            >
+            <a href="calendar.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span>
+              Calendrier
+            </a>
+            <a href="tasks.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span>
+              Tâches
+            </a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a
-            >
-            <a href="login.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span> Déconnexion</a
-            >
+            <a href="settings.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span>
+              Paramètres
+            </a>
+            <a href="login.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span>
+              Déconnexion
+            </a>
           </div>
         </nav>
 
@@ -645,14 +835,14 @@
 
       <main class="main">
         <div class="message-box">
-          <div class="message-title">👋 Bienvenue sur Learn@Home, Antoine !</div>
+          <div class="message-title"><img class="message-title-icon" src="../../assets/icons/hand.svg" alt="" /> Bienvenue sur Learn@Home, Antoine !</div>
           <div class="message-text">Vous avez 5 messages non lus et 2 tâches à faire aujourd'hui.</div>
         </div>
 
         <div class="grid">
           <div class="card" id="card-messages">
             <div class="card-header">
-              <div class="card-title">💬 Messages</div>
+              <div class="card-title"><img class="card-title-icon" src="../../assets/icons/message-square.svg" alt="" /> Messages</div>
               <div class="card-badge">5 non lus</div>
             </div>
             <div class="stat-item">
@@ -667,7 +857,7 @@
 
           <div class="card" id="card-tasks">
             <div class="card-header">
-              <div class="card-title">✅ Tâches</div>
+              <div class="card-title"><img class="card-title-icon" src="../../assets/icons/circle-check-big.svg" alt="" /> Tâches</div>
               <div class="card-badge">5 tâches</div>
             </div>
             <div class="stat-item">
@@ -678,8 +868,9 @@
                 data-status="pending"
                 data-next="inprogress"
                 onclick="cycleTaskStatus(event)"
-                >À faire</span
               >
+                À faire
+              </span>
             </div>
             <div class="stat-item">
               <span class="stat-label">Français - Lecture</span>
@@ -689,8 +880,9 @@
                 data-status="inprogress"
                 data-next="done"
                 onclick="cycleTaskStatus(event)"
-                >En cours</span
               >
+                En cours
+              </span>
             </div>
             <div class="stat-item">
               <span class="stat-label">Sciences - Rapport</span>
@@ -700,14 +892,15 @@
                 data-status="done"
                 data-next="pending"
                 onclick="cycleTaskStatus(event)"
-                >Complétée</span
               >
+                Complétée
+              </span>
             </div>
           </div>
 
           <div class="card" id="card-events">
             <div class="card-header">
-              <div class="card-title">📅 Prochains événements</div>
+              <div class="card-title"><img class="card-title-icon" src="../../assets/icons/calendar-days.svg" alt="" /> Prochains événements</div>
             </div>
             <div class="event-item">
               <div class="event-time">Aujourd'hui à 18:00</div>
@@ -724,7 +917,7 @@
 
         <div class="grid">
           <div class="card card-full">
-            <div class="card-title">📈 Vue d'ensemble</div>
+            <div class="card-title"><img class="card-title-icon" src="../../assets/icons/trending-up.svg" alt="" /> Vue d'ensemble</div>
             <div class="overview-content">
               <div class="stat-item">
                 <span class="stat-label">Tâches complétées cette semaine</span>
@@ -748,16 +941,54 @@
 
     <div id="toast-container" class="toast-container"></div>
     <script>
-      const showToast = (icon, title, message) => {
+      const showToast = (icon, title, message, type = "info") => {
         const container = document.getElementById("toast-container");
         const toast = document.createElement("div");
-        toast.className = "toast";
-        toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+
+        // Auto-detect type from icon if not provided
+        if (type === "info") {
+          if (icon.includes("✅") || icon.includes("✓")) type = "success";
+          else if (icon.includes("❌") || icon.includes("🗑️") || icon.includes("⚠️")) type = "error";
+          else if (icon.includes("⚠️") || icon.includes("🔔")) type = "warning";
+        }
+
+        toast.className = `toast ${type}`;
+        toast.setAttribute("role", "alert");
+        toast.setAttribute("aria-live", "polite");
+        toast.innerHTML = `
+          <div class="toast-header">
+            <span class="toast-icon">${icon}</span>
+            <div class="toast-content">
+              <div class="toast-title">${title}</div>
+              <div class="toast-message">${message}</div>
+            </div>
+            <button class="toast-close" aria-label="Fermer" onclick="this.closest('.toast').remove()">×</button>
+          </div>
+          <div class="toast-progress"></div>
+        `;
+
         container.appendChild(toast);
-        setTimeout(() => {
-          toast.classList.add("dismissing");
-          setTimeout(() => toast.remove(), 500);
-        }, 2700);
+
+        let timeoutId;
+        const startDismiss = () => {
+          timeoutId = setTimeout(() => {
+            toast.classList.add("dismissing");
+            setTimeout(() => toast.remove(), 300);
+          }, 2700);
+        };
+
+        // Pause on hover
+        toast.addEventListener("mouseenter", () => {
+          toast.classList.add("paused");
+          clearTimeout(timeoutId);
+        });
+
+        toast.addEventListener("mouseleave", () => {
+          toast.classList.remove("paused");
+          startDismiss();
+        });
+
+        startDismiss();
       };
       const handleCycleTaskStatus = (event) => {
         event.stopPropagation();

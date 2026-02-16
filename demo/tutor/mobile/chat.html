@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, " />
     <title>Learn@Home - Messages | Maquette Mobile</title>
     <style>
+      :root {
+        --primary: #3b82f6;
+        --bg: #f3f4f6;
+        --text: #111827;
+        --text-muted: #6b7280;
+        --border: #e5e7eb;
+        --radius-sm: 6px;
+        --radius-md: 8px;
+        --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -19,11 +30,12 @@
           "Segoe UI",
           Roboto,
           sans-serif;
-        background: #f3f4f6;
+        background: var(--bg);
         height: 100vh;
         display: flex;
         flex-direction: column;
         overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
       }
 
       .mobile-header {
@@ -38,21 +50,228 @@
         z-index: 100;
       }
 
-      .back-btn {
+      .menu-btn {
         width: 36px;
         height: 36px;
         border: none;
         background: transparent;
-        font-size: 18px;
+        font-size: 20px;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
-      .back-btn:focus {
+      .menu-btn:focus {
         outline: 2px solid #3b82f6;
         outline-offset: 2px;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        border-right: 1px solid #e5e7eb;
+        padding: 24px 0;
+        overflow-y: auto;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sidebar.open {
+        left: 0;
+      }
+
+      .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+
+      .sidebar-overlay.active {
+        display: block;
+      }
+
+      .sidebar-header {
+        padding: 0 24px;
+        margin-bottom: 32px;
+        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .sidebar-logo {
+        font-size: 20px;
+        font-weight: 700;
+        color: #3b82f6;
+      }
+
+      .close-btn {
+        width: 36px;
+        height: 36px;
+        border: none;
+        background: transparent;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      nav {
+        flex: 1;
+      }
+
+      .nav-section {
+        margin-bottom: 24px;
+      }
+
+      .nav-section:not(:first-child) {
+        border-top: 1px solid #e5e7eb;
+        padding-top: 24px;
+      }
+
+      .nav-label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #9ca3af;
+        text-transform: uppercase;
+        padding: 0 24px;
+        margin-bottom: 8px;
+      }
+
+      .nav-item {
+        padding: 14px 24px;
+        color: #6b7280;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.3s;
+        cursor: pointer;
+        position: relative;
+        font-size: 14px;
+        min-height: 44px;
+      }
+
+      .nav-item:hover,
+      .nav-item:active {
+        background: #f3f4f6;
+        color: #3b82f6;
+      }
+
+      .nav-item:focus {
+        outline: 2px solid #3b82f6;
+        outline-offset: -2px;
+      }
+
+      .nav-item.active {
+        background: #e0f2fe;
+        color: #3b82f6;
+        border-right: 4px solid #3b82f6;
+        font-weight: 600;
+      }
+
+      .nav-item-icon {
+        margin-right: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .nav-item-icon img {
+        width: 18px;
+        height: 18px;
+        display: block;
+      }
+
+      .notification-badge {
+        background: #ef4444;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+
+      .user-profile {
+        padding: 24px;
+        border-top: 1px solid #e5e7eb;
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        background: #3b82f6;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        margin-bottom: 8px;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .user-avatar.yann {
+        background-image: url("../../assets/pictures/yann.jpg");
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .user-avatar-badge {
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        background: #ef4444;
+        color: white;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-weight: 700;
+        border: 2px solid white;
+      }
+
+      .user-name {
+        font-weight: 600;
+        color: #111827;
+        font-size: 14px;
+      }
+
+      .user-role {
+        font-size: 12px;
+        color: #6b7280;
       }
 
       .header-title {
@@ -81,12 +300,16 @@
       }
 
       .chat-header {
-        padding: 16px;
+        padding: 12px 16px;
         border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: space-between;
         align-items: center;
         background: white;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
       }
 
       .chat-header-info {
@@ -94,11 +317,23 @@
         align-items: center;
         gap: 12px;
         flex: 1;
+        min-width: 0;
+      }
+
+      .chat-header-details {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .chat-header-title-row {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
       }
 
       .contact-avatar {
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
         background: #3b82f6;
         border-radius: 50%;
         display: flex;
@@ -106,10 +341,13 @@
         justify-content: center;
         color: white;
         font-weight: 700;
+        font-size: 16px;
         flex-shrink: 0;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: 2px solid white;
       }
 
       .contact-avatar.antoine {
@@ -146,11 +384,20 @@
         font-weight: 600;
         color: #111827;
         font-size: 16px;
+        line-height: 1.3;
+        margin-bottom: 2px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .chat-header-subtitle {
         font-size: 12px;
         color: #6b7280;
+        line-height: 1.4;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .chat-header-status {
@@ -159,6 +406,8 @@
         display: flex;
         align-items: center;
         gap: 6px;
+        font-weight: 500;
+        margin-top: 2px;
       }
 
       .chat-header-status::before {
@@ -168,30 +417,65 @@
         background: #10b981;
         border-radius: 50%;
         display: inline-block;
+        box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
       }
 
       .chat-actions {
         display: flex;
-        gap: 8px;
+        gap: 6px;
+        flex-shrink: 0;
       }
 
       .btn-icon {
-        width: 44px;
-        height: 44px;
-        border: 1px solid #e5e7eb;
-        background: white;
-        border-radius: 6px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: #f3f4f6;
+        border-radius: 8px;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all 0.2s ease;
         font-size: 18px;
-        transition: all 0.3s;
+      }
+
+      .btn-icon:hover {
+        background: #e5e7eb;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-icon:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
       }
 
       .btn-icon:focus {
         outline: 2px solid #3b82f6;
         outline-offset: 2px;
+      }
+
+      .btn-icon img {
+        width: 20px;
+        height: 20px;
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+      }
+
+      .btn-icon:hover img {
+        opacity: 1;
       }
 
       .messages {
@@ -294,7 +578,14 @@
       }
 
       .message-file-icon {
-        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .message-file-icon img {
+        width: 20px;
+        height: 20px;
       }
 
       .message-own {
@@ -433,6 +724,12 @@
         outline-offset: 2px;
       }
 
+      .send-btn img {
+        width: 20px;
+        height: 20px;
+        filter: brightness(0) invert(1);
+      }
+
       .contacts-panel {
         position: fixed;
         bottom: 0;
@@ -480,6 +777,15 @@
         font-size: 18px;
         font-weight: 600;
         color: #111827;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .contacts-title img {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
       }
 
       .close-contacts-btn {
@@ -487,8 +793,15 @@
         height: 44px;
         border: none;
         background: transparent;
-        font-size: 24px;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .close-contacts-btn img {
+        width: 20px;
+        height: 20px;
       }
 
       .search-box {
@@ -579,7 +892,6 @@
       }
 
       .overlay {
-        display: none;
         position: fixed;
         top: 0;
         left: 0;
@@ -587,10 +899,16 @@
         bottom: 0;
         background: rgba(0, 0, 0, 0.5);
         z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.3s,
+          visibility 0.3s;
       }
 
       .overlay.active {
-        display: block;
+        opacity: 1;
+        visibility: visible;
       }
 
       .info-panel {
@@ -599,16 +917,16 @@
         left: 0;
         right: 0;
         width: 100%;
-        max-height: 90vh;
+        max-height: 92vh;
         background: white;
         border-radius: 20px 20px 0 0;
         z-index: 1000;
         transform: translateY(100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
         display: flex;
         flex-direction: column;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
-        overflow-y: auto;
+        box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.12);
+        overflow: hidden;
       }
 
       .info-panel.open {
@@ -616,74 +934,95 @@
       }
 
       .info-header {
-        padding: 16px;
-        padding-top: 24px;
-        border-bottom: 1px solid #e5e7eb;
+        padding: 20px 16px 16px;
+        border-bottom: 1px solid var(--border);
         display: flex;
         justify-content: space-between;
         align-items: center;
         position: relative;
-        position: sticky;
-        top: 0;
+        flex-shrink: 0;
         background: white;
-        z-index: 10;
       }
 
       .info-header::before {
         content: "";
         position: absolute;
-        top: 8px;
+        top: 10px;
         left: 50%;
         transform: translateX(-50%);
-        width: 40px;
+        width: 36px;
         height: 4px;
-        background: #d1d5db;
+        background: var(--border);
         border-radius: 2px;
       }
 
       .info-title {
         font-size: 18px;
-        font-weight: 600;
-        color: #111827;
+        font-weight: 700;
+        color: var(--text);
       }
 
       .close-info-btn {
         width: 44px;
         height: 44px;
+        min-width: 44px;
         border: none;
         background: transparent;
-        font-size: 24px;
+        font-size: 20px;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
+        border-radius: var(--radius-sm);
+        transition: var(--transition);
+      }
+
+      .close-info-btn:hover {
+        background: var(--bg);
+      }
+
+      .close-info-btn:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+      }
+
+      .close-info-btn img {
+        width: 20px;
+        height: 20px;
       }
 
       .info-content {
-        padding: 24px 16px;
+        padding: 20px 16px 32px;
+        overflow-y: auto;
+        flex: 1;
+        min-height: 0;
       }
 
-      .info-profile {
+      .info-panel .info-profile {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        margin-bottom: 32px;
-        padding-bottom: 24px;
-        border-bottom: 1px solid #e5e7eb;
+        margin-bottom: 24px;
+        padding: 20px 16px;
+        background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+        border-radius: var(--radius-md);
+        margin-left: 0;
+        margin-right: 0;
+        border: 1px solid rgba(59, 130, 246, 0.1);
       }
 
       .info-profile-avatar {
-        width: 80px;
-        height: 80px;
-        background: #3b82f6;
+        width: 72px;
+        height: 72px;
+        background: var(--primary);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
         font-weight: 700;
-        font-size: 32px;
+        font-size: 28px;
         margin-bottom: 12px;
         background-size: cover;
         background-position: center;
@@ -721,9 +1060,9 @@
       }
 
       .info-profile-name {
-        font-size: 20px;
-        font-weight: 600;
-        color: #111827;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text);
         margin-bottom: 4px;
       }
 
@@ -732,6 +1071,7 @@
         color: #10b981;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 6px;
       }
 
@@ -741,54 +1081,67 @@
         height: 8px;
         background: #10b981;
         border-radius: 50%;
-        display: inline-block;
       }
 
-      .info-section {
-        margin-bottom: 24px;
+      .info-panel .info-section {
+        margin-bottom: 20px;
       }
 
-      .info-section-title {
-        font-size: 14px;
+      .info-panel .info-section-title {
+        font-size: 12px;
         font-weight: 600;
-        color: #6b7280;
+        color: var(--text-muted);
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-bottom: 12px;
       }
 
-      .info-item {
+      .info-panel .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 14px 16px;
+        margin-bottom: 8px;
+        background: var(--bg);
+        border-radius: var(--radius-md);
+        border: none;
+      }
+
+      .info-panel .info-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .info-panel .info-icon {
+        width: 32px;
+        min-width: 32px;
+        height: 32px;
         display: flex;
         align-items: center;
-        gap: 12px;
-        padding: 12px 0;
-        border-bottom: 1px solid #f3f4f6;
+        justify-content: center;
+        background: white;
+        border-radius: var(--radius-sm);
       }
 
-      .info-item:last-child {
-        border-bottom: none;
+      .info-panel .info-icon img {
+        width: 18px;
+        height: 18px;
       }
 
-      .info-icon {
-        font-size: 20px;
-        width: 24px;
-        text-align: center;
-      }
-
-      .info-text {
+      .info-panel .info-text {
         flex: 1;
       }
 
-      .info-label {
-        font-size: 12px;
-        color: #9ca3af;
+      .info-panel .info-label {
+        font-size: 11px;
+        color: var(--text-muted);
         margin-bottom: 2px;
       }
 
-      .info-value {
+      .info-panel .info-value {
         font-size: 14px;
-        color: #111827;
+        color: var(--text);
         font-weight: 500;
+        word-break: break-word;
       }
 
       .badge-count {
@@ -821,15 +1174,16 @@
         left: 0;
         right: 0;
         width: 100%;
-        max-height: 90vh;
+        max-height: 92vh;
         background: white;
         border-radius: 20px 20px 0 0;
         z-index: 1000;
         transform: translateY(100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
         display: flex;
         flex-direction: column;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.12);
+        overflow: hidden;
       }
 
       .task-panel.open {
@@ -837,135 +1191,186 @@
       }
 
       .task-header {
-        padding: 16px;
-        padding-top: 24px;
-        border-bottom: 1px solid #e5e7eb;
+        padding: 20px 16px 16px;
+        border-bottom: 1px solid var(--border);
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
+        gap: 12px;
         position: relative;
-        position: sticky;
-        top: 0;
+        flex-shrink: 0;
         background: white;
-        z-index: 10;
+      }
+
+      .task-header-content {
+        flex: 1;
       }
 
       .task-header::before {
         content: "";
         position: absolute;
-        top: 8px;
+        top: 10px;
         left: 50%;
         transform: translateX(-50%);
-        width: 40px;
+        width: 36px;
         height: 4px;
-        background: #d1d5db;
+        background: var(--border);
         border-radius: 2px;
       }
 
       .task-title {
         font-size: 18px;
-        font-weight: 600;
-        color: #111827;
+        font-weight: 700;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .task-title img {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+      }
+
+      .task-subtitle {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-top: 4px;
       }
 
       .close-task-btn {
         width: 44px;
         height: 44px;
+        min-width: 44px;
         border: none;
         background: transparent;
-        font-size: 24px;
+        font-size: 20px;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
+        border-radius: var(--radius-sm);
+        transition: var(--transition);
+      }
+
+      .close-task-btn:hover {
+        background: var(--bg);
+      }
+
+      .close-task-btn:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+      }
+
+      .close-task-btn img {
+        width: 20px;
+        height: 20px;
       }
 
       .task-content {
-        padding: 16px;
+        padding: 20px 16px 32px;
         overflow-y: auto;
         flex: 1;
+        min-height: 0;
         display: flex;
         flex-direction: column;
-        gap: 0;
+        gap: 20px;
       }
 
       .task-section {
         margin-bottom: 0;
-        padding-bottom: 16px;
-        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 0;
       }
 
       .task-section:last-child {
-        border-bottom: none;
+        padding-bottom: 0;
       }
 
       .task-section-title {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 600;
-        color: #6b7280;
+        color: var(--text-muted);
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-bottom: 12px;
       }
 
-      .task-item {
+      .task-panel .task-item {
         display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        padding: 12px 0;
-        border-bottom: 1px solid #f3f4f6;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 16px;
+        margin-bottom: 8px;
+        background: var(--bg);
+        border-radius: var(--radius-md);
+        transition: var(--transition);
       }
 
-      .task-item:last-child {
-        border-bottom: none;
+      .task-panel .task-item:last-child {
+        margin-bottom: 0;
       }
 
-      .task-icon {
-        font-size: 20px;
-        width: 24px;
-        text-align: center;
+      .task-panel .task-item:hover {
+        background: #e5e7eb;
+      }
+
+      .task-panel .task-icon {
+        width: 32px;
+        min-width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border-radius: var(--radius-sm);
         flex-shrink: 0;
       }
 
-      .task-text {
+      .task-panel .task-icon img {
+        width: 18px;
+        height: 18px;
+      }
+
+      .task-panel .task-text {
         flex: 1;
       }
 
-      .task-label {
-        font-size: 12px;
-        color: #9ca3af;
+      .task-panel .task-label {
+        font-size: 11px;
+        color: var(--text-muted);
         margin-bottom: 2px;
       }
 
-      .task-value {
+      .task-panel .task-value {
         font-size: 14px;
-        color: #111827;
         font-weight: 500;
+        color: var(--text);
       }
 
       .task-mini-list {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        margin-top: 8px;
+        gap: 10px;
+        margin-top: 4px;
       }
 
       .task-mini-card {
-        background: #f9fafb;
-        border-radius: 8px;
-        padding: 12px;
-        border-left: 3px solid #e5e7eb;
-        transition: all 0.3s;
+        background: var(--bg);
+        border-radius: var(--radius-md);
+        padding: 14px 16px;
+        border-left: 4px solid var(--border);
+        transition: var(--transition);
         cursor: pointer;
       }
 
       .task-mini-card:hover {
-        background: #f3f4f6;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background: #e5e7eb;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
       }
 
       .task-mini-card.priority-high {
-        border-left-color: #ef4444;
+        border-left-color: var(--danger);
       }
 
       .task-mini-card.priority-medium {
@@ -978,28 +1383,37 @@
 
       .task-mini-title {
         font-weight: 600;
-        font-size: 13px;
-        color: #111827;
-        margin-bottom: 6px;
-        line-height: 1.3;
+        font-size: 14px;
+        color: var(--text);
+        margin-bottom: 8px;
+        line-height: 1.4;
       }
 
       .task-mini-meta {
         display: flex;
-        gap: 8px;
+        gap: 12px;
         flex-wrap: wrap;
-        margin-bottom: 6px;
+        align-items: center;
       }
 
       .task-mini-due {
-        font-size: 11px;
-        color: #6b7280;
+        font-size: 12px;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .task-mini-due img {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
       }
 
       .task-mini-status {
-        padding: 2px 8px;
-        border-radius: 10px;
-        font-size: 10px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 11px;
         font-weight: 600;
         white-space: nowrap;
       }
@@ -1026,6 +1440,29 @@
 
         .mobile-logo {
           font-size: 20px;
+        }
+
+        .chat-header {
+          padding: 16px 24px;
+        }
+
+        .contact-avatar {
+          width: 48px;
+          height: 48px;
+          font-size: 18px;
+        }
+
+        .chat-header-title {
+          font-size: 18px;
+        }
+
+        .chat-header-subtitle {
+          font-size: 13px;
+        }
+
+        .btn-icon {
+          width: 44px;
+          height: 44px;
         }
 
         .main-content {
@@ -1162,21 +1599,13 @@
         opacity: 0.7;
       }
 
-      .copyright {
-        text-align: center;
-        margin-top: 32px;
-        padding-top: 20px;
-        border-top: 1px solid #e5e7eb;
-        color: #94a3b8;
-        font-size: 12px;
-      }
-
       @media (max-width: 480px) {
         .sidebar {
           width: 100%;
           max-width: 100%;
         }
       }
+
       .mobile-header-spacer {
         width: 44px;
       }
@@ -1192,16 +1621,75 @@
 
   <body>
     <div class="mobile-header">
-      <a href="dashboard.html" class="back-btn">←</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
       <div class="header-title">Messages</div>
       <div class="mobile-header-spacer"></div>
     </div>
 
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <img src="../../assets/icons/book.svg" alt="" />
+          Learn@Home
+        </div>
+        <button class="close-btn" id="closeBtn" aria-label="Fermer">✕</button>
+      </div>
+
+      <nav>
+        <div class="nav-section">
+          <div class="nav-label">Principal</div>
+          <a href="dashboard.html" class="nav-item">
+            <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span>
+            Tableau de bord
+          </a>
+          <a href="chat.html" class="nav-item active" aria-current="page">
+            <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
+            Messages
+            <span class="notification-badge">6</span>
+          </a>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-label">Outils</div>
+          <a href="calendar.html" class="nav-item">
+            <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span>
+            Calendrier
+          </a>
+          <a href="tasks.html" class="nav-item">
+            <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span>
+            Tâches
+          </a>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-label">Compte</div>
+          <a href="settings.html" class="nav-item">
+            <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span>
+            Paramètres
+          </a>
+          <a href="login.html" class="nav-item">
+            <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span>
+            Déconnexion
+          </a>
+        </div>
+      </nav>
+
+      <div class="user-profile">
+        <div class="user-avatar yann">
+          YU
+          <span class="user-avatar-badge">6</span>
+        </div>
+        <div class="user-name">Yann Uliong</div>
+        <div class="user-role">Tuteur</div>
+      </div>
+    </aside>
+
     <div class="chat-header">
       <div class="chat-header-info">
         <div class="contact-avatar antoine">AK</div>
-        <div>
-          <div class="chat-header-info">
+        <div class="chat-header-details">
+          <div class="chat-header-title-row">
             <span class="chat-header-title">Antoine Kreuder</span>
             <span class="chat-header-subtitle">3ème • Mathématiques, Sciences</span>
           </div>
@@ -1209,10 +1697,16 @@
         </div>
       </div>
       <div class="chat-actions">
-        <button class="btn-icon" id="contactsBtn" aria-label="Gérer les contacts">👥</button>
-        <button class="btn-icon" aria-label="Appel audio">📞</button>
-        <button class="btn-icon" id="taskBtn" aria-label="Tâches assignées">📋</button>
-        <button class="btn-icon" id="infoBtn" aria-label="Informations">ℹ️</button>
+        <button class="btn-icon" id="contactsBtn" aria-label="Gérer les contacts">
+          <img src="../../assets/icons/users.svg" alt="" />
+        </button>
+        <button class="btn-icon" aria-label="Appel audio"><img src="../../assets/icons/phone.svg" alt="" /></button>
+        <button class="btn-icon" id="taskBtn" aria-label="Tâches assignées">
+          <img src="../../assets/icons/clipboard-list.svg" alt="" />
+        </button>
+        <button class="btn-icon" id="infoBtn" aria-label="Informations">
+          <img src="../../assets/icons/info.svg" alt="" />
+        </button>
       </div>
     </div>
 
@@ -1236,7 +1730,7 @@
       <div class="message-group message-own">
         <div class="message-content">
           <div class="message-file">
-            <span class="message-file-icon">📄</span>
+            <span class="message-file-icon"><img src="../../assets/icons/file-text.svg" alt="" /></span>
             <span>Exercices_Math.pdf (2.4 MB)</span>
           </div>
           <div class="message-status status-read">Vu 14:35</div>
@@ -1279,7 +1773,7 @@
       <div class="message-group message-own new-file-message hidden-file-message">
         <div class="message-content">
           <div class="message-file">
-            <span class="message-file-icon">📄</span>
+            <span class="message-file-icon"><img src="../../assets/icons/file-text.svg" alt="" /></span>
             <span class="file-name"></span>
           </div>
           <div class="message-status status-read">Envoyé</div>
@@ -1290,43 +1784,49 @@
 
     <div class="chat-input-area">
       <div class="input-wrapper">
-        <button class="btn-icon" aria-label="Joindre un fichier">📎</button>
+        <button class="btn-icon" aria-label="Joindre un fichier">
+          <img src="../../assets/icons/paperclip.svg" alt="" />
+        </button>
         <textarea class="message-input" placeholder="Tapez votre message..." rows="1"></textarea>
-        <button class="send-btn" aria-label="Envoyer le message">➤</button>
+        <button class="send-btn" aria-label="Envoyer le message">
+          <img src="../../assets/icons/send.svg" alt="" />
+        </button>
       </div>
     </div>
 
     <div class="overlay" id="overlay"></div>
 
-    <div class="info-panel" id="infoPanel">
+    <div class="info-panel" id="infoPanel" role="dialog" aria-labelledby="info-panel-title">
       <div class="info-header">
-        <div class="info-title">Informations</div>
-        <button class="close-info-btn" id="closeInfoBtn">✕</button>
+        <h2 class="info-title" id="info-panel-title">Informations du contact</h2>
+        <button class="close-info-btn" id="closeInfoBtn" aria-label="Fermer">
+          <img src="../../assets/icons/x.svg" alt="" />
+        </button>
       </div>
       <div class="info-content">
         <div class="info-profile">
           <div class="info-profile-avatar antoine">AK</div>
           <div class="info-profile-name">Antoine Kreuder</div>
-          <div class="info-profile-status">En ligne</div>
+          <div class="info-profile-status">● En ligne</div>
         </div>
         <div class="info-section">
           <div class="info-section-title">Informations académiques</div>
           <div class="info-item">
-            <div class="info-icon">🎓</div>
+            <div class="info-icon"><img src="../../assets/icons/graduation-cap.svg" alt="" /></div>
             <div class="info-text">
               <div class="info-label">Niveau scolaire</div>
               <div class="info-value">3ème (8ème grade)</div>
             </div>
           </div>
           <div class="info-item">
-            <div class="info-icon">📚</div>
+            <div class="info-icon"><img src="../../assets/icons/book-open.svg" alt="" /></div>
             <div class="info-text">
               <div class="info-label">Matières suivies</div>
               <div class="info-value">Mathématiques, Sciences, Français</div>
             </div>
           </div>
           <div class="info-item">
-            <div class="info-icon">🎨</div>
+            <div class="info-icon"><img src="../../assets/icons/palette.svg" alt="" /></div>
             <div class="info-text">
               <div class="info-label">Centres d'intérêt</div>
               <div class="info-value">Arts plastiques, manga, jeux vidéo</div>
@@ -1336,14 +1836,14 @@
         <div class="info-section">
           <div class="info-section-title">Contact</div>
           <div class="info-item">
-            <div class="info-icon">📧</div>
+            <div class="info-icon"><img src="../../assets/icons/mail.svg" alt="" /></div>
             <div class="info-text">
               <div class="info-label">Email</div>
               <div class="info-value">antoine.kreuder@learnhome.com</div>
             </div>
           </div>
           <div class="info-item">
-            <div class="info-icon">📱</div>
+            <div class="info-icon"><img src="../../assets/icons/smartphone.svg" alt="" /></div>
             <div class="info-text">
               <div class="info-label">Téléphone</div>
               <div class="info-value">+33 6 12 34 56 78</div>
@@ -1353,10 +1853,24 @@
       </div>
     </div>
 
-    <div class="task-panel" id="taskPanel">
+    <div
+      class="task-panel"
+      id="taskPanel"
+      role="dialog"
+      aria-labelledby="task-panel-title"
+      aria-describedby="task-panel-desc"
+    >
       <div class="task-header">
-        <div class="task-title">📋 Tâches assignées</div>
-        <button class="close-task-btn" id="closeTaskBtn">✕</button>
+        <div class="task-header-content">
+          <h2 class="task-title" id="task-panel-title">
+            <img src="../../assets/icons/clipboard-list.svg" alt="" />
+            Tâches assignées
+          </h2>
+          <p class="task-subtitle" id="task-panel-desc">Vue d'ensemble des tâches de vos élèves</p>
+        </div>
+        <button class="close-task-btn" id="closeTaskBtn" aria-label="Fermer">
+          <img src="../../assets/icons/x.svg" alt="" />
+        </button>
       </div>
       <div class="task-content">
         <div class="task-section">
@@ -1365,16 +1879,22 @@
             <div class="task-mini-card priority-high">
               <div class="task-mini-title">Équations du second degré</div>
               <div class="task-mini-meta">
-                <span class="task-mini-due">📅 10 jan. 2026</span>
-                <span class="task-mini-status status-pending">Pendante</span>
+                <span class="task-mini-due">
+                  <img src="../../assets/icons/calendar.svg" alt="" />
+                  10 jan. 2026
+                </span>
+                <span class="task-mini-status status-pending">En cours</span>
               </div>
             </div>
 
             <div class="task-mini-card priority-high">
               <div class="task-mini-title">Rapport de Sciences</div>
               <div class="task-mini-meta">
-                <span class="task-mini-due">📅 15 jan. 2026</span>
-                <span class="task-mini-status status-pending">Pendante</span>
+                <span class="task-mini-due">
+                  <img src="../../assets/icons/calendar.svg" alt="" />
+                  15 jan. 2026
+                </span>
+                <span class="task-mini-status status-pending">En cours</span>
               </div>
             </div>
           </div>
@@ -1383,21 +1903,21 @@
         <div class="task-section">
           <div class="task-section-title">Tâches actives</div>
           <div class="task-item">
-            <div class="task-icon">✅</div>
+            <div class="task-icon"><img src="../../assets/icons/check.svg" alt="" /></div>
             <div class="task-text">
               <div class="task-label">Complétées</div>
               <div class="task-value">1 tâche</div>
             </div>
           </div>
           <div class="task-item">
-            <div class="task-icon">🔄</div>
+            <div class="task-icon"><img src="../../assets/icons/refresh-cw.svg" alt="" /></div>
             <div class="task-text">
               <div class="task-label">En cours</div>
               <div class="task-value">0 tâche</div>
             </div>
           </div>
           <div class="task-item">
-            <div class="task-icon">⏳</div>
+            <div class="task-icon"><img src="../../assets/icons/hourglass.svg" alt="" /></div>
             <div class="task-text">
               <div class="task-label">En attente</div>
               <div class="task-value">2 tâches</div>
@@ -1409,8 +1929,11 @@
 
     <div class="contacts-panel" id="contactsPanel">
       <div class="contacts-header">
-        <div class="contacts-title">👥 Mes Élèves</div>
-        <button class="close-contacts-btn" id="closeContactsBtn">✕</button>
+        <div class="contacts-title">
+          <img src="../../assets/icons/users.svg" alt="" />
+          Mes Élèves
+        </div>
+        <button class="close-contacts-btn" id="closeContactsBtn"><img src="../../assets/icons/x.svg" alt="" /></button>
       </div>
       <input type="text" class="search-box" placeholder="Rechercher un élève..." />
       <div class="contacts-list">
@@ -1455,6 +1978,26 @@
     </div>
 
     <script>
+      const menuBtn = document.getElementById("menuBtn");
+      const closeBtn = document.getElementById("closeBtn");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("sidebarOverlay");
+
+      menuBtn.addEventListener("click", () => {
+        sidebar.classList.add("open");
+        overlay.classList.add("active");
+      });
+
+      closeBtn.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+      });
+
+      overlay.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+      });
+
       const contactsBtn = document.getElementById("contactsBtn");
       const closeContactsBtn = document.getElementById("closeContactsBtn");
       const contactsPanel = document.getElementById("contactsPanel");
@@ -1464,26 +2007,18 @@
       const infoBtn = document.getElementById("infoBtn");
       const closeInfoBtn = document.getElementById("closeInfoBtn");
       const infoPanel = document.getElementById("infoPanel");
-      const overlay = document.getElementById("overlay");
 
       const openPanel = (panel) => {
         panel.classList.add("open");
-        overlay.classList.add("active");
       };
 
       const closePanel = (panel) => {
         panel.classList.remove("open");
-        overlay.classList.remove("active");
-      };
-
-      const closeAllPanels = () => {
-        closePanel(contactsPanel);
-        closePanel(taskPanel);
-        closePanel(infoPanel);
       };
 
       contactsBtn.addEventListener("click", () => {
-        closeAllPanels();
+        closePanel(infoPanel);
+        closePanel(taskPanel);
         openPanel(contactsPanel);
       });
 
@@ -1492,7 +2027,8 @@
       });
 
       taskBtn.addEventListener("click", () => {
-        closeAllPanels();
+        closePanel(contactsPanel);
+        closePanel(infoPanel);
         openPanel(taskPanel);
       });
 
@@ -1501,18 +2037,14 @@
       });
 
       infoBtn.addEventListener("click", () => {
-        closeAllPanels();
+        closePanel(contactsPanel);
+        closePanel(taskPanel);
         openPanel(infoPanel);
       });
 
       closeInfoBtn.addEventListener("click", () => {
         closePanel(infoPanel);
       });
-
-      overlay.addEventListener("click", () => {
-        closeAllPanels();
-      });
     </script>
-    <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
   </body>
 </html>

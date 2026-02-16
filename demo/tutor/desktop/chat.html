@@ -14,6 +14,12 @@
         --text: #111827;
         --text-muted: #6b7280;
         --border: #e5e7eb;
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --radius-sm: 6px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       * {
@@ -32,6 +38,7 @@
           sans-serif;
         background: var(--bg);
         overflow: hidden;
+        -webkit-font-smoothing: antialiased;
       }
 
       .layout {
@@ -49,6 +56,7 @@
         overflow-y: auto;
         display: flex;
         flex-direction: column;
+        box-shadow: var(--shadow-sm);
       }
 
       .nav-sidebar-header {
@@ -92,13 +100,19 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        transition: all 0.3s;
+        transition: var(--transition);
         font-size: 14px;
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       }
 
       .nav-item:hover {
         background: var(--bg);
         color: var(--primary);
+      }
+
+      .nav-item:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
       }
 
       .nav-item.active {
@@ -272,7 +286,8 @@
         outline-offset: 2px;
       }
 
-      label.add-contact-btn {
+      button.add-contact-btn,
+      .add-contact-btn {
         display: block;
       }
 
@@ -464,6 +479,11 @@
         transform: scale(0.95);
       }
 
+      .btn-icon img {
+        width: 20px;
+        height: 20px;
+      }
+
       label.btn-icon {
         display: flex;
         padding: 0;
@@ -564,7 +584,14 @@
       }
 
       .message-file-icon {
-        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .message-file-icon img {
+        width: 20px;
+        height: 20px;
       }
 
       .new-file-message {
@@ -760,37 +787,130 @@
         transform: scale(0.95);
       }
 
-      .modal {
+      .send-btn img {
+        width: 18px;
+        height: 18px;
+        filter: brightness(0) invert(1);
+      }
+
+      .modal-overlay {
         position: fixed;
         inset: 0;
-        display: none;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 10000;
+        z-index: 1001;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.3s,
+          visibility 0.3s;
       }
 
-      #contacts-modal-toggle:checked ~ #contacts-modal,
-      #info-modal-toggle:checked ~ #info-modal,
-      #phone-call-modal-toggle:checked ~ #phone-call-modal,
-      #video-call-modal-toggle:checked ~ #video-call-modal {
-        display: flex;
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
       }
 
-      .modal-backdrop {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.4);
-      }
-
-      .modal-content {
+      .modal {
         position: relative;
         background: white;
         padding: 24px;
-        border-radius: 12px;
+        border-radius: var(--radius-lg);
         width: 320px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        animation: modal-fade-in 0.3s ease;
+      }
+
+      @keyframes modal-fade-in {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      #contacts-modal .modal {
+        padding: 0;
+        width: 460px;
+        max-width: 90vw;
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .modal .modal-header {
+        padding: 20px 20px 12px;
+        border-bottom: 1px solid var(--border);
+        flex-shrink: 0;
+      }
+
+      #contacts-modal .modal-header-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      #contacts-modal .modal-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+        color: var(--text);
+      }
+
+      #contacts-modal .modal-close-icon {
+        width: 36px;
+        height: 36px;
+        display: flex;
         align-items: center;
-        z-index: 2;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        color: var(--text-muted);
+        font-size: 18px;
+        border-radius: var(--radius-sm);
+        transition: var(--transition);
+        flex-shrink: 0;
+      }
+
+      #contacts-modal .modal-close-icon:hover {
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      #contacts-modal .modal-subtitle {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-top: 4px;
+      }
+
+      #contacts-modal .modal-search {
+        margin-top: 12px;
+        padding: 10px 12px 10px 36px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        font-size: 14px;
+        width: 100%;
+        background: var(--bg)
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E")
+          no-repeat 10px center;
+      }
+
+      #contacts-modal .modal-search::placeholder {
+        color: var(--text-muted);
+      }
+
+      #contacts-modal .modal-search:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
       }
 
       .modal-title {
@@ -807,16 +927,79 @@
         margin-bottom: 20px;
       }
 
+      #info-modal .modal {
+        padding: 0;
+        width: 400px;
+        max-width: 90vw;
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .modal .modal-header {
+        padding: 20px 20px 16px;
+        border-bottom: 1px solid var(--border);
+        flex-shrink: 0;
+      }
+
+      #info-modal .modal-header-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      #info-modal .modal-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+        color: var(--text);
+      }
+
+      #info-modal .modal-close-icon {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        color: var(--text-muted);
+        font-size: 18px;
+        border-radius: var(--radius-sm);
+        transition: var(--transition);
+      }
+
+      #info-modal .modal-close-icon:hover {
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      #info-modal .modal-subtitle {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-top: 4px;
+      }
+
       #info-modal .modal-section {
         flex-direction: column;
         gap: 0;
         align-items: center;
+        padding: 20px 20px 16px;
+        margin: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      #info-modal .modal-section:last-of-type {
+        border-bottom: none;
       }
 
       #info-modal .modal-avatar {
-        width: 64px;
-        height: 64px;
-        font-size: 20px;
+        width: 72px;
+        height: 72px;
+        font-size: 24px;
         margin-bottom: 12px;
       }
 
@@ -824,12 +1007,75 @@
         font-size: 18px;
         font-weight: 700;
         margin-bottom: 4px;
+        text-align: center;
       }
 
       #info-modal .modal-status {
         font-size: 13px;
         color: #10b981;
         text-align: center;
+      }
+
+      #info-modal .info-content {
+        padding: 16px 20px 24px;
+        overflow-y: auto;
+        flex: 1;
+        min-height: 0;
+      }
+
+      #info-modal .info-section {
+        margin-bottom: 20px;
+      }
+
+      #info-modal .info-section:last-child {
+        margin-bottom: 0;
+      }
+
+      #info-modal .info-section-title {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-left: 4px;
+      }
+
+      #info-modal .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 12px 14px;
+        margin-bottom: 8px;
+        background: var(--bg);
+        border-radius: var(--radius-md);
+        border: none;
+      }
+
+      #info-modal .info-item:last-child {
+        margin-bottom: 0;
+      }
+
+      #info-modal .info-icon {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border-radius: var(--radius-sm);
+        flex-shrink: 0;
+      }
+
+      #info-modal .info-icon img {
+        width: 18px;
+        height: 18px;
+      }
+
+      #info-modal .info-value {
+        font-size: 14px;
+        font-weight: 500;
+        word-break: break-word;
       }
 
       #phone-call-modal .modal-section {
@@ -897,52 +1143,90 @@
       #contacts-modal .contacts-list-modal {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        margin-bottom: 16px;
+        gap: 8px;
+        padding: 16px 20px;
+        overflow-y: auto;
+        flex: 1;
+        min-height: 0;
+        max-height: 280px;
+      }
+
+      #contacts-modal .contacts-list-modal::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      #contacts-modal .contacts-list-modal::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 3px;
       }
 
       #contacts-modal .contact-row {
         display: flex;
         align-items: center;
         gap: 12px;
-        justify-content: space-between;
+        padding: 10px 12px;
+        background: var(--bg);
+        border-radius: var(--radius-md);
+        transition: var(--transition);
       }
 
-      #contacts-modal .contact-row.no-contact-found {
-        justify-content: center;
-        padding: 24px 12px;
-        text-align: center;
+      #contacts-modal .contact-row:hover {
+        background: #e5e7eb;
       }
 
-      #contacts-modal .contact-row.no-contact-found p {
-        margin: 0;
-        color: #9ca3af;
-        font-size: 14px;
+      #contacts-modal .contact-row.search-hidden {
+        display: none;
+      }
+
+      #contacts-modal .contact-row-info {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
       }
 
       #contacts-modal .modal-avatar {
-        width: 48px;
-        height: 48px;
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 700;
-        font-size: 16px;
         flex-shrink: 0;
       }
 
       #contacts-modal .modal-name {
         font-weight: 600;
         font-size: 16px;
-        color: #111827;
+        color: var(--text);
+      }
+
+      #contacts-modal .contact-row.no-contact-found {
+        justify-content: center;
+        padding: 24px 12px;
+        background: transparent;
+      }
+
+      #contacts-modal .contact-row.no-contact-found:hover {
+        background: transparent;
+      }
+
+      #contacts-modal .contact-row.no-contact-found p {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 14px;
+      }
+
+      #contacts-modal .modal-footer {
+        padding: 12px 20px 20px;
+        border-top: 1px solid var(--border);
+        flex-shrink: 0;
       }
 
       #contacts-modal .modal-action-btn.add-contact {
-        width: 100%;
-        margin-top: 8px;
-        background: #3b82f6;
+        width: calc(100% - 40px);
+        margin: 0 20px 16px;
+        padding: 12px 16px;
+        background: var(--primary);
+        text-align: center;
       }
 
       #contacts-modal .modal-action-btn.add-contact:disabled {
@@ -951,12 +1235,37 @@
         opacity: 0.8;
       }
 
-      #contacts-modal .modal-action-btn.remove-contact {
-        background: #ef4444;
+      .remove-contact-btn {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        color: var(--text-muted);
+        border: none;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: var(--transition);
       }
 
-      #contacts-modal .modal-action-btn.remove-contact:hover {
-        background: #b91c1c;
+      .remove-contact-btn:hover {
+        background: #fee2e2;
+        color: var(--danger);
+      }
+
+      .remove-contact-btn:focus-visible {
+        outline: 2px solid var(--danger);
+        outline-offset: 2px;
+      }
+
+      .remove-contact-btn img {
+        width: 16px;
+        height: 16px;
       }
 
       .contacts-list-modal {
@@ -997,6 +1306,9 @@
         color: white;
         border: none;
         border-radius: 6px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
         cursor: pointer;
         font-size: 14px;
         font-weight: 600;
@@ -1111,15 +1423,6 @@
         background: #1e40af;
       }
 
-      .copyright {
-        text-align: center;
-        margin-top: 32px;
-        padding-top: 20px;
-        border-top: 1px solid #e5e7eb;
-        color: #94a3b8;
-        font-size: 12px;
-      }
-
       .modal-close-icon {
         position: absolute;
         top: 16px;
@@ -1145,6 +1448,11 @@
       .modal-close-icon:hover {
         background: #f3f4f6;
         color: #111827;
+      }
+
+      .modal-close-icon img {
+        width: 18px;
+        height: 18px;
       }
 
       .toast-container {
@@ -1278,82 +1586,109 @@
       }
 
       .task-panel {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.95);
-        width: 500px;
-        max-height: 80vh;
+        position: relative;
+        width: 440px;
+        max-width: 90vw;
+        max-height: 85vh;
         background: white;
-        border-radius: 12px;
-        z-index: 1000;
+        border-radius: var(--radius-lg);
         display: flex;
         flex-direction: column;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        opacity: 0;
-        pointer-events: none;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .task-panel.open {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-        pointer-events: auto;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        animation: modal-fade-in 0.3s ease;
       }
 
       .task-header {
-        padding: 24px;
-        border-bottom: 1px solid #e5e7eb;
+        padding: 20px 20px 16px;
+        border-bottom: 1px solid var(--border);
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        position: relative;
+        align-items: flex-start;
+        gap: 12px;
         background: white;
-        z-index: 10;
-        border-radius: 12px 12px 0 0;
+        flex-shrink: 0;
+      }
+
+      .task-header-content {
+        flex: 1;
       }
 
       .task-title {
-        font-size: 18px;
-        font-weight: 600;
-        color: #111827;
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text);
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .task-title img {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+      }
+
+      .task-subtitle {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-top: 4px;
       }
 
       .close-task-btn {
-        width: 44px;
-        height: 44px;
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
         border: none;
         background: transparent;
-        font-size: 24px;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
+        color: var(--text-muted);
+        border-radius: var(--radius-sm);
+        transition: var(--transition);
+      }
+
+      .close-task-btn:hover {
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      .close-task-btn:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+      }
+
+      .close-task-btn img {
+        width: 18px;
+        height: 18px;
       }
 
       .task-content {
-        padding: 16px;
+        padding: 16px 20px 24px;
         overflow-y: auto;
         flex: 1;
+        min-height: 0;
         display: flex;
         flex-direction: column;
-        gap: 0;
+        gap: 20px;
       }
 
       .task-section {
         margin-bottom: 0;
-        padding-bottom: 16px;
-        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 0;
       }
 
       .task-section:last-child {
-        border-bottom: none;
+        padding-bottom: 0;
       }
 
       .task-section-title {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 600;
-        color: #6b7280;
+        color: var(--text-muted);
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-bottom: 12px;
@@ -1361,21 +1696,38 @@
 
       .task-item {
         display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        padding: 12px 0;
-        border-bottom: 1px solid #f3f4f6;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 14px;
+        margin-bottom: 8px;
+        background: var(--bg);
+        border-radius: var(--radius-md);
+        transition: var(--transition);
       }
 
       .task-item:last-child {
-        border-bottom: none;
+        margin-bottom: 0;
+      }
+
+      .task-item:hover {
+        background: #e5e7eb;
       }
 
       .task-icon {
-        font-size: 20px;
-        width: 24px;
-        text-align: center;
+        font-size: 18px;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border-radius: var(--radius-sm);
         flex-shrink: 0;
+      }
+
+      .task-icon img {
+        width: 18px;
+        height: 18px;
       }
 
       .task-text {
@@ -1384,39 +1736,39 @@
 
       .task-label {
         font-size: 12px;
-        color: #9ca3af;
+        color: var(--text-muted);
         margin-bottom: 2px;
       }
 
       .task-value {
         font-size: 14px;
-        color: #111827;
         font-weight: 500;
+        color: var(--text);
       }
 
       .task-mini-list {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        margin-top: 8px;
+        gap: 10px;
+        margin-top: 4px;
       }
 
       .task-mini-card {
-        background: #f9fafb;
-        border-radius: 8px;
-        padding: 12px;
-        border-left: 3px solid #e5e7eb;
-        transition: all 0.3s;
+        background: var(--bg);
+        border-radius: var(--radius-md);
+        padding: 14px 16px;
+        border-left: 4px solid var(--border);
+        transition: var(--transition);
         cursor: pointer;
       }
 
       .task-mini-card:hover {
-        background: #f3f4f6;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background: #e5e7eb;
+        box-shadow: var(--shadow-sm);
       }
 
       .task-mini-card.priority-high {
-        border-left-color: #ef4444;
+        border-left-color: var(--danger);
       }
 
       .task-mini-card.priority-medium {
@@ -1429,28 +1781,37 @@
 
       .task-mini-title {
         font-weight: 600;
-        font-size: 13px;
-        color: #111827;
-        margin-bottom: 6px;
-        line-height: 1.3;
+        font-size: 14px;
+        color: var(--text);
+        margin-bottom: 8px;
+        line-height: 1.4;
       }
 
       .task-mini-meta {
         display: flex;
-        gap: 8px;
+        gap: 12px;
         flex-wrap: wrap;
-        margin-bottom: 6px;
+        align-items: center;
       }
 
       .task-mini-due {
-        font-size: 11px;
-        color: #6b7280;
+        font-size: 12px;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .task-mini-due img {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
       }
 
       .task-mini-status {
-        padding: 2px 8px;
-        border-radius: 10px;
-        font-size: 10px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 11px;
         font-weight: 600;
         white-space: nowrap;
       }
@@ -1473,16 +1834,21 @@
       .overlay {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 999;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001;
         opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        visibility: hidden;
+        transition:
+          opacity 0.3s,
+          visibility 0.3s;
       }
 
       .overlay.active {
         opacity: 1;
-        pointer-events: auto;
+        visibility: visible;
       }
 
       button:disabled,
@@ -1579,10 +1945,6 @@
         margin-right: 8px;
       }
 
-      #contacts-modal-toggle,
-      #info-modal-toggle,
-      #phone-call-modal-toggle,
-      #video-call-modal-toggle,
       #file-input {
         display: none;
       }
@@ -1602,49 +1964,58 @@
         background: #ef4444;
         cursor: pointer;
       }
+
+      .modal-action-btn img {
+        width: 18px;
+        height: 18px;
+      }
     </style>
   </head>
 
   <body>
-    <input type="checkbox" id="contacts-modal-toggle" />
-    <input type="checkbox" id="info-modal-toggle" />
-    <input type="checkbox" id="phone-call-modal-toggle" />
-    <input type="checkbox" id="video-call-modal-toggle" />
     <div class="layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
+          <div class="nav-sidebar-logo">
+            <img src="../../assets/icons/book.svg" alt="" />
+            Learn@Home
+          </div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
-              de bord</a
-            >
-            <a href="chat.html" class="nav-item active" aria-current="page"
-              ><span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span> Messages
-              <div class="notification-badge">4</div></a
-            >
+            <a href="dashboard.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span>
+              Tableau de bord
+            </a>
+            <a href="chat.html" class="nav-item active" aria-current="page">
+              <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
+              Messages
+              <div class="notification-badge">4</div>
+            </a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a
-            >
-            <a href="tasks.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a
-            >
+            <a href="calendar.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span>
+              Calendrier
+            </a>
+            <a href="tasks.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span>
+              Tâches
+            </a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a
-            >
-            <a href="login.html" class="nav-item"
-              ><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span> Déconnexion</a
-            >
+            <a href="settings.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span>
+              Paramètres
+            </a>
+            <a href="login.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span>
+              Déconnexion
+            </a>
           </div>
         </nav>
 
@@ -1663,9 +2034,14 @@
       <aside class="sidebar">
         <div class="sidebar-header">
           <input type="text" class="search-box" placeholder="Rechercher un contact..." />
-          <label for="contacts-modal-toggle" class="add-contact-btn hover-up" data-hover="Ajouter un contact"
-            >+ Ajouter un contact</label
+          <button
+            type="button"
+            class="add-contact-btn hover-up"
+            data-hover="Ajouter un contact"
+            onclick="openModal('contacts-modal')"
           >
+            + Ajouter un contact
+          </button>
         </div>
 
         <div class="contacts-list">
@@ -1722,10 +2098,24 @@
             </div>
           </div>
           <div class="chat-actions">
-            <button class="btn-icon" id="taskBtn" aria-label="Tâches assignées">📋</button>
-            <label for="phone-call-modal-toggle" class="btn-icon" aria-label="Appel audio">📞</label>
-            <label for="video-call-modal-toggle" class="btn-icon" aria-label="Appel vidéo">📹</label>
-            <label for="info-modal-toggle" class="btn-icon" id="infoBtn" aria-label="Informations">ℹ️</label>
+            <button class="btn-icon" id="taskBtn" aria-label="Tâches assignées">
+              <img src="../../assets/icons/clipboard-list.svg" alt="" />
+            </button>
+            <button type="button" class="btn-icon" aria-label="Appel audio" onclick="openModal('phone-call-modal')">
+              <img src="../../assets/icons/phone.svg" alt="" />
+            </button>
+            <button type="button" class="btn-icon" aria-label="Appel vidéo" onclick="openModal('video-call-modal')">
+              <img src="../../assets/icons/video.svg" alt="" />
+            </button>
+            <button
+              type="button"
+              class="btn-icon"
+              id="infoBtn"
+              aria-label="Informations"
+              onclick="openModal('info-modal')"
+            >
+              <img src="../../assets/icons/info.svg" alt="" />
+            </button>
           </div>
         </div>
 
@@ -1749,7 +2139,7 @@
           <div class="message-group message-own">
             <div class="message-content">
               <div class="message-file">
-                <span class="message-file-icon">📄</span>
+                <span class="message-file-icon"><img src="../../assets/icons/file-text.svg" alt="" /></span>
                 <span>Exercices_Math.pdf (2.4 MB)</span>
               </div>
               <div class="message-status status-read">Vu 14:35</div>
@@ -1799,7 +2189,7 @@
           <div class="message-group message-own new-file-message hidden-file-message">
             <div class="message-content">
               <div class="message-file">
-                <span class="message-file-icon">📄</span>
+                <span class="message-file-icon"><img src="../../assets/icons/file-text.svg" alt="" /></span>
                 <span class="message-file-name"></span>
               </div>
               <div class="message-status status-sent">Envoyé</div>
@@ -1817,142 +2207,219 @@
               aria-label="Joindre un fichier"
               onclick="handleAttachmentClick()"
             >
-              📎
+              <img src="../../assets/icons/paperclip.svg" alt="" />
             </button>
             <input type="file" id="file-input" onchange="handleFileUpload(event)" />
             <textarea class="message-input" id="message-input" placeholder="Tapez votre message..." rows="1"></textarea>
-            <button class="send-btn hover-up" id="send-btn" data-hover="Envoyer" aria-label="Envoyer le message" onclick="handleMessageSend()">
-              ➤
+            <button
+              class="send-btn hover-up"
+              id="send-btn"
+              data-hover="Envoyer"
+              aria-label="Envoyer le message"
+              onclick="handleMessageSend()"
+            >
+              <img src="../../assets/icons/send.svg" alt="" />
             </button>
           </div>
         </div>
       </main>
     </div>
 
-    <div class="overlay" id="overlay"></div>
-
-    <div class="task-panel" id="taskPanel">
-      <div class="task-header">
-        <div class="task-title">📋 Tâches assignées</div>
-        <button class="close-task-btn" id="closeTaskBtn">✕</button>
-      </div>
-      <div class="task-content">
-        <div class="task-section">
-          <div class="task-section-title">Tâches en cours</div>
-          <div class="task-mini-list">
-            <div class="task-mini-card priority-high">
-              <div class="task-mini-title">Équations du second degré</div>
-              <div class="task-mini-meta">
-                <span class="task-mini-due">📅 10 jan. 2026</span>
-                <span class="task-mini-status status-pending">Pendante</span>
-              </div>
-            </div>
-
-            <div class="task-mini-card priority-high">
-              <div class="task-mini-title">Rapport de Sciences</div>
-              <div class="task-mini-meta">
-                <span class="task-mini-due">📅 15 jan. 2026</span>
-                <span class="task-mini-status status-pending">Pendante</span>
-              </div>
-            </div>
+    <div class="overlay" id="overlay">
+      <div
+        class="task-panel"
+        id="taskPanel"
+        role="dialog"
+        aria-labelledby="task-panel-title"
+        aria-describedby="task-panel-desc"
+      >
+        <div class="task-header">
+          <div class="task-header-content">
+            <h2 class="task-title" id="task-panel-title">
+              <img src="../../assets/icons/clipboard-list.svg" alt="" />
+              Tâches assignées
+            </h2>
+            <p class="task-subtitle" id="task-panel-desc">Vue d'ensemble des tâches de vos élèves</p>
           </div>
+          <button class="close-task-btn" id="closeTaskBtn" aria-label="Fermer">
+            <img src="../../assets/icons/x.svg" alt="" />
+          </button>
         </div>
+        <div class="task-content">
+          <div class="task-section">
+            <div class="task-section-title">Tâches en cours</div>
+            <div class="task-mini-list">
+              <div class="task-mini-card priority-high">
+                <div class="task-mini-title">Équations du second degré</div>
+                <div class="task-mini-meta">
+                  <span class="task-mini-due">
+                    <img src="../../assets/icons/calendar.svg" alt="" />
+                    10 jan. 2026
+                  </span>
+                  <span class="task-mini-status status-pending">En cours</span>
+                </div>
+              </div>
 
-        <div class="task-section">
-          <div class="task-section-title">Tâches actives</div>
-          <div class="task-item">
-            <div class="task-icon">✅</div>
-            <div class="task-text">
-              <div class="task-label">Complétées</div>
-              <div class="task-value">1 tâche</div>
+              <div class="task-mini-card priority-high">
+                <div class="task-mini-title">Rapport de Sciences</div>
+                <div class="task-mini-meta">
+                  <span class="task-mini-due">
+                    <img src="../../assets/icons/calendar.svg" alt="" />
+                    15 jan. 2026
+                  </span>
+                  <span class="task-mini-status status-pending">En cours</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="task-item">
-            <div class="task-icon">🔄</div>
-            <div class="task-text">
-              <div class="task-label">En cours</div>
-              <div class="task-value">0 tâche</div>
+
+          <div class="task-section">
+            <div class="task-section-title">Tâches actives</div>
+            <div class="task-item">
+              <div class="task-icon"><img src="../../assets/icons/check.svg" alt="" /></div>
+              <div class="task-text">
+                <div class="task-label">Complétées</div>
+                <div class="task-value">1 tâche</div>
+              </div>
             </div>
-          </div>
-          <div class="task-item">
-            <div class="task-icon">⏳</div>
-            <div class="task-text">
-              <div class="task-label">En attente</div>
-              <div class="task-value">2 tâches</div>
+            <div class="task-item">
+              <div class="task-icon"><img src="../../assets/icons/refresh-cw.svg" alt="" /></div>
+              <div class="task-text">
+                <div class="task-label">En cours</div>
+                <div class="task-value">0 tâche</div>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon"><img src="../../assets/icons/hourglass.svg" alt="" /></div>
+              <div class="task-text">
+                <div class="task-label">En attente</div>
+                <div class="task-value">2 tâches</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div id="contacts-modal" class="modal">
-      <label for="contacts-modal-toggle" class="modal-backdrop"></label>
-      <div class="modal-content">
-        <label for="contacts-modal-toggle" class="modal-close-icon">✕</label>
-        <h2 class="modal-title">Gérer les contacts</h2>
-
+    <div
+      id="contacts-modal"
+      class="modal-overlay"
+      role="dialog"
+      aria-labelledby="contacts-modal-title"
+      aria-describedby="contacts-modal-desc"
+    >
+      <div class="modal">
+        <div class="modal-header">
+          <div class="modal-header-row">
+            <div>
+              <h2 id="contacts-modal-title" class="modal-title">Gérer les contacts</h2>
+              <p id="contacts-modal-desc" class="modal-subtitle">Ajoutez ou supprimez des élèves de votre liste</p>
+            </div>
+            <button type="button" class="modal-close-icon" aria-label="Fermer" onclick="closeModal('contacts-modal')">
+              <img src="../../assets/icons/x.svg" alt="" />
+            </button>
+          </div>
+          <input
+            type="text"
+            class="modal-search"
+            placeholder="Rechercher un élève..."
+            aria-label="Rechercher dans la liste des élèves"
+            oninput="contactManager.filterContacts(this.value)"
+          />
+        </div>
         <div class="modal-section contacts-list-modal">
-          <div class="contact-row">
-            <div class="modal-avatar sophie"></div>
-            <div class="modal-name">Sophie Martin</div>
-            <button class="modal-action-btn remove-contact" onclick="contactManager.removeContact(this)">
-              Supprimer
+          <div class="contact-row" data-name="sophie martin">
+            <div class="contact-row-info">
+              <div class="modal-avatar sophie"></div>
+              <span class="modal-name">Sophie Martin</span>
+            </div>
+            <button
+              class="remove-contact-btn"
+              onclick="contactManager.removeContact(this)"
+              aria-label="Supprimer Sophie Martin de la liste"
+            >
+              <img src="../../assets/icons/trash-2.svg" alt="" />
             </button>
           </div>
-          <div class="contact-row">
-            <div class="modal-avatar jean"></div>
-            <div class="modal-name">Jean Leclerc</div>
-            <button class="modal-action-btn remove-contact" onclick="contactManager.removeContact(this)">
-              Supprimer
+          <div class="contact-row" data-name="jean leclerc">
+            <div class="contact-row-info">
+              <div class="modal-avatar jean"></div>
+              <span class="modal-name">Jean Leclerc</span>
+            </div>
+            <button
+              class="remove-contact-btn"
+              onclick="contactManager.removeContact(this)"
+              aria-label="Supprimer Jean Leclerc de la liste"
+            >
+              <img src="../../assets/icons/trash-2.svg" alt="" />
             </button>
           </div>
-          <div class="contact-row hidden">
-            <div class="modal-avatar lea"></div>
-            <div class="modal-name">Léa Bernard</div>
-            <button class="modal-action-btn remove-contact" onclick="contactManager.removeContact(this)">
-              Supprimer
+          <div class="contact-row hidden" data-name="léa bernard">
+            <div class="contact-row-info">
+              <div class="modal-avatar lea"></div>
+              <span class="modal-name">Léa Bernard</span>
+            </div>
+            <button
+              class="remove-contact-btn"
+              onclick="contactManager.removeContact(this)"
+              aria-label="Supprimer Léa Bernard de la liste"
+            >
+              <img src="../../assets/icons/trash-2.svg" alt="" />
             </button>
           </div>
           <div class="contact-row no-contact-found hidden">
             <p>Aucun contact trouvé</p>
           </div>
         </div>
-
-        <button id="add-contact-confirm" class="modal-action-btn add-contact" onclick="contactManager.addContact()">
-          + Ajouter un contact
-        </button>
+        <div class="modal-footer">
+          <button id="add-contact-confirm" class="modal-action-btn add-contact" onclick="contactManager.addContact()">
+            + Ajouter un contact
+          </button>
+        </div>
       </div>
     </div>
-    <div id="info-modal" class="modal">
-      <label for="info-modal-toggle" class="modal-backdrop"></label>
-      <div class="modal-content">
-        <h2 class="modal-title">Informations du contact</h2>
+    <div
+      id="info-modal"
+      class="modal-overlay"
+      role="dialog"
+      aria-labelledby="info-modal-title"
+      aria-describedby="info-modal-desc"
+    >
+      <div class="modal">
+        <div class="modal-header">
+          <div class="modal-header-row">
+            <div>
+              <h2 id="info-modal-title" class="modal-title">Informations du contact</h2>
+              <p id="info-modal-desc" class="modal-subtitle">Détails du profil et coordonnées</p>
+            </div>
+            <button type="button" class="modal-close-icon" aria-label="Fermer" onclick="closeModal('info-modal')">
+              <img src="../../assets/icons/x.svg" alt="" />
+            </button>
+          </div>
+        </div>
         <div class="modal-section">
           <div class="modal-avatar antoine"></div>
-          <div>
-            <div class="modal-name">Antoine Kreuder</div>
-            <div class="modal-status">● En ligne</div>
-          </div>
+          <div class="modal-name">Antoine Kreuder</div>
+          <div class="modal-status">● En ligne</div>
         </div>
         <div class="info-content">
           <div class="info-section">
             <div class="info-section-title">Informations académiques</div>
             <div class="info-item">
-              <div class="info-icon">🎓</div>
+              <div class="info-icon"><img src="../../assets/icons/graduation-cap.svg" alt="" /></div>
               <div class="info-text">
                 <div class="info-label">Niveau scolaire</div>
                 <div class="info-value">3ème (8ème grade)</div>
               </div>
             </div>
             <div class="info-item">
-              <div class="info-icon">📚</div>
+              <div class="info-icon"><img src="../../assets/icons/book-open.svg" alt="" /></div>
               <div class="info-text">
                 <div class="info-label">Matières suivies</div>
                 <div class="info-value">Mathématiques, Sciences, Français</div>
               </div>
             </div>
             <div class="info-item">
-              <div class="info-icon">🎨</div>
+              <div class="info-icon"><img src="../../assets/icons/palette.svg" alt="" /></div>
               <div class="info-text">
                 <div class="info-label">Centres d'intérêt</div>
                 <div class="info-value">Arts plastiques, manga, jeux vidéo</div>
@@ -1962,14 +2429,14 @@
           <div class="info-section">
             <div class="info-section-title">Contact</div>
             <div class="info-item">
-              <div class="info-icon">📧</div>
+              <div class="info-icon"><img src="../../assets/icons/mail.svg" alt="" /></div>
               <div class="info-text">
                 <div class="info-label">Email</div>
                 <div class="info-value">antoine.kreuder@learnhome.com</div>
               </div>
             </div>
             <div class="info-item">
-              <div class="info-icon">📱</div>
+              <div class="info-icon"><img src="../../assets/icons/smartphone.svg" alt="" /></div>
               <div class="info-text">
                 <div class="info-label">Téléphone</div>
                 <div class="info-value">+33 6 12 34 56 78</div>
@@ -1977,13 +2444,13 @@
             </div>
           </div>
         </div>
-        <label for="info-modal-toggle" class="modal-close">Fermer</label>
       </div>
     </div>
-    <div id="phone-call-modal" class="modal">
-      <label for="phone-call-modal-toggle" class="modal-backdrop"></label>
-      <div class="modal-content">
-        <label for="phone-call-modal-toggle" class="modal-close-icon">✕</label>
+    <div id="phone-call-modal" class="modal-overlay">
+      <div class="modal">
+        <button type="button" class="modal-close-icon" aria-label="Fermer" onclick="closeModal('phone-call-modal')">
+          <img src="../../assets/icons/x.svg" alt="" />
+        </button>
         <h2 class="modal-title">Appel audio</h2>
         <div class="modal-section">
           <div class="modal-avatar yann"></div>
@@ -1991,15 +2458,25 @@
           <div class="modal-status">● En ligne</div>
         </div>
         <div class="modal-action-container">
-          <button class="modal-action-btn modal-action-btn--accept">📞 Appeler</button>
-          <label for="phone-call-modal-toggle" class="modal-action-btn modal-action-btn--decline">Refuser</label>
+          <button class="modal-action-btn modal-action-btn--accept">
+            <img src="../../assets/icons/phone.svg" alt="" />
+            Appeler
+          </button>
+          <button
+            type="button"
+            class="modal-action-btn modal-action-btn--decline"
+            onclick="closeModal('phone-call-modal')"
+          >
+            Refuser
+          </button>
         </div>
       </div>
     </div>
-    <div id="video-call-modal" class="modal">
-      <label for="video-call-modal-toggle" class="modal-backdrop"></label>
-      <div class="modal-content">
-        <label for="video-call-modal-toggle" class="modal-close-icon">✕</label>
+    <div id="video-call-modal" class="modal-overlay">
+      <div class="modal">
+        <button type="button" class="modal-close-icon" aria-label="Fermer" onclick="closeModal('video-call-modal')">
+          <img src="../../assets/icons/x.svg" alt="" />
+        </button>
         <h2 class="modal-title">Appel vidéo</h2>
         <div class="modal-section">
           <div class="modal-avatar yann"></div>
@@ -2007,8 +2484,17 @@
           <div class="modal-status">● En ligne</div>
         </div>
         <div class="modal-action-container">
-          <button class="modal-action-btn modal-action-btn--accept">📹 Appeler</button>
-          <label for="video-call-modal-toggle" class="modal-action-btn modal-action-btn--decline">Refuser</label>
+          <button class="modal-action-btn modal-action-btn--accept">
+            <img src="../../assets/icons/video.svg" alt="" />
+            Appeler
+          </button>
+          <button
+            type="button"
+            class="modal-action-btn modal-action-btn--decline"
+            onclick="closeModal('video-call-modal')"
+          >
+            Refuser
+          </button>
         </div>
       </div>
     </div>
@@ -2045,29 +2531,60 @@
         }
       };
 
+      function openModal(id) {
+        document.getElementById(id).classList.add("active");
+      }
+      function closeModal(id) {
+        document.getElementById(id).classList.remove("active");
+      }
+
+      document.querySelectorAll(".modal-overlay").forEach((overlay) => {
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) {
+            closeModal(overlay.id);
+          }
+        });
+      });
+
       const contactManager = {
         rows: () => [...document.querySelectorAll(".contacts-list-modal .contact-row:not(.no-contact-found)")],
         hiddenRows: () => contactManager.rows().find((row) => row.classList.contains("hidden")),
+        noContactFound: () => document.querySelector(".contacts-list-modal .no-contact-found"),
         update: () => {
           const addBtn = document.getElementById("add-contact-confirm");
           if (addBtn) {
             addBtn.disabled = !contactManager.rows().some((row) => row.classList.contains("hidden"));
           }
         },
+        filterContacts(query) {
+          const q = (query || "").trim().toLowerCase();
+          const visible = contactManager.rows().filter((row) => !row.classList.contains("hidden"));
+          let visibleCount = 0;
+          visible.forEach((row) => {
+            const name = (row.dataset.name || row.querySelector(".modal-name")?.textContent || "").toLowerCase();
+            const match = !q || name.includes(q);
+            row.classList.toggle("search-hidden", !match);
+            if (!row.classList.contains("hidden") && match) visibleCount++;
+          });
+          const noFound = contactManager.noContactFound();
+          if (noFound) noFound.classList.toggle("hidden", visibleCount > 0);
+        },
         addContact() {
           const hiddenRow = contactManager.hiddenRows();
           if (hiddenRow) {
             hiddenRow.classList.remove("hidden");
             hiddenRow.style.display = "flex";
+            hiddenRow.classList.remove("search-hidden");
+            contactManager.filterContacts(document.querySelector(".modal-search")?.value || "");
             contactManager.update();
           }
         },
-
         removeContact(btn) {
           const row = btn.closest(".contact-row");
           if (row) {
             row.classList.add("hidden");
             row.style.display = "none";
+            contactManager.filterContacts(document.querySelector(".modal-search")?.value || "");
             contactManager.update();
           }
         },
@@ -2098,10 +2615,11 @@
         closePanel(taskPanel);
       });
 
-      overlay.addEventListener("click", () => {
-        closePanel(taskPanel);
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) {
+          closePanel(taskPanel);
+        }
       });
     </script>
-    <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
   </body>
 </html>

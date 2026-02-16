@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="fr">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,6 +14,13 @@
         --text: #111827;
         --text-muted: #6b7280;
         --border: #e5e7eb;
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+        --radius-sm: 6px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       * {
@@ -32,6 +38,8 @@
           Roboto,
           sans-serif;
         background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.5;
       }
 
       .page-layout {
@@ -50,6 +58,7 @@
         overflow-y: auto;
         display: flex;
         flex-direction: column;
+        box-shadow: var(--shadow-sm);
       }
 
       .nav-sidebar-header {
@@ -93,13 +102,19 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        transition: all 0.3s;
+        transition: var(--transition);
         font-size: 14px;
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       }
 
       .nav-item:hover {
         background: var(--bg);
         color: var(--primary);
+      }
+
+      .nav-item:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
       }
 
       .nav-item.active {
@@ -262,6 +277,9 @@
         align-items: center;
         flex-wrap: wrap;
         gap: 16px;
+        position: relative;
+        overflow: visible;
+        z-index: 1;
       }
 
       .filters {
@@ -311,6 +329,7 @@
       .custom-dropdown {
         position: relative;
         display: inline-block;
+        z-index: 10001;
       }
 
       .dropdown-toggle {
@@ -368,7 +387,7 @@
         box-shadow:
           0 4px 6px -1px rgba(0, 0, 0, 0.1),
           0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        z-index: 1000;
+        z-index: 10000;
         overflow: hidden;
         max-height: 200px;
         overflow-y: auto;
@@ -417,6 +436,8 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
+        position: relative;
+        z-index: 0;
       }
 
       .task-card {
@@ -436,13 +457,13 @@
         display: none;
       }
 
-      .task-checkbox:checked+.checkbox {
+      .task-checkbox:checked + .checkbox {
         background: #3b82f6;
         border-color: #3b82f6;
         color: white;
       }
 
-      .task-checkbox:checked+.checkbox::after {
+      .task-checkbox:checked + .checkbox::after {
         content: "";
         width: 16px;
         height: 16px;
@@ -458,7 +479,7 @@
         display: block;
       }
 
-      .task-checkbox:checked~.task-content .task-title {
+      .task-checkbox:checked ~ .task-content .task-title {
         text-decoration: line-through;
         color: #9ca3af;
       }
@@ -529,56 +550,84 @@
       }
 
       .priority-badge {
-        padding: 4px 10px;
-        border-radius: 20px;
+        padding: 5px 12px;
+        border-radius: 16px;
         font-size: 12px;
         font-weight: 600;
         white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        letter-spacing: 0.01em;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        transition: all 0.2s ease;
       }
 
       .priority-high {
-        background: #fee2e2;
+        background: linear-gradient(135deg, #fecaca 0%, #fee2e2 100%);
         color: #991b1b;
+        border: 1px solid rgba(220, 38, 38, 0.15);
+        box-shadow:
+          0 1px 3px rgba(220, 38, 38, 0.12),
+          0 1px 2px rgba(0, 0, 0, 0.06);
       }
 
       .priority-medium {
-        background: #fef3c7;
+        background: linear-gradient(135deg, #fde68a 0%, #fef3c7 100%);
         color: #92400e;
+        border: 1px solid rgba(217, 119, 6, 0.15);
+        box-shadow:
+          0 1px 3px rgba(217, 119, 6, 0.12),
+          0 1px 2px rgba(0, 0, 0, 0.06);
       }
 
       .priority-low {
-        background: #dcfce7;
+        background: linear-gradient(135deg, #bbf7d0 0%, #dcfce7 100%);
         color: #166534;
+        border: 1px solid rgba(22, 101, 52, 0.15);
+        box-shadow:
+          0 1px 3px rgba(22, 101, 52, 0.12),
+          0 1px 2px rgba(0, 0, 0, 0.06);
       }
 
       .status-badge {
         padding: 6px 14px;
-        border-radius: 20px;
+        border-radius: 16px;
         font-size: 12px;
         font-weight: 600;
         white-space: nowrap;
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        letter-spacing: 0.01em;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        transition: all 0.2s ease;
       }
 
       .status-pending {
-        background: #f3f4f6;
+        background: #ffffff;
         color: #374151;
         border: 1px solid #e5e7eb;
+        box-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.05),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
       }
 
       .status-inprogress {
-        background: #dbeafe;
+        background: linear-gradient(135deg, #bfdbfe 0%, #dbeafe 100%);
         color: #1e40af;
-        border: 1px solid #93c5fd;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        box-shadow:
+          0 1px 3px rgba(59, 130, 246, 0.15),
+          0 1px 2px rgba(0, 0, 0, 0.06);
       }
 
       .status-done {
-        background: #dcfce7;
+        background: linear-gradient(135deg, #bbf7d0 0%, #dcfce7 100%);
         color: #166534;
-        border: 1px solid #bbf7d0;
+        border: 1px solid rgba(22, 101, 52, 0.2);
+        box-shadow:
+          0 1px 3px rgba(22, 101, 52, 0.15),
+          0 1px 2px rgba(0, 0, 0, 0.06);
       }
 
       .task-actions {
@@ -657,29 +706,145 @@
       }
 
       .toast {
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        padding: 16px;
-        min-width: 300px;
-        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        position: relative;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.12),
+          0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 16px 20px;
+        min-width: 320px;
+        max-width: 400px;
+        animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         pointer-events: auto;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .toast:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 12px 40px rgba(0, 0, 0, 0.15),
+          0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
       .toast.dismissing {
-        animation: fadeOut 0.3s ease-out forwards;
+        animation: fadeOut 0.3s cubic-bezier(0.4, 0, 1, 1) forwards;
+      }
+
+      .toast-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .toast-icon {
+        font-size: 20px;
+        line-height: 1;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .toast-content {
+        flex: 1;
+        min-width: 0;
       }
 
       .toast-title {
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 600;
         color: #111827;
         margin-bottom: 4px;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
       }
 
       .toast-message {
         font-size: 13px;
         color: #6b7280;
+        line-height: 1.5;
+      }
+
+      .toast-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: transparent;
+        border: none;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 6px;
+        color: #9ca3af;
+        transition: all 0.2s ease;
+        padding: 0;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      .toast-close:hover {
+        background: rgba(0, 0, 0, 0.05);
+        color: #374151;
+      }
+
+      .toast-close:active {
+        transform: scale(0.9);
+      }
+
+      .toast-progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        width: 100%;
+        transform-origin: left;
+        animation: progressBar 2.7s linear forwards;
+      }
+
+      .toast.paused .toast-progress {
+        animation-play-state: paused;
+      }
+
+      .toast.success {
+        border-left: 4px solid #10b981;
+      }
+
+      .toast.success .toast-progress {
+        background: linear-gradient(90deg, #10b981, #059669);
+      }
+
+      .toast.error,
+      .toast.danger {
+        border-left: 4px solid #ef4444;
+      }
+
+      .toast.error .toast-progress,
+      .toast.danger .toast-progress {
+        background: linear-gradient(90deg, #ef4444, #dc2626);
+      }
+
+      .toast.warning {
+        border-left: 4px solid #f59e0b;
+      }
+
+      .toast.warning .toast-progress {
+        background: linear-gradient(90deg, #f59e0b, #d97706);
+      }
+
+      .toast.info {
+        border-left: 4px solid #3b82f6;
+      }
+
+      .toast.info .toast-progress {
+        background: linear-gradient(90deg, #3b82f6, #2563eb);
       }
 
       @keyframes slideIn {
@@ -697,12 +862,22 @@
       @keyframes fadeOut {
         from {
           opacity: 1;
-          transform: translateX(0);
+          transform: translateX(0) scale(1);
         }
 
         to {
           opacity: 0;
-          transform: translateX(100px);
+          transform: translateX(100px) scale(0.95);
+        }
+      }
+
+      @keyframes progressBar {
+        from {
+          transform: scaleX(1);
+        }
+
+        to {
+          transform: scaleX(0);
         }
       }
 
@@ -933,8 +1108,8 @@
         display: none;
       }
 
-      .form-input.error~.form-error,
-      .form-textarea.error~.form-error {
+      .form-input.error ~ .form-error,
+      .form-textarea.error ~ .form-error {
         display: block;
       }
 
@@ -1009,32 +1184,46 @@
     <div class="page-layout">
       <aside class="nav-sidebar">
         <div class="nav-sidebar-header">
-          <div class="nav-sidebar-logo"><img src="../../assets/icons/book.svg" alt="" /> Learn@Home</div>
+          <div class="nav-sidebar-logo">
+            <img src="../../assets/icons/book.svg" alt="" />
+            Learn@Home
+          </div>
         </div>
 
         <nav>
           <div class="nav-section">
             <div class="nav-label">Principal</div>
-            <a href="dashboard.html" class="nav-item"><span class="nav-item-icon"><img
-                  src="../../assets/icons/layout-dashboard.svg" alt="" /></span> Tableau
-              de bord</a>
-            <a href="chat.html" class="nav-item"><span class="nav-item-icon"><img
-                  src="../../assets/icons/message-square.svg" alt="" /></span>
-              Messages<span class="notification-badge">5</span></a>
+            <a href="dashboard.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/layout-dashboard.svg" alt="" /></span>
+              Tableau de bord
+            </a>
+            <a href="chat.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/message-square.svg" alt="" /></span>
+              Messages
+              <span class="notification-badge">5</span>
+            </a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Outils</div>
-            <a href="calendar.html" class="nav-item"><span class="nav-item-icon"><img
-                  src="../../assets/icons/calendar.svg" alt="" /></span> Calendrier</a>
-            <a href="tasks.html" class="nav-item active" aria-current="page"><span class="nav-item-icon"><img
-                  src="../../assets/icons/check-square.svg" alt="" /></span> Tâches</a>
+            <a href="calendar.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/calendar.svg" alt="" /></span>
+              Calendrier
+            </a>
+            <a href="tasks.html" class="nav-item active" aria-current="page">
+              <span class="nav-item-icon"><img src="../../assets/icons/check-square.svg" alt="" /></span>
+              Tâches
+            </a>
           </div>
           <div class="nav-section">
             <div class="nav-label">Compte</div>
-            <a href="settings.html" class="nav-item"><span class="nav-item-icon"><img
-                  src="../../assets/icons/settings.svg" alt="" /></span> Paramètres</a>
-            <a href="login.html" class="nav-item"><span class="nav-item-icon"><img src="../../assets/icons/log-out.svg"
-                  alt="" /></span> Déconnexion</a>
+            <a href="settings.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/settings.svg" alt="" /></span>
+              Paramètres
+            </a>
+            <a href="login.html" class="nav-item">
+              <span class="nav-item-icon"><img src="../../assets/icons/log-out.svg" alt="" /></span>
+              Déconnexion
+            </a>
           </div>
         </nav>
 
@@ -1086,9 +1275,13 @@
               <div class="task-description">Compléter les 10 exercices de la feuille distribuée par Yann</div>
               <div class="task-meta">
                 <div class="meta-item">
-                  <img src="../../assets/icons/calendar.svg" alt="" /> Échéance: 10 janvier 2026
+                  <img src="../../assets/icons/calendar.svg" alt="" />
+                  Échéance: 10 janvier 2026
                 </div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Créé par: Yann Uliong</div>
+                <div class="meta-item">
+                  <img src="../../assets/icons/user.svg" alt="" />
+                  Créé par: Yann Uliong
+                </div>
               </div>
             </div>
             <div class="priority-badge priority-high">Haute</div>
@@ -1112,7 +1305,10 @@
                 Lire "Le Seigneur des Anneaux" chapitre 5 et faire un résumé de 2 pages
               </div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 12 janvier 2026</div>
+                <div class="meta-item">
+                  <img src="../../assets/icons/calendar.svg" alt="" />
+                   12 janvier 2026
+                </div>
                 <div class="meta-item">👤 Auto-créée</div>
               </div>
             </div>
@@ -1135,7 +1331,10 @@
               <div class="task-title">Révision vocabulaire anglais</div>
               <div class="task-description">Apprendre 50 nouveaux mots de vocabulaire pour le test</div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 5 janvier 2026</div>
+                <div class="meta-item">
+                  <img src="../../assets/icons/calendar.svg" alt="" />
+                   5 janvier 2026
+                </div>
                 <div class="meta-item">👤 Auto-créée</div>
               </div>
             </div>
@@ -1160,8 +1359,14 @@
                 Rédiger un rapport détaillé incluant hypothèse, procédure, résultats et conclusions
               </div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 15 janvier 2026</div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Yann Uliong</div>
+                <div class="meta-item">
+                  <img src="../../assets/icons/calendar.svg" alt="" />
+                   15 janvier 2026
+                </div>
+                <div class="meta-item">
+                  <img src="../../assets/icons/user.svg" alt="" />
+                   Yann Uliong
+                </div>
               </div>
             </div>
             <div class="priority-badge priority-high">Haute</div>
@@ -1185,7 +1390,10 @@
                 Créer une présentation PowerPoint de 15-20 diapositives sur la Révolution française
               </div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 20 janvier 2026</div>
+                <div class="meta-item">
+                  <img src="../../assets/icons/calendar.svg" alt="" />
+                   20 janvier 2026
+                </div>
                 <div class="meta-item">👤 Auto-créée</div>
               </div>
             </div>
@@ -1210,8 +1418,14 @@
                 Répondre aux 20 questions du quiz en ligne sur les triangles et leurs propriétés
               </div>
               <div class="task-meta">
-                <div class="meta-item"><img src="../../assets/icons/calendar.svg" alt="" /> 8 janvier 2026</div>
-                <div class="meta-item"><img src="../../assets/icons/user.svg" alt="" /> Système</div>
+                <div class="meta-item">
+                  <img src="../../assets/icons/calendar.svg" alt="" />
+                   8 janvier 2026
+                </div>
+                <div class="meta-item">
+                  <img src="../../assets/icons/user.svg" alt="" />
+                   Système
+                </div>
               </div>
             </div>
             <div class="priority-badge priority-medium">Normal</div>
@@ -1231,7 +1445,6 @@
       </main>
     </div>
 
-    <!-- Modal: Ajouter une tâche -->
     <div class="modal" id="taskModal" data-mode="create">
       <div class="modal-content">
         <div class="modal-header">
@@ -1241,17 +1454,33 @@
         <form id="taskForm">
           <div class="form-group">
             <label for="taskTitle" class="form-label required">Titre</label>
-            <input type="text" id="taskTitle" class="form-input" placeholder="Ex: Équations du second degré"
-              maxlength="100" required />
-            <div class="char-counter"><span id="titleCounter">0</span>/100</div>
+            <input
+              type="text"
+              id="taskTitle"
+              class="form-input"
+              placeholder="Ex: Équations du second degré"
+              maxlength="100"
+              required
+            />
+            <div class="char-counter">
+              <span id="titleCounter">0</span>
+              /100
+            </div>
             <div class="form-error" id="titleError"></div>
           </div>
 
           <div class="form-group">
             <label for="taskDescription" class="form-label">Description</label>
-            <textarea id="taskDescription" class="form-textarea"
-              placeholder="Ex: Compléter les 10 exercices de la feuille distribuée..." maxlength="500"></textarea>
-            <div class="char-counter"><span id="descCounter">0</span>/500</div>
+            <textarea
+              id="taskDescription"
+              class="form-textarea"
+              placeholder="Ex: Compléter les 10 exercices de la feuille distribuée..."
+              maxlength="500"
+            ></textarea>
+            <div class="char-counter">
+              <span id="descCounter">0</span>
+              /500
+            </div>
             <div class="form-error" id="descriptionError"></div>
           </div>
 
@@ -1273,16 +1502,54 @@
 
     <div id="toast-container" class="toast-container"></div>
     <script>
-      const showToast = (icon, title, message) => {
+      const showToast = (icon, title, message, type = "info") => {
         const container = document.getElementById("toast-container");
         const toast = document.createElement("div");
-        toast.className = "toast";
-        toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+
+        // Auto-detect type from icon if not provided
+        if (type === "info") {
+          if (icon.includes("✅") || icon.includes("✓")) type = "success";
+          else if (icon.includes("❌") || icon.includes("🗑️") || icon.includes("⚠️")) type = "error";
+          else if (icon.includes("⚠️") || icon.includes("🔔")) type = "warning";
+        }
+
+        toast.className = `toast ${type}`;
+        toast.setAttribute("role", "alert");
+        toast.setAttribute("aria-live", "polite");
+        toast.innerHTML = `
+          <div class="toast-header">
+            <span class="toast-icon">${icon}</span>
+            <div class="toast-content">
+              <div class="toast-title">${title}</div>
+              <div class="toast-message">${message}</div>
+            </div>
+            <button class="toast-close" aria-label="Fermer" onclick="this.closest('.toast').remove()">×</button>
+          </div>
+          <div class="toast-progress"></div>
+        `;
+
         container.appendChild(toast);
-        setTimeout(() => {
-          toast.classList.add("dismissing");
-          setTimeout(() => toast.remove(), 500);
-        }, 2700);
+
+        let timeoutId;
+        const startDismiss = () => {
+          timeoutId = setTimeout(() => {
+            toast.classList.add("dismissing");
+            setTimeout(() => toast.remove(), 300);
+          }, 2700);
+        };
+
+        // Pause on hover
+        toast.addEventListener("mouseenter", () => {
+          toast.classList.add("paused");
+          clearTimeout(timeoutId);
+        });
+
+        toast.addEventListener("mouseleave", () => {
+          toast.classList.remove("paused");
+          startDismiss();
+        });
+
+        startDismiss();
       };
 
       const taskModal = document.getElementById("taskModal");
@@ -1297,7 +1564,6 @@
       const taskDate = document.getElementById("taskDate");
       const titleCounter = document.getElementById("titleCounter");
       const descCounter = document.getElementById("descCounter");
-
 
       const today = new Date();
       const todayStr = today.toISOString().split("T")[0];
@@ -1519,5 +1785,4 @@
       });
     </script>
   </body>
-
 </html>

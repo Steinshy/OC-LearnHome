@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn@Home - Connexion | Maquette Desktop</title>
     <style>
+      :root {
+        --primary: #3b82f6;
+        --primary-dark: #1e40af;
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        --radius-md: 12px;
+        --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -19,21 +28,23 @@
           "Segoe UI",
           Roboto,
           sans-serif;
-        background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        background: linear-gradient(135deg, #3b82f6 0%, #1e40af 50%, #1e3a8a 100%);
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 20px;
+        -webkit-font-smoothing: antialiased;
       }
 
       .container {
         background: white;
-        border-radius: 12px;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-lg);
         width: 100%;
         max-width: 420px;
         padding: 48px;
+        border: 1px solid rgba(255, 255, 255, 0.9);
       }
 
       .header {
@@ -91,8 +102,8 @@
       input[type="email"]:focus,
       input[type="password"]:focus {
         outline: none;
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
       }
 
       input[type="email"]::placeholder,
@@ -119,13 +130,19 @@
       }
 
       .remember-forgot a {
-        color: #3b82f6;
+        color: var(--primary);
         text-decoration: none;
-        transition: color 0.3s;
+        transition: var(--transition);
       }
 
       .remember-forgot a:hover {
-        color: #1e40af;
+        color: var(--primary-dark);
+      }
+
+      .remember-forgot a:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+        border-radius: 4px;
       }
 
       .checkbox {
@@ -142,19 +159,26 @@
       .button-primary {
         width: 100%;
         padding: 12px 16px;
-        background: #3b82f6;
+        background: var(--primary);
         color: white;
         border: none;
         border-radius: 6px;
         font-size: 16px;
         font-weight: 600;
         cursor: pointer;
-        transition: background 0.3s;
+        transition: var(--transition);
         margin-bottom: 16px;
+        box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
       }
 
       .button-primary:hover {
-        background: #1e40af;
+        background: var(--primary-dark);
+        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.35);
+      }
+
+      .button-primary:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
       }
 
       .button-primary:active {
@@ -199,10 +223,10 @@
       }
 
       .info-box {
-        background: #e0f2fe;
-        border-left: 4px solid #3b82f6;
+        background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+        border-left: 4px solid var(--primary);
         padding: 12px 16px;
-        border-radius: 4px;
+        border-radius: 6px;
         margin-top: 24px;
         font-size: 12px;
         color: #1e40af;
@@ -249,29 +273,145 @@
       }
 
       .toast {
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        padding: 16px;
-        min-width: 300px;
-        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        position: relative;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.12),
+          0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 16px 20px;
+        min-width: 320px;
+        max-width: 400px;
+        animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         pointer-events: auto;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .toast:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 12px 40px rgba(0, 0, 0, 0.15),
+          0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
       .toast.dismissing {
-        animation: fadeOut 0.3s ease-out forwards;
+        animation: fadeOut 0.3s cubic-bezier(0.4, 0, 1, 1) forwards;
+      }
+
+      .toast-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .toast-icon {
+        font-size: 20px;
+        line-height: 1;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .toast-content {
+        flex: 1;
+        min-width: 0;
       }
 
       .toast-title {
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 600;
         color: #111827;
         margin-bottom: 4px;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
       }
 
       .toast-message {
         font-size: 13px;
         color: #6b7280;
+        line-height: 1.5;
+      }
+
+      .toast-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: transparent;
+        border: none;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 6px;
+        color: #9ca3af;
+        transition: all 0.2s ease;
+        padding: 0;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      .toast-close:hover {
+        background: rgba(0, 0, 0, 0.05);
+        color: #374151;
+      }
+
+      .toast-close:active {
+        transform: scale(0.9);
+      }
+
+      .toast-progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        width: 100%;
+        transform-origin: left;
+        animation: progressBar 2.7s linear forwards;
+      }
+
+      .toast.paused .toast-progress {
+        animation-play-state: paused;
+      }
+
+      .toast.success {
+        border-left: 4px solid #10b981;
+      }
+
+      .toast.success .toast-progress {
+        background: linear-gradient(90deg, #10b981, #059669);
+      }
+
+      .toast.error,
+      .toast.danger {
+        border-left: 4px solid #ef4444;
+      }
+
+      .toast.error .toast-progress,
+      .toast.danger .toast-progress {
+        background: linear-gradient(90deg, #ef4444, #dc2626);
+      }
+
+      .toast.warning {
+        border-left: 4px solid #f59e0b;
+      }
+
+      .toast.warning .toast-progress {
+        background: linear-gradient(90deg, #f59e0b, #d97706);
+      }
+
+      .toast.info {
+        border-left: 4px solid #3b82f6;
+      }
+
+      .toast.info .toast-progress {
+        background: linear-gradient(90deg, #3b82f6, #2563eb);
       }
 
       @keyframes slideIn {
@@ -289,12 +429,22 @@
       @keyframes fadeOut {
         from {
           opacity: 1;
-          transform: translateX(0);
+          transform: translateX(0) scale(1);
         }
 
         to {
           opacity: 0;
-          transform: translateX(100px);
+          transform: translateX(100px) scale(0.95);
+        }
+      }
+
+      @keyframes progressBar {
+        from {
+          transform: scaleX(1);
+        }
+
+        to {
+          transform: scaleX(0);
         }
       }
 
@@ -422,9 +572,7 @@
           <a onclick="window.location.href = 'recovery.html'" href="recovery.html">Mot de passe oublié ?</a>
         </div>
 
-        <button type="submit" class="button-primary">
-          Se connecter
-        </button>
+        <button type="submit" class="button-primary">Se connecter</button>
       </form>
 
       <div class="divider">
@@ -432,28 +580,69 @@
       </div>
 
       <p class="signup-link">
-        Créer un compte <a onclick="window.location.href = 'signup.html'" href="signup.html">S'inscrire</a>
+        Créer un compte
+        <a onclick="window.location.href = 'signup.html'" href="signup.html">S'inscrire</a>
       </p>
 
       <div class="info-box">
         <strong>Démonstration :</strong>
-        Email: eleve@learnhome.com <br />Mot de passe: Eleve2026
+        Email: eleve@learnhome.com
+        <br />
+        Mot de passe: Eleve2026
       </div>
 
       <div class="copyright">© 2026 Learn@Home. All rights reserved.</div>
     </div>
     <div id="toast-container" class="toast-container"></div>
     <script>
-      const showToast = (icon, title, message) => {
+      const showToast = (icon, title, message, type = "info") => {
         const container = document.getElementById("toast-container");
         const toast = document.createElement("div");
-        toast.className = "toast";
-        toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
+
+        // Auto-detect type from icon if not provided
+        if (type === "info") {
+          if (icon.includes("✅") || icon.includes("✓")) type = "success";
+          else if (icon.includes("❌") || icon.includes("🗑️") || icon.includes("⚠️")) type = "error";
+          else if (icon.includes("⚠️") || icon.includes("🔔")) type = "warning";
+        }
+
+        toast.className = `toast ${type}`;
+        toast.setAttribute("role", "alert");
+        toast.setAttribute("aria-live", "polite");
+        toast.innerHTML = `
+          <div class="toast-header">
+            <span class="toast-icon">${icon}</span>
+            <div class="toast-content">
+              <div class="toast-title">${title}</div>
+              <div class="toast-message">${message}</div>
+            </div>
+            <button class="toast-close" aria-label="Fermer" onclick="this.closest('.toast').remove()">×</button>
+          </div>
+          <div class="toast-progress"></div>
+        `;
+
         container.appendChild(toast);
-        setTimeout(() => {
-          toast.classList.add("dismissing");
-          setTimeout(() => toast.remove(), 500);
-        }, 2700);
+
+        let timeoutId;
+        const startDismiss = () => {
+          timeoutId = setTimeout(() => {
+            toast.classList.add("dismissing");
+            setTimeout(() => toast.remove(), 300);
+          }, 2700);
+        };
+
+        // Pause on hover
+        toast.addEventListener("mouseenter", () => {
+          toast.classList.add("paused");
+          clearTimeout(timeoutId);
+        });
+
+        toast.addEventListener("mouseleave", () => {
+          toast.classList.remove("paused");
+          startDismiss();
+        });
+
+        startDismiss();
       };
       const validateLogin = (event) => {
         event.preventDefault();
