@@ -9,21 +9,10 @@
   "bracketSameLine": false,
   "arrowParens": "always",
   "endOfLine": "lf",
-  "htmlWhitespaceSensitivity": "css",
+  "htmlWhitespaceSensitivity": "ignore",
   "embeddedLanguageFormatting": "auto",
   "overrides": [
-    {
-      "files": "*.html",
-      "options": {
-        "parser": "html",
-        "singleQuote": false
-      }
-    },
-    {
-      "files": "*.css",
-      "options": {
-        "singleQuote": false
-      }
-    }
+    { "files": "*.html", "options": { "parser": "html", "singleQuote": false } },
+    { "files": "*.css", "options": { "singleQuote": false } }
   ]
 }
