@@ -137,6 +137,16 @@
 **Je souhaite** sélectionner un événement ou rendez-vous
 **Afin de** consulter les détails de l'événement ou rendez-vous.
 
+##### T006.3-ÉLÈVE/TUTEUR — Création d'un événement ou rendez-vous
+**En tant que** élève ou tuteur connecté
+**Je souhaite** ajouter un événement ou rendez-vous
+**Afin de** planifier mes activités et organiser mon agenda.
+
+##### T006.4-ÉLÈVE/TUTEUR — Suppression d'un événement ou rendez-vous
+**En tant que** élève ou tuteur connecté
+**Je souhaite** supprimer un événement ou rendez-vous
+**Afin de** maintenir mon calendrier à jour en supprimant les événements annulés ou obsolètes.
+
 #### T007 — Tâches
 
 ##### T007.1-ÉLÈVE/TUTEUR — Accès à la page des tâches
