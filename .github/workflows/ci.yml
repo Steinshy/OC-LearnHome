@@ -28,7 +28,7 @@ jobs:
         run: npm ci
 
       - name: Run ESLint (HTML/JS)
-        run: npx eslint .
+        run: npm run lint
 
       - name: Check Prettier formatting
         run: npx prettier --check "**/*.{html,css,js,mjs,cjs,json}" --ignore-path .gitignore

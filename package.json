@@ -8,10 +8,18 @@
     "@eslint/js": "^9.39.2",
     "eslint": "^9.39.2",
     "eslint-plugin-html": "^8.1.4",
-    "eslint-plugin-jsdoc": "^62.5.0",
+    "eslint-plugin-jsdoc": "^62.6.0",
     "eslint-plugin-security": "^3.0.1",
     "eslint-plugin-unicorn": "^63.0.0",
     "globals": "^17.3.0",
-    "prettier": "^3.7.4"
+    "npm-check-updates": "^19.3.2",
+    "prettier": "^3.8.1"
+  },
+  "scripts": {
+    "update:check": "ncu",
+    "update:interactive": "ncu -i",
+    "update:all": "ncu -u",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   }
 }
