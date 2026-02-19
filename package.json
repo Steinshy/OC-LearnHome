@@ -13,13 +13,15 @@
     "eslint-plugin-unicorn": "^63.0.0",
     "globals": "^17.3.0",
     "npm-check-updates": "^19.4.0",
-    "prettier": "^3.8.1"
+    "prettier": "^3.8.1",
+    "sharp": "^0.34.5"
   },
   "scripts": {
     "update:check": "ncu",
     "update:interactive": "ncu -i",
     "update:all": "ncu -u",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "icons:convert": "node scripts/convert-icons.js"
   }
 }
