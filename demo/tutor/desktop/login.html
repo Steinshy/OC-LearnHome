@@ -4,424 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn@Home - Connexion Tuteur | Maquette Desktop</title>
-    <style>
-      :root {
-        --primary: #3b82f6;
-        --primary-dark: #1e40af;
-        --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-        --radius-md: 12px;
-        --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family:
-          "Inter",
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          Roboto,
-          sans-serif;
-        background: linear-gradient(135deg, #3b82f6 0%, #1e40af 50%, #1e3a8a 100%);
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      .container {
-        background: white;
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-lg);
-        width: 100%;
-        max-width: 420px;
-        padding: 48px;
-        border: 1px solid rgba(255, 255, 255, 0.9);
-      }
-
-      .header {
-        text-align: center;
-        margin-bottom: 32px;
-      }
-
-      .logo {
-        font-size: 28px;
-        font-weight: 700;
-        color: #3b82f6;
-        margin-bottom: 8px;
-      }
-
-      .logo-subtitle {
-        font-size: 14px;
-        color: #6b7280;
-        margin-bottom: 24px;
-      }
-
-      h1 {
-        font-size: 24px;
-        color: #111827;
-        margin-bottom: 8px;
-        font-weight: 700;
-      }
-
-      .subtitle {
-        font-size: 14px;
-        color: #6b7280;
-      }
-
-      .form-group {
-        margin-bottom: 20px;
-      }
-
-      label {
-        display: block;
-        font-size: 14px;
-        font-weight: 500;
-        color: #374151;
-        margin-bottom: 8px;
-      }
-
-      input[type="email"],
-      input[type="password"] {
-        width: 100%;
-        padding: 10px 12px;
-        border: 1px solid #d1d5db;
-        border-radius: 6px;
-        font-size: 14px;
-        transition: all 0.3s ease;
-      }
-
-      input[type="email"]:focus,
-      input[type="password"]:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-      }
-
-      input[type="email"]::placeholder,
-      input[type="password"]::placeholder {
-        color: #9ca3af;
-      }
-
-      input[type="email"]::placeholder,
-      input[type="password"]::placeholder {
-        transition: opacity 0.2s ease;
-      }
-
-      input[type="email"]:focus::placeholder,
-      input[type="password"]:focus::placeholder {
-        opacity: 0;
-      }
-
-      .remember-forgot {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 14px;
-        margin-bottom: 24px;
-      }
-
-      .remember-forgot a {
-        color: #3b82f6;
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      .remember-forgot a:hover {
-        color: #1e40af;
-      }
-
-      .checkbox {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-      }
-
-      .checkbox input {
-        margin-right: 6px;
-        cursor: pointer;
-      }
-
-      .button-primary {
-        width: 100%;
-        padding: 12px 16px;
-        background: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: var(--transition);
-        margin-bottom: 16px;
-        box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
-      }
-
-      .button-primary:hover {
-        background: var(--primary-dark);
-        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.35);
-      }
-
-      .button-primary:focus-visible {
-        outline: 2px solid var(--primary);
-        outline-offset: 2px;
-      }
-
-      .button-primary:active {
-        transform: scale(0.98);
-      }
-
-      .divider {
-        display: flex;
-        align-items: center;
-        margin: 24px 0;
-        color: #d1d5db;
-      }
-
-      .divider::before,
-      .divider::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: #d1d5db;
-      }
-
-      .divider span {
-        padding: 0 12px;
-        font-size: 14px;
-        color: #6b7280;
-      }
-
-      .signup-link {
-        text-align: center;
-        font-size: 14px;
-        color: #6b7280;
-      }
-
-      .signup-link a {
-        color: #3b82f6;
-        text-decoration: none;
-        font-weight: 600;
-      }
-
-      .signup-link a:hover {
-        text-decoration: underline;
-      }
-
-      .info-box {
-        background: #e0f2fe;
-        border-left: 4px solid #3b82f6;
-        padding: 12px 16px;
-        border-radius: 4px;
-        margin-top: 24px;
-        font-size: 12px;
-        color: #1e40af;
-      }
-
-      .info-box strong {
-        display: block;
-        margin-bottom: 4px;
-      }
-
-      .copyright {
-        text-align: center;
-        margin-top: 24px;
-        padding-top: 20px;
-        border-top: 1px solid #e2e8f0;
-        color: #94a3b8;
-        font-size: 12px;
-      }
-
-      .error-message {
-        color: #dc2626;
-        font-size: 12px;
-        margin-top: 4px;
-        display: none;
-      }
-
-      .error-message.show {
-        display: block;
-      }
-
-      input:invalid:not(:placeholder-shown) {
-        border-color: #dc2626;
-      }
-
-      .toast-container {
-        position: fixed;
-        top: 24px;
-        right: 24px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        z-index: 9999;
-        pointer-events: none;
-      }
-
-      .toast {
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        padding: 16px;
-        min-width: 300px;
-        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        pointer-events: auto;
-      }
-
-      .toast.dismissing {
-        animation: fadeOut 0.3s ease-out forwards;
-      }
-
-      .toast-title {
-        font-size: 14px;
-        font-weight: 600;
-        color: #111827;
-        margin-bottom: 4px;
-      }
-
-      .toast-message {
-        font-size: 13px;
-        color: #6b7280;
-      }
-
-      @keyframes slideIn {
-        from {
-          transform: translateX(400px);
-          opacity: 0;
-        }
-
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-
-      @keyframes fadeOut {
-        from {
-          opacity: 1;
-          transform: translateX(0);
-        }
-
-        to {
-          opacity: 0;
-          transform: translateX(100px);
-        }
-      }
-
-      button:disabled,
-      button[disabled] {
-        opacity: 0.6;
-        cursor: not-allowed;
-        background-color: #9ca3af;
-      }
-
-      .button-primary:disabled,
-      .button-primary[disabled] {
-        background: #9ca3af;
-        color: white;
-      }
-
-      .button-secondary:disabled,
-      .button-secondary[disabled] {
-        background: #f3f4f6;
-        color: #9ca3af;
-        border-color: #d1d5db;
-      }
-
-      .button-danger:disabled,
-      .button-danger[disabled] {
-        background: #fecaca;
-        color: #991b1b;
-      }
-
-      button.loading {
-        cursor: not-allowed;
-        position: relative;
-        color: transparent;
-      }
-
-      button.loading::after {
-        content: "";
-        position: absolute;
-        width: 16px;
-        height: 16px;
-        top: 50%;
-        left: 50%;
-        margin-left: -8px;
-        margin-top: -8px;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        border-radius: 50%;
-        border-top-color: white;
-        animation: spin 0.6s linear infinite;
-      }
-
-      .button-primary.loading {
-        background: #3b82f6;
-        opacity: 0.8;
-      }
-
-      .button-secondary.loading {
-        background: #f3f4f6;
-      }
-
-      .button-secondary.loading::after {
-        border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3b82f6;
-      }
-
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .action-btn:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-      }
-
-      .filter-btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      input:disabled,
-      textarea:disabled,
-      select:disabled {
-        background-color: #f3f4f6;
-        color: #9ca3af;
-        cursor: not-allowed;
-        opacity: 0.7;
-      }
-    </style>
+    <link rel="stylesheet" href="../../assets/styles/shared.css" />
+    <link rel="stylesheet" href="../../assets/styles/auth.css" />
   </head>
 
   <body>
     <div class="container">
       <div class="header">
-        <div class="logo">📚 Learn@Home</div>
+        <div class="logo">
+          <img src="../../assets/icons/book.svg" alt="" class="logo-icon" aria-hidden="true" />
+          Learn@Home
+        </div>
         <div class="logo-subtitle">Plateforme de tutorat en ligne</div>
         <h1>Connexion Tuteur</h1>
         <p class="subtitle">Connectez-vous en tant que tuteur</p>
       </div>
 
-      <form onsubmit="validateLogin(event)">
+      <form id="login-form">
         <div class="form-group">
           <label for="email">Adresse email</label>
           <input
             type="email"
             id="email"
-            value="yann.uliong@learnhome.com"
+            autocomplete="email"
+            value="tutor@example.com"
             placeholder="tutor@learnhome.com"
             required
-            title="L'email de démonstration est yann.uliong@learnhome.com"
+            title="L'email de démonstration est tutor@example.com"
           />
           <div class="error-message" id="email-error">Veuillez entrer une adresse email valide</div>
         </div>
@@ -431,6 +40,7 @@
           <input
             type="password"
             id="password"
+            autocomplete="current-password"
             value="Tuteur2026"
             minlength="6"
             required
@@ -461,7 +71,7 @@
 
       <div class="info-box">
         <strong>Démonstration (Tuteur) :</strong>
-        Email: yann.uliong@learnhome.com
+        Email: tutor@example.com
         <br />
         Mot de passe: Tuteur2026
       </div>
@@ -470,26 +80,6 @@
     </div>
 
     <div id="toast-container" class="toast-container"></div>
-    <script>
-      const showToast = (icon, title, message) => {
-        const container = document.getElementById("toast-container");
-        const toast = document.createElement("div");
-        toast.className = "toast";
-        toast.innerHTML = `<div class="toast-title">${icon} ${title}</div><div class="toast-message">${message}</div>`;
-        container.appendChild(toast);
-        setTimeout(() => {
-          toast.classList.add("dismissing");
-          setTimeout(() => toast.remove(), 500);
-        }, 2700);
-      };
-
-      const validateLogin = (event) => {
-        event.preventDefault();
-        showToast("✅", "Connexion", "Connexion en cours...");
-        setTimeout(() => {
-          window.location.href = "dashboard.html";
-        }, 500);
-      };
-    </script>
+    <script type="module" src="../../assets/js/pages/auth.js"></script>
   </body>
 </html>

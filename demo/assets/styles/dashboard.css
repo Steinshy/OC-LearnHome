@@ -1,0 +1,253 @@
+/* ============================================
+   Learn@Home - Dashboard page
+   Used by: student/tutor desktop + mobile
+   ============================================ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.sidebar ~ .main .grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 24px;
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.sidebar ~ .main .card {
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.sidebar ~ .main .card-title {
+  font-size: 16px;
+}
+
+.card-badge {
+  background: #e0f2fe;
+  color: #1e40af;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sidebar ~ .main .card-badge {
+  font-size: 11px;
+}
+
+.card-title-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.message-box {
+  background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+  border-left: 4px solid var(--primary);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar ~ .main .message-box {
+  background: #dbeafe;
+  border-radius: 6px;
+}
+
+.message-title {
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 4px;
+}
+
+.message-text {
+  font-size: 14px;
+  color: #1e40af;
+}
+
+.sidebar ~ .main .message-title {
+  font-size: 14px;
+}
+
+.sidebar ~ .main .message-text {
+  font-size: 13px;
+}
+
+.message-title-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--bg);
+}
+
+.stat-item:last-child {
+  border-bottom: none;
+}
+
+.sidebar ~ .main .stat-item {
+  border-bottom-color: #f3f4f6;
+  min-height: 44px;
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.stat-value {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.stat-status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sidebar ~ .main .stat-status {
+  font-size: 11px;
+}
+
+.status-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-done {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-inprogress {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.stat-status[data-status="pending"] {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.stat-status[data-status="inprogress"] {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.stat-status[data-status="done"] {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.stat-item.clickable:hover {
+  background: #f3f4f6;
+}
+
+.stat-status.clickable {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.stat-status.clickable:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-item {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--bg);
+}
+
+.event-item:last-child {
+  border-bottom: none;
+}
+
+.sidebar ~ .main .event-item {
+  border-bottom-color: #f3f4f6;
+}
+
+.event-time {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.event-title {
+  font-weight: 600;
+  color: #111827;
+  margin: 4px 0;
+}
+
+.sidebar ~ .main .event-title {
+  font-size: 14px;
+}
+
+.event-location {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.sidebar ~ .main .event-location {
+  font-size: 12px;
+}
+
+.card-full {
+  grid-column: 1 / -1;
+}
+
+.overview-content {
+  margin-top: 16px;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  color: #94a3b8;
+  font-size: 12px;
+}
