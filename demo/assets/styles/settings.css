@@ -243,6 +243,7 @@ nav {
 }
 
 .header {
+  display: block;
   margin-bottom: 32px;
 }
 
@@ -256,6 +257,7 @@ h1 {
 .header-subtitle {
   font-size: 14px;
   color: #6b7280;
+  margin-top: 0;
 }
 
 .card {
@@ -1308,6 +1310,7 @@ nav {
 }
 
 .header {
+  display: block;
   margin-bottom: 24px;
 }
 
@@ -1321,6 +1324,7 @@ h1 {
 .header-subtitle {
   font-size: 14px;
   color: #6b7280;
+  margin-top: 0;
 }
 
 .card {
@@ -2357,6 +2361,7 @@ nav {
 }
 
 .header {
+  display: block;
   margin-bottom: 32px;
 }
 
@@ -2370,6 +2375,7 @@ h1 {
 .header-subtitle {
   font-size: 14px;
   color: var(--text-muted);
+  margin-top: 0;
 }
 
 .card {
@@ -3255,6 +3261,7 @@ nav {
 }
 
 .header {
+  display: block;
   margin-bottom: 24px;
 }
 
@@ -3268,6 +3275,7 @@ h1 {
 .header-subtitle {
   font-size: 14px;
   color: #6b7280;
+  margin-top: 0;
 }
 
 .card {

@@ -21,7 +21,6 @@
     "update:interactive": "ncu -i",
     "update:all": "ncu -u",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "icons:convert": "node scripts/convert-icons.js"
+    "lint:fix": "eslint . --fix"
   }
 }

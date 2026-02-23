@@ -36,6 +36,7 @@ body {
     "Segoe UI",
     Roboto,
     sans-serif;
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
 }
@@ -333,4 +334,233 @@ select:disabled {
   color: #9ca3af;
   cursor: not-allowed;
   opacity: 0.7;
+}
+
+/* ===== Desktop toast restore: override feature CSS that breaks toast ===== */
+/* Applies when toast container is sibling of page-layout (tasks, calendar, dashboard)
+   or layout (chat, settings) — desktop pages only */
+.page-layout ~ .toast-container,
+.page-layout ~ #toast-container,
+.layout ~ .toast-container,
+.layout ~ #toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.page-layout ~ .toast-container .toast,
+.page-layout ~ #toast-container .toast,
+.layout ~ .toast-container .toast,
+.layout ~ #toast-container .toast {
+  position: relative;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 16px 20px;
+  min-width: 320px;
+  max-width: 400px;
+  animation: toast-slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  pointer-events: auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.page-layout ~ .toast-container .toast:hover,
+.page-layout ~ #toast-container .toast:hover,
+.layout ~ .toast-container .toast:hover,
+.layout ~ #toast-container .toast:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.page-layout ~ .toast-container .toast.dismissing,
+.page-layout ~ #toast-container .toast.dismissing,
+.layout ~ .toast-container .toast.dismissing,
+.layout ~ #toast-container .toast.dismissing {
+  animation: toast-fadeOut 0.3s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.page-layout ~ .toast-container .toast-header,
+.page-layout ~ #toast-container .toast-header,
+.layout ~ .toast-container .toast-header,
+.layout ~ #toast-container .toast-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.page-layout ~ .toast-container .toast-icon,
+.page-layout ~ #toast-container .toast-icon,
+.layout ~ .toast-container .toast-icon,
+.layout ~ #toast-container .toast-icon {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.page-layout ~ .toast-container .toast-content,
+.page-layout ~ #toast-container .toast-content,
+.layout ~ .toast-container .toast-content,
+.layout ~ #toast-container .toast-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.page-layout ~ .toast-container .toast-title,
+.page-layout ~ #toast-container .toast-title,
+.layout ~ .toast-container .toast-title,
+.layout ~ #toast-container .toast-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.page-layout ~ .toast-container .toast-message,
+.page-layout ~ #toast-container .toast-message,
+.layout ~ .toast-container .toast-message,
+.layout ~ #toast-container .toast-message {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.page-layout ~ .toast-container .toast-close,
+.page-layout ~ #toast-container .toast-close,
+.layout ~ .toast-container .toast-close,
+.layout ~ #toast-container .toast-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #9ca3af;
+  transition: all 0.2s ease;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.page-layout ~ .toast-container .toast-close:hover,
+.page-layout ~ #toast-container .toast-close:hover,
+.layout ~ .toast-container .toast-close:hover,
+.layout ~ #toast-container .toast-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #374151;
+}
+
+.page-layout ~ .toast-container .toast-close:active,
+.page-layout ~ #toast-container .toast-close:active,
+.layout ~ .toast-container .toast-close:active,
+.layout ~ #toast-container .toast-close:active {
+  transform: scale(0.9);
+}
+
+.page-layout ~ .toast-container .toast-progress,
+.page-layout ~ #toast-container .toast-progress,
+.layout ~ .toast-container .toast-progress,
+.layout ~ #toast-container .toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  width: 100%;
+  transform-origin: left;
+  animation: toast-progressBar 2.7s linear forwards;
+}
+
+.page-layout ~ .toast-container .toast.paused .toast-progress,
+.page-layout ~ #toast-container .toast.paused .toast-progress,
+.layout ~ .toast-container .toast.paused .toast-progress,
+.layout ~ #toast-container .toast.paused .toast-progress {
+  animation-play-state: paused;
+}
+
+.page-layout ~ .toast-container .toast.success,
+.page-layout ~ #toast-container .toast.success,
+.layout ~ .toast-container .toast.success,
+.layout ~ #toast-container .toast.success {
+  border-left: 4px solid #10b981;
+}
+
+.page-layout ~ .toast-container .toast.success .toast-progress,
+.page-layout ~ #toast-container .toast.success .toast-progress,
+.layout ~ .toast-container .toast.success .toast-progress,
+.layout ~ #toast-container .toast.success .toast-progress {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.page-layout ~ .toast-container .toast.error,
+.page-layout ~ .toast-container .toast.danger,
+.page-layout ~ #toast-container .toast.error,
+.page-layout ~ #toast-container .toast.danger,
+.layout ~ .toast-container .toast.error,
+.layout ~ .toast-container .toast.danger,
+.layout ~ #toast-container .toast.error,
+.layout ~ #toast-container .toast.danger {
+  border-left: 4px solid #ef4444;
+}
+
+.page-layout ~ .toast-container .toast.error .toast-progress,
+.page-layout ~ .toast-container .toast.danger .toast-progress,
+.page-layout ~ #toast-container .toast.error .toast-progress,
+.page-layout ~ #toast-container .toast.danger .toast-progress,
+.layout ~ .toast-container .toast.error .toast-progress,
+.layout ~ .toast-container .toast.danger .toast-progress,
+.layout ~ #toast-container .toast.error .toast-progress,
+.layout ~ #toast-container .toast.danger .toast-progress {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.page-layout ~ .toast-container .toast.warning,
+.page-layout ~ #toast-container .toast.warning,
+.layout ~ .toast-container .toast.warning,
+.layout ~ #toast-container .toast.warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.page-layout ~ .toast-container .toast.warning .toast-progress,
+.page-layout ~ #toast-container .toast.warning .toast-progress,
+.layout ~ #toast-container .toast.warning .toast-progress,
+.layout ~ #toast-container .toast.warning .toast-progress {
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+.page-layout ~ .toast-container .toast.info,
+.page-layout ~ #toast-container .toast.info,
+.layout ~ .toast-container .toast.info,
+.layout ~ #toast-container .toast.info {
+  border-left: 4px solid #3b82f6;
+}
+
+.page-layout ~ .toast-container .toast.info .toast-progress,
+.page-layout ~ #toast-container .toast.info .toast-progress,
+.layout ~ .toast-container .toast.info .toast-progress,
+.layout ~ #toast-container .toast.info .toast-progress {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
 }

@@ -253,17 +253,20 @@ initDropdowns();
 // Task card delegation
 document.querySelectorAll('.task-card').forEach((card) => {
   const checkbox = card.querySelector('.task-checkbox');
+  const checkboxLabel = card.querySelector('label.checkbox[for]');
   const editBtn = card.querySelector('.task-actions .action-btn:first-child');
   const deleteBtn = card.querySelector('.task-actions .action-btn:last-child');
   const cardTitle = card.querySelector('.task-title')?.textContent ?? '';
 
-  if (checkbox) {
-    checkbox.addEventListener('change', () => {
-      showToast(
-        '<img src="../../assets/icons/check.svg" alt="" class="icon-sm" />',
-        'Tâche mise à jour',
-        checkbox.checked ? 'Tâche marquée comme complétée' : 'Tâche marquée comme incomplète'
-      );
+  if (checkboxLabel && checkbox) {
+    checkboxLabel.addEventListener('click', () => {
+      setTimeout(() => {
+        showToast(
+          '<img src="../../assets/icons/check.svg" alt="" class="icon-sm" />',
+          'Tâche mise à jour',
+          checkbox.checked ? 'Tâche marquée comme complétée' : 'Tâche marquée comme incomplète'
+        );
+      }, 0);
     });
   }
 

@@ -672,13 +672,13 @@ h1 {
 }
 
 @media (max-width: 1024px) {
-  .task-card {
+  .page-layout .task-card {
     grid-template-columns: 40px 1fr;
   }
 
-  .task-priority,
-  .task-date,
-  .task-actions {
+  .page-layout .task-priority,
+  .page-layout .task-date,
+  .page-layout .task-actions {
     display: none;
   }
 }
@@ -3279,13 +3279,13 @@ input:checked + .dropdown-menu .dropdown-item.selected::before {
 }
 
 @media (max-width: 1024px) {
-  .task-card {
+  .page-layout .task-card {
     grid-template-columns: 40px 1fr;
   }
 
-  .task-priority,
-  .task-date,
-  .task-actions {
+  .page-layout .task-priority,
+  .page-layout .task-date,
+  .page-layout .task-actions {
     display: none;
   }
 }
@@ -4987,4 +4987,309 @@ select:disabled {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+/* Desktop tasks alignment - .page-layout exists only on desktop pages */
+.page-layout .controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.page-layout .controls .filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+  overflow-x: visible;
+}
+
+.page-layout .controls .tasks-toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.page-layout .tasks-container {
+  max-height: none;
+  overflow-y: visible;
+}
+
+.page-layout .task-card {
+  display: grid;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Student: checkbox | content | priority | status | actions */
+.page-layout .task-card:not(:has(.task-card-right)) {
+  grid-template-columns: 40px 1fr auto auto auto;
+}
+
+.page-layout .task-card .task-checkbox {
+  display: none;
+}
+
+.page-layout .task-card .checkbox {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.page-layout .task-card .checkbox:hover {
+  border-color: #3b82f6;
+}
+
+.page-layout .task-card .task-checkbox:checked + .checkbox {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.page-layout .task-card .task-checkbox:checked + .checkbox::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 11px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.page-layout .task-card:has(.task-card-right) .task-checkbox:checked + .checkbox {
+  background: #10b981;
+  border-color: #10b981;
+}
+
+.page-layout .task-card:not(:has(.task-card-right)) .task-checkbox,
+.page-layout .task-card:not(:has(.task-card-right)) .checkbox {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+}
+
+.page-layout .task-card:not(:has(.task-card-right)) .task-content {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.page-layout .task-card:not(:has(.task-card-right)) .priority-badge {
+  grid-column: 3;
+}
+
+.page-layout .task-card:not(:has(.task-card-right)) .status-badge {
+  grid-column: 4;
+}
+
+.page-layout .task-card:not(:has(.task-card-right)) .task-actions {
+  grid-column: 5;
+}
+
+/* Tutor: checkbox | content | task-card-right */
+.page-layout .task-card:has(.task-card-right) {
+  grid-template-columns: 40px 1fr auto;
+}
+
+.page-layout .task-card:has(.task-card-right) .task-checkbox,
+.page-layout .task-card:has(.task-card-right) .checkbox {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+}
+
+.page-layout .task-card:has(.task-card-right) .task-content {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.page-layout .task-card:has(.task-card-right) .task-card-right {
+  grid-column: 3;
+}
+
+/* ===== Desktop modal: full-screen overlay + centered content (from main/pre-refactor) ===== */
+/* Match both: modal inside page-layout (tutor) and modal as sibling (student) */
+.page-layout .modal-backdrop {
+  display: none !important;
+}
+.page-layout .modal#taskModal,
+.page-layout .modal#createTaskModal,
+.page-layout ~ .modal#taskModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  animation: modalFadeIn 0.2s ease-out;
+  transform: none;
+  max-width: none;
+  max-height: none;
+  overflow: visible;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.page-layout .modal#taskModal.active,
+.page-layout .modal#createTaskModal.active,
+.page-layout ~ .modal#taskModal.active {
+  display: flex;
+  transform: none;
+}
+
+.page-layout .modal#taskModal .modal-content,
+.page-layout .modal#createTaskModal .modal-content,
+.page-layout ~ .modal#taskModal .modal-content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: 90%;
+  padding: 32px;
+  animation: modalSlideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  margin: 24px;
+}
+
+.page-layout .modal#taskModal .modal-header,
+.page-layout .modal#createTaskModal .modal-header,
+.page-layout ~ .modal#taskModal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 0;
+  border: none;
+  position: static;
+  background: transparent;
+}
+
+.page-layout .modal#taskModal .modal-header::before,
+.page-layout .modal#createTaskModal .modal-header::before,
+.page-layout ~ .modal#taskModal .modal-header::before {
+  display: none;
+}
+
+.page-layout .modal#taskModal .modal-title,
+.page-layout .modal#createTaskModal .modal-title,
+.page-layout ~ .modal#taskModal .modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.page-layout .modal#taskModal .modal-close,
+.page-layout .modal#createTaskModal .modal-close,
+.page-layout ~ .modal#taskModal .modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.page-layout .modal#taskModal .modal-close:hover,
+.page-layout .modal#createTaskModal .modal-close:hover,
+.page-layout ~ .modal#taskModal .modal-close:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.page-layout .modal#taskModal .modal-footer,
+.page-layout .modal#createTaskModal .modal-footer,
+.page-layout ~ .modal#taskModal .modal-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 32px;
+  padding: 0;
+  border: none;
+  position: static;
+  background: transparent;
+}
+
+/* Tutor desktop: modal has header/content/footer as siblings - form one card */
+.page-layout .modal#createTaskModal {
+  flex-direction: column;
+}
+
+.page-layout .modal#createTaskModal .modal-header,
+.page-layout .modal#createTaskModal .modal-content,
+.page-layout .modal#createTaskModal .modal-footer {
+  width: 90%;
+  max-width: 500px;
+  background: white;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 24px 32px;
+  box-sizing: border-box;
+}
+
+.page-layout .modal#createTaskModal .modal-header {
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 0;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+.page-layout .modal#createTaskModal .modal-content {
+  border-radius: 0;
+  animation: none;
+}
+
+.page-layout .modal#createTaskModal .modal-footer {
+  border-radius: 0 0 12px 12px;
+  margin-top: 0;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

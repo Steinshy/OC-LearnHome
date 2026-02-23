@@ -307,6 +307,20 @@ h1 {
   padding: 24px;
 }
 
+/* Desktop: page-layout ensures correct alignment (mobile sections override generic selectors) */
+.page-layout .layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+}
+
+.page-layout .calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
 .calendar-header {
   display: flex;
   justify-content: space-between;
@@ -3131,6 +3145,24 @@ select:disabled {
 
 .modal-body--compact {
   padding: 32px 24px 24px;
+}
+
+/* ===== Desktop calendar modal restore (page-layout) ===== */
+.page-layout ~ .modal-overlay .modal {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  top: auto;
+  transform: none;
+  display: block;
+  border-radius: 12px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.page-layout ~ .modal-overlay .modal-header::before {
+  display: none;
 }
 
 /* ----- demo/tutor/desktop/calendar.html ----- */
@@ -6385,4 +6417,22 @@ select:disabled {
 
 .modal-body--compact {
   padding: 32px 24px 24px;
+}
+
+/* ===== Desktop calendar modal restore (page-layout) ===== */
+.page-layout ~ .modal-overlay .modal {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  top: auto;
+  transform: none;
+  display: block;
+  border-radius: 12px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.page-layout ~ .modal-overlay .modal-header::before {
+  display: none;
 }

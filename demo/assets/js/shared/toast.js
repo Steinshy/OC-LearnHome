@@ -6,9 +6,12 @@
  * @param {string} [type='info'] - Toast type: info, success, error, warning
  */
 export const showToast = (icon, title, message, type = 'info') => {
-  const container = document.getElementById('toast-container');
+  let container = document.getElementById('toast-container');
   if (!container) {
-    return;
+    container = document.createElement('div');
+    container.id = 'toast-container';
+    container.className = 'toast-container';
+    document.body.appendChild(container);
   }
   const toast = document.createElement('div');
 

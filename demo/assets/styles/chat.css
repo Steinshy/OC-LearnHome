@@ -6452,3 +6452,30 @@ select:disabled {
   gap: 8px;
   flex-wrap: wrap;
 }
+
+/* Desktop chat: keep contacts sidebar visible (override mobile slide-out .sidebar) */
+.layout .sidebar {
+  position: static;
+  left: auto;
+  width: auto;
+  height: auto;
+  top: auto;
+  grid-column: 2;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Desktop contact header: stacked layout for adequate space (UX best practice) */
+.layout .sidebar .sidebar-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.layout .sidebar .search-box {
+  width: 100%;
+}
+
+.layout .sidebar .add-contact-btn {
+  width: 100%;
+  margin-top: 0;
+}
