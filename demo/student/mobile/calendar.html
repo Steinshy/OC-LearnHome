@@ -3,19 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, " />
+    <link rel="icon" type="image/svg+xml" href="../../assets/icons/graduation-cap.svg" />
     <title>Learn@Home - Calendrier | Maquette Mobile</title>
+    <link rel="stylesheet" href="../../assets/css/common.css" />
     <style>
       :root {
         --primary: #3b82f6;
         --bg: #f3f4f6;
         --border: #e5e7eb;
         --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
       }
 
       body {
@@ -1345,92 +1341,6 @@
         .sidebar {
           width: 300px;
         }
-      }
-
-      button:disabled,
-      button[disabled] {
-        opacity: 0.6;
-        cursor: not-allowed;
-        background-color: #9ca3af;
-      }
-
-      .button-primary:disabled,
-      .button-primary[disabled] {
-        background: #9ca3af;
-        color: white;
-      }
-
-      .button-secondary:disabled,
-      .button-secondary[disabled] {
-        background: #f3f4f6;
-        color: #9ca3af;
-        border-color: #d1d5db;
-      }
-
-      .button-danger:disabled,
-      .button-danger[disabled] {
-        background: #fecaca;
-        color: #991b1b;
-      }
-
-      button.loading {
-        cursor: not-allowed;
-        position: relative;
-        color: transparent;
-      }
-
-      button.loading::after {
-        content: "";
-        position: absolute;
-        width: 16px;
-        height: 16px;
-        top: 50%;
-        left: 50%;
-        margin-left: -8px;
-        margin-top: -8px;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        border-radius: 50%;
-        border-top-color: white;
-        animation: spin 0.6s linear infinite;
-      }
-
-      .button-primary.loading {
-        background: #3b82f6;
-        opacity: 0.8;
-      }
-
-      .button-secondary.loading {
-        background: #f3f4f6;
-      }
-
-      .button-secondary.loading::after {
-        border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3b82f6;
-      }
-
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .action-btn:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-      }
-
-      .filter-btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      input:disabled,
-      textarea:disabled,
-      select:disabled {
-        background-color: #f3f4f6;
-        color: #9ca3af;
-        cursor: not-allowed;
-        opacity: 0.7;
       }
 
       .top-cards-wrapper {

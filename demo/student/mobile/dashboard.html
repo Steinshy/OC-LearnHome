@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, " />
+    <link rel="icon" type="image/svg+xml" href="../../assets/icons/graduation-cap.svg" />
     <title>Learn@Home - Tableau de Bord | Maquette Mobile</title>
+    <link rel="stylesheet" href="../../assets/css/common.css" />
     <style>
       :root {
         --primary: #3b82f6;
@@ -13,12 +15,6 @@
         --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
         --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
         --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
       }
 
       body {
@@ -589,91 +585,6 @@
         }
       }
 
-      button:disabled,
-      button[disabled] {
-        opacity: 0.6;
-        cursor: not-allowed;
-        background-color: #9ca3af;
-      }
-
-      .button-primary:disabled,
-      .button-primary[disabled] {
-        background: #9ca3af;
-        color: white;
-      }
-
-      .button-secondary:disabled,
-      .button-secondary[disabled] {
-        background: #f3f4f6;
-        color: #9ca3af;
-        border-color: #d1d5db;
-      }
-
-      .button-danger:disabled,
-      .button-danger[disabled] {
-        background: #fecaca;
-        color: #991b1b;
-      }
-
-      button.loading {
-        cursor: not-allowed;
-        position: relative;
-        color: transparent;
-      }
-
-      button.loading::after {
-        content: "";
-        position: absolute;
-        width: 16px;
-        height: 16px;
-        top: 50%;
-        left: 50%;
-        margin-left: -8px;
-        margin-top: -8px;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        border-radius: 50%;
-        border-top-color: white;
-        animation: spin 0.6s linear infinite;
-      }
-
-      .button-primary.loading {
-        background: #3b82f6;
-        opacity: 0.8;
-      }
-
-      .button-secondary.loading {
-        background: #f3f4f6;
-      }
-
-      .button-secondary.loading::after {
-        border-color: rgba(59, 130, 246, 0.3);
-        border-top-color: #3b82f6;
-      }
-
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .action-btn:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-      }
-
-      .filter-btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      input:disabled,
-      textarea:disabled,
-      select:disabled {
-        background-color: #f3f4f6;
-        color: #9ca3af;
-        cursor: not-allowed;
-        opacity: 0.7;
-      }
       .mobile-logo img,
       .sidebar-logo img {
         width: 20px;
@@ -732,7 +643,9 @@
           <img src="../../assets/icons/book.svg" alt="" />
           Learn@Home
         </div>
-        <button class="close-btn" id="closeBtn" aria-label="Fermer"><img src="../../assets/icons/x.svg" alt="" /></button>
+        <button class="close-btn" id="closeBtn" aria-label="Fermer">
+          <img src="../../assets/icons/x.svg" alt="" />
+        </button>
       </div>
 
       <nav>
@@ -786,14 +699,20 @@
 
     <main class="main">
       <div class="message-box">
-        <div class="message-title"><img class="message-title-icon" src="../../assets/icons/hand.svg" alt="" /> Bienvenue sur Learn@Home, Antoine !</div>
+        <div class="message-title">
+          <img class="message-title-icon" src="../../assets/icons/hand.svg" alt="" />
+          Bienvenue sur Learn@Home, Antoine !
+        </div>
         <div class="message-text">Vous avez 5 messages non lus et 2 tâches à faire aujourd'hui.</div>
       </div>
 
       <div class="grid">
         <div class="card">
           <div class="card-header">
-            <div class="card-title"><img class="card-title-icon" src="../../assets/icons/message-square.svg" alt="" /> Messages</div>
+            <div class="card-title">
+              <img class="card-title-icon" src="../../assets/icons/message-square.svg" alt="" />
+              Messages
+            </div>
             <div class="card-badge">5 non lus</div>
           </div>
           <div class="stat-item">
@@ -808,7 +727,10 @@
 
         <div class="card">
           <div class="card-header">
-            <div class="card-title"><img class="card-title-icon" src="../../assets/icons/circle-check-big.svg" alt="" /> Tâches</div>
+            <div class="card-title">
+              <img class="card-title-icon" src="../../assets/icons/circle-check-big.svg" alt="" />
+              Tâches
+            </div>
             <div class="card-badge">5 tâches</div>
           </div>
           <div class="stat-item">
@@ -835,7 +757,10 @@
 
         <div class="card">
           <div class="card-header">
-            <div class="card-title"><img class="card-title-icon" src="../../assets/icons/calendar-days.svg" alt="" /> Prochains événements</div>
+            <div class="card-title">
+              <img class="card-title-icon" src="../../assets/icons/calendar-days.svg" alt="" />
+              Prochains événements
+            </div>
           </div>
           <div class="event-item">
             <div class="event-time">Aujourd'hui à 18:00</div>
@@ -850,7 +775,10 @@
         </div>
 
         <div class="card">
-          <div class="card-title"><img class="card-title-icon" src="../../assets/icons/trending-up.svg" alt="" /> Vue d'ensemble</div>
+          <div class="card-title">
+            <img class="card-title-icon" src="../../assets/icons/trending-up.svg" alt="" />
+            Vue d'ensemble
+          </div>
           <div class="overview-content">
             <div class="stat-item">
               <span class="stat-label">Tâches complétées cette semaine</span>
